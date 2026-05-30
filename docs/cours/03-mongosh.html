@@ -6,7 +6,7 @@
   <main class="container">
     <div class="slide-nav"><a href="#s1">Rôle</a><a href="#s2">Connexion</a><a href="#s3">Navigation</a><a href="#s4">Lire</a><a href="#s5">Scripts</a></div>
     <article class="deck">
-      <section id="s1" class="slide"><div class="header-bar">Cours 03</div><h1>Travailler avec mongosh</h1><p class="subtitle">Le shell officiel permet d'écrire, reproduire et comprendre précisément les commandes MongoDB.</p></section>
+      <section id="s1" class="slide"><h1>Travailler avec mongosh</h1><p class="subtitle">Le shell officiel permet d'écrire, reproduire et comprendre précisément les commandes MongoDB.</p></section>
       <section id="s2" class="slide"><h2 class="slide-title">Connexion au sandbox</h2><pre><code>docker compose exec mongodb mongosh \
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre><ul><li>`root` / `rootpass` : authentification.</li><li>`nyc_food` : base cible.</li><li>`authSource=admin` : base d'authentification.</li></ul></section>
       <section id="s3" class="slide"><h2 class="slide-title">Navigation</h2><pre><code>show dbs
@@ -16,7 +16,6 @@ show collections</code></pre></section>
       <section id="s4" class="slide"><h2 class="slide-title">Lire et filtrer</h2><pre><code>db.restaurants.countDocuments()
 db.restaurants.findOne()
 db.restaurants.find().limit(5)
-
 db.restaurants.find(
   { "ratings.overall": { $gte: 22 } },
   { _id: 0, name: 1, cuisine: 1, "ratings.overall": 1 }
@@ -24,7 +23,6 @@ db.restaurants.find(
       <section id="s5" class="slide"><h2 class="slide-title">Exécuter les scripts</h2><pre><code>docker compose exec mongodb mongosh \
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
   /scripts/import-restaurant-reviews.js
-
 docker compose exec mongodb mongosh \
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
   /scripts/generate-volume.js</code></pre></section>

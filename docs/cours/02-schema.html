@@ -6,9 +6,8 @@
   <main class="container">
     <div class="slide-nav"><a href="#s1">Niveaux</a><a href="#s2">Créer</a><a href="#s3">Modèle</a><a href="#s4">Schémas</a><a href="#s5">Imbriquer</a></div>
     <article class="deck">
-      <section id="s1" class="slide"><div class="header-bar">Cours 02</div><h1>Créer une base et comprendre le schéma</h1><table><tr><th>Niveau</th><th>Exemple</th></tr><tr><td>Base</td><td>`nyc_food`</td></tr><tr><td>Collection</td><td>`restaurants`</td></tr><tr><td>Document</td><td>Un restaurant en BSON/JSON.</td></tr></table></section>
+      <section id="s1" class="slide"><h1>Créer une base et comprendre le schéma</h1><table><tr><th>Niveau</th><th>Exemple</th></tr><tr><td>Base</td><td>`nyc_food`</td></tr><tr><td>Collection</td><td>`restaurants`</td></tr><tr><td>Document</td><td>Un restaurant en BSON/JSON.</td></tr></table></section>
       <section id="s2" class="slide"><h2 class="slide-title">Création implicite</h2><pre><code>use demo_schema
-
 db.restaurants.insertOne({
   name: "Demo Bistro",
   cuisine: "French",

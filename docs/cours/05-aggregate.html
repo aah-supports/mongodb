@@ -7,12 +7,10 @@
     <div class="slide-nav"><a href="#s1">Pourquoi</a><a href="#s2">SQL</a><a href="#s3">Pipeline</a><a href="#s4">Match</a><a href="#s5">Project</a><a href="#s6">Set</a><a href="#s7">Group</a><a href="#s8">Unwind</a><a href="#s9">Lookup</a><a href="#s10">Indicateur</a><a href="#s11">Merge</a><a href="#s12">Performance</a><a href="#s13">Choisir</a></div>
     <article class="deck">
       <section id="s1" class="slide">
-        <div class="header-bar">Cours 05</div>
         <h1>Analyser avec `aggregate`</h1>
         <p class="subtitle">`aggregate` sert à transformer des documents en résultats calculés : moyennes, classements, revenus, regroupements, jointures et collections de synthèse.</p>
         <p>On l'utilise quand `find` ne suffit plus : calculs, regroupements, transformations de structure, jointures ou écriture d'un résultat matérialisé.</p>
       </section>
-
       <section id="s2" class="slide">
         <h2 class="slide-title">Comparer avec SQL</h2>
         <div class="two-col">
@@ -41,7 +39,6 @@ ORDER BY average_rating DESC;</code></pre>
         </div>
         <p>Le pipeline MongoDB exprime chaque étape explicitement : filtrer, transformer, grouper, trier.</p>
       </section>
-
       <section id="s3" class="slide">
         <h2 class="slide-title">Principe du pipeline</h2>
         <pre><code>db.collection.aggregate([
@@ -58,7 +55,6 @@ ORDER BY average_rating DESC;</code></pre>
           <tr><td>Relier</td><td>Quelle collection joindre ?</td><td>`$lookup`</td></tr>
         </table>
       </section>
-
       <section id="s4" class="slide">
         <h2 class="slide-title">Commencer par `$match`</h2>
         <p>`$match` filtre les documents. Il est souvent placé au début pour réduire le volume traité et permettre l'utilisation d'un index.</p>
@@ -69,7 +65,6 @@ ORDER BY average_rating DESC;</code></pre>
 db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
         <p>Dans un pipeline analytique, `$match` joue le rôle du `WHERE` SQL.</p>
       </section>
-
       <section id="s5" class="slide">
         <h2 class="slide-title">Sélectionner et renommer avec `$project`</h2>
         <p>`$project` choisit les champs en sortie. Il peut aussi renommer ou calculer des valeurs simples.</p>
@@ -86,7 +81,6 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
 ])</code></pre>
         <p>SQL comparable : `SELECT name, cuisine, price_for_two, ratings_overall AS overall_rating`.</p>
       </section>
-
       <section id="s6" class="slide">
         <h2 class="slide-title">Ajouter un champ avec `$set`</h2>
         <p>`$set` ajoute ou modifie un champ en conservant les autres. C'est utile pour créer un indicateur intermédiaire.</p>
@@ -106,7 +100,6 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
 ])</code></pre>
         <p>Ici, on calcule un score qualité/prix avant de trier les restaurants.</p>
       </section>
-
       <section id="s7" class="slide">
         <h2 class="slide-title">Regrouper avec `$group`</h2>
         <p>`$group` est l'équivalent de `GROUP BY`. Le champ `_id` définit la clé de regroupement.</p>
@@ -132,7 +125,6 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
           <tr><td>`$addToSet`</td><td>Construire un tableau sans doublons.</td></tr>
         </table>
       </section>
-
       <section id="s8" class="slide">
         <h2 class="slide-title">Éclater un tableau avec `$unwind`</h2>
         <p>`$unwind` transforme un document contenant un tableau en plusieurs documents, un par élément du tableau.</p>
@@ -148,7 +140,6 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
 ])</code></pre>
         <p>Sans `$unwind`, on ne peut pas facilement compter chaque tag séparément. C'est une différence importante avec un modèle relationnel normalisé.</p>
       </section>
-
       <section id="s9" class="slide">
         <h2 class="slide-title">Relier deux collections avec `$lookup`</h2>
         <p>`$lookup` est proche d'un `LEFT JOIN`. Il ajoute un tableau contenant les documents correspondants de la collection cible.</p>
@@ -177,7 +168,6 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
 ])</code></pre>
         <p>`$unwind` est souvent ajouté après `$lookup` quand on attend un seul document relié.</p>
       </section>
-
       <section id="s10" class="slide">
         <h2 class="slide-title">Construire un indicateur métier complet</h2>
         <p>Question : quels restaurants combinent revenus importants et bonne satisfaction ?</p>
@@ -216,7 +206,6 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
   { $limit: 20 }
 ])</code></pre>
       </section>
-
       <section id="s11" class="slide">
         <h2 class="slide-title">Matérialiser avec `$merge`</h2>
         <p>`$merge` écrit le résultat d'un pipeline dans une collection. C'est utile pour produire des KPI réutilisables.</p>
@@ -240,7 +229,6 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
 ])</code></pre>
         <p>Attention : `$merge` écrit réellement en base. On l'utilise quand le résultat doit être conservé.</p>
       </section>
-
       <section id="s12" class="slide">
         <h2 class="slide-title">Performance et ordre des stages</h2>
         <ul>
@@ -251,14 +239,12 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
           <li>Surveiller les tris et regroupements qui manipulent beaucoup de documents.</li>
         </ul>
         <pre><code>db.review_details.createIndex({ sentiment: 1, rating: -1 })
-
 db.review_details.aggregate([
   { $match: { sentiment: "excellent", rating: { $gte: 4.5 } } },
   { $group: { _id: "$restaurant_id", reviews: { $sum: 1 } } },
   { $sort: { reviews: -1 } }
 ]).explain("executionStats")</code></pre>
       </section>
-
       <section id="s13" class="slide">
         <h2 class="slide-title">Quand choisir `find` ou `aggregate` ?</h2>
         <table>

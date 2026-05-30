@@ -7,12 +7,10 @@
     <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">Source</a><a href="#s3">Schéma global</a><a href="#s4">Raw</a><a href="#s5">Restaurants</a><a href="#s6">Schéma</a><a href="#s7">Reviews</a><a href="#s8">Quartiers</a><a href="#s9">Volume</a><a href="#s10">Orders</a><a href="#s11">Review details</a><a href="#s12">Events</a><a href="#s13">Relations</a><a href="#s14">Usages</a><a href="#s15">Questions</a></div>
     <article class="deck">
       <section id="s1" class="slide">
-        <div class="header-bar">Cours 01</div>
         <h1>Jeu de données et structure des collections</h1>
         <p class="subtitle">Avant d'écrire des requêtes MongoDB, il faut comprendre précisément les documents disponibles : leur origine, leurs champs, leurs relations et les choix de modélisation.</p>
         <p>Le sandbox travaille sur la base `nyc_food`. Elle mélange un dataset réel de notations de restaurants et des données générées pour simuler un contexte applicatif plus volumineux.</p>
       </section>
-
       <section id="s2" class="slide">
         <h2 class="slide-title">Source réelle : OpenIntro `nyc`</h2>
         <p>Le dataset réel contient 168 restaurants new-yorkais notés par Zagat. Il est importé depuis un CSV public.</p>
@@ -28,7 +26,6 @@
         </table>
         <p>Le CSV est volontairement conservé dans une collection brute avant transformation. C'est une étape importante : importer des données ne suffit pas, il faut aussi choisir un modèle documentaire exploitable.</p>
       </section>
-
       <section id="s3" class="slide">
         <h2 class="slide-title">Schéma global de la base `nyc_food`</h2>
         <table>
@@ -43,7 +40,6 @@
         </table>
         <p>Le champ pivot le plus important est `restaurant_id`. Il relie `restaurants`, `reviews`, `orders`, `review_details` et `events`.</p>
       </section>
-
       <section id="s4" class="slide">
         <h2 class="slide-title">Collection brute : `nyc_restaurant_reviews_raw`</h2>
         <p>Cette collection conserve la donnée source après conversion des nombres. Elle sert à comparer le CSV initial avec le modèle documentaire final.</p>
@@ -64,7 +60,6 @@
           <tr><td>Comprendre la transformation</td><td>La ligne brute devient un restaurant et une review agrégée.</td></tr>
         </table>
       </section>
-
       <section id="s5" class="slide">
         <h2 class="slide-title">Collection principale : `restaurants`</h2>
         <p>Un document représente un établissement. C'est la collection principale pour apprendre `find`, les projections, les champs imbriqués, les tableaux et les index.</p>
@@ -90,7 +85,6 @@
   }
 }</code></pre>
       </section>
-
       <section id="s6" class="slide">
         <h2 class="slide-title">Schéma applicatif de `restaurants`</h2>
         <table>
@@ -111,7 +105,6 @@
   tags: "top_food"
 })</code></pre>
       </section>
-
       <section id="s7" class="slide">
         <h2 class="slide-title">Collection `reviews` : avis agrégé</h2>
         <p>`reviews` représente la notation agrégée d'un restaurant. Elle est séparée de `restaurants` pour montrer une relation entre collections via `restaurant_id`.</p>
@@ -136,7 +129,6 @@
 }</code></pre>
         <p>Cette collection sert à pratiquer les champs imbriqués `scores.*`, les filtres par `sentiment`, puis les jointures avec `$lookup`.</p>
       </section>
-
       <section id="s8" class="slide">
         <h2 class="slide-title">Collection `neighborhoods`</h2>
         <p>`neighborhoods` est une petite collection pédagogique créée à l'initialisation. Elle montre qu'une base MongoDB peut contenir plusieurs familles de documents.</p>
@@ -150,7 +142,6 @@
 }</code></pre>
         <p>Un index `2dsphere` est créé sur `center`. Cette collection peut servir à discuter des données géographiques, même si le fil rouge principal reste centré sur les restaurants et avis.</p>
       </section>
-
       <section id="s9" class="slide">
         <h2 class="slide-title">Données générées : pourquoi ?</h2>
         <p>Le dataset réel est volontairement petit : 168 restaurants. Pour travailler les performances, les index et les agrégations, le sandbox génère des volumes plus importants.</p>
@@ -164,7 +155,6 @@
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
   /scripts/generate-volume.js</code></pre>
       </section>
-
       <section id="s10" class="slide">
         <h2 class="slide-title">Collection `orders`</h2>
         <p>Chaque document représente une commande simulée, rattachée à un restaurant par `restaurant_id`.</p>
@@ -183,7 +173,6 @@
 }</code></pre>
         <p>Champs importants : `restaurant_id`, `created_at`, `status`, `channel`, `amount`, `customer.loyalty_tier`.</p>
       </section>
-
       <section id="s11" class="slide">
         <h2 class="slide-title">Collection `review_details`</h2>
         <p>Chaque document simule un avis client détaillé. Cette collection complète `reviews`, qui reste une notation agrégée issue du dataset réel.</p>
@@ -201,7 +190,6 @@
 }</code></pre>
         <p>Elle sert à filtrer sur `verified_visit`, `rating`, `sentiment`, puis à agréger par restaurant ou raison de visite.</p>
       </section>
-
       <section id="s12" class="slide">
         <h2 class="slide-title">Collection `events`</h2>
         <p>Chaque document représente une action applicative simulée. C'est la collection la plus volumineuse du sandbox.</p>
@@ -216,7 +204,6 @@
 }</code></pre>
         <p>Elle sert à discuter des événements, des séries temporelles simples, des tris par date et des index sur `event_type` ou `restaurant_id`.</p>
       </section>
-
       <section id="s13" class="slide">
         <h2 class="slide-title">Relations entre collections</h2>
         <p>MongoDB ne force pas les clés étrangères comme une base relationnelle, mais le modèle applicatif utilise des identifiants communs.</p>
@@ -233,7 +220,6 @@
         </table>
         <p>Dans MongoDB, ces relations sont exploitées avec `$lookup` dans les pipelines d'agrégation.</p>
       </section>
-
       <section id="s14" class="slide">
         <h2 class="slide-title">Pourquoi ce schéma est utile pour le cours</h2>
         <table>
@@ -246,7 +232,6 @@
           <tr><td>Agrégation métier</td><td>`orders`, `review_details`</td><td>Revenus, panier moyen, notes par raison de visite.</td></tr>
         </table>
       </section>
-
       <section id="s15" class="slide">
         <h2 class="slide-title">Questions métier possibles</h2>
         <ul>

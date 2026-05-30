@@ -11,7 +11,7 @@
   <main class="container">
     <div class="slide-nav"><a href="#s1">Objectifs</a><a href="#s2">Outils</a><a href="#s3">Docker</a><a href="#s4">Connexion</a><a href="#s5">Atlas</a></div>
     <article class="deck">
-      <section id="s1" class="slide"><div class="header-bar">Cours 00</div><h1>Outils : Docker, Atlas et mongosh</h1><p class="subtitle">Un environnement reproductible pour pratiquer MongoDB sans dépendre de l'installation locale de chaque machine.</p></section>
+      <section id="s1" class="slide"><h1>Outils : Docker, Atlas et mongosh</h1><p class="subtitle">Un environnement reproductible pour pratiquer MongoDB sans dépendre de l'installation locale de chaque machine.</p></section>
       <section id="s2" class="slide"><h2 class="slide-title">Les outils du cours</h2><table><tr><th>Outil</th><th>Rôle</th></tr><tr><td>Docker Compose</td><td>Lance MongoDB et Mongo Express.</td></tr><tr><td>MongoDB</td><td>Base NoSQL orientée documents.</td></tr><tr><td>mongosh</td><td>Shell officiel pour écrire les commandes.</td></tr><tr><td>Mongo Express</td><td>Interface web légère de vérification.</td></tr><tr><td>Atlas</td><td>Version cloud managée de MongoDB.</td></tr></table></section>
       <section id="s3" class="slide"><h2 class="slide-title">Démarrer l'environnement</h2><pre><code>docker compose up -d
 docker compose ps</code></pre><p>MongoDB écoute sur `localhost:27017`. Mongo Express est disponible sur `http://localhost:8083`.</p></section>
