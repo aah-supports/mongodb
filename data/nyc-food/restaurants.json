@@ -1,0 +1,3920 @@
+[
+  {
+    "restaurant_id": "NYC-ZAGAT-0001",
+    "name": "Daniella Ristorante",
+    "cuisine": "Italian",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 43,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 18,
+      "service": 20,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 1
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0002",
+    "name": "Tello's Ristorante",
+    "cuisine": "French",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 32,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 19,
+      "service": 19,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 2
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0003",
+    "name": "Biricchino",
+    "cuisine": "American",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 34,
+    "price_tier": "$",
+    "ratings": {
+      "food": 21,
+      "decor": 13,
+      "service": 18,
+      "overall": 17.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 3
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0004",
+    "name": "Bottino",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 41,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 20,
+      "service": 17,
+      "overall": 19
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 4
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0005",
+    "name": "Da Umberto",
+    "cuisine": "Mediterranean",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 54,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 24,
+      "decor": 19,
+      "service": 21,
+      "overall": 21.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 5
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0006",
+    "name": "Le Madri",
+    "cuisine": "Steakhouse",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 52,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 22,
+      "service": 21,
+      "overall": 21.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 6
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0007",
+    "name": "Le Zie",
+    "cuisine": "Seafood",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 34,
+    "price_tier": "$",
+    "ratings": {
+      "food": 22,
+      "decor": 16,
+      "service": 21,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 7
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0008",
+    "name": "Pasticcio",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 34,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 18,
+      "service": 21,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 8
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0009",
+    "name": "Belluno",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 39,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 19,
+      "service": 22,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 9
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0010",
+    "name": "Cinque Terre",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 44,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 17,
+      "service": 19,
+      "overall": 19
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 10
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0011",
+    "name": "Fino",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 45,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 20,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 11
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0012",
+    "name": "Marchi's",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 47,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 12
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0013",
+    "name": "Nicola Paone",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 52,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 21,
+      "decor": 19,
+      "service": 20,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 13
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0014",
+    "name": "Notaro",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 35,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 14
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0015",
+    "name": "Rossini's",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 47,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 18,
+      "service": 21,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 15
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0016",
+    "name": "Trattoria Alba",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 16
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0017",
+    "name": "Villa Berulia",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 45,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 18,
+      "service": 23,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 17
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0018",
+    "name": "Il Postino",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 57,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 24,
+      "decor": 21,
+      "service": 22,
+      "overall": 22.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 18
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0019",
+    "name": "Luna Blu",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 18,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 19
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0020",
+    "name": "San Giusto",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 51,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 20,
+      "service": 22,
+      "overall": 21.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 20
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0021",
+    "name": "Grifone",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 54,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 20,
+      "service": 23,
+      "overall": 22
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 21
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0022",
+    "name": "Nanni's",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 51,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 17,
+      "service": 21,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 22
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0023",
+    "name": "Osteria Laguna",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 18,
+      "service": 18,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 23
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0024",
+    "name": "Bellini",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 49,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 21,
+      "service": 21,
+      "overall": 21.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 24
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0025",
+    "name": "Cellini",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 45,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 20,
+      "service": 22,
+      "overall": 21.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 25
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0026",
+    "name": "Anche Vivolo",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 26
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0027",
+    "name": "Bruno Ristorante",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 50,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 19,
+      "service": 22,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 27
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0028",
+    "name": "Chianti",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 43,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 16,
+      "service": 18,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 28
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0029",
+    "name": "Da Antonio Ristorante",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 49,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 19,
+      "service": 20,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 29
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0030",
+    "name": "Harry Cipriani",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 65,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 21,
+      "decor": 20,
+      "service": 20,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 30
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0031",
+    "name": "La Gioconda",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 34,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 16,
+      "service": 18,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 31
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0032",
+    "name": "Bice",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 51,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 21,
+      "decor": 20,
+      "service": 18,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 32
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0033",
+    "name": "Coco Pazzo Caf�",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 49,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 19,
+      "service": 19,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 33
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0034",
+    "name": "DeGrezia",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 51,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 22,
+      "service": 23,
+      "overall": 22.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 34
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0035",
+    "name": "FELIDIA",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 62,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 25,
+      "decor": 22,
+      "service": 23,
+      "overall": 23.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 35
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0036",
+    "name": "Fresco by Scotto",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 50,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 21,
+      "service": 21,
+      "overall": 21.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 36
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0037",
+    "name": "Giambelli",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 51,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 21,
+      "decor": 18,
+      "service": 20,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 37
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0038",
+    "name": "Il Menestrello",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 52,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 19,
+      "service": 22,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 38
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0039",
+    "name": "Il Nido",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 57,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 24,
+      "decor": 20,
+      "service": 23,
+      "overall": 22.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 39
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0040",
+    "name": "Il Valentino",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 49,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 20,
+      "service": 21,
+      "overall": 20.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 40
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0041",
+    "name": "Luna Piena",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 33,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 18,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 41
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0042",
+    "name": "Paper Moon Milano",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 43,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 17,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 42
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0043",
+    "name": "Teodora",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 41,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 17,
+      "service": 18,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 43
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0044",
+    "name": "San Pietro",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 58,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 24,
+      "decor": 21,
+      "service": 23,
+      "overall": 22.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 44
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0045",
+    "name": "Bravo Gianni",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 56,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 17,
+      "service": 21,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 45
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0046",
+    "name": "Canaletto",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 44,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 17,
+      "service": 21,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 46
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0047",
+    "name": "Il Gatto & La Volpe",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 15,
+      "service": 20,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 47
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0048",
+    "name": "Il Valletto Due Mila",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 56,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 21,
+      "decor": 17,
+      "service": 20,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 48
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0049",
+    "name": "Scalinatella",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 58,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 24,
+      "decor": 18,
+      "service": 21,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 49
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0050",
+    "name": "Barbaresco",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 44,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 16,
+      "decor": 16,
+      "service": 16,
+      "overall": 16
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 50
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0051",
+    "name": "Da Filippo",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 46,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 18,
+      "service": 20,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 51
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0052",
+    "name": "East River Cafe",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 40,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 20,
+      "service": 20,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 52
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0053",
+    "name": "Fred's at Barneys NY",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 39,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 18,
+      "service": 17,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 53
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0054",
+    "name": "Il Vagabondo",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 36,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 17,
+      "decor": 14,
+      "service": 17,
+      "overall": 16
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 54
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0055",
+    "name": "Mediterraneo",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 34,
+    "price_tier": "$",
+    "ratings": {
+      "food": 18,
+      "decor": 15,
+      "service": 16,
+      "overall": 16.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 55
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0056",
+    "name": "Nello",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 54,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 18,
+      "decor": 16,
+      "service": 15,
+      "overall": 16.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 56
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0057",
+    "name": "Primola",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 51,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 17,
+      "service": 20,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 57
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0058",
+    "name": "Gino",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 41,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 14,
+      "service": 19,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 58
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0059",
+    "name": "Via Oreto",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 40,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 17,
+      "service": 20,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 59
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0060",
+    "name": "Bardolino",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 24,
+    "price_tier": "$",
+    "ratings": {
+      "food": 18,
+      "decor": 13,
+      "service": 18,
+      "overall": 16.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 60
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0061",
+    "name": "Campagnola",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 53,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 24,
+      "decor": 20,
+      "service": 21,
+      "overall": 21.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 61
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0062",
+    "name": "Cucina Vivolo",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 31,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 16,
+      "service": 17,
+      "overall": 17.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 62
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0063",
+    "name": "Grace's Trattoria",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 35,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 18,
+      "decor": 16,
+      "service": 17,
+      "overall": 17
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 63
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0064",
+    "name": "Lumi",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 49,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 19,
+      "service": 19,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 64
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0065",
+    "name": "Mezzaluna",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 15,
+      "service": 17,
+      "overall": 17
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 65
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0066",
+    "name": "Sette Mezzo",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 48,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 16,
+      "service": 18,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 66
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0067",
+    "name": "Vivolo",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 43,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 19,
+      "service": 20,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 67
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0068",
+    "name": "Zucchero e Pomodori",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 29,
+    "price_tier": "$",
+    "ratings": {
+      "food": 17,
+      "decor": 14,
+      "service": 15,
+      "overall": 15.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 68
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0069",
+    "name": "Baraonda",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 17,
+      "decor": 18,
+      "service": 15,
+      "overall": 16.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 69
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0070",
+    "name": "Coco Pazzo",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 55,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 21,
+      "service": 20,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 70
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0071",
+    "name": "Due",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 18,
+      "service": 20,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 71
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0072",
+    "name": "Il Monello",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 55,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 20,
+      "service": 22,
+      "overall": 21.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 72
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0073",
+    "name": "Lusardi's",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 49,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 24,
+      "decor": 20,
+      "service": 22,
+      "overall": 22
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 73
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0074",
+    "name": "Maruzzella",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 33,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 14,
+      "service": 18,
+      "overall": 17
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 74
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0075",
+    "name": "Nino's",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 52,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 20,
+      "service": 22,
+      "overall": 21.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 75
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0076",
+    "name": "Parma",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 47,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 16,
+      "service": 21,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 76
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0077",
+    "name": "Il Riccio",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 43,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 16,
+      "service": 20,
+      "overall": 19
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 77
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0078",
+    "name": "Andiamo",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 33,
+    "price_tier": "$",
+    "ratings": {
+      "food": 18,
+      "decor": 17,
+      "service": 18,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 78
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0079",
+    "name": "Caffe Grazie",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 18,
+      "decor": 16,
+      "service": 19,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 79
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0080",
+    "name": "Giovanni Venticinque",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 48,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 18,
+      "service": 19,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 80
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0081",
+    "name": "Girasole",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 50,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 21,
+      "decor": 18,
+      "service": 21,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 81
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0082",
+    "name": "Paola's",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 46,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 23,
+      "decor": 19,
+      "service": 21,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 82
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0083",
+    "name": "Rughetta",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 23,
+      "decor": 19,
+      "service": 24,
+      "overall": 22
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "great_service",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 83
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0084",
+    "name": "Triangolo",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 33,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 16,
+      "service": 19,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 84
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0085",
+    "name": "Cafe Trevi",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 46,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 23,
+      "decor": 19,
+      "service": 23,
+      "overall": 21.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 85
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0086",
+    "name": "Divino Ristorante",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 15,
+      "service": 19,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 86
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0087",
+    "name": "Elio's",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 50,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 18,
+      "service": 20,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 87
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0088",
+    "name": "Erminia",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 54,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 25,
+      "decor": 24,
+      "service": 24,
+      "overall": 24.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "great_service",
+      "stylish",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 88
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0089",
+    "name": "Firenze",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 41,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 89
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0090",
+    "name": "Luca",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 15,
+      "service": 18,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 90
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0091",
+    "name": "Nicola's",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 50,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 18,
+      "service": 21,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 91
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0092",
+    "name": "Primavera",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 60,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 24,
+      "decor": 22,
+      "service": 23,
+      "overall": 23
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 92
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0093",
+    "name": "Sirabella's",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 36,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 23,
+      "decor": 16,
+      "service": 22,
+      "overall": 20.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 93
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0094",
+    "name": "Sistina",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 54,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 19,
+      "service": 21,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 94
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0095",
+    "name": "Spada",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 39,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 18,
+      "service": 18,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 95
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0096",
+    "name": "Trattoria Rustica",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 35,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 16,
+      "service": 18,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 96
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0097",
+    "name": "Carino Ristorante",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 30,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 13,
+      "service": 20,
+      "overall": 17.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 97
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0098",
+    "name": "Quattro Gatti",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 41,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 98
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0099",
+    "name": "Tony's Di Napoli",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 30,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 14,
+      "service": 17,
+      "overall": 16.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 99
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0100",
+    "name": "Ecco-la",
+    "cuisine": "Japanese",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 25,
+    "price_tier": "$",
+    "ratings": {
+      "food": 18,
+      "decor": 15,
+      "service": 15,
+      "overall": 16
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 100
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0101",
+    "name": "Joanna's",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 43,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 18,
+      "service": 21,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 101
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0102",
+    "name": "Vico",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 45,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 15,
+      "service": 17,
+      "overall": 17.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 102
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0103",
+    "name": "Rao's",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 57,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 16,
+      "service": 20,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 103
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0104",
+    "name": "Basta Pasta",
+    "cuisine": "Bistro",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 32,
+    "price_tier": "$",
+    "ratings": {
+      "food": 18,
+      "decor": 15,
+      "service": 17,
+      "overall": 16.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 104
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0105",
+    "name": "Campagna",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 51,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 24,
+      "decor": 21,
+      "service": 21,
+      "overall": 22
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 105
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0106",
+    "name": "Follonico",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 48,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 23,
+      "decor": 20,
+      "service": 21,
+      "overall": 21.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 106
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0107",
+    "name": "Ribollita",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 36,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 18,
+      "decor": 16,
+      "service": 16,
+      "overall": 16.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 107
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0108",
+    "name": "Bond� Ristorante�",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 108
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0109",
+    "name": "Casa Mia",
+    "cuisine": "Mediterranean",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 31,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 19,
+      "service": 19,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 109
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0110",
+    "name": "Novit�",
+    "cuisine": "Steakhouse",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 47,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 23,
+      "decor": 19,
+      "service": 21,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 110
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0111",
+    "name": "Paul & Jimmy's",
+    "cuisine": "Seafood",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 40,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 16,
+      "service": 19,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 111
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0112",
+    "name": "Sal Anthony's",
+    "cuisine": "Bistro",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 37,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 18,
+      "decor": 16,
+      "service": 18,
+      "overall": 17.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 112
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0113",
+    "name": "Enoteca i Trulli",
+    "cuisine": "Italian",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 43,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 23,
+      "decor": 20,
+      "service": 21,
+      "overall": 21.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 113
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0114",
+    "name": "I Trulli",
+    "cuisine": "French",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 51,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 22,
+      "service": 21,
+      "overall": 22
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 114
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0115",
+    "name": "Lamarca",
+    "cuisine": "American",
+    "location_area": "East of 5th Avenue",
+    "price_for_two": 19,
+    "price_tier": "$",
+    "ratings": {
+      "food": 18,
+      "decor": 9,
+      "service": 15,
+      "overall": 14
+    },
+    "rating_band": "fair_to_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 115
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0116",
+    "name": "Supreme Macaroni Co.",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 28,
+    "price_tier": "$",
+    "ratings": {
+      "food": 17,
+      "decor": 14,
+      "service": 17,
+      "overall": 16
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 116
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0117",
+    "name": "Veronica",
+    "cuisine": "Mediterranean",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 22,
+    "price_tier": "$",
+    "ratings": {
+      "food": 21,
+      "decor": 6,
+      "service": 14,
+      "overall": 13.7
+    },
+    "rating_band": "fair_to_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 117
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0118",
+    "name": "Arno",
+    "cuisine": "Steakhouse",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 41,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 118
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0119",
+    "name": "Amarone",
+    "cuisine": "Seafood",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 33,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 15,
+      "service": 18,
+      "overall": 17.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 119
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0120",
+    "name": "Cara Mia",
+    "cuisine": "Bistro",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 29,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 15,
+      "service": 17,
+      "overall": 17
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 120
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0121",
+    "name": "Casa Di Meglio",
+    "cuisine": "Italian",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 33,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 17,
+      "service": 18,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 121
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0122",
+    "name": "La Rivista",
+    "cuisine": "French",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 45,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 16,
+      "service": 18,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 122
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0123",
+    "name": "Trattoria Dopo Teatro",
+    "cuisine": "American",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 17,
+      "decor": 16,
+      "service": 17,
+      "overall": 16.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 123
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0124",
+    "name": "Barbetta",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 52,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 20,
+      "decor": 23,
+      "service": 20,
+      "overall": 21
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 124
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0125",
+    "name": "Becco",
+    "cuisine": "Mediterranean",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 125
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0126",
+    "name": "Coco Pazzo Teatro",
+    "cuisine": "Steakhouse",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 47,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 18,
+      "decor": 18,
+      "service": 17,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 126
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0127",
+    "name": "Orso",
+    "cuisine": "Seafood",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 46,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 18,
+      "service": 20,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 127
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0128",
+    "name": "Osteria al Doge",
+    "cuisine": "Bistro",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 40,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 17,
+      "service": 18,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 128
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0129",
+    "name": "Pietrasanta",
+    "cuisine": "Italian",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 32,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 15,
+      "service": 19,
+      "overall": 18
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 129
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0130",
+    "name": "Rainbow Grill",
+    "cuisine": "French",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 65,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 19,
+      "decor": 23,
+      "service": 18,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 130
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0131",
+    "name": "Torre di Pisa",
+    "cuisine": "American",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 47,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 21,
+      "service": 17,
+      "overall": 19
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 131
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0132",
+    "name": "San Domenico",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 65,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 22,
+      "service": 22,
+      "overall": 22.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 132
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0133",
+    "name": "Trionfo",
+    "cuisine": "Mediterranean",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 45,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 17,
+      "service": 21,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 133
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0134",
+    "name": "ViceVersa",
+    "cuisine": "Steakhouse",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 46,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 22,
+      "service": 20,
+      "overall": 21.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 134
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0135",
+    "name": "Artusi",
+    "cuisine": "Seafood",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 44,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 19,
+      "service": 20,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 135
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0136",
+    "name": "Ciao Europa",
+    "cuisine": "Bistro",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 40,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 19,
+      "service": 18,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 136
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0137",
+    "name": "Limoncello",
+    "cuisine": "Italian",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 46,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 18,
+      "service": 20,
+      "overall": 19
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 137
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0138",
+    "name": "Puttanesca",
+    "cuisine": "French",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 32,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 15,
+      "service": 17,
+      "overall": 17
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 138
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0139",
+    "name": "Rino Trattoria",
+    "cuisine": "American",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 23,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 14,
+      "service": 16,
+      "overall": 16.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 139
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0140",
+    "name": "Sette MoMA",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 42,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 18,
+      "decor": 21,
+      "service": 17,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 140
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0141",
+    "name": "Trattoria Del Sogno",
+    "cuisine": "Mediterranean",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 29,
+    "price_tier": "$",
+    "ratings": {
+      "food": 21,
+      "decor": 18,
+      "service": 19,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 141
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0142",
+    "name": "Castellano",
+    "cuisine": "Steakhouse",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 49,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 18,
+      "service": 20,
+      "overall": 19.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 142
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0143",
+    "name": "Circo Osteria del",
+    "cuisine": "Seafood",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 53,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 24,
+      "service": 21,
+      "overall": 22.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "stylish",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 143
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0144",
+    "name": "Giovanni",
+    "cuisine": "Bistro",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 45,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 144
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0145",
+    "name": "Palio",
+    "cuisine": "Italian",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 63,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 25,
+      "service": 22,
+      "overall": 23
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "stylish",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 145
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0146",
+    "name": "Remi",
+    "cuisine": "French",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 52,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 23,
+      "service": 21,
+      "overall": 22.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 146
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0147",
+    "name": "Tuscan Square",
+    "cuisine": "American",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 40,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 19,
+      "decor": 20,
+      "service": 17,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 147
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0148",
+    "name": "Vago Ristorante",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 45,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 21,
+      "service": 23,
+      "overall": 22
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 148
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0149",
+    "name": "Bello",
+    "cuisine": "Mediterranean",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 17,
+      "service": 20,
+      "overall": 19.3
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 149
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0150",
+    "name": "Caffe Cielo",
+    "cuisine": "Steakhouse",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 18,
+      "decor": 17,
+      "service": 18,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 150
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0151",
+    "name": "Da Tommaso",
+    "cuisine": "Seafood",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 42,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 16,
+      "service": 20,
+      "overall": 19
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 151
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0152",
+    "name": "Il Tinello",
+    "cuisine": "Bistro",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 57,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 23,
+      "decor": 19,
+      "service": 23,
+      "overall": 21.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 152
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0153",
+    "name": "Nocello",
+    "cuisine": "Italian",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 39,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 19,
+      "service": 20,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 153
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0154",
+    "name": "Tino's",
+    "cuisine": "French",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 43,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 18,
+      "service": 18,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 154
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0155",
+    "name": "Mangia e Bevi",
+    "cuisine": "American",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 29,
+    "price_tier": "$",
+    "ratings": {
+      "food": 17,
+      "decor": 14,
+      "service": 16,
+      "overall": 15.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 155
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0156",
+    "name": "Patsy's",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 42,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 20,
+      "decor": 16,
+      "service": 19,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 156
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0157",
+    "name": "Gabriel's",
+    "cuisine": "Mediterranean",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 50,
+    "price_tier": "$$$",
+    "ratings": {
+      "food": 22,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 157
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0158",
+    "name": "Pappardella",
+    "cuisine": "Steakhouse",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 34,
+    "price_tier": "$",
+    "ratings": {
+      "food": 18,
+      "decor": 16,
+      "service": 17,
+      "overall": 17
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 158
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0159",
+    "name": "Ernie's",
+    "cuisine": "Seafood",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 31,
+    "price_tier": "$",
+    "ratings": {
+      "food": 16,
+      "decor": 15,
+      "service": 16,
+      "overall": 15.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 159
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0160",
+    "name": "Pomodoro Rosso",
+    "cuisine": "Bistro",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 31,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 160
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0161",
+    "name": "Scaletta",
+    "cuisine": "Italian",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 46,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 19,
+      "service": 22,
+      "overall": 20.7
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 161
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0162",
+    "name": "La Grolla, Ristorante",
+    "cuisine": "French",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 42,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 21,
+      "decor": 15,
+      "service": 19,
+      "overall": 18.3
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 162
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0163",
+    "name": "Sambuca, Trattoria",
+    "cuisine": "American",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 31,
+    "price_tier": "$",
+    "ratings": {
+      "food": 19,
+      "decor": 16,
+      "service": 18,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 163
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0164",
+    "name": "Baci",
+    "cuisine": "Japanese",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 31,
+    "price_tier": "$",
+    "ratings": {
+      "food": 17,
+      "decor": 15,
+      "service": 16,
+      "overall": 16
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 164
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0165",
+    "name": "Puccini",
+    "cuisine": "Mediterranean",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 26,
+    "price_tier": "$",
+    "ratings": {
+      "food": 20,
+      "decor": 16,
+      "service": 17,
+      "overall": 17.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 165
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0166",
+    "name": "Bella Luna",
+    "cuisine": "Steakhouse",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 31,
+    "price_tier": "$",
+    "ratings": {
+      "food": 18,
+      "decor": 16,
+      "service": 17,
+      "overall": 17
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 166
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0167",
+    "name": "M�tisse",
+    "cuisine": "Seafood",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 38,
+    "price_tier": "$$",
+    "ratings": {
+      "food": 22,
+      "decor": 17,
+      "service": 21,
+      "overall": 20
+    },
+    "rating_band": "very_good_to_excellent",
+    "tags": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 167
+    }
+  },
+  {
+    "restaurant_id": "NYC-ZAGAT-0168",
+    "name": "Gennaro",
+    "cuisine": "Bistro",
+    "location_area": "West of 5th Avenue",
+    "price_for_two": 34,
+    "price_tier": "$",
+    "ratings": {
+      "food": 24,
+      "decor": 10,
+      "service": 16,
+      "overall": 16.7
+    },
+    "rating_band": "good_to_very_good",
+    "tags": [
+      "top_food",
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 168
+    }
+  }
+]

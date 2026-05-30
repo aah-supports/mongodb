@@ -1,0 +1,2018 @@
+[
+  {
+    "source_case": 1,
+    "restaurant": "Daniella Ristorante",
+    "price": 43,
+    "food": 22,
+    "decor": 18,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.493Z"
+    }
+  },
+  {
+    "source_case": 2,
+    "restaurant": "Tello's Ristorante",
+    "price": 32,
+    "food": 20,
+    "decor": 19,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 3,
+    "restaurant": "Biricchino",
+    "price": 34,
+    "food": 21,
+    "decor": 13,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 4,
+    "restaurant": "Bottino",
+    "price": 41,
+    "food": 20,
+    "decor": 20,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 5,
+    "restaurant": "Da Umberto",
+    "price": 54,
+    "food": 24,
+    "decor": 19,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 6,
+    "restaurant": "Le Madri",
+    "price": 52,
+    "food": 22,
+    "decor": 22,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 7,
+    "restaurant": "Le Zie",
+    "price": 34,
+    "food": 22,
+    "decor": 16,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 8,
+    "restaurant": "Pasticcio",
+    "price": 34,
+    "food": 20,
+    "decor": 18,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 9,
+    "restaurant": "Belluno",
+    "price": 39,
+    "food": 22,
+    "decor": 19,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 10,
+    "restaurant": "Cinque Terre",
+    "price": 44,
+    "food": 21,
+    "decor": 17,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 11,
+    "restaurant": "Fino",
+    "price": 45,
+    "food": 19,
+    "decor": 17,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 12,
+    "restaurant": "Marchi's",
+    "price": 47,
+    "food": 21,
+    "decor": 19,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 13,
+    "restaurant": "Nicola Paone",
+    "price": 52,
+    "food": 21,
+    "decor": 19,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 14,
+    "restaurant": "Notaro",
+    "price": 35,
+    "food": 19,
+    "decor": 17,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 15,
+    "restaurant": "Rossini's",
+    "price": 47,
+    "food": 20,
+    "decor": 18,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 16,
+    "restaurant": "Trattoria Alba",
+    "price": 37,
+    "food": 21,
+    "decor": 19,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 17,
+    "restaurant": "Villa Berulia",
+    "price": 45,
+    "food": 22,
+    "decor": 18,
+    "service": 23,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 18,
+    "restaurant": "Il Postino",
+    "price": 57,
+    "food": 24,
+    "decor": 21,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 19,
+    "restaurant": "Luna Blu",
+    "price": 38,
+    "food": 19,
+    "decor": 17,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 20,
+    "restaurant": "San Giusto",
+    "price": 51,
+    "food": 22,
+    "decor": 20,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 21,
+    "restaurant": "Grifone",
+    "price": 54,
+    "food": 23,
+    "decor": 20,
+    "service": 23,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 22,
+    "restaurant": "Nanni's",
+    "price": 51,
+    "food": 23,
+    "decor": 17,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 23,
+    "restaurant": "Osteria Laguna",
+    "price": 38,
+    "food": 20,
+    "decor": 18,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 24,
+    "restaurant": "Bellini",
+    "price": 49,
+    "food": 22,
+    "decor": 21,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 25,
+    "restaurant": "Cellini",
+    "price": 45,
+    "food": 22,
+    "decor": 20,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 26,
+    "restaurant": "Anche Vivolo",
+    "price": 37,
+    "food": 19,
+    "decor": 17,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 27,
+    "restaurant": "Bruno Ristorante",
+    "price": 50,
+    "food": 22,
+    "decor": 19,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 28,
+    "restaurant": "Chianti",
+    "price": 43,
+    "food": 20,
+    "decor": 16,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 29,
+    "restaurant": "Da Antonio Ristorante",
+    "price": 49,
+    "food": 22,
+    "decor": 19,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 30,
+    "restaurant": "Harry Cipriani",
+    "price": 65,
+    "food": 21,
+    "decor": 20,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 31,
+    "restaurant": "La Gioconda",
+    "price": 34,
+    "food": 20,
+    "decor": 16,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 32,
+    "restaurant": "Bice",
+    "price": 51,
+    "food": 21,
+    "decor": 20,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 33,
+    "restaurant": "Coco Pazzo Caf�",
+    "price": 49,
+    "food": 20,
+    "decor": 19,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 34,
+    "restaurant": "DeGrezia",
+    "price": 51,
+    "food": 23,
+    "decor": 22,
+    "service": 23,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 35,
+    "restaurant": "FELIDIA",
+    "price": 62,
+    "food": 25,
+    "decor": 22,
+    "service": 23,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 36,
+    "restaurant": "Fresco by Scotto",
+    "price": 50,
+    "food": 23,
+    "decor": 21,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 37,
+    "restaurant": "Giambelli",
+    "price": 51,
+    "food": 21,
+    "decor": 18,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 38,
+    "restaurant": "Il Menestrello",
+    "price": 52,
+    "food": 22,
+    "decor": 19,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 39,
+    "restaurant": "Il Nido",
+    "price": 57,
+    "food": 24,
+    "decor": 20,
+    "service": 23,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 40,
+    "restaurant": "Il Valentino",
+    "price": 49,
+    "food": 21,
+    "decor": 20,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 41,
+    "restaurant": "Luna Piena",
+    "price": 33,
+    "food": 19,
+    "decor": 17,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 42,
+    "restaurant": "Paper Moon Milano",
+    "price": 43,
+    "food": 19,
+    "decor": 17,
+    "service": 17,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 43,
+    "restaurant": "Teodora",
+    "price": 41,
+    "food": 21,
+    "decor": 17,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 44,
+    "restaurant": "San Pietro",
+    "price": 58,
+    "food": 24,
+    "decor": 21,
+    "service": 23,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 45,
+    "restaurant": "Bravo Gianni",
+    "price": 56,
+    "food": 22,
+    "decor": 17,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 46,
+    "restaurant": "Canaletto",
+    "price": 44,
+    "food": 22,
+    "decor": 17,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 47,
+    "restaurant": "Il Gatto & La Volpe",
+    "price": 37,
+    "food": 20,
+    "decor": 15,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 48,
+    "restaurant": "Il Valletto Due Mila",
+    "price": 56,
+    "food": 21,
+    "decor": 17,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 49,
+    "restaurant": "Scalinatella",
+    "price": 58,
+    "food": 24,
+    "decor": 18,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 50,
+    "restaurant": "Barbaresco",
+    "price": 44,
+    "food": 16,
+    "decor": 16,
+    "service": 16,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 51,
+    "restaurant": "Da Filippo",
+    "price": 46,
+    "food": 20,
+    "decor": 18,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 52,
+    "restaurant": "East River Cafe",
+    "price": 40,
+    "food": 20,
+    "decor": 20,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 53,
+    "restaurant": "Fred's at Barneys NY",
+    "price": 39,
+    "food": 19,
+    "decor": 18,
+    "service": 17,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 54,
+    "restaurant": "Il Vagabondo",
+    "price": 36,
+    "food": 17,
+    "decor": 14,
+    "service": 17,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 55,
+    "restaurant": "Mediterraneo",
+    "price": 34,
+    "food": 18,
+    "decor": 15,
+    "service": 16,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 56,
+    "restaurant": "Nello",
+    "price": 54,
+    "food": 18,
+    "decor": 16,
+    "service": 15,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 57,
+    "restaurant": "Primola",
+    "price": 51,
+    "food": 23,
+    "decor": 17,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 58,
+    "restaurant": "Gino",
+    "price": 41,
+    "food": 20,
+    "decor": 14,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 59,
+    "restaurant": "Via Oreto",
+    "price": 40,
+    "food": 22,
+    "decor": 17,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 60,
+    "restaurant": "Bardolino",
+    "price": 24,
+    "food": 18,
+    "decor": 13,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 61,
+    "restaurant": "Campagnola",
+    "price": 53,
+    "food": 24,
+    "decor": 20,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 62,
+    "restaurant": "Cucina Vivolo",
+    "price": 31,
+    "food": 19,
+    "decor": 16,
+    "service": 17,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 63,
+    "restaurant": "Grace's Trattoria",
+    "price": 35,
+    "food": 18,
+    "decor": 16,
+    "service": 17,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 64,
+    "restaurant": "Lumi",
+    "price": 49,
+    "food": 20,
+    "decor": 19,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 65,
+    "restaurant": "Mezzaluna",
+    "price": 38,
+    "food": 19,
+    "decor": 15,
+    "service": 17,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 66,
+    "restaurant": "Sette Mezzo",
+    "price": 48,
+    "food": 21,
+    "decor": 16,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 67,
+    "restaurant": "Vivolo",
+    "price": 43,
+    "food": 20,
+    "decor": 19,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 68,
+    "restaurant": "Zucchero e Pomodori",
+    "price": 29,
+    "food": 17,
+    "decor": 14,
+    "service": 15,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 69,
+    "restaurant": "Baraonda",
+    "price": 37,
+    "food": 17,
+    "decor": 18,
+    "service": 15,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 70,
+    "restaurant": "Coco Pazzo",
+    "price": 55,
+    "food": 22,
+    "decor": 21,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 71,
+    "restaurant": "Due",
+    "price": 37,
+    "food": 22,
+    "decor": 18,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 72,
+    "restaurant": "Il Monello",
+    "price": 55,
+    "food": 23,
+    "decor": 20,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.494Z"
+    }
+  },
+  {
+    "source_case": 73,
+    "restaurant": "Lusardi's",
+    "price": 49,
+    "food": 24,
+    "decor": 20,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 74,
+    "restaurant": "Maruzzella",
+    "price": 33,
+    "food": 19,
+    "decor": 14,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 75,
+    "restaurant": "Nino's",
+    "price": 52,
+    "food": 23,
+    "decor": 20,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 76,
+    "restaurant": "Parma",
+    "price": 47,
+    "food": 22,
+    "decor": 16,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 77,
+    "restaurant": "Il Riccio",
+    "price": 43,
+    "food": 21,
+    "decor": 16,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 78,
+    "restaurant": "Andiamo",
+    "price": 33,
+    "food": 18,
+    "decor": 17,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 79,
+    "restaurant": "Caffe Grazie",
+    "price": 38,
+    "food": 18,
+    "decor": 16,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 80,
+    "restaurant": "Giovanni Venticinque",
+    "price": 48,
+    "food": 21,
+    "decor": 18,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 81,
+    "restaurant": "Girasole",
+    "price": 50,
+    "food": 21,
+    "decor": 18,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 82,
+    "restaurant": "Paola's",
+    "price": 46,
+    "food": 23,
+    "decor": 19,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 83,
+    "restaurant": "Rughetta",
+    "price": 38,
+    "food": 23,
+    "decor": 19,
+    "service": 24,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 84,
+    "restaurant": "Triangolo",
+    "price": 33,
+    "food": 20,
+    "decor": 16,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 85,
+    "restaurant": "Cafe Trevi",
+    "price": 46,
+    "food": 23,
+    "decor": 19,
+    "service": 23,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 86,
+    "restaurant": "Divino Ristorante",
+    "price": 37,
+    "food": 19,
+    "decor": 15,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 87,
+    "restaurant": "Elio's",
+    "price": 50,
+    "food": 23,
+    "decor": 18,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 88,
+    "restaurant": "Erminia",
+    "price": 54,
+    "food": 25,
+    "decor": 24,
+    "service": 24,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 89,
+    "restaurant": "Firenze",
+    "price": 41,
+    "food": 21,
+    "decor": 19,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 90,
+    "restaurant": "Luca",
+    "price": 37,
+    "food": 21,
+    "decor": 15,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 91,
+    "restaurant": "Nicola's",
+    "price": 50,
+    "food": 22,
+    "decor": 18,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 92,
+    "restaurant": "Primavera",
+    "price": 60,
+    "food": 24,
+    "decor": 22,
+    "service": 23,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 93,
+    "restaurant": "Sirabella's",
+    "price": 36,
+    "food": 23,
+    "decor": 16,
+    "service": 22,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 94,
+    "restaurant": "Sistina",
+    "price": 54,
+    "food": 23,
+    "decor": 19,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 95,
+    "restaurant": "Spada",
+    "price": 39,
+    "food": 19,
+    "decor": 18,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 96,
+    "restaurant": "Trattoria Rustica",
+    "price": 35,
+    "food": 20,
+    "decor": 16,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 97,
+    "restaurant": "Carino Ristorante",
+    "price": 30,
+    "food": 19,
+    "decor": 13,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 98,
+    "restaurant": "Quattro Gatti",
+    "price": 41,
+    "food": 19,
+    "decor": 17,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 99,
+    "restaurant": "Tony's Di Napoli",
+    "price": 30,
+    "food": 19,
+    "decor": 14,
+    "service": 17,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 100,
+    "restaurant": "Ecco-la",
+    "price": 25,
+    "food": 18,
+    "decor": 15,
+    "service": 15,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 101,
+    "restaurant": "Joanna's",
+    "price": 43,
+    "food": 19,
+    "decor": 18,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 102,
+    "restaurant": "Vico",
+    "price": 45,
+    "food": 20,
+    "decor": 15,
+    "service": 17,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 103,
+    "restaurant": "Rao's",
+    "price": 57,
+    "food": 23,
+    "decor": 16,
+    "service": 20,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 104,
+    "restaurant": "Basta Pasta",
+    "price": 32,
+    "food": 18,
+    "decor": 15,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 105,
+    "restaurant": "Campagna",
+    "price": 51,
+    "food": 24,
+    "decor": 21,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 106,
+    "restaurant": "Follonico",
+    "price": 48,
+    "food": 23,
+    "decor": 20,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 107,
+    "restaurant": "Ribollita",
+    "price": 36,
+    "food": 18,
+    "decor": 16,
+    "service": 16,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 108,
+    "restaurant": "Bond� Ristorante�",
+    "price": 37,
+    "food": 20,
+    "decor": 17,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 109,
+    "restaurant": "Casa Mia",
+    "price": 31,
+    "food": 20,
+    "decor": 19,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 110,
+    "restaurant": "Novit�",
+    "price": 47,
+    "food": 23,
+    "decor": 19,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 111,
+    "restaurant": "Paul & Jimmy's",
+    "price": 40,
+    "food": 19,
+    "decor": 16,
+    "service": 19,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 112,
+    "restaurant": "Sal Anthony's",
+    "price": 37,
+    "food": 18,
+    "decor": 16,
+    "service": 18,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 113,
+    "restaurant": "Enoteca i Trulli",
+    "price": 43,
+    "food": 23,
+    "decor": 20,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 114,
+    "restaurant": "I Trulli",
+    "price": 51,
+    "food": 23,
+    "decor": 22,
+    "service": 21,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 115,
+    "restaurant": "Lamarca",
+    "price": 19,
+    "food": 18,
+    "decor": 9,
+    "service": 15,
+    "east": 1,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 116,
+    "restaurant": "Supreme Macaroni Co.",
+    "price": 28,
+    "food": 17,
+    "decor": 14,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 117,
+    "restaurant": "Veronica",
+    "price": 22,
+    "food": 21,
+    "decor": 6,
+    "service": 14,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 118,
+    "restaurant": "Arno",
+    "price": 41,
+    "food": 19,
+    "decor": 17,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 119,
+    "restaurant": "Amarone",
+    "price": 33,
+    "food": 19,
+    "decor": 15,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 120,
+    "restaurant": "Cara Mia",
+    "price": 29,
+    "food": 19,
+    "decor": 15,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 121,
+    "restaurant": "Casa Di Meglio",
+    "price": 33,
+    "food": 19,
+    "decor": 17,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 122,
+    "restaurant": "La Rivista",
+    "price": 45,
+    "food": 19,
+    "decor": 16,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 123,
+    "restaurant": "Trattoria Dopo Teatro",
+    "price": 38,
+    "food": 17,
+    "decor": 16,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 124,
+    "restaurant": "Barbetta",
+    "price": 52,
+    "food": 20,
+    "decor": 23,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 125,
+    "restaurant": "Becco",
+    "price": 38,
+    "food": 20,
+    "decor": 17,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 126,
+    "restaurant": "Coco Pazzo Teatro",
+    "price": 47,
+    "food": 18,
+    "decor": 18,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 127,
+    "restaurant": "Orso",
+    "price": 46,
+    "food": 22,
+    "decor": 18,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 128,
+    "restaurant": "Osteria al Doge",
+    "price": 40,
+    "food": 20,
+    "decor": 17,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 129,
+    "restaurant": "Pietrasanta",
+    "price": 32,
+    "food": 20,
+    "decor": 15,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 130,
+    "restaurant": "Rainbow Grill",
+    "price": 65,
+    "food": 19,
+    "decor": 23,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 131,
+    "restaurant": "Torre di Pisa",
+    "price": 47,
+    "food": 19,
+    "decor": 21,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 132,
+    "restaurant": "San Domenico",
+    "price": 65,
+    "food": 23,
+    "decor": 22,
+    "service": 22,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 133,
+    "restaurant": "Trionfo",
+    "price": 45,
+    "food": 20,
+    "decor": 17,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 134,
+    "restaurant": "ViceVersa",
+    "price": 46,
+    "food": 22,
+    "decor": 22,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 135,
+    "restaurant": "Artusi",
+    "price": 44,
+    "food": 20,
+    "decor": 19,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 136,
+    "restaurant": "Ciao Europa",
+    "price": 40,
+    "food": 19,
+    "decor": 19,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 137,
+    "restaurant": "Limoncello",
+    "price": 46,
+    "food": 19,
+    "decor": 18,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 138,
+    "restaurant": "Puttanesca",
+    "price": 32,
+    "food": 19,
+    "decor": 15,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 139,
+    "restaurant": "Rino Trattoria",
+    "price": 23,
+    "food": 20,
+    "decor": 14,
+    "service": 16,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 140,
+    "restaurant": "Sette MoMA",
+    "price": 42,
+    "food": 18,
+    "decor": 21,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 141,
+    "restaurant": "Trattoria Del Sogno",
+    "price": 29,
+    "food": 21,
+    "decor": 18,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 142,
+    "restaurant": "Castellano",
+    "price": 49,
+    "food": 21,
+    "decor": 18,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 143,
+    "restaurant": "Circo Osteria del",
+    "price": 53,
+    "food": 22,
+    "decor": 24,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 144,
+    "restaurant": "Giovanni",
+    "price": 45,
+    "food": 22,
+    "decor": 19,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 145,
+    "restaurant": "Palio",
+    "price": 63,
+    "food": 22,
+    "decor": 25,
+    "service": 22,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 146,
+    "restaurant": "Remi",
+    "price": 52,
+    "food": 23,
+    "decor": 23,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 147,
+    "restaurant": "Tuscan Square",
+    "price": 40,
+    "food": 19,
+    "decor": 20,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 148,
+    "restaurant": "Vago Ristorante",
+    "price": 45,
+    "food": 22,
+    "decor": 21,
+    "service": 23,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 149,
+    "restaurant": "Bello",
+    "price": 38,
+    "food": 21,
+    "decor": 17,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 150,
+    "restaurant": "Caffe Cielo",
+    "price": 38,
+    "food": 18,
+    "decor": 17,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 151,
+    "restaurant": "Da Tommaso",
+    "price": 42,
+    "food": 21,
+    "decor": 16,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 152,
+    "restaurant": "Il Tinello",
+    "price": 57,
+    "food": 23,
+    "decor": 19,
+    "service": 23,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 153,
+    "restaurant": "Nocello",
+    "price": 39,
+    "food": 21,
+    "decor": 19,
+    "service": 20,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 154,
+    "restaurant": "Tino's",
+    "price": 43,
+    "food": 20,
+    "decor": 18,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 155,
+    "restaurant": "Mangia e Bevi",
+    "price": 29,
+    "food": 17,
+    "decor": 14,
+    "service": 16,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 156,
+    "restaurant": "Patsy's",
+    "price": 42,
+    "food": 20,
+    "decor": 16,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 157,
+    "restaurant": "Gabriel's",
+    "price": 50,
+    "food": 22,
+    "decor": 19,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 158,
+    "restaurant": "Pappardella",
+    "price": 34,
+    "food": 18,
+    "decor": 16,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 159,
+    "restaurant": "Ernie's",
+    "price": 31,
+    "food": 16,
+    "decor": 15,
+    "service": 16,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 160,
+    "restaurant": "Pomodoro Rosso",
+    "price": 31,
+    "food": 20,
+    "decor": 17,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 161,
+    "restaurant": "Scaletta",
+    "price": 46,
+    "food": 21,
+    "decor": 19,
+    "service": 22,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 162,
+    "restaurant": "La Grolla, Ristorante",
+    "price": 42,
+    "food": 21,
+    "decor": 15,
+    "service": 19,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.495Z"
+    }
+  },
+  {
+    "source_case": 163,
+    "restaurant": "Sambuca, Trattoria",
+    "price": 31,
+    "food": 19,
+    "decor": 16,
+    "service": 18,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.496Z"
+    }
+  },
+  {
+    "source_case": 164,
+    "restaurant": "Baci",
+    "price": 31,
+    "food": 17,
+    "decor": 15,
+    "service": 16,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.496Z"
+    }
+  },
+  {
+    "source_case": 165,
+    "restaurant": "Puccini",
+    "price": 26,
+    "food": 20,
+    "decor": 16,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.496Z"
+    }
+  },
+  {
+    "source_case": 166,
+    "restaurant": "Bella Luna",
+    "price": 31,
+    "food": 18,
+    "decor": 16,
+    "service": 17,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.496Z"
+    }
+  },
+  {
+    "source_case": 167,
+    "restaurant": "M�tisse",
+    "price": 38,
+    "food": 22,
+    "decor": 17,
+    "service": 21,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.496Z"
+    }
+  },
+  {
+    "source_case": 168,
+    "restaurant": "Gennaro",
+    "price": 34,
+    "food": 24,
+    "decor": 10,
+    "service": 16,
+    "east": 0,
+    "imported_at": {
+      "$date": "2026-05-30T15:45:20.496Z"
+    }
+  }
+]

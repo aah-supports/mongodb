@@ -58,14 +58,20 @@ Le script importe les lignes du CSV source, puis crée un modèle documentaire e
 docker compose exec -e NYC_IMPORT_MAX_ROWS=100 mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-restaurant-reviews.js
 ```
 
-Import de secours sans réseau, depuis le snapshot JSON versionné dans `data/`.
-Depuis la racine du dépôt, si `mongosh` est installé localement :
+Import de secours sans réseau, depuis les fichiers JSON versionnés dans `../data/nyc-food`.
+`mongoimport --drop` supprime la collection existante puis la recrée depuis le fichier JSON :
 
 ```bash
-mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" --quiet --eval 'const seed = EJSON.parse(require("fs").readFileSync("data/nyc-food-seed.json", "utf8")); for (const [name, docs] of Object.entries(seed.collections)) { db.getCollection(name).deleteMany({}); if (docs.length) db.getCollection(name).insertMany(docs); print(`${name}: ${docs.length}`); }'
+docker compose up -d mongodb
+docker compose cp ../data/nyc-food/. mongodb:/tmp/nyc-food/
+
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection nyc_restaurant_reviews_raw --file /tmp/nyc-food/nyc_restaurant_reviews_raw.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection restaurants --file /tmp/nyc-food/restaurants.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection reviews --file /tmp/nyc-food/reviews.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection neighborhoods --file /tmp/nyc-food/neighborhoods.json --jsonArray --drop
 ```
 
-Cette commande charge `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Elle ne génère pas `orders`, `review_details` ni `events` ; lancer `scripts/generate-volume.js` ensuite si besoin.
+Ces commandes chargent `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Elles ne génèrent pas `orders`, `review_details` ni `events` ; lancer `scripts/generate-volume.js` ensuite si besoin.
 
 Collections après import :
 

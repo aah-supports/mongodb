@@ -1,0 +1,4088 @@
+[
+  {
+    "review_id": "ZAGAT-0001",
+    "restaurant_id": "NYC-ZAGAT-0001",
+    "reviewed_at": {
+      "$date": "2025-01-01T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 18,
+      "service": 20,
+      "overall": 20
+    },
+    "price_for_two": 43,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 1
+    }
+  },
+  {
+    "review_id": "ZAGAT-0002",
+    "restaurant_id": "NYC-ZAGAT-0002",
+    "reviewed_at": {
+      "$date": "2025-02-02T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 20,
+      "decor": 19,
+      "service": 19,
+      "overall": 19.3
+    },
+    "price_for_two": 32,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 2
+    }
+  },
+  {
+    "review_id": "ZAGAT-0003",
+    "restaurant_id": "NYC-ZAGAT-0003",
+    "reviewed_at": {
+      "$date": "2025-03-03T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 13,
+      "service": 18,
+      "overall": 17.3
+    },
+    "price_for_two": 34,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 3
+    }
+  },
+  {
+    "review_id": "ZAGAT-0004",
+    "restaurant_id": "NYC-ZAGAT-0004",
+    "reviewed_at": {
+      "$date": "2025-04-04T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 20,
+      "service": 17,
+      "overall": 19
+    },
+    "price_for_two": 41,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 4
+    }
+  },
+  {
+    "review_id": "ZAGAT-0005",
+    "restaurant_id": "NYC-ZAGAT-0005",
+    "reviewed_at": {
+      "$date": "2025-05-05T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 24,
+      "decor": 19,
+      "service": 21,
+      "overall": 21.3
+    },
+    "price_for_two": 54,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 5
+    }
+  },
+  {
+    "review_id": "ZAGAT-0006",
+    "restaurant_id": "NYC-ZAGAT-0006",
+    "reviewed_at": {
+      "$date": "2025-06-06T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 22,
+      "decor": 22,
+      "service": 21,
+      "overall": 21.7
+    },
+    "price_for_two": 52,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 6
+    }
+  },
+  {
+    "review_id": "ZAGAT-0007",
+    "restaurant_id": "NYC-ZAGAT-0007",
+    "reviewed_at": {
+      "$date": "2025-07-07T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 16,
+      "service": 21,
+      "overall": 19.7
+    },
+    "price_for_two": 34,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 7
+    }
+  },
+  {
+    "review_id": "ZAGAT-0008",
+    "restaurant_id": "NYC-ZAGAT-0008",
+    "reviewed_at": {
+      "$date": "2025-08-08T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 20,
+      "decor": 18,
+      "service": 21,
+      "overall": 19.7
+    },
+    "price_for_two": 34,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 8
+    }
+  },
+  {
+    "review_id": "ZAGAT-0009",
+    "restaurant_id": "NYC-ZAGAT-0009",
+    "reviewed_at": {
+      "$date": "2025-09-09T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 22,
+      "decor": 19,
+      "service": 22,
+      "overall": 21
+    },
+    "price_for_two": 39,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 9
+    }
+  },
+  {
+    "review_id": "ZAGAT-0010",
+    "restaurant_id": "NYC-ZAGAT-0010",
+    "reviewed_at": {
+      "$date": "2025-10-10T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 21,
+      "decor": 17,
+      "service": 19,
+      "overall": 19
+    },
+    "price_for_two": 44,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 10
+    }
+  },
+  {
+    "review_id": "ZAGAT-0011",
+    "restaurant_id": "NYC-ZAGAT-0011",
+    "reviewed_at": {
+      "$date": "2025-11-11T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 20,
+      "overall": 18.7
+    },
+    "price_for_two": 45,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 11
+    }
+  },
+  {
+    "review_id": "ZAGAT-0012",
+    "restaurant_id": "NYC-ZAGAT-0012",
+    "reviewed_at": {
+      "$date": "2025-12-12T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.3
+    },
+    "price_for_two": 47,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 12
+    }
+  },
+  {
+    "review_id": "ZAGAT-0013",
+    "restaurant_id": "NYC-ZAGAT-0013",
+    "reviewed_at": {
+      "$date": "2025-01-13T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 21,
+      "decor": 19,
+      "service": 20,
+      "overall": 20
+    },
+    "price_for_two": 52,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 13
+    }
+  },
+  {
+    "review_id": "ZAGAT-0014",
+    "restaurant_id": "NYC-ZAGAT-0014",
+    "reviewed_at": {
+      "$date": "2025-02-14T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.3
+    },
+    "price_for_two": 35,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 14
+    }
+  },
+  {
+    "review_id": "ZAGAT-0015",
+    "restaurant_id": "NYC-ZAGAT-0015",
+    "reviewed_at": {
+      "$date": "2025-03-15T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 18,
+      "service": 21,
+      "overall": 19.7
+    },
+    "price_for_two": 47,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 15
+    }
+  },
+  {
+    "review_id": "ZAGAT-0016",
+    "restaurant_id": "NYC-ZAGAT-0016",
+    "reviewed_at": {
+      "$date": "2025-04-16T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 21,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.3
+    },
+    "price_for_two": 37,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 16
+    }
+  },
+  {
+    "review_id": "ZAGAT-0017",
+    "restaurant_id": "NYC-ZAGAT-0017",
+    "reviewed_at": {
+      "$date": "2025-05-17T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 18,
+      "service": 23,
+      "overall": 21
+    },
+    "price_for_two": 45,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 17
+    }
+  },
+  {
+    "review_id": "ZAGAT-0018",
+    "restaurant_id": "NYC-ZAGAT-0018",
+    "reviewed_at": {
+      "$date": "2025-06-18T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 24,
+      "decor": 21,
+      "service": 22,
+      "overall": 22.3
+    },
+    "price_for_two": 57,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 18
+    }
+  },
+  {
+    "review_id": "ZAGAT-0019",
+    "restaurant_id": "NYC-ZAGAT-0019",
+    "reviewed_at": {
+      "$date": "2025-07-19T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 18,
+      "overall": 18
+    },
+    "price_for_two": 38,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 19
+    }
+  },
+  {
+    "review_id": "ZAGAT-0020",
+    "restaurant_id": "NYC-ZAGAT-0020",
+    "reviewed_at": {
+      "$date": "2025-08-20T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 20,
+      "service": 22,
+      "overall": 21.3
+    },
+    "price_for_two": 51,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 20
+    }
+  },
+  {
+    "review_id": "ZAGAT-0021",
+    "restaurant_id": "NYC-ZAGAT-0021",
+    "reviewed_at": {
+      "$date": "2025-09-21T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 20,
+      "service": 23,
+      "overall": 22
+    },
+    "price_for_two": 54,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 21
+    }
+  },
+  {
+    "review_id": "ZAGAT-0022",
+    "restaurant_id": "NYC-ZAGAT-0022",
+    "reviewed_at": {
+      "$date": "2025-10-22T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 23,
+      "decor": 17,
+      "service": 21,
+      "overall": 20.3
+    },
+    "price_for_two": 51,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 22
+    }
+  },
+  {
+    "review_id": "ZAGAT-0023",
+    "restaurant_id": "NYC-ZAGAT-0023",
+    "reviewed_at": {
+      "$date": "2025-11-23T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 20,
+      "decor": 18,
+      "service": 18,
+      "overall": 18.7
+    },
+    "price_for_two": 38,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 23
+    }
+  },
+  {
+    "review_id": "ZAGAT-0024",
+    "restaurant_id": "NYC-ZAGAT-0024",
+    "reviewed_at": {
+      "$date": "2025-12-24T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 22,
+      "decor": 21,
+      "service": 21,
+      "overall": 21.3
+    },
+    "price_for_two": 49,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 24
+    }
+  },
+  {
+    "review_id": "ZAGAT-0025",
+    "restaurant_id": "NYC-ZAGAT-0025",
+    "reviewed_at": {
+      "$date": "2025-01-25T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 20,
+      "service": 22,
+      "overall": 21.3
+    },
+    "price_for_two": 45,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 25
+    }
+  },
+  {
+    "review_id": "ZAGAT-0026",
+    "restaurant_id": "NYC-ZAGAT-0026",
+    "reviewed_at": {
+      "$date": "2025-02-26T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.3
+    },
+    "price_for_two": 37,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 26
+    }
+  },
+  {
+    "review_id": "ZAGAT-0027",
+    "restaurant_id": "NYC-ZAGAT-0027",
+    "reviewed_at": {
+      "$date": "2025-03-27T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 22,
+      "decor": 19,
+      "service": 22,
+      "overall": 21
+    },
+    "price_for_two": 50,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 27
+    }
+  },
+  {
+    "review_id": "ZAGAT-0028",
+    "restaurant_id": "NYC-ZAGAT-0028",
+    "reviewed_at": {
+      "$date": "2025-04-28T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 16,
+      "service": 18,
+      "overall": 18
+    },
+    "price_for_two": 43,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 28
+    }
+  },
+  {
+    "review_id": "ZAGAT-0029",
+    "restaurant_id": "NYC-ZAGAT-0029",
+    "reviewed_at": {
+      "$date": "2025-05-01T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 19,
+      "service": 20,
+      "overall": 20.3
+    },
+    "price_for_two": 49,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 29
+    }
+  },
+  {
+    "review_id": "ZAGAT-0030",
+    "restaurant_id": "NYC-ZAGAT-0030",
+    "reviewed_at": {
+      "$date": "2025-06-02T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 20,
+      "service": 20,
+      "overall": 20.3
+    },
+    "price_for_two": 65,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 30
+    }
+  },
+  {
+    "review_id": "ZAGAT-0031",
+    "restaurant_id": "NYC-ZAGAT-0031",
+    "reviewed_at": {
+      "$date": "2025-07-03T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 16,
+      "service": 18,
+      "overall": 18
+    },
+    "price_for_two": 34,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 31
+    }
+  },
+  {
+    "review_id": "ZAGAT-0032",
+    "restaurant_id": "NYC-ZAGAT-0032",
+    "reviewed_at": {
+      "$date": "2025-08-04T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 21,
+      "decor": 20,
+      "service": 18,
+      "overall": 19.7
+    },
+    "price_for_two": 51,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 32
+    }
+  },
+  {
+    "review_id": "ZAGAT-0033",
+    "restaurant_id": "NYC-ZAGAT-0033",
+    "reviewed_at": {
+      "$date": "2025-09-05T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 19,
+      "service": 19,
+      "overall": 19.3
+    },
+    "price_for_two": 49,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 33
+    }
+  },
+  {
+    "review_id": "ZAGAT-0034",
+    "restaurant_id": "NYC-ZAGAT-0034",
+    "reviewed_at": {
+      "$date": "2025-10-06T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 23,
+      "decor": 22,
+      "service": 23,
+      "overall": 22.7
+    },
+    "price_for_two": 51,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 34
+    }
+  },
+  {
+    "review_id": "ZAGAT-0035",
+    "restaurant_id": "NYC-ZAGAT-0035",
+    "reviewed_at": {
+      "$date": "2025-11-07T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 25,
+      "decor": 22,
+      "service": 23,
+      "overall": 23.3
+    },
+    "price_for_two": 62,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 35
+    }
+  },
+  {
+    "review_id": "ZAGAT-0036",
+    "restaurant_id": "NYC-ZAGAT-0036",
+    "reviewed_at": {
+      "$date": "2025-12-08T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 21,
+      "service": 21,
+      "overall": 21.7
+    },
+    "price_for_two": 50,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 36
+    }
+  },
+  {
+    "review_id": "ZAGAT-0037",
+    "restaurant_id": "NYC-ZAGAT-0037",
+    "reviewed_at": {
+      "$date": "2025-01-09T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 21,
+      "decor": 18,
+      "service": 20,
+      "overall": 19.7
+    },
+    "price_for_two": 51,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 37
+    }
+  },
+  {
+    "review_id": "ZAGAT-0038",
+    "restaurant_id": "NYC-ZAGAT-0038",
+    "reviewed_at": {
+      "$date": "2025-02-10T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 19,
+      "service": 22,
+      "overall": 21
+    },
+    "price_for_two": 52,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 38
+    }
+  },
+  {
+    "review_id": "ZAGAT-0039",
+    "restaurant_id": "NYC-ZAGAT-0039",
+    "reviewed_at": {
+      "$date": "2025-03-11T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 24,
+      "decor": 20,
+      "service": 23,
+      "overall": 22.3
+    },
+    "price_for_two": 57,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 39
+    }
+  },
+  {
+    "review_id": "ZAGAT-0040",
+    "restaurant_id": "NYC-ZAGAT-0040",
+    "reviewed_at": {
+      "$date": "2025-04-12T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 21,
+      "decor": 20,
+      "service": 21,
+      "overall": 20.7
+    },
+    "price_for_two": 49,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 40
+    }
+  },
+  {
+    "review_id": "ZAGAT-0041",
+    "restaurant_id": "NYC-ZAGAT-0041",
+    "reviewed_at": {
+      "$date": "2025-05-13T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 18,
+      "overall": 18
+    },
+    "price_for_two": 33,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 41
+    }
+  },
+  {
+    "review_id": "ZAGAT-0042",
+    "restaurant_id": "NYC-ZAGAT-0042",
+    "reviewed_at": {
+      "$date": "2025-06-14T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 17,
+      "overall": 17.7
+    },
+    "price_for_two": 43,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 42
+    }
+  },
+  {
+    "review_id": "ZAGAT-0043",
+    "restaurant_id": "NYC-ZAGAT-0043",
+    "reviewed_at": {
+      "$date": "2025-07-15T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 21,
+      "decor": 17,
+      "service": 18,
+      "overall": 18.7
+    },
+    "price_for_two": 41,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 43
+    }
+  },
+  {
+    "review_id": "ZAGAT-0044",
+    "restaurant_id": "NYC-ZAGAT-0044",
+    "reviewed_at": {
+      "$date": "2025-08-16T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 24,
+      "decor": 21,
+      "service": 23,
+      "overall": 22.7
+    },
+    "price_for_two": 58,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 44
+    }
+  },
+  {
+    "review_id": "ZAGAT-0045",
+    "restaurant_id": "NYC-ZAGAT-0045",
+    "reviewed_at": {
+      "$date": "2025-09-17T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 22,
+      "decor": 17,
+      "service": 21,
+      "overall": 20
+    },
+    "price_for_two": 56,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 45
+    }
+  },
+  {
+    "review_id": "ZAGAT-0046",
+    "restaurant_id": "NYC-ZAGAT-0046",
+    "reviewed_at": {
+      "$date": "2025-10-18T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 17,
+      "service": 21,
+      "overall": 20
+    },
+    "price_for_two": 44,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 46
+    }
+  },
+  {
+    "review_id": "ZAGAT-0047",
+    "restaurant_id": "NYC-ZAGAT-0047",
+    "reviewed_at": {
+      "$date": "2025-11-19T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 20,
+      "decor": 15,
+      "service": 20,
+      "overall": 18.3
+    },
+    "price_for_two": 37,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 47
+    }
+  },
+  {
+    "review_id": "ZAGAT-0048",
+    "restaurant_id": "NYC-ZAGAT-0048",
+    "reviewed_at": {
+      "$date": "2025-12-20T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 17,
+      "service": 20,
+      "overall": 19.3
+    },
+    "price_for_two": 56,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 48
+    }
+  },
+  {
+    "review_id": "ZAGAT-0049",
+    "restaurant_id": "NYC-ZAGAT-0049",
+    "reviewed_at": {
+      "$date": "2025-01-21T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 24,
+      "decor": 18,
+      "service": 21,
+      "overall": 21
+    },
+    "price_for_two": 58,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 49
+    }
+  },
+  {
+    "review_id": "ZAGAT-0050",
+    "restaurant_id": "NYC-ZAGAT-0050",
+    "reviewed_at": {
+      "$date": "2025-02-22T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 16,
+      "decor": 16,
+      "service": 16,
+      "overall": 16
+    },
+    "price_for_two": 44,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 50
+    }
+  },
+  {
+    "review_id": "ZAGAT-0051",
+    "restaurant_id": "NYC-ZAGAT-0051",
+    "reviewed_at": {
+      "$date": "2025-03-23T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 18,
+      "service": 20,
+      "overall": 19.3
+    },
+    "price_for_two": 46,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 51
+    }
+  },
+  {
+    "review_id": "ZAGAT-0052",
+    "restaurant_id": "NYC-ZAGAT-0052",
+    "reviewed_at": {
+      "$date": "2025-04-24T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 20,
+      "service": 20,
+      "overall": 20
+    },
+    "price_for_two": 40,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 52
+    }
+  },
+  {
+    "review_id": "ZAGAT-0053",
+    "restaurant_id": "NYC-ZAGAT-0053",
+    "reviewed_at": {
+      "$date": "2025-05-25T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 18,
+      "service": 17,
+      "overall": 18
+    },
+    "price_for_two": 39,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 53
+    }
+  },
+  {
+    "review_id": "ZAGAT-0054",
+    "restaurant_id": "NYC-ZAGAT-0054",
+    "reviewed_at": {
+      "$date": "2025-06-26T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 17,
+      "decor": 14,
+      "service": 17,
+      "overall": 16
+    },
+    "price_for_two": 36,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 54
+    }
+  },
+  {
+    "review_id": "ZAGAT-0055",
+    "restaurant_id": "NYC-ZAGAT-0055",
+    "reviewed_at": {
+      "$date": "2025-07-27T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 18,
+      "decor": 15,
+      "service": 16,
+      "overall": 16.3
+    },
+    "price_for_two": 34,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 55
+    }
+  },
+  {
+    "review_id": "ZAGAT-0056",
+    "restaurant_id": "NYC-ZAGAT-0056",
+    "reviewed_at": {
+      "$date": "2025-08-28T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 18,
+      "decor": 16,
+      "service": 15,
+      "overall": 16.3
+    },
+    "price_for_two": 54,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 56
+    }
+  },
+  {
+    "review_id": "ZAGAT-0057",
+    "restaurant_id": "NYC-ZAGAT-0057",
+    "reviewed_at": {
+      "$date": "2025-09-01T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 17,
+      "service": 20,
+      "overall": 20
+    },
+    "price_for_two": 51,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 57
+    }
+  },
+  {
+    "review_id": "ZAGAT-0058",
+    "restaurant_id": "NYC-ZAGAT-0058",
+    "reviewed_at": {
+      "$date": "2025-10-02T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 14,
+      "service": 19,
+      "overall": 17.7
+    },
+    "price_for_two": 41,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 58
+    }
+  },
+  {
+    "review_id": "ZAGAT-0059",
+    "restaurant_id": "NYC-ZAGAT-0059",
+    "reviewed_at": {
+      "$date": "2025-11-03T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 17,
+      "service": 20,
+      "overall": 19.7
+    },
+    "price_for_two": 40,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 59
+    }
+  },
+  {
+    "review_id": "ZAGAT-0060",
+    "restaurant_id": "NYC-ZAGAT-0060",
+    "reviewed_at": {
+      "$date": "2025-12-04T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 18,
+      "decor": 13,
+      "service": 18,
+      "overall": 16.3
+    },
+    "price_for_two": 24,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 60
+    }
+  },
+  {
+    "review_id": "ZAGAT-0061",
+    "restaurant_id": "NYC-ZAGAT-0061",
+    "reviewed_at": {
+      "$date": "2025-01-05T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 24,
+      "decor": 20,
+      "service": 21,
+      "overall": 21.7
+    },
+    "price_for_two": 53,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 61
+    }
+  },
+  {
+    "review_id": "ZAGAT-0062",
+    "restaurant_id": "NYC-ZAGAT-0062",
+    "reviewed_at": {
+      "$date": "2025-02-06T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 16,
+      "service": 17,
+      "overall": 17.3
+    },
+    "price_for_two": 31,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 62
+    }
+  },
+  {
+    "review_id": "ZAGAT-0063",
+    "restaurant_id": "NYC-ZAGAT-0063",
+    "reviewed_at": {
+      "$date": "2025-03-07T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 18,
+      "decor": 16,
+      "service": 17,
+      "overall": 17
+    },
+    "price_for_two": 35,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 63
+    }
+  },
+  {
+    "review_id": "ZAGAT-0064",
+    "restaurant_id": "NYC-ZAGAT-0064",
+    "reviewed_at": {
+      "$date": "2025-04-08T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 19,
+      "service": 19,
+      "overall": 19.3
+    },
+    "price_for_two": 49,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 64
+    }
+  },
+  {
+    "review_id": "ZAGAT-0065",
+    "restaurant_id": "NYC-ZAGAT-0065",
+    "reviewed_at": {
+      "$date": "2025-05-09T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 15,
+      "service": 17,
+      "overall": 17
+    },
+    "price_for_two": 38,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 65
+    }
+  },
+  {
+    "review_id": "ZAGAT-0066",
+    "restaurant_id": "NYC-ZAGAT-0066",
+    "reviewed_at": {
+      "$date": "2025-06-10T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 16,
+      "service": 18,
+      "overall": 18.3
+    },
+    "price_for_two": 48,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 66
+    }
+  },
+  {
+    "review_id": "ZAGAT-0067",
+    "restaurant_id": "NYC-ZAGAT-0067",
+    "reviewed_at": {
+      "$date": "2025-07-11T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 19,
+      "service": 20,
+      "overall": 19.7
+    },
+    "price_for_two": 43,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 67
+    }
+  },
+  {
+    "review_id": "ZAGAT-0068",
+    "restaurant_id": "NYC-ZAGAT-0068",
+    "reviewed_at": {
+      "$date": "2025-08-12T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 17,
+      "decor": 14,
+      "service": 15,
+      "overall": 15.3
+    },
+    "price_for_two": 29,
+    "sentiment": "negative",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 68
+    }
+  },
+  {
+    "review_id": "ZAGAT-0069",
+    "restaurant_id": "NYC-ZAGAT-0069",
+    "reviewed_at": {
+      "$date": "2025-09-13T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 17,
+      "decor": 18,
+      "service": 15,
+      "overall": 16.7
+    },
+    "price_for_two": 37,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 69
+    }
+  },
+  {
+    "review_id": "ZAGAT-0070",
+    "restaurant_id": "NYC-ZAGAT-0070",
+    "reviewed_at": {
+      "$date": "2025-10-14T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 21,
+      "service": 20,
+      "overall": 21
+    },
+    "price_for_two": 55,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 70
+    }
+  },
+  {
+    "review_id": "ZAGAT-0071",
+    "restaurant_id": "NYC-ZAGAT-0071",
+    "reviewed_at": {
+      "$date": "2025-11-15T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 18,
+      "service": 20,
+      "overall": 20
+    },
+    "price_for_two": 37,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 71
+    }
+  },
+  {
+    "review_id": "ZAGAT-0072",
+    "restaurant_id": "NYC-ZAGAT-0072",
+    "reviewed_at": {
+      "$date": "2025-12-16T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 20,
+      "service": 22,
+      "overall": 21.7
+    },
+    "price_for_two": 55,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 72
+    }
+  },
+  {
+    "review_id": "ZAGAT-0073",
+    "restaurant_id": "NYC-ZAGAT-0073",
+    "reviewed_at": {
+      "$date": "2025-01-17T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 24,
+      "decor": 20,
+      "service": 22,
+      "overall": 22
+    },
+    "price_for_two": 49,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 73
+    }
+  },
+  {
+    "review_id": "ZAGAT-0074",
+    "restaurant_id": "NYC-ZAGAT-0074",
+    "reviewed_at": {
+      "$date": "2025-02-18T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 14,
+      "service": 18,
+      "overall": 17
+    },
+    "price_for_two": 33,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 74
+    }
+  },
+  {
+    "review_id": "ZAGAT-0075",
+    "restaurant_id": "NYC-ZAGAT-0075",
+    "reviewed_at": {
+      "$date": "2025-03-19T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 20,
+      "service": 22,
+      "overall": 21.7
+    },
+    "price_for_two": 52,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 75
+    }
+  },
+  {
+    "review_id": "ZAGAT-0076",
+    "restaurant_id": "NYC-ZAGAT-0076",
+    "reviewed_at": {
+      "$date": "2025-04-20T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 16,
+      "service": 21,
+      "overall": 19.7
+    },
+    "price_for_two": 47,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 76
+    }
+  },
+  {
+    "review_id": "ZAGAT-0077",
+    "restaurant_id": "NYC-ZAGAT-0077",
+    "reviewed_at": {
+      "$date": "2025-05-21T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 21,
+      "decor": 16,
+      "service": 20,
+      "overall": 19
+    },
+    "price_for_two": 43,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 77
+    }
+  },
+  {
+    "review_id": "ZAGAT-0078",
+    "restaurant_id": "NYC-ZAGAT-0078",
+    "reviewed_at": {
+      "$date": "2025-06-22T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 18,
+      "decor": 17,
+      "service": 18,
+      "overall": 17.7
+    },
+    "price_for_two": 33,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 78
+    }
+  },
+  {
+    "review_id": "ZAGAT-0079",
+    "restaurant_id": "NYC-ZAGAT-0079",
+    "reviewed_at": {
+      "$date": "2025-07-23T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 18,
+      "decor": 16,
+      "service": 19,
+      "overall": 17.7
+    },
+    "price_for_two": 38,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 79
+    }
+  },
+  {
+    "review_id": "ZAGAT-0080",
+    "restaurant_id": "NYC-ZAGAT-0080",
+    "reviewed_at": {
+      "$date": "2025-08-24T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 21,
+      "decor": 18,
+      "service": 19,
+      "overall": 19.3
+    },
+    "price_for_two": 48,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 80
+    }
+  },
+  {
+    "review_id": "ZAGAT-0081",
+    "restaurant_id": "NYC-ZAGAT-0081",
+    "reviewed_at": {
+      "$date": "2025-09-25T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 18,
+      "service": 21,
+      "overall": 20
+    },
+    "price_for_two": 50,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 81
+    }
+  },
+  {
+    "review_id": "ZAGAT-0082",
+    "restaurant_id": "NYC-ZAGAT-0082",
+    "reviewed_at": {
+      "$date": "2025-10-26T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 23,
+      "decor": 19,
+      "service": 21,
+      "overall": 21
+    },
+    "price_for_two": 46,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 82
+    }
+  },
+  {
+    "review_id": "ZAGAT-0083",
+    "restaurant_id": "NYC-ZAGAT-0083",
+    "reviewed_at": {
+      "$date": "2025-11-27T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 23,
+      "decor": 19,
+      "service": 24,
+      "overall": 22
+    },
+    "price_for_two": 38,
+    "sentiment": "positive",
+    "highlights": [
+      "great_service",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 83
+    }
+  },
+  {
+    "review_id": "ZAGAT-0084",
+    "restaurant_id": "NYC-ZAGAT-0084",
+    "reviewed_at": {
+      "$date": "2025-12-28T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 16,
+      "service": 19,
+      "overall": 18.3
+    },
+    "price_for_two": 33,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 84
+    }
+  },
+  {
+    "review_id": "ZAGAT-0085",
+    "restaurant_id": "NYC-ZAGAT-0085",
+    "reviewed_at": {
+      "$date": "2025-01-01T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 23,
+      "decor": 19,
+      "service": 23,
+      "overall": 21.7
+    },
+    "price_for_two": 46,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 85
+    }
+  },
+  {
+    "review_id": "ZAGAT-0086",
+    "restaurant_id": "NYC-ZAGAT-0086",
+    "reviewed_at": {
+      "$date": "2025-02-02T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 15,
+      "service": 19,
+      "overall": 17.7
+    },
+    "price_for_two": 37,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 86
+    }
+  },
+  {
+    "review_id": "ZAGAT-0087",
+    "restaurant_id": "NYC-ZAGAT-0087",
+    "reviewed_at": {
+      "$date": "2025-03-03T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 18,
+      "service": 20,
+      "overall": 20.3
+    },
+    "price_for_two": 50,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 87
+    }
+  },
+  {
+    "review_id": "ZAGAT-0088",
+    "restaurant_id": "NYC-ZAGAT-0088",
+    "reviewed_at": {
+      "$date": "2025-04-04T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 25,
+      "decor": 24,
+      "service": 24,
+      "overall": 24.3
+    },
+    "price_for_two": 54,
+    "sentiment": "excellent",
+    "highlights": [
+      "top_food",
+      "great_service",
+      "stylish",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 88
+    }
+  },
+  {
+    "review_id": "ZAGAT-0089",
+    "restaurant_id": "NYC-ZAGAT-0089",
+    "reviewed_at": {
+      "$date": "2025-05-05T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 21,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.3
+    },
+    "price_for_two": 41,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 89
+    }
+  },
+  {
+    "review_id": "ZAGAT-0090",
+    "restaurant_id": "NYC-ZAGAT-0090",
+    "reviewed_at": {
+      "$date": "2025-06-06T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 15,
+      "service": 18,
+      "overall": 18
+    },
+    "price_for_two": 37,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 90
+    }
+  },
+  {
+    "review_id": "ZAGAT-0091",
+    "restaurant_id": "NYC-ZAGAT-0091",
+    "reviewed_at": {
+      "$date": "2025-07-07T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 18,
+      "service": 21,
+      "overall": 20.3
+    },
+    "price_for_two": 50,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 91
+    }
+  },
+  {
+    "review_id": "ZAGAT-0092",
+    "restaurant_id": "NYC-ZAGAT-0092",
+    "reviewed_at": {
+      "$date": "2025-08-08T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 24,
+      "decor": 22,
+      "service": 23,
+      "overall": 23
+    },
+    "price_for_two": 60,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 92
+    }
+  },
+  {
+    "review_id": "ZAGAT-0093",
+    "restaurant_id": "NYC-ZAGAT-0093",
+    "reviewed_at": {
+      "$date": "2025-09-09T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 16,
+      "service": 22,
+      "overall": 20.3
+    },
+    "price_for_two": 36,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 93
+    }
+  },
+  {
+    "review_id": "ZAGAT-0094",
+    "restaurant_id": "NYC-ZAGAT-0094",
+    "reviewed_at": {
+      "$date": "2025-10-10T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 23,
+      "decor": 19,
+      "service": 21,
+      "overall": 21
+    },
+    "price_for_two": 54,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 94
+    }
+  },
+  {
+    "review_id": "ZAGAT-0095",
+    "restaurant_id": "NYC-ZAGAT-0095",
+    "reviewed_at": {
+      "$date": "2025-11-11T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 18,
+      "service": 18,
+      "overall": 18.3
+    },
+    "price_for_two": 39,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 95
+    }
+  },
+  {
+    "review_id": "ZAGAT-0096",
+    "restaurant_id": "NYC-ZAGAT-0096",
+    "reviewed_at": {
+      "$date": "2025-12-12T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 16,
+      "service": 18,
+      "overall": 18
+    },
+    "price_for_two": 35,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 96
+    }
+  },
+  {
+    "review_id": "ZAGAT-0097",
+    "restaurant_id": "NYC-ZAGAT-0097",
+    "reviewed_at": {
+      "$date": "2025-01-13T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 19,
+      "decor": 13,
+      "service": 20,
+      "overall": 17.3
+    },
+    "price_for_two": 30,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 97
+    }
+  },
+  {
+    "review_id": "ZAGAT-0098",
+    "restaurant_id": "NYC-ZAGAT-0098",
+    "reviewed_at": {
+      "$date": "2025-02-14T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.3
+    },
+    "price_for_two": 41,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 98
+    }
+  },
+  {
+    "review_id": "ZAGAT-0099",
+    "restaurant_id": "NYC-ZAGAT-0099",
+    "reviewed_at": {
+      "$date": "2025-03-15T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 19,
+      "decor": 14,
+      "service": 17,
+      "overall": 16.7
+    },
+    "price_for_two": 30,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 99
+    }
+  },
+  {
+    "review_id": "ZAGAT-0100",
+    "restaurant_id": "NYC-ZAGAT-0100",
+    "reviewed_at": {
+      "$date": "2025-04-16T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 18,
+      "decor": 15,
+      "service": 15,
+      "overall": 16
+    },
+    "price_for_two": 25,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 100
+    }
+  },
+  {
+    "review_id": "ZAGAT-0101",
+    "restaurant_id": "NYC-ZAGAT-0101",
+    "reviewed_at": {
+      "$date": "2025-05-17T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 18,
+      "service": 21,
+      "overall": 19.3
+    },
+    "price_for_two": 43,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 101
+    }
+  },
+  {
+    "review_id": "ZAGAT-0102",
+    "restaurant_id": "NYC-ZAGAT-0102",
+    "reviewed_at": {
+      "$date": "2025-06-18T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 15,
+      "service": 17,
+      "overall": 17.3
+    },
+    "price_for_two": 45,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 102
+    }
+  },
+  {
+    "review_id": "ZAGAT-0103",
+    "restaurant_id": "NYC-ZAGAT-0103",
+    "reviewed_at": {
+      "$date": "2025-07-19T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 23,
+      "decor": 16,
+      "service": 20,
+      "overall": 19.7
+    },
+    "price_for_two": 57,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 103
+    }
+  },
+  {
+    "review_id": "ZAGAT-0104",
+    "restaurant_id": "NYC-ZAGAT-0104",
+    "reviewed_at": {
+      "$date": "2025-08-20T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 18,
+      "decor": 15,
+      "service": 17,
+      "overall": 16.7
+    },
+    "price_for_two": 32,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 104
+    }
+  },
+  {
+    "review_id": "ZAGAT-0105",
+    "restaurant_id": "NYC-ZAGAT-0105",
+    "reviewed_at": {
+      "$date": "2025-09-21T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 24,
+      "decor": 21,
+      "service": 21,
+      "overall": 22
+    },
+    "price_for_two": 51,
+    "sentiment": "positive",
+    "highlights": [
+      "top_food",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 105
+    }
+  },
+  {
+    "review_id": "ZAGAT-0106",
+    "restaurant_id": "NYC-ZAGAT-0106",
+    "reviewed_at": {
+      "$date": "2025-10-22T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 23,
+      "decor": 20,
+      "service": 21,
+      "overall": 21.3
+    },
+    "price_for_two": 48,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 106
+    }
+  },
+  {
+    "review_id": "ZAGAT-0107",
+    "restaurant_id": "NYC-ZAGAT-0107",
+    "reviewed_at": {
+      "$date": "2025-11-23T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 18,
+      "decor": 16,
+      "service": 16,
+      "overall": 16.7
+    },
+    "price_for_two": 36,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 107
+    }
+  },
+  {
+    "review_id": "ZAGAT-0108",
+    "restaurant_id": "NYC-ZAGAT-0108",
+    "reviewed_at": {
+      "$date": "2025-12-24T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.7
+    },
+    "price_for_two": 37,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 108
+    }
+  },
+  {
+    "review_id": "ZAGAT-0109",
+    "restaurant_id": "NYC-ZAGAT-0109",
+    "reviewed_at": {
+      "$date": "2025-01-25T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 19,
+      "service": 19,
+      "overall": 19.3
+    },
+    "price_for_two": 31,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 109
+    }
+  },
+  {
+    "review_id": "ZAGAT-0110",
+    "restaurant_id": "NYC-ZAGAT-0110",
+    "reviewed_at": {
+      "$date": "2025-02-26T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 23,
+      "decor": 19,
+      "service": 21,
+      "overall": 21
+    },
+    "price_for_two": 47,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 110
+    }
+  },
+  {
+    "review_id": "ZAGAT-0111",
+    "restaurant_id": "NYC-ZAGAT-0111",
+    "reviewed_at": {
+      "$date": "2025-03-27T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 19,
+      "decor": 16,
+      "service": 19,
+      "overall": 18
+    },
+    "price_for_two": 40,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 111
+    }
+  },
+  {
+    "review_id": "ZAGAT-0112",
+    "restaurant_id": "NYC-ZAGAT-0112",
+    "reviewed_at": {
+      "$date": "2025-04-28T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 18,
+      "decor": 16,
+      "service": 18,
+      "overall": 17.3
+    },
+    "price_for_two": 37,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 112
+    }
+  },
+  {
+    "review_id": "ZAGAT-0113",
+    "restaurant_id": "NYC-ZAGAT-0113",
+    "reviewed_at": {
+      "$date": "2025-05-01T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 23,
+      "decor": 20,
+      "service": 21,
+      "overall": 21.3
+    },
+    "price_for_two": 43,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 113
+    }
+  },
+  {
+    "review_id": "ZAGAT-0114",
+    "restaurant_id": "NYC-ZAGAT-0114",
+    "reviewed_at": {
+      "$date": "2025-06-02T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 22,
+      "service": 21,
+      "overall": 22
+    },
+    "price_for_two": 51,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 114
+    }
+  },
+  {
+    "review_id": "ZAGAT-0115",
+    "restaurant_id": "NYC-ZAGAT-0115",
+    "reviewed_at": {
+      "$date": "2025-07-03T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 18,
+      "decor": 9,
+      "service": 15,
+      "overall": 14
+    },
+    "price_for_two": 19,
+    "sentiment": "negative",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 115
+    }
+  },
+  {
+    "review_id": "ZAGAT-0116",
+    "restaurant_id": "NYC-ZAGAT-0116",
+    "reviewed_at": {
+      "$date": "2025-08-04T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 17,
+      "decor": 14,
+      "service": 17,
+      "overall": 16
+    },
+    "price_for_two": 28,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 116
+    }
+  },
+  {
+    "review_id": "ZAGAT-0117",
+    "restaurant_id": "NYC-ZAGAT-0117",
+    "reviewed_at": {
+      "$date": "2025-09-05T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 6,
+      "service": 14,
+      "overall": 13.7
+    },
+    "price_for_two": 22,
+    "sentiment": "negative",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 117
+    }
+  },
+  {
+    "review_id": "ZAGAT-0118",
+    "restaurant_id": "NYC-ZAGAT-0118",
+    "reviewed_at": {
+      "$date": "2025-10-06T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.3
+    },
+    "price_for_two": 41,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 118
+    }
+  },
+  {
+    "review_id": "ZAGAT-0119",
+    "restaurant_id": "NYC-ZAGAT-0119",
+    "reviewed_at": {
+      "$date": "2025-11-07T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 15,
+      "service": 18,
+      "overall": 17.3
+    },
+    "price_for_two": 33,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 119
+    }
+  },
+  {
+    "review_id": "ZAGAT-0120",
+    "restaurant_id": "NYC-ZAGAT-0120",
+    "reviewed_at": {
+      "$date": "2025-12-08T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 19,
+      "decor": 15,
+      "service": 17,
+      "overall": 17
+    },
+    "price_for_two": 29,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 120
+    }
+  },
+  {
+    "review_id": "ZAGAT-0121",
+    "restaurant_id": "NYC-ZAGAT-0121",
+    "reviewed_at": {
+      "$date": "2025-01-09T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 19,
+      "decor": 17,
+      "service": 18,
+      "overall": 18
+    },
+    "price_for_two": 33,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 121
+    }
+  },
+  {
+    "review_id": "ZAGAT-0122",
+    "restaurant_id": "NYC-ZAGAT-0122",
+    "reviewed_at": {
+      "$date": "2025-02-10T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 16,
+      "service": 18,
+      "overall": 17.7
+    },
+    "price_for_two": 45,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 122
+    }
+  },
+  {
+    "review_id": "ZAGAT-0123",
+    "restaurant_id": "NYC-ZAGAT-0123",
+    "reviewed_at": {
+      "$date": "2025-03-11T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 17,
+      "decor": 16,
+      "service": 17,
+      "overall": 16.7
+    },
+    "price_for_two": 38,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 123
+    }
+  },
+  {
+    "review_id": "ZAGAT-0124",
+    "restaurant_id": "NYC-ZAGAT-0124",
+    "reviewed_at": {
+      "$date": "2025-04-12T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 23,
+      "service": 20,
+      "overall": 21
+    },
+    "price_for_two": 52,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 124
+    }
+  },
+  {
+    "review_id": "ZAGAT-0125",
+    "restaurant_id": "NYC-ZAGAT-0125",
+    "reviewed_at": {
+      "$date": "2025-05-13T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 20,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.7
+    },
+    "price_for_two": 38,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 125
+    }
+  },
+  {
+    "review_id": "ZAGAT-0126",
+    "restaurant_id": "NYC-ZAGAT-0126",
+    "reviewed_at": {
+      "$date": "2025-06-14T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 18,
+      "decor": 18,
+      "service": 17,
+      "overall": 17.7
+    },
+    "price_for_two": 47,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 126
+    }
+  },
+  {
+    "review_id": "ZAGAT-0127",
+    "restaurant_id": "NYC-ZAGAT-0127",
+    "reviewed_at": {
+      "$date": "2025-07-15T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 18,
+      "service": 20,
+      "overall": 20
+    },
+    "price_for_two": 46,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 127
+    }
+  },
+  {
+    "review_id": "ZAGAT-0128",
+    "restaurant_id": "NYC-ZAGAT-0128",
+    "reviewed_at": {
+      "$date": "2025-08-16T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 20,
+      "decor": 17,
+      "service": 18,
+      "overall": 18.3
+    },
+    "price_for_two": 40,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 128
+    }
+  },
+  {
+    "review_id": "ZAGAT-0129",
+    "restaurant_id": "NYC-ZAGAT-0129",
+    "reviewed_at": {
+      "$date": "2025-09-17T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 15,
+      "service": 19,
+      "overall": 18
+    },
+    "price_for_two": 32,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 129
+    }
+  },
+  {
+    "review_id": "ZAGAT-0130",
+    "restaurant_id": "NYC-ZAGAT-0130",
+    "reviewed_at": {
+      "$date": "2025-10-18T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 19,
+      "decor": 23,
+      "service": 18,
+      "overall": 20
+    },
+    "price_for_two": 65,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 130
+    }
+  },
+  {
+    "review_id": "ZAGAT-0131",
+    "restaurant_id": "NYC-ZAGAT-0131",
+    "reviewed_at": {
+      "$date": "2025-11-19T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 21,
+      "service": 17,
+      "overall": 19
+    },
+    "price_for_two": 47,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 131
+    }
+  },
+  {
+    "review_id": "ZAGAT-0132",
+    "restaurant_id": "NYC-ZAGAT-0132",
+    "reviewed_at": {
+      "$date": "2025-12-20T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 23,
+      "decor": 22,
+      "service": 22,
+      "overall": 22.3
+    },
+    "price_for_two": 65,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 132
+    }
+  },
+  {
+    "review_id": "ZAGAT-0133",
+    "restaurant_id": "NYC-ZAGAT-0133",
+    "reviewed_at": {
+      "$date": "2025-01-21T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 17,
+      "service": 21,
+      "overall": 19.3
+    },
+    "price_for_two": 45,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 133
+    }
+  },
+  {
+    "review_id": "ZAGAT-0134",
+    "restaurant_id": "NYC-ZAGAT-0134",
+    "reviewed_at": {
+      "$date": "2025-02-22T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 22,
+      "service": 20,
+      "overall": 21.3
+    },
+    "price_for_two": 46,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 134
+    }
+  },
+  {
+    "review_id": "ZAGAT-0135",
+    "restaurant_id": "NYC-ZAGAT-0135",
+    "reviewed_at": {
+      "$date": "2025-03-23T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 19,
+      "service": 20,
+      "overall": 19.7
+    },
+    "price_for_two": 44,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 135
+    }
+  },
+  {
+    "review_id": "ZAGAT-0136",
+    "restaurant_id": "NYC-ZAGAT-0136",
+    "reviewed_at": {
+      "$date": "2025-04-24T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 19,
+      "decor": 19,
+      "service": 18,
+      "overall": 18.7
+    },
+    "price_for_two": 40,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 136
+    }
+  },
+  {
+    "review_id": "ZAGAT-0137",
+    "restaurant_id": "NYC-ZAGAT-0137",
+    "reviewed_at": {
+      "$date": "2025-05-25T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 19,
+      "decor": 18,
+      "service": 20,
+      "overall": 19
+    },
+    "price_for_two": 46,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 137
+    }
+  },
+  {
+    "review_id": "ZAGAT-0138",
+    "restaurant_id": "NYC-ZAGAT-0138",
+    "reviewed_at": {
+      "$date": "2025-06-26T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 19,
+      "decor": 15,
+      "service": 17,
+      "overall": 17
+    },
+    "price_for_two": 32,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 138
+    }
+  },
+  {
+    "review_id": "ZAGAT-0139",
+    "restaurant_id": "NYC-ZAGAT-0139",
+    "reviewed_at": {
+      "$date": "2025-07-27T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 14,
+      "service": 16,
+      "overall": 16.7
+    },
+    "price_for_two": 23,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 139
+    }
+  },
+  {
+    "review_id": "ZAGAT-0140",
+    "restaurant_id": "NYC-ZAGAT-0140",
+    "reviewed_at": {
+      "$date": "2025-08-28T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 18,
+      "decor": 21,
+      "service": 17,
+      "overall": 18.7
+    },
+    "price_for_two": 42,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 140
+    }
+  },
+  {
+    "review_id": "ZAGAT-0141",
+    "restaurant_id": "NYC-ZAGAT-0141",
+    "reviewed_at": {
+      "$date": "2025-09-01T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 18,
+      "service": 19,
+      "overall": 19.3
+    },
+    "price_for_two": 29,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 141
+    }
+  },
+  {
+    "review_id": "ZAGAT-0142",
+    "restaurant_id": "NYC-ZAGAT-0142",
+    "reviewed_at": {
+      "$date": "2025-10-02T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 21,
+      "decor": 18,
+      "service": 20,
+      "overall": 19.7
+    },
+    "price_for_two": 49,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 142
+    }
+  },
+  {
+    "review_id": "ZAGAT-0143",
+    "restaurant_id": "NYC-ZAGAT-0143",
+    "reviewed_at": {
+      "$date": "2025-11-03T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 24,
+      "service": 21,
+      "overall": 22.3
+    },
+    "price_for_two": 53,
+    "sentiment": "positive",
+    "highlights": [
+      "stylish",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 143
+    }
+  },
+  {
+    "review_id": "ZAGAT-0144",
+    "restaurant_id": "NYC-ZAGAT-0144",
+    "reviewed_at": {
+      "$date": "2025-12-04T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 22,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.7
+    },
+    "price_for_two": 45,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 144
+    }
+  },
+  {
+    "review_id": "ZAGAT-0145",
+    "restaurant_id": "NYC-ZAGAT-0145",
+    "reviewed_at": {
+      "$date": "2025-01-05T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 25,
+      "service": 22,
+      "overall": 23
+    },
+    "price_for_two": 63,
+    "sentiment": "positive",
+    "highlights": [
+      "stylish",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 145
+    }
+  },
+  {
+    "review_id": "ZAGAT-0146",
+    "restaurant_id": "NYC-ZAGAT-0146",
+    "reviewed_at": {
+      "$date": "2025-02-06T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 23,
+      "decor": 23,
+      "service": 21,
+      "overall": 22.3
+    },
+    "price_for_two": 52,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 146
+    }
+  },
+  {
+    "review_id": "ZAGAT-0147",
+    "restaurant_id": "NYC-ZAGAT-0147",
+    "reviewed_at": {
+      "$date": "2025-03-07T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 19,
+      "decor": 20,
+      "service": 17,
+      "overall": 18.7
+    },
+    "price_for_two": 40,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 147
+    }
+  },
+  {
+    "review_id": "ZAGAT-0148",
+    "restaurant_id": "NYC-ZAGAT-0148",
+    "reviewed_at": {
+      "$date": "2025-04-08T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 21,
+      "service": 23,
+      "overall": 22
+    },
+    "price_for_two": 45,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 148
+    }
+  },
+  {
+    "review_id": "ZAGAT-0149",
+    "restaurant_id": "NYC-ZAGAT-0149",
+    "reviewed_at": {
+      "$date": "2025-05-09T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 21,
+      "decor": 17,
+      "service": 20,
+      "overall": 19.3
+    },
+    "price_for_two": 38,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 149
+    }
+  },
+  {
+    "review_id": "ZAGAT-0150",
+    "restaurant_id": "NYC-ZAGAT-0150",
+    "reviewed_at": {
+      "$date": "2025-06-10T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 18,
+      "decor": 17,
+      "service": 18,
+      "overall": 17.7
+    },
+    "price_for_two": 38,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 150
+    }
+  },
+  {
+    "review_id": "ZAGAT-0151",
+    "restaurant_id": "NYC-ZAGAT-0151",
+    "reviewed_at": {
+      "$date": "2025-07-11T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 21,
+      "decor": 16,
+      "service": 20,
+      "overall": 19
+    },
+    "price_for_two": 42,
+    "sentiment": "mixed",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 151
+    }
+  },
+  {
+    "review_id": "ZAGAT-0152",
+    "restaurant_id": "NYC-ZAGAT-0152",
+    "reviewed_at": {
+      "$date": "2025-08-12T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 23,
+      "decor": 19,
+      "service": 23,
+      "overall": 21.7
+    },
+    "price_for_two": 57,
+    "sentiment": "positive",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 152
+    }
+  },
+  {
+    "review_id": "ZAGAT-0153",
+    "restaurant_id": "NYC-ZAGAT-0153",
+    "reviewed_at": {
+      "$date": "2025-09-13T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 19,
+      "service": 20,
+      "overall": 20
+    },
+    "price_for_two": 39,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 153
+    }
+  },
+  {
+    "review_id": "ZAGAT-0154",
+    "restaurant_id": "NYC-ZAGAT-0154",
+    "reviewed_at": {
+      "$date": "2025-10-14T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 18,
+      "service": 18,
+      "overall": 18.7
+    },
+    "price_for_two": 43,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 154
+    }
+  },
+  {
+    "review_id": "ZAGAT-0155",
+    "restaurant_id": "NYC-ZAGAT-0155",
+    "reviewed_at": {
+      "$date": "2025-11-15T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 17,
+      "decor": 14,
+      "service": 16,
+      "overall": 15.7
+    },
+    "price_for_two": 29,
+    "sentiment": "negative",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 155
+    }
+  },
+  {
+    "review_id": "ZAGAT-0156",
+    "restaurant_id": "NYC-ZAGAT-0156",
+    "reviewed_at": {
+      "$date": "2025-12-16T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 16,
+      "service": 19,
+      "overall": 18.3
+    },
+    "price_for_two": 42,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 156
+    }
+  },
+  {
+    "review_id": "ZAGAT-0157",
+    "restaurant_id": "NYC-ZAGAT-0157",
+    "reviewed_at": {
+      "$date": "2025-01-17T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 22,
+      "decor": 19,
+      "service": 21,
+      "overall": 20.7
+    },
+    "price_for_two": 50,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 157
+    }
+  },
+  {
+    "review_id": "ZAGAT-0158",
+    "restaurant_id": "NYC-ZAGAT-0158",
+    "reviewed_at": {
+      "$date": "2025-02-18T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 18,
+      "decor": 16,
+      "service": 17,
+      "overall": 17
+    },
+    "price_for_two": 34,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 158
+    }
+  },
+  {
+    "review_id": "ZAGAT-0159",
+    "restaurant_id": "NYC-ZAGAT-0159",
+    "reviewed_at": {
+      "$date": "2025-03-19T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 16,
+      "decor": 15,
+      "service": 16,
+      "overall": 15.7
+    },
+    "price_for_two": 31,
+    "sentiment": "negative",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 159
+    }
+  },
+  {
+    "review_id": "ZAGAT-0160",
+    "restaurant_id": "NYC-ZAGAT-0160",
+    "reviewed_at": {
+      "$date": "2025-04-20T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 20,
+      "decor": 17,
+      "service": 19,
+      "overall": 18.7
+    },
+    "price_for_two": 31,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 160
+    }
+  },
+  {
+    "review_id": "ZAGAT-0161",
+    "restaurant_id": "NYC-ZAGAT-0161",
+    "reviewed_at": {
+      "$date": "2025-05-21T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 21,
+      "decor": 19,
+      "service": 22,
+      "overall": 20.7
+    },
+    "price_for_two": 46,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 161
+    }
+  },
+  {
+    "review_id": "ZAGAT-0162",
+    "restaurant_id": "NYC-ZAGAT-0162",
+    "reviewed_at": {
+      "$date": "2025-06-22T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 21,
+      "decor": 15,
+      "service": 19,
+      "overall": 18.3
+    },
+    "price_for_two": 42,
+    "sentiment": "mixed",
+    "highlights": [
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 162
+    }
+  },
+  {
+    "review_id": "ZAGAT-0163",
+    "restaurant_id": "NYC-ZAGAT-0163",
+    "reviewed_at": {
+      "$date": "2025-07-23T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 19,
+      "decor": 16,
+      "service": 18,
+      "overall": 17.7
+    },
+    "price_for_two": 31,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 163
+    }
+  },
+  {
+    "review_id": "ZAGAT-0164",
+    "restaurant_id": "NYC-ZAGAT-0164",
+    "reviewed_at": {
+      "$date": "2025-08-24T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 17,
+      "decor": 15,
+      "service": 16,
+      "overall": 16
+    },
+    "price_for_two": 31,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 164
+    }
+  },
+  {
+    "review_id": "ZAGAT-0165",
+    "restaurant_id": "NYC-ZAGAT-0165",
+    "reviewed_at": {
+      "$date": "2025-09-25T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 20,
+      "decor": 16,
+      "service": 17,
+      "overall": 17.7
+    },
+    "price_for_two": 26,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 165
+    }
+  },
+  {
+    "review_id": "ZAGAT-0166",
+    "restaurant_id": "NYC-ZAGAT-0166",
+    "reviewed_at": {
+      "$date": "2025-10-26T00:00:00Z"
+    },
+    "reviewer_type": "local",
+    "scores": {
+      "food": 18,
+      "decor": 16,
+      "service": 17,
+      "overall": 17
+    },
+    "price_for_two": 31,
+    "sentiment": "mixed",
+    "highlights": [
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 166
+    }
+  },
+  {
+    "review_id": "ZAGAT-0167",
+    "restaurant_id": "NYC-ZAGAT-0167",
+    "reviewed_at": {
+      "$date": "2025-11-27T00:00:00Z"
+    },
+    "reviewer_type": "visitor",
+    "scores": {
+      "food": 22,
+      "decor": 17,
+      "service": 21,
+      "overall": 20
+    },
+    "price_for_two": 38,
+    "sentiment": "positive",
+    "highlights": [
+      "dinner"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 167
+    }
+  },
+  {
+    "review_id": "ZAGAT-0168",
+    "restaurant_id": "NYC-ZAGAT-0168",
+    "reviewed_at": {
+      "$date": "2025-12-28T00:00:00Z"
+    },
+    "reviewer_type": "critic_panel",
+    "scores": {
+      "food": 24,
+      "decor": 10,
+      "service": 16,
+      "overall": 16.7
+    },
+    "price_for_two": 34,
+    "sentiment": "mixed",
+    "highlights": [
+      "top_food",
+      "good_value",
+      "lunch"
+    ],
+    "source": {
+      "name": "OpenIntro nyc Zagat restaurant ratings",
+      "url": "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+      "case": 168
+    }
+  }
+]

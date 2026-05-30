@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Midtown",
+    "borough": "Manhattan",
+    "center": {
+      "type": "Point",
+      "coordinates": [
+        -73.9855,
+        40.758
+      ]
+    }
+  },
+  {
+    "name": "Flushing",
+    "borough": "Queens",
+    "center": {
+      "type": "Point",
+      "coordinates": [
+        -73.837,
+        40.7675
+      ]
+    }
+  },
+  {
+    "name": "Brooklyn Heights",
+    "borough": "Brooklyn",
+    "center": {
+      "type": "Point",
+      "coordinates": [
+        -73.9958,
+        40.696
+      ]
+    }
+  },
+  {
+    "name": "Belmont",
+    "borough": "Bronx",
+    "center": {
+      "type": "Point",
+      "coordinates": [
+        -73.886,
+        40.854
+      ]
+    }
+  },
+  {
+    "name": "St. George",
+    "borough": "Staten Island",
+    "center": {
+      "type": "Point",
+      "coordinates": [
+        -74.0735,
+        40.6435
+      ]
+    }
+  }
+]

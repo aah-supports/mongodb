@@ -144,10 +144,16 @@
       </section>
       <section id="s9" class="slide">
         <h2 class="slide-title">Import de secours sans réseau</h2>
-        <p>Si le téléchargement du CSV ne fonctionne pas, le dépôt contient un snapshot JSON dans `data/nyc-food-seed.json`. Si `mongosh` est installé sur la machine, on peut charger les collections de base directement depuis la racine du dépôt.</p>
-<pre><code>mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
-  --quiet --eval 'const seed = EJSON.parse(require("fs").readFileSync("data/nyc-food-seed.json", "utf8")); for (const [name, docs] of Object.entries(seed.collections)) { db.getCollection(name).deleteMany({}); if (docs.length) db.getCollection(name).insertMany(docs); print(`${name}: ${docs.length}`); }'</code></pre>
-        <p>Cette commande remplit `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Pour les collections volumineuses, lancer ensuite `generate-volume.js`.</p>
+        <p>Si le téléchargement du CSV ne fonctionne pas, le dépôt contient un fichier JSON par collection dans `data/nyc-food/`. `mongoimport --drop` supprime la collection existante puis la recrée depuis le fichier JSON.</p>
+<pre><code>cd sandbox-mongodb
+docker compose up -d mongodb
+docker compose cp ../data/nyc-food/. mongodb:/tmp/nyc-food/
+
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection nyc_restaurant_reviews_raw --file /tmp/nyc-food/nyc_restaurant_reviews_raw.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection restaurants --file /tmp/nyc-food/restaurants.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection reviews --file /tmp/nyc-food/reviews.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection neighborhoods --file /tmp/nyc-food/neighborhoods.json --jsonArray --drop</code></pre>
+        <p>Ces commandes recréent `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Pour les collections volumineuses, lancer ensuite `generate-volume.js`.</p>
       </section>
       <section id="s10" class="slide">
         <h2 class="slide-title">Données générées : pourquoi ?</h2>
