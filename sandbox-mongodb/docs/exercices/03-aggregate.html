@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>TP 03 - aggregate</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <section class="slide compact"><div class="header-bar">TP 03</div><h1>Maîtriser `aggregate`</h1><p class="subtitle">Construire des pipelines, répondre à des questions métier et relier les collections.</p></section>
+    <section class="panel"><h2>Préparation</h2><p>Les collections `restaurants` et `reviews` viennent du dataset réel. `orders`, `review_details` et `events` sont générées.</p><pre><code>docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
+  /scripts/generate-volume.js</code></pre></section>
+    <section class="panel"><h2>Pipeline minimal</h2><pre><code>db.restaurants.aggregate([
+  { $group: { _id: "$cuisine", restaurants: { $sum: 1 } } },
+  { $sort: { restaurants: -1 } }
+])
+
+db.restaurants.aggregate([
+  {
+    $group: {
+      _id: "$cuisine",
+      average_rating: { $avg: "$ratings.overall" },
+      restaurants: { $sum: 1 }
+    }
+  },
+  { $sort: { average_rating: -1 } }
+])</code></pre></section>
+    <section class="panel"><h2>Opérateurs à utiliser</h2><ul><li>`$match` filtre les documents.</li><li>`$project` choisit, renomme ou calcule des champs.</li><li>`$set` ajoute ou modifie un champ.</li><li>`$group` regroupe les documents.</li><li>`$unwind` éclate un tableau.</li><li>`$lookup` relie deux collections.</li><li>`$merge` écrit le résultat dans une collection.</li></ul></section>
+    <section class="panel"><h2>Exercices</h2><ol><li>Calculer le nombre de restaurants par cuisine.</li><li>Calculer la note moyenne `food`, `decor`, `service` et `overall` par cuisine.</li><li>Trouver les cuisines dont la note globale moyenne est supérieure à 22.</li><li>Classer les restaurants par meilleur rapport note/prix.</li><li>Compter les restaurants par `price_tier`.</li><li>Identifier les tags les plus fréquents avec `$unwind`.</li><li>Calculer le chiffre d'affaires par canal de vente.</li><li>Calculer le panier moyen par cuisine avec `$lookup`.</li><li>Trouver les restaurants qui cumulent excellente note globale et revenus importants.</li><li>Calculer la note moyenne des avis détaillés par raison de visite.</li><li>Comparer les avis vérifiés et non vérifiés.</li><li>Créer une collection matérialisée `restaurant_kpis` avec `$merge`.</li></ol></section>
+  </main>
+  <footer class="footer"><a href="../exercices.html">Retour aux exercices</a></footer>
+</body>
+</html>

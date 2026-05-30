@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Cours 01 - Jeu de données</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <div class="slide-nav"><a href="#s1">Source</a><a href="#s2">Collections</a><a href="#s3">Réel</a><a href="#s4">Généré</a><a href="#s5">Questions</a></div>
+    <article class="deck">
+      <section id="s1" class="slide"><div class="header-bar">Cours 01</div><h1>Présentation du jeu de données</h1><p class="subtitle">Le cours utilise OpenIntro `nyc`, un dataset de notations Zagat sur 168 restaurants new-yorkais.</p></section>
+      <section id="s2" class="slide"><h2 class="slide-title">Ce que décrit le dataset</h2><ul><li>Nom du restaurant.</li><li>Prix estimé pour deux personnes.</li><li>Notes `food`, `decor`, `service` sur 0 à 30.</li><li>Position est ou ouest de 5th Avenue.</li></ul><p>Objectif pédagogique : passer d'un CSV plat à un modèle documentaire exploitable.</p></section>
+      <section id="s3" class="slide"><h2 class="slide-title">Collections issues du réel</h2><div class="grid"><div class="card"><h3>`nyc_restaurant_reviews_raw`</h3><p class="meta">Lignes brutes du CSV, utiles pour observer la source et les conversions.</p></div><div class="card"><h3>`restaurants`</h3><p class="meta">Document orienté établissement : cuisine, prix, notes, tags.</p></div><div class="card"><h3>`reviews`</h3><p class="meta">Notation agrégée orientée avis, reliée par `restaurant_id`.</p></div><div class="card"><h3>`neighborhoods`</h3><p class="meta">Collection pédagogique annexe créée à l'initialisation.</p></div></div></section>
+      <section id="s4" class="slide"><h2 class="slide-title">Collections générées</h2><div class="grid"><div class="card"><h3>`orders`</h3><p class="meta">100 000 commandes simulées pour chiffre d'affaires, filtres et index.</p></div><div class="card"><h3>`review_details`</h3><p class="meta">50 000 avis détaillés avec note, sentiment et contexte de visite.</p></div><div class="card"><h3>`events`</h3><p class="meta">300 000 événements applicatifs pour analyser l'usage.</p></div></div></section>
+      <section id="s5" class="slide"><h2 class="slide-title">Questions métier possibles</h2><ul><li>Quelles cuisines ont les meilleures notes ?</li><li>Quels restaurants offrent le meilleur rapport note/prix ?</li><li>Quels tags reviennent le plus souvent ?</li><li>Quels restaurants cumulent satisfaction élevée et revenus importants ?</li><li>Quels index accélèrent réellement les requêtes fréquentes ?</li></ul></section>
+    </article>
+  </main>
+  <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>
+</body>
+</html>

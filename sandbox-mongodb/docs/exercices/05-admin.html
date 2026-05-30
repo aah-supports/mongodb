@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>TP 05 - Admin</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <section class="slide compact"><div class="header-bar">TP 05</div><h1>Administration, sauvegarde et sécurité</h1><p class="subtitle">Manipuler les commandes d'administration sans intégrer les corrections au support.</p></section>
+    <section class="panel"><h2>Objectifs</h2><ul><li>Vérifier l'état du service MongoDB.</li><li>Comprendre les utilisateurs et les droits.</li><li>Réaliser une sauvegarde et une restauration.</li><li>Identifier les bonnes pratiques de sécurité.</li></ul></section>
+    <section class="panel"><h2>Commandes utiles</h2><pre><code>docker compose ps
+docker compose logs --tail=80 mongodb
+
+docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre></section>
+    <section class="panel"><h2>Exploration admin</h2><pre><code>db.stats()
+db.restaurants.findOne()
+db.getUsers()
+show collections</code></pre></section>
+    <section class="panel"><h2>Exercices</h2><ol><li>Vérifier que MongoDB et Mongo Express sont actifs.</li><li>Afficher les statistiques de la base `nyc_food`.</li><li>Identifier les collections les plus volumineuses.</li><li>Créer un utilisateur en lecture seule sur `nyc_food`.</li><li>Tester qu'un utilisateur en lecture seule ne peut pas insérer de document.</li><li>Réaliser une sauvegarde avec `mongodump`.</li><li>Restaurer la sauvegarde dans une base de test.</li><li>Lister les bonnes pratiques de sécurité applicables au sandbox.</li></ol></section>
+  </main>
+  <footer class="footer"><a href="../exercices.html">Retour aux exercices</a></footer>
+</body>
+</html>

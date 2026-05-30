@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Cours 05 - aggregate</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <div class="slide-nav"><a href="#s1">Pipeline</a><a href="#s2">Stages</a><a href="#s3">Group</a><a href="#s4">Lookup</a><a href="#s5">Merge</a></div>
+    <article class="deck">
+      <section id="s1" class="slide"><div class="header-bar">Cours 05</div><h1>Analyser avec aggregate</h1><pre><code>db.collection.aggregate([
+  { stage1 },
+  { stage2 },
+  { stage3 }
+])</code></pre><p>Chaque étape reçoit des documents, les transforme, puis transmet le résultat.</p></section>
+      <section id="s2" class="slide"><h2 class="slide-title">Stages essentiels</h2><div class="grid"><div class="card"><h3>`$match`</h3><p class="meta">Filtre les documents.</p></div><div class="card"><h3>`$project`</h3><p class="meta">Choisit et renomme les champs.</p></div><div class="card"><h3>`$set`</h3><p class="meta">Ajoute un champ calculé.</p></div><div class="card"><h3>`$group`</h3><p class="meta">Regroupe et calcule des agrégats.</p></div><div class="card"><h3>`$unwind`</h3><p class="meta">Éclate un tableau.</p></div><div class="card"><h3>`$lookup`</h3><p class="meta">Relie deux collections.</p></div></div></section>
+      <section id="s3" class="slide"><h2 class="slide-title">Regrouper</h2><pre><code>db.restaurants.aggregate([
+  {
+    $group: {
+      _id: "$cuisine",
+      average_food: { $avg: "$ratings.food" },
+      average_overall: { $avg: "$ratings.overall" },
+      restaurants: { $sum: 1 }
+    }
+  },
+  { $sort: { average_overall: -1 } }
+])</code></pre></section>
+      <section id="s4" class="slide"><h2 class="slide-title">Relier avec `$lookup`</h2><pre><code>db.orders.aggregate([
+  { $match: { status: "paid" } },
+  { $group: { _id: "$restaurant_id", revenue: { $sum: "$amount" }, orders: { $sum: 1 } } },
+  {
+    $lookup: {
+      from: "restaurants",
+      localField: "_id",
+      foreignField: "restaurant_id",
+      as: "restaurant"
+    }
+  },
+  { $unwind: "$restaurant" }
+])</code></pre></section>
+      <section id="s5" class="slide"><h2 class="slide-title">Matérialiser avec `$merge`</h2><pre><code>db.orders.aggregate([
+  { $match: { status: "paid" } },
+  { $group: { _id: "$restaurant_id", revenue: { $sum: "$amount" } } },
+  {
+    $merge: {
+      into: "restaurant_kpis",
+      whenMatched: "replace",
+      whenNotMatched: "insert"
+    }
+  }
+])</code></pre><p>`aggregate` transforme des documents en indicateurs métier : revenus, satisfaction, classements et KPI.</p></section>
+    </article>
+  </main>
+  <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>TP 02 - find</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <section class="slide compact"><div class="header-bar">TP 02</div><h1>Maîtriser `find`</h1><p class="subtitle">Filtrer, projeter, trier, paginer et lire une requête comme une question métier.</p></section>
+    <section class="panel"><h2>Requêtes de base</h2><pre><code>db.restaurants.find({ cuisine: "Italian" })
+
+db.restaurants.find(
+  { cuisine: "Italian" },
+  { _id: 0, name: 1, price_tier: 1, ratings: 1 }
+)
+
+db.restaurants.find(
+  { "ratings.overall": { $gte: 24 } },
+  { _id: 0, name: 1, cuisine: 1, price_for_two: 1, "ratings.overall": 1 }
+)</code></pre></section>
+    <section class="panel"><h2>Opérateurs à pratiquer</h2><pre><code>db.restaurants.find({ price_for_two: { $lte: 45 } })
+db.restaurants.find({ price_tier: { $in: ["$", "$$"] } })
+db.restaurants.find({ tags: { $all: ["top_food", "great_service"] } })
+db.restaurants.find({ "ratings.food": { $gte: 24 } })
+db.restaurants.find({ name: { $regex: "ristorante", $options: "i" } })</code></pre></section>
+    <section class="panel"><h2>Données générées</h2><p>Avant les exercices sur `orders` et `review_details`, lancer si nécessaire :</p><pre><code>docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
+  /scripts/generate-volume.js</code></pre></section>
+    <section class="panel"><h2>Exercices</h2><ol><li>Afficher les restaurants dont la note globale est supérieure ou égale à 23.</li><li>Afficher les restaurants dont le prix pour deux est inférieur ou égal à 40 dollars.</li><li>Afficher les restaurants `$$` ou `$$$`, triés par note de service décroissante.</li><li>Afficher uniquement `name`, `cuisine`, `price_tier` et `ratings`, sans `_id`.</li><li>Trouver les restaurants qui ont à la fois les tags `top_food` et `great_service`.</li><li>Trouver les restaurants dont le nom contient `cafe`, `bistro` ou `ristorante`.</li><li>Afficher les avis agrégés `reviews` avec sentiment `excellent`.</li><li>Afficher les 10 commandes les plus récentes d'un restaurant existant.</li><li>Afficher les avis détaillés vérifiés avec une note supérieure ou égale à 4.5.</li><li>Identifier les requêtes qui devraient probablement avoir un index.</li></ol></section>
+  </main>
+  <footer class="footer"><a href="../exercices.html">Retour aux exercices</a></footer>
+</body>
+</html>

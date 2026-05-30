@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Cours 04 - find</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <div class="slide-nav"><a href="#s1">Forme</a><a href="#s2">Opérateurs</a><a href="#s3">Champs</a><a href="#s4">Tri</a><a href="#s5">Index</a></div>
+    <article class="deck">
+      <section id="s1" class="slide"><div class="header-bar">Cours 04</div><h1>Rechercher avec find</h1><pre><code>db.collection.find(filtre, projection)</code></pre><pre><code>db.restaurants.find(
+  { cuisine: "Italian" },
+  { _id: 0, name: 1, price_tier: 1, ratings: 1 }
+)</code></pre></section>
+      <section id="s2" class="slide"><h2 class="slide-title">Filtres fréquents</h2><pre><code>db.restaurants.find({ price_tier: "$$" })
+
+db.restaurants.find({ "ratings.overall": { $gte: 23 } })
+
+db.restaurants.find({
+  price_tier: { $in: ["$", "$$"] }
+})
+
+db.restaurants.find({
+  $or: [{ tags: "top_food" }, { tags: "great_service" }]
+})</code></pre></section>
+      <section id="s3" class="slide"><h2 class="slide-title">Champs imbriqués et tableaux</h2><div class="two-col"><div><h3>Objet imbriqué</h3><pre><code>db.restaurants.find({
+  "ratings.food": { $gte: 24 },
+  "ratings.decor": { $gte: 20 }
+})</code></pre></div><div><h3>Tableau</h3><pre><code>db.restaurants.find({ tags: "top_food" })
+
+db.restaurants.find({
+  tags: { $all: ["top_food", "great_service"] }
+})</code></pre></div></div></section>
+      <section id="s4" class="slide"><h2 class="slide-title">Trier, limiter, compter</h2><pre><code>db.restaurants.find(
+  {},
+  { _id: 0, name: 1, cuisine: 1, "ratings.overall": 1 }
+).sort({ "ratings.overall": -1 }).limit(10)
+
+db.restaurants.countDocuments({ price_tier: "$$" })
+db.restaurants.distinct("cuisine")</code></pre></section>
+      <section id="s5" class="slide"><h2 class="slide-title">Quand penser index ?</h2><p>Une requête fréquente mérite probablement un index si elle filtre ou trie sur des champs stables.</p><pre><code>db.restaurants.createIndex({ "ratings.overall": -1 })
+db.restaurants.createIndex({ cuisine: 1, price_tier: 1 })
+db.restaurants.createIndex({ tags: 1 })
+db.review_details.createIndex({ restaurant_id: 1, reviewed_at: -1 })</code></pre></section>
+    </article>
+  </main>
+  <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>
+</body>
+</html>

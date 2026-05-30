@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MongoDB - Supports de cours</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="index.html">MongoDB Sandbox</a>
+      <div class="nav-links">
+        <a class="active" href="index.html">Accueil</a>
+        <a href="cours.html">Cours</a>
+        <a href="exercices.html">Exercices</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="header-bar">Cours MongoDB</div>
+    <h1>Sandbox MongoDB - NYC Restaurant Reviews</h1>
+    <p class="subtitle">Supports HTML pour présenter MongoDB, manipuler `mongosh`, interroger les collections avec `find`, analyser avec `aggregate` et pratiquer sur des exercices.</p>
+
+    <section class="panel">
+      <div class="grid">
+        <a class="card" href="cours.html">
+          <span class="badge">Slides</span>
+          <h2>Cours</h2>
+          <p class="meta">Six chapitres en format slides : outils, jeu de données, schéma, mongosh, find et aggregate.</p>
+        </a>
+        <a class="card" href="exercices.html">
+          <span class="badge">TP</span>
+          <h2>Exercices</h2>
+          <p class="meta">Énoncés apprenants uniquement. Les corrections ne sont pas intégrées au site.</p>
+        </a>
+        <a class="card" href="../README.md">
+          <span class="badge">Sandbox</span>
+          <h2>README projet</h2>
+          <p class="meta">Commandes Docker Compose, import du dataset et génération de volume.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Collections du sandbox</h2>
+      <div class="grid">
+        <div class="card"><h3>`nyc_restaurant_reviews_raw`</h3><p class="meta">Données brutes OpenIntro/Zagat.</p></div>
+        <div class="card"><h3>`restaurants`</h3><p class="meta">Vue documentaire orientée établissement.</p></div>
+        <div class="card"><h3>`reviews`</h3><p class="meta">Avis et notes agrégées.</p></div>
+        <div class="card"><h3>`neighborhoods`</h3><p class="meta">Collection pédagogique annexe.</p></div>
+        <div class="card"><h3>`orders`</h3><p class="meta">Commandes simulées pour volume et performances.</p></div>
+        <div class="card"><h3>`review_details`</h3><p class="meta">Avis clients détaillés simulés.</p></div>
+        <div class="card"><h3>`events`</h3><p class="meta">Événements applicatifs simulés.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Support local statique - aucun corrigé inclus.</footer>
+</body>
+</html>

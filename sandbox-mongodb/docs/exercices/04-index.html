@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>TP 04 - Index</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <section class="slide compact"><div class="header-bar">TP 04</div><h1>Index et performance</h1><p class="subtitle">Mesurer avec `explain()`, repérer un `COLLSCAN` et créer des index adaptés.</p></section>
+    <section class="panel"><h2>Mesurer une requête</h2><pre><code>const restaurantId = db.restaurants.findOne({}, { restaurant_id: 1 }).restaurant_id
+
+db.orders.find({
+  restaurant_id: restaurantId,
+  status: "paid"
+}).sort({ created_at: -1 }).explain("executionStats")</code></pre><ul><li>`executionTimeMillis`</li><li>`totalDocsExamined`</li><li>`totalKeysExamined`</li><li>`stage`</li></ul></section>
+    <section class="panel"><h2>Créer des index</h2><pre><code>db.orders.createIndex({ restaurant_id: 1, status: 1, created_at: -1 })
+db.restaurants.createIndex({ "ratings.overall": -1, price_for_two: 1 })
+db.restaurants.createIndex({ tags: 1, "ratings.food": -1 })
+db.review_details.createIndex({ sentiment: 1, rating: -1 })</code></pre></section>
+    <section class="panel"><h2>Exercices</h2><ol><li>Relever les performances d'une requête sans index pertinent.</li><li>Proposer un index composé pour une recherche par `restaurant_id`, `status` et date.</li><li>Justifier l'ordre des champs dans l'index.</li><li>Comparer avant/après avec `explain("executionStats")`.</li><li>Créer un index sur `ratings.overall` et `price_for_two`.</li><li>Créer un index multikey sur `tags`.</li><li>Optimiser une agrégation sur `review_details` qui commence par `$match`.</li><li>Identifier un index inutile ou redondant avec `db.collection.getIndexes()`.</li></ol></section>
+  </main>
+  <footer class="footer"><a href="../exercices.html">Retour aux exercices</a></footer>
+</body>
+</html>

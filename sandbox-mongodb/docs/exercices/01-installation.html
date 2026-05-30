@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>TP 01 - Installation</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <section class="slide compact"><div class="header-bar">TP 01</div><h1>Installation et exploration</h1><p class="subtitle">Démarrer le sandbox, importer le dataset et observer les premières collections.</p></section>
+    <section class="panel"><h2>Objectifs</h2><ul><li>Démarrer MongoDB avec Docker Compose.</li><li>Importer un vrai dataset de notations clients.</li><li>Se connecter avec Mongo Express et `mongosh`.</li><li>Identifier les collections et la structure des documents.</li></ul></section>
+    <section class="panel"><h2>Démarrage</h2><pre><code>docker compose up -d
+docker compose ps</code></pre><p>Mongo Express : `http://localhost:8083`</p><pre><code>docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre></section>
+    <section class="panel"><h2>Import du dataset</h2><pre><code>docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
+  /scripts/import-restaurant-reviews.js</code></pre><ul><li>`nyc_restaurant_reviews_raw` : données brutes du CSV.</li><li>`restaurants` : vue documentaire orientée restaurant.</li><li>`reviews` : vue orientée avis/notation.</li><li>`neighborhoods` : collection pédagogique annexe.</li></ul></section>
+    <section class="panel"><h2>Exploration</h2><pre><code>show dbs
+db
+show collections
+
+db.restaurants.countDocuments()
+db.reviews.countDocuments()
+db.nyc_restaurant_reviews_raw.countDocuments()
+
+db.restaurants.findOne()
+db.reviews.findOne()
+db.nyc_restaurant_reviews_raw.findOne()</code></pre></section>
+    <section class="panel"><h2>Questions</h2><ol><li>Quels champs sont communs à tous les restaurants ?</li><li>Quels champs sont imbriqués ?</li><li>Quelles différences observe-t-on entre la collection brute et les collections transformées ?</li><li>Quels champs semblent utiles pour filtrer ?</li><li>Quels champs semblent utiles pour faire des statistiques ?</li></ol></section>
+  </main>
+  <footer class="footer"><a href="../exercices.html">Retour aux exercices</a></footer>
+</body>
+</html>
