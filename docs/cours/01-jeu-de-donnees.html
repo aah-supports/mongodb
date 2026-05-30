@@ -4,13 +4,262 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Source</a><a href="#s2">Collections</a><a href="#s3">Réel</a><a href="#s4">Généré</a><a href="#s5">Questions</a></div>
+    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">Source</a><a href="#s3">Schéma global</a><a href="#s4">Raw</a><a href="#s5">Restaurants</a><a href="#s6">Schéma</a><a href="#s7">Reviews</a><a href="#s8">Quartiers</a><a href="#s9">Volume</a><a href="#s10">Orders</a><a href="#s11">Review details</a><a href="#s12">Events</a><a href="#s13">Relations</a><a href="#s14">Usages</a><a href="#s15">Questions</a></div>
     <article class="deck">
-      <section id="s1" class="slide"><div class="header-bar">Cours 01</div><h1>Présentation du jeu de données</h1><p class="subtitle">Le cours utilise OpenIntro `nyc`, un dataset de notations Zagat sur 168 restaurants new-yorkais.</p></section>
-      <section id="s2" class="slide"><h2 class="slide-title">Ce que décrit le dataset</h2><ul><li>Nom du restaurant.</li><li>Prix estimé pour deux personnes.</li><li>Notes `food`, `decor`, `service` sur 0 à 30.</li><li>Position est ou ouest de 5th Avenue.</li></ul><p>Objectif pédagogique : passer d'un CSV plat à un modèle documentaire exploitable.</p></section>
-      <section id="s3" class="slide"><h2 class="slide-title">Collections issues du réel</h2><div class="grid"><div class="card"><h3>`nyc_restaurant_reviews_raw`</h3><p class="meta">Lignes brutes du CSV, utiles pour observer la source et les conversions.</p></div><div class="card"><h3>`restaurants`</h3><p class="meta">Document orienté établissement : cuisine, prix, notes, tags.</p></div><div class="card"><h3>`reviews`</h3><p class="meta">Notation agrégée orientée avis, reliée par `restaurant_id`.</p></div><div class="card"><h3>`neighborhoods`</h3><p class="meta">Collection pédagogique annexe créée à l'initialisation.</p></div></div></section>
-      <section id="s4" class="slide"><h2 class="slide-title">Collections générées</h2><div class="grid"><div class="card"><h3>`orders`</h3><p class="meta">100 000 commandes simulées pour chiffre d'affaires, filtres et index.</p></div><div class="card"><h3>`review_details`</h3><p class="meta">50 000 avis détaillés avec note, sentiment et contexte de visite.</p></div><div class="card"><h3>`events`</h3><p class="meta">300 000 événements applicatifs pour analyser l'usage.</p></div></div></section>
-      <section id="s5" class="slide"><h2 class="slide-title">Questions métier possibles</h2><ul><li>Quelles cuisines ont les meilleures notes ?</li><li>Quels restaurants offrent le meilleur rapport note/prix ?</li><li>Quels tags reviennent le plus souvent ?</li><li>Quels restaurants cumulent satisfaction élevée et revenus importants ?</li><li>Quels index accélèrent réellement les requêtes fréquentes ?</li></ul></section>
+      <section id="s1" class="slide">
+        <div class="header-bar">Cours 01</div>
+        <h1>Jeu de données et structure des collections</h1>
+        <p class="subtitle">Avant d'écrire des requêtes MongoDB, il faut comprendre précisément les documents disponibles : leur origine, leurs champs, leurs relations et les choix de modélisation.</p>
+        <p>Le sandbox travaille sur la base `nyc_food`. Elle mélange un dataset réel de notations de restaurants et des données générées pour simuler un contexte applicatif plus volumineux.</p>
+      </section>
+
+      <section id="s2" class="slide">
+        <h2 class="slide-title">Source réelle : OpenIntro `nyc`</h2>
+        <p>Le dataset réel contient 168 restaurants new-yorkais notés par Zagat. Il est importé depuis un CSV public.</p>
+        <table>
+          <tr><th>Champ source</th><th>Sens</th><th>Type après import</th></tr>
+          <tr><td>`case`</td><td>Identifiant de ligne dans la source.</td><td>number</td></tr>
+          <tr><td>`restaurant`</td><td>Nom du restaurant.</td><td>string</td></tr>
+          <tr><td>`price`</td><td>Prix estimé pour deux personnes.</td><td>number</td></tr>
+          <tr><td>`food`</td><td>Note nourriture sur 30.</td><td>number</td></tr>
+          <tr><td>`decor`</td><td>Note décor sur 30.</td><td>number</td></tr>
+          <tr><td>`service`</td><td>Note service sur 30.</td><td>number</td></tr>
+          <tr><td>`east`</td><td>Indicateur est/ouest de 5th Avenue.</td><td>number</td></tr>
+        </table>
+        <p>Le CSV est volontairement conservé dans une collection brute avant transformation. C'est une étape importante : importer des données ne suffit pas, il faut aussi choisir un modèle documentaire exploitable.</p>
+      </section>
+
+      <section id="s3" class="slide">
+        <h2 class="slide-title">Schéma global de la base `nyc_food`</h2>
+        <table>
+          <tr><th>Collection</th><th>Origine</th><th>Rôle</th><th>Volume attendu</th></tr>
+          <tr><td>`nyc_restaurant_reviews_raw`</td><td>Réel</td><td>Lignes brutes proches du CSV.</td><td>168</td></tr>
+          <tr><td>`restaurants`</td><td>Transformée</td><td>Vue principale orientée établissement.</td><td>168</td></tr>
+          <tr><td>`reviews`</td><td>Transformée</td><td>Notation agrégée orientée avis.</td><td>168</td></tr>
+          <tr><td>`neighborhoods`</td><td>Pédagogique</td><td>Quartiers de démonstration.</td><td>5</td></tr>
+          <tr><td>`orders`</td><td>Générée</td><td>Commandes simulées.</td><td>100 000</td></tr>
+          <tr><td>`review_details`</td><td>Générée</td><td>Avis détaillés simulés.</td><td>50 000</td></tr>
+          <tr><td>`events`</td><td>Générée</td><td>Événements applicatifs simulés.</td><td>300 000</td></tr>
+        </table>
+        <p>Le champ pivot le plus important est `restaurant_id`. Il relie `restaurants`, `reviews`, `orders`, `review_details` et `events`.</p>
+      </section>
+
+      <section id="s4" class="slide">
+        <h2 class="slide-title">Collection brute : `nyc_restaurant_reviews_raw`</h2>
+        <p>Cette collection conserve la donnée source après conversion des nombres. Elle sert à comparer le CSV initial avec le modèle documentaire final.</p>
+        <pre><code>{
+  source_case: 1,
+  restaurant: "Daniella Ristorante",
+  price: 43,
+  food: 22,
+  decor: 18,
+  service: 20,
+  east: 0,
+  imported_at: ISODate("2026-05-30T...")
+}</code></pre>
+        <table>
+          <tr><th>Usage pédagogique</th><th>Exemple</th></tr>
+          <tr><td>Observer la source</td><td>`db.nyc_restaurant_reviews_raw.findOne()`</td></tr>
+          <tr><td>Repérer les conversions</td><td>`price`, `food`, `decor`, `service` deviennent numériques.</td></tr>
+          <tr><td>Comprendre la transformation</td><td>La ligne brute devient un restaurant et une review agrégée.</td></tr>
+        </table>
+      </section>
+
+      <section id="s5" class="slide">
+        <h2 class="slide-title">Collection principale : `restaurants`</h2>
+        <p>Un document représente un établissement. C'est la collection principale pour apprendre `find`, les projections, les champs imbriqués, les tableaux et les index.</p>
+        <pre><code>{
+  restaurant_id: "NYC-ZAGAT-0001",
+  name: "Daniella Ristorante",
+  cuisine: "Italian",
+  location_area: "West of 5th Avenue",
+  price_for_two: 43,
+  price_tier: "$$",
+  ratings: {
+    food: 22,
+    decor: 18,
+    service: 20,
+    overall: 20
+  },
+  rating_band: "very_good_to_excellent",
+  tags: ["dinner"],
+  source: {
+    name: "OpenIntro nyc Zagat restaurant ratings",
+    url: "https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv",
+    case: 1
+  }
+}</code></pre>
+      </section>
+
+      <section id="s6" class="slide">
+        <h2 class="slide-title">Schéma applicatif de `restaurants`</h2>
+        <table>
+          <tr><th>Champ</th><th>Type</th><th>Rôle dans le cours</th></tr>
+          <tr><td>`restaurant_id`</td><td>string</td><td>Identifiant stable utilisé pour les relations.</td></tr>
+          <tr><td>`name`</td><td>string</td><td>Recherche textuelle simple et affichage.</td></tr>
+          <tr><td>`cuisine`</td><td>string</td><td>Filtres, regroupements par cuisine.</td></tr>
+          <tr><td>`location_area`</td><td>string</td><td>Filtre est/ouest de 5th Avenue.</td></tr>
+          <tr><td>`price_for_two`</td><td>number</td><td>Comparaisons numériques.</td></tr>
+          <tr><td>`price_tier`</td><td>string</td><td>Filtres `$`, `$$`, `$$$`, `$$$$`.</td></tr>
+          <tr><td>`ratings`</td><td>object</td><td>Exemple central de document imbriqué.</td></tr>
+          <tr><td>`tags`</td><td>array</td><td>Exemple central de tableau et d'index multikey.</td></tr>
+        </table>
+        <pre><code>db.restaurants.find({
+  cuisine: "Italian",
+  price_tier: "$$",
+  "ratings.overall": { $gte: 22 },
+  tags: "top_food"
+})</code></pre>
+      </section>
+
+      <section id="s7" class="slide">
+        <h2 class="slide-title">Collection `reviews` : avis agrégé</h2>
+        <p>`reviews` représente la notation agrégée d'un restaurant. Elle est séparée de `restaurants` pour montrer une relation entre collections via `restaurant_id`.</p>
+        <pre><code>{
+  review_id: "ZAGAT-0001",
+  restaurant_id: "NYC-ZAGAT-0001",
+  reviewed_at: ISODate("2025-01-01T00:00:00Z"),
+  reviewer_type: "local",
+  scores: {
+    food: 22,
+    decor: 18,
+    service: 20,
+    overall: 20
+  },
+  price_for_two: 43,
+  sentiment: "positive",
+  highlights: ["dinner"],
+  source: {
+    name: "OpenIntro nyc Zagat restaurant ratings",
+    case: 1
+  }
+}</code></pre>
+        <p>Cette collection sert à pratiquer les champs imbriqués `scores.*`, les filtres par `sentiment`, puis les jointures avec `$lookup`.</p>
+      </section>
+
+      <section id="s8" class="slide">
+        <h2 class="slide-title">Collection `neighborhoods`</h2>
+        <p>`neighborhoods` est une petite collection pédagogique créée à l'initialisation. Elle montre qu'une base MongoDB peut contenir plusieurs familles de documents.</p>
+        <pre><code>{
+  name: "Midtown",
+  borough: "Manhattan",
+  center: {
+    type: "Point",
+    coordinates: [-73.9855, 40.7580]
+  }
+}</code></pre>
+        <p>Un index `2dsphere` est créé sur `center`. Cette collection peut servir à discuter des données géographiques, même si le fil rouge principal reste centré sur les restaurants et avis.</p>
+      </section>
+
+      <section id="s9" class="slide">
+        <h2 class="slide-title">Données générées : pourquoi ?</h2>
+        <p>Le dataset réel est volontairement petit : 168 restaurants. Pour travailler les performances, les index et les agrégations, le sandbox génère des volumes plus importants.</p>
+        <table>
+          <tr><th>Collection</th><th>Volume par défaut</th><th>Objectif</th></tr>
+          <tr><td>`orders`</td><td>100 000</td><td>Revenus, paniers moyens, requêtes par date et statut.</td></tr>
+          <tr><td>`review_details`</td><td>50 000</td><td>Avis détaillés, sentiments, avis vérifiés.</td></tr>
+          <tr><td>`events`</td><td>300 000</td><td>Événements applicatifs, activité, latence.</td></tr>
+        </table>
+        <pre><code>docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
+  /scripts/generate-volume.js</code></pre>
+      </section>
+
+      <section id="s10" class="slide">
+        <h2 class="slide-title">Collection `orders`</h2>
+        <p>Chaque document représente une commande simulée, rattachée à un restaurant par `restaurant_id`.</p>
+        <pre><code>{
+  order_id: "BULK-ORD-000000001",
+  restaurant_id: "NYC-ZAGAT-0001",
+  created_at: ISODate("2025-01-01T00:00:00Z"),
+  channel: "web",
+  status: "paid",
+  amount: 42.35,
+  items_count: 4,
+  customer: {
+    loyalty_tier: "silver",
+    zipcode: "10001"
+  }
+}</code></pre>
+        <p>Champs importants : `restaurant_id`, `created_at`, `status`, `channel`, `amount`, `customer.loyalty_tier`.</p>
+      </section>
+
+      <section id="s11" class="slide">
+        <h2 class="slide-title">Collection `review_details`</h2>
+        <p>Chaque document simule un avis client détaillé. Cette collection complète `reviews`, qui reste une notation agrégée issue du dataset réel.</p>
+        <pre><code>{
+  review_detail_id: "REV-DETAIL-000000001",
+  restaurant_id: "NYC-ZAGAT-0001",
+  reviewed_at: ISODate("2025-01-01T00:00:00Z"),
+  rating: 4.7,
+  sentiment: "positive",
+  visit_reason: "business_lunch",
+  channel: "mobile",
+  verified_visit: true,
+  helpful_votes: 12,
+  text: "Great food and attentive service."
+}</code></pre>
+        <p>Elle sert à filtrer sur `verified_visit`, `rating`, `sentiment`, puis à agréger par restaurant ou raison de visite.</p>
+      </section>
+
+      <section id="s12" class="slide">
+        <h2 class="slide-title">Collection `events`</h2>
+        <p>Chaque document représente une action applicative simulée. C'est la collection la plus volumineuse du sandbox.</p>
+        <pre><code>{
+  event_id: "EVT-0000000001",
+  restaurant_id: "NYC-ZAGAT-0001",
+  event_type: "restaurant_view",
+  occurred_at: ISODate("2025-01-01T00:00:00Z"),
+  session_id: "S-123",
+  device: "ios",
+  latency_ms: 184
+}</code></pre>
+        <p>Elle sert à discuter des événements, des séries temporelles simples, des tris par date et des index sur `event_type` ou `restaurant_id`.</p>
+      </section>
+
+      <section id="s13" class="slide">
+        <h2 class="slide-title">Relations entre collections</h2>
+        <p>MongoDB ne force pas les clés étrangères comme une base relationnelle, mais le modèle applicatif utilise des identifiants communs.</p>
+        <pre><code>restaurants.restaurant_id
+  -> reviews.restaurant_id
+  -> orders.restaurant_id
+  -> review_details.restaurant_id
+  -> events.restaurant_id</code></pre>
+        <table>
+          <tr><th>Relation</th><th>Utilisation</th></tr>
+          <tr><td>`orders` -> `restaurants`</td><td>Chiffre d'affaires avec nom, cuisine et note.</td></tr>
+          <tr><td>`review_details` -> `restaurants`</td><td>Avis détaillés enrichis avec les infos du restaurant.</td></tr>
+          <tr><td>`events` -> `restaurants`</td><td>Analyse d'activité par établissement.</td></tr>
+        </table>
+        <p>Dans MongoDB, ces relations sont exploitées avec `$lookup` dans les pipelines d'agrégation.</p>
+      </section>
+
+      <section id="s14" class="slide">
+        <h2 class="slide-title">Pourquoi ce schéma est utile pour le cours</h2>
+        <table>
+          <tr><th>Concept MongoDB</th><th>Collection utilisée</th><th>Exemple</th></tr>
+          <tr><td>Document imbriqué</td><td>`restaurants`, `reviews`, `orders`</td><td>`ratings.overall`, `scores.food`, `customer.zipcode`</td></tr>
+          <tr><td>Tableau</td><td>`restaurants`, `reviews`</td><td>`tags`, `highlights`</td></tr>
+          <tr><td>Index composé</td><td>`orders`, `review_details`</td><td>`{ restaurant_id: 1, created_at: -1 }`</td></tr>
+          <tr><td>Index multikey</td><td>`restaurants`</td><td>`{ tags: 1 }`</td></tr>
+          <tr><td>Jointure applicative</td><td>`orders` + `restaurants`</td><td>`$lookup` sur `restaurant_id`</td></tr>
+          <tr><td>Agrégation métier</td><td>`orders`, `review_details`</td><td>Revenus, panier moyen, notes par raison de visite.</td></tr>
+        </table>
+      </section>
+
+      <section id="s15" class="slide">
+        <h2 class="slide-title">Questions métier possibles</h2>
+        <ul>
+          <li>Quels restaurants ont la meilleure note globale ?</li>
+          <li>Quels restaurants sont bien notés tout en restant abordables ?</li>
+          <li>Quels tags reviennent le plus souvent ?</li>
+          <li>Quels restaurants génèrent le plus de chiffre d'affaires simulé ?</li>
+          <li>Les avis vérifiés sont-ils mieux notés que les autres ?</li>
+          <li>Quels événements applicatifs sont les plus fréquents ?</li>
+          <li>Quels index accélèrent réellement les requêtes fréquentes ?</li>
+        </ul>
+        <p>Message clé : le schéma n'est pas abstrait. Il est conçu pour servir les requêtes `find`, les pipelines `aggregate`, et les exercices de performance.</p>
+      </section>
     </article>
   </main>
   <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>
