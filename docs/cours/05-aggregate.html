@@ -4,28 +4,193 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Pipeline</a><a href="#s2">Stages</a><a href="#s3">Group</a><a href="#s4">Lookup</a><a href="#s5">Merge</a></div>
+    <div class="slide-nav"><a href="#s1">Pourquoi</a><a href="#s2">SQL</a><a href="#s3">Pipeline</a><a href="#s4">Match</a><a href="#s5">Project</a><a href="#s6">Set</a><a href="#s7">Group</a><a href="#s8">Unwind</a><a href="#s9">Lookup</a><a href="#s10">Indicateur</a><a href="#s11">Merge</a><a href="#s12">Performance</a><a href="#s13">Choisir</a></div>
     <article class="deck">
-      <section id="s1" class="slide"><div class="header-bar">Cours 05</div><h1>Analyser avec aggregate</h1><pre><code>db.collection.aggregate([
+      <section id="s1" class="slide">
+        <div class="header-bar">Cours 05</div>
+        <h1>Analyser avec `aggregate`</h1>
+        <p class="subtitle">`aggregate` sert à transformer des documents en résultats calculés : moyennes, classements, revenus, regroupements, jointures et collections de synthèse.</p>
+        <p>On l'utilise quand `find` ne suffit plus : calculs, regroupements, transformations de structure, jointures ou écriture d'un résultat matérialisé.</p>
+      </section>
+
+      <section id="s2" class="slide">
+        <h2 class="slide-title">Comparer avec SQL</h2>
+        <div class="two-col">
+          <div>
+            <h3>SQL</h3>
+            <pre><code>SELECT cuisine,
+       AVG(overall_rating) AS average_rating,
+       COUNT(*) AS restaurants
+FROM restaurants
+GROUP BY cuisine
+ORDER BY average_rating DESC;</code></pre>
+          </div>
+          <div>
+            <h3>MongoDB</h3>
+            <pre><code>db.restaurants.aggregate([
+  {
+    $group: {
+      _id: "$cuisine",
+      average_rating: { $avg: "$ratings.overall" },
+      restaurants: { $sum: 1 }
+    }
+  },
+  { $sort: { average_rating: -1 } }
+])</code></pre>
+          </div>
+        </div>
+        <p>Le pipeline MongoDB exprime chaque étape explicitement : filtrer, transformer, grouper, trier.</p>
+      </section>
+
+      <section id="s3" class="slide">
+        <h2 class="slide-title">Principe du pipeline</h2>
+        <pre><code>db.collection.aggregate([
   { stage1 },
   { stage2 },
   { stage3 }
-])</code></pre><p>Chaque étape reçoit des documents, les transforme, puis transmet le résultat.</p></section>
-      <section id="s2" class="slide"><h2 class="slide-title">Stages essentiels</h2><div class="grid"><div class="card"><h3>`$match`</h3><p class="meta">Filtre les documents.</p></div><div class="card"><h3>`$project`</h3><p class="meta">Choisit et renomme les champs.</p></div><div class="card"><h3>`$set`</h3><p class="meta">Ajoute un champ calculé.</p></div><div class="card"><h3>`$group`</h3><p class="meta">Regroupe et calcule des agrégats.</p></div><div class="card"><h3>`$unwind`</h3><p class="meta">Éclate un tableau.</p></div><div class="card"><h3>`$lookup`</h3><p class="meta">Relie deux collections.</p></div></div></section>
-      <section id="s3" class="slide"><h2 class="slide-title">Regrouper</h2><pre><code>db.restaurants.aggregate([
+])</code></pre>
+        <table>
+          <tr><th>Étape</th><th>Question</th><th>Stage typique</th></tr>
+          <tr><td>Filtrer</td><td>Quels documents garder ?</td><td>`$match`</td></tr>
+          <tr><td>Façonner</td><td>Quels champs produire ?</td><td>`$project`, `$set`</td></tr>
+          <tr><td>Regrouper</td><td>Quels agrégats calculer ?</td><td>`$group`</td></tr>
+          <tr><td>Ordonner</td><td>Quel classement afficher ?</td><td>`$sort`, `$limit`</td></tr>
+          <tr><td>Relier</td><td>Quelle collection joindre ?</td><td>`$lookup`</td></tr>
+        </table>
+      </section>
+
+      <section id="s4" class="slide">
+        <h2 class="slide-title">Commencer par `$match`</h2>
+        <p>`$match` filtre les documents. Il est souvent placé au début pour réduire le volume traité et permettre l'utilisation d'un index.</p>
+        <pre><code>db.restaurants.aggregate([
+  { $match: { "ratings.overall": { $gte: 22 } } }
+])</code></pre>
+        <pre><code>// Équivalent proche en find
+db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
+        <p>Dans un pipeline analytique, `$match` joue le rôle du `WHERE` SQL.</p>
+      </section>
+
+      <section id="s5" class="slide">
+        <h2 class="slide-title">Sélectionner et renommer avec `$project`</h2>
+        <p>`$project` choisit les champs en sortie. Il peut aussi renommer ou calculer des valeurs simples.</p>
+        <pre><code>db.restaurants.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      cuisine: 1,
+      price_for_two: 1,
+      overall_rating: "$ratings.overall"
+    }
+  }
+])</code></pre>
+        <p>SQL comparable : `SELECT name, cuisine, price_for_two, ratings_overall AS overall_rating`.</p>
+      </section>
+
+      <section id="s6" class="slide">
+        <h2 class="slide-title">Ajouter un champ avec `$set`</h2>
+        <p>`$set` ajoute ou modifie un champ en conservant les autres. C'est utile pour créer un indicateur intermédiaire.</p>
+        <pre><code>db.restaurants.aggregate([
+  {
+    $set: {
+      value_score: {
+        $round: [
+          { $divide: ["$ratings.overall", "$price_for_two"] },
+          3
+        ]
+      }
+    }
+  },
+  { $sort: { value_score: -1 } },
+  { $limit: 10 }
+])</code></pre>
+        <p>Ici, on calcule un score qualité/prix avant de trier les restaurants.</p>
+      </section>
+
+      <section id="s7" class="slide">
+        <h2 class="slide-title">Regrouper avec `$group`</h2>
+        <p>`$group` est l'équivalent de `GROUP BY`. Le champ `_id` définit la clé de regroupement.</p>
+        <pre><code>db.restaurants.aggregate([
   {
     $group: {
       _id: "$cuisine",
       average_food: { $avg: "$ratings.food" },
+      average_decor: { $avg: "$ratings.decor" },
+      average_service: { $avg: "$ratings.service" },
       average_overall: { $avg: "$ratings.overall" },
       restaurants: { $sum: 1 }
     }
   },
   { $sort: { average_overall: -1 } }
-])</code></pre></section>
-      <section id="s4" class="slide"><h2 class="slide-title">Relier avec `$lookup`</h2><pre><code>db.orders.aggregate([
+])</code></pre>
+        <table>
+          <tr><th>Accumulateur</th><th>Usage</th></tr>
+          <tr><td>`$sum`</td><td>Compter ou additionner.</td></tr>
+          <tr><td>`$avg`</td><td>Calculer une moyenne.</td></tr>
+          <tr><td>`$min` / `$max`</td><td>Extraire une borne.</td></tr>
+          <tr><td>`$push`</td><td>Construire un tableau.</td></tr>
+          <tr><td>`$addToSet`</td><td>Construire un tableau sans doublons.</td></tr>
+        </table>
+      </section>
+
+      <section id="s8" class="slide">
+        <h2 class="slide-title">Éclater un tableau avec `$unwind`</h2>
+        <p>`$unwind` transforme un document contenant un tableau en plusieurs documents, un par élément du tableau.</p>
+        <pre><code>db.restaurants.aggregate([
+  { $unwind: "$tags" },
+  {
+    $group: {
+      _id: "$tags",
+      restaurants: { $sum: 1 }
+    }
+  },
+  { $sort: { restaurants: -1 } }
+])</code></pre>
+        <p>Sans `$unwind`, on ne peut pas facilement compter chaque tag séparément. C'est une différence importante avec un modèle relationnel normalisé.</p>
+      </section>
+
+      <section id="s9" class="slide">
+        <h2 class="slide-title">Relier deux collections avec `$lookup`</h2>
+        <p>`$lookup` est proche d'un `LEFT JOIN`. Il ajoute un tableau contenant les documents correspondants de la collection cible.</p>
+        <pre><code>db.review_details.aggregate([
+  { $match: { verified_visit: true, rating: { $gte: 4.5 } } },
+  {
+    $lookup: {
+      from: "restaurants",
+      localField: "restaurant_id",
+      foreignField: "restaurant_id",
+      as: "restaurant"
+    }
+  },
+  { $unwind: "$restaurant" },
+  {
+    $project: {
+      _id: 0,
+      reviewed_at: 1,
+      rating: 1,
+      sentiment: 1,
+      name: "$restaurant.name",
+      cuisine: "$restaurant.cuisine",
+      price_tier: "$restaurant.price_tier"
+    }
+  }
+])</code></pre>
+        <p>`$unwind` est souvent ajouté après `$lookup` quand on attend un seul document relié.</p>
+      </section>
+
+      <section id="s10" class="slide">
+        <h2 class="slide-title">Construire un indicateur métier complet</h2>
+        <p>Question : quels restaurants combinent revenus importants et bonne satisfaction ?</p>
+        <pre><code>db.orders.aggregate([
   { $match: { status: "paid" } },
-  { $group: { _id: "$restaurant_id", revenue: { $sum: "$amount" }, orders: { $sum: 1 } } },
+  {
+    $group: {
+      _id: "$restaurant_id",
+      revenue: { $sum: "$amount" },
+      orders: { $sum: 1 },
+      average_basket: { $avg: "$amount" }
+    }
+  },
   {
     $lookup: {
       from: "restaurants",
@@ -34,11 +199,37 @@
       as: "restaurant"
     }
   },
-  { $unwind: "$restaurant" }
-])</code></pre></section>
-      <section id="s5" class="slide"><h2 class="slide-title">Matérialiser avec `$merge`</h2><pre><code>db.orders.aggregate([
+  { $unwind: "$restaurant" },
+  { $match: { "restaurant.ratings.overall": { $gte: 22 } } },
+  {
+    $project: {
+      _id: 0,
+      name: "$restaurant.name",
+      cuisine: "$restaurant.cuisine",
+      overall_rating: "$restaurant.ratings.overall",
+      revenue: { $round: ["$revenue", 2] },
+      orders: 1,
+      average_basket: { $round: ["$average_basket", 2] }
+    }
+  },
+  { $sort: { revenue: -1 } },
+  { $limit: 20 }
+])</code></pre>
+      </section>
+
+      <section id="s11" class="slide">
+        <h2 class="slide-title">Matérialiser avec `$merge`</h2>
+        <p>`$merge` écrit le résultat d'un pipeline dans une collection. C'est utile pour produire des KPI réutilisables.</p>
+        <pre><code>db.orders.aggregate([
   { $match: { status: "paid" } },
-  { $group: { _id: "$restaurant_id", revenue: { $sum: "$amount" } } },
+  {
+    $group: {
+      _id: "$restaurant_id",
+      revenue: { $sum: "$amount" },
+      orders: { $sum: 1 },
+      average_basket: { $avg: "$amount" }
+    }
+  },
   {
     $merge: {
       into: "restaurant_kpis",
@@ -46,7 +237,41 @@
       whenNotMatched: "insert"
     }
   }
-])</code></pre><p>`aggregate` transforme des documents en indicateurs métier : revenus, satisfaction, classements et KPI.</p></section>
+])</code></pre>
+        <p>Attention : `$merge` écrit réellement en base. On l'utilise quand le résultat doit être conservé.</p>
+      </section>
+
+      <section id="s12" class="slide">
+        <h2 class="slide-title">Performance et ordre des stages</h2>
+        <ul>
+          <li>Mettre `$match` tôt pour réduire le volume.</li>
+          <li>Mettre `$project` tôt si certains gros champs sont inutiles.</li>
+          <li>Créer des index sur les champs filtrés au début du pipeline.</li>
+          <li>Éviter les `$lookup` trop larges sans filtre préalable.</li>
+          <li>Surveiller les tris et regroupements qui manipulent beaucoup de documents.</li>
+        </ul>
+        <pre><code>db.review_details.createIndex({ sentiment: 1, rating: -1 })
+
+db.review_details.aggregate([
+  { $match: { sentiment: "excellent", rating: { $gte: 4.5 } } },
+  { $group: { _id: "$restaurant_id", reviews: { $sum: 1 } } },
+  { $sort: { reviews: -1 } }
+]).explain("executionStats")</code></pre>
+      </section>
+
+      <section id="s13" class="slide">
+        <h2 class="slide-title">Quand choisir `find` ou `aggregate` ?</h2>
+        <table>
+          <tr><th>Question</th><th>Outil</th><th>Raison</th></tr>
+          <tr><td>Afficher les restaurants français</td><td>`find`</td><td>Lecture directe de documents.</td></tr>
+          <tr><td>Afficher les restaurants triés par note</td><td>`find`</td><td>Filtre + tri simples.</td></tr>
+          <tr><td>Calculer une moyenne par cuisine</td><td>`aggregate`</td><td>Regroupement.</td></tr>
+          <tr><td>Compter les tags les plus fréquents</td><td>`aggregate`</td><td>`$unwind` + `$group`.</td></tr>
+          <tr><td>Ajouter le nom du restaurant aux commandes</td><td>`aggregate`</td><td>`$lookup`.</td></tr>
+          <tr><td>Créer une table de KPI</td><td>`aggregate`</td><td>`$merge`.</td></tr>
+        </table>
+        <p>Message clé : `aggregate` est le langage de transformation et d'analyse de MongoDB.</p>
+      </section>
     </article>
   </main>
   <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>

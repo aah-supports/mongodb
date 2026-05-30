@@ -4,42 +4,213 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Forme</a><a href="#s2">Opérateurs</a><a href="#s3">Champs</a><a href="#s4">Tri</a><a href="#s5">Index</a></div>
+    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">SQL</a><a href="#s3">Forme</a><a href="#s4">Pas à pas</a><a href="#s5">Projection</a><a href="#s6">Opérateurs</a><a href="#s7">Logique</a><a href="#s8">Documents</a><a href="#s9">Tableaux</a><a href="#s10">Tri</a><a href="#s11">Index</a><a href="#s12">Limites</a></div>
     <article class="deck">
-      <section id="s1" class="slide"><div class="header-bar">Cours 04</div><h1>Rechercher avec find</h1><pre><code>db.collection.find(filtre, projection)</code></pre><pre><code>db.restaurants.find(
+      <section id="s1" class="slide">
+        <div class="header-bar">Cours 04</div>
+        <h1>Rechercher avec `find`</h1>
+        <p class="subtitle">`find` sert à récupérer des documents précis dans une collection. C'est l'équivalent pratique du `SELECT ... WHERE` relationnel, adapté à des documents JSON/BSON.</p>
+        <ul>
+          <li>On choisit une collection.</li>
+          <li>On écrit un filtre.</li>
+          <li>On limite les champs retournés avec une projection.</li>
+          <li>On trie, limite ou compte selon le besoin.</li>
+        </ul>
+      </section>
+
+      <section id="s2" class="slide">
+        <h2 class="slide-title">Comparer avec SQL</h2>
+        <div class="two-col">
+          <div>
+            <h3>SQL</h3>
+            <pre><code>SELECT name, cuisine, price_tier
+FROM restaurants
+WHERE cuisine = 'Italian'
+ORDER BY name ASC
+LIMIT 10;</code></pre>
+          </div>
+          <div>
+            <h3>MongoDB</h3>
+            <pre><code>db.restaurants.find(
+  { cuisine: "Italian" },
+  { _id: 0, name: 1, cuisine: 1, price_tier: 1 }
+).sort({ name: 1 }).limit(10)</code></pre>
+          </div>
+        </div>
+        <p>La logique est proche, mais MongoDB manipule des documents : les champs peuvent être imbriqués, absents, ou contenir des tableaux.</p>
+      </section>
+
+      <section id="s3" class="slide">
+        <h2 class="slide-title">Forme générale</h2>
+        <pre><code>db.collection.find(filtre, projection)</code></pre>
+        <table>
+          <tr><th>Élément</th><th>Rôle</th><th>Exemple</th></tr>
+          <tr><td>`collection`</td><td>Famille de documents interrogée.</td><td>`restaurants`</td></tr>
+          <tr><td>`filtre`</td><td>Conditions de sélection.</td><td>`{ cuisine: "Italian" }`</td></tr>
+          <tr><td>`projection`</td><td>Champs retournés.</td><td>`{ _id: 0, name: 1 }`</td></tr>
+        </table>
+        <pre><code>db.restaurants.find(
   { cuisine: "Italian" },
   { _id: 0, name: 1, price_tier: 1, ratings: 1 }
-)</code></pre></section>
-      <section id="s2" class="slide"><h2 class="slide-title">Filtres fréquents</h2><pre><code>db.restaurants.find({ price_tier: "$$" })
+)</code></pre>
+      </section>
 
-db.restaurants.find({ "ratings.overall": { $gte: 23 } })
+      <section id="s4" class="slide">
+        <h2 class="slide-title">Construire une requête pas à pas</h2>
+        <p>Question métier : quels restaurants italiens sont abordables et bien notés ?</p>
+        <pre><code>// 1. Filtrer une cuisine
+db.restaurants.find({ cuisine: "Italian" })
 
+// 2. Ajouter une contrainte de prix
 db.restaurants.find({
+  cuisine: "Italian",
+  price_for_two: { $lte: 50 }
+})
+
+// 3. Ajouter une contrainte sur une note imbriquée
+db.restaurants.find({
+  cuisine: "Italian",
+  price_for_two: { $lte: 50 },
+  "ratings.overall": { $gte: 22 }
+})</code></pre>
+      </section>
+
+      <section id="s5" class="slide">
+        <h2 class="slide-title">Projection : ne retourner que l'utile</h2>
+        <p>Par défaut, MongoDB retourne tout le document, y compris `_id`. Une projection réduit la sortie et rend la lecture plus claire.</p>
+        <pre><code>db.restaurants.find(
+  {
+    cuisine: "Italian",
+    "ratings.overall": { $gte: 22 }
+  },
+  {
+    _id: 0,
+    name: 1,
+    cuisine: 1,
+    price_for_two: 1,
+    "ratings.overall": 1
+  }
+)</code></pre>
+        <p>SQL comparable : `SELECT name, cuisine, price_for_two, overall_rating ...`</p>
+      </section>
+
+      <section id="s6" class="slide">
+        <h2 class="slide-title">Opérateurs de comparaison</h2>
+        <table>
+          <tr><th>Opérateur</th><th>Sens</th><th>Exemple</th></tr>
+          <tr><td>`$gt`</td><td>Strictement supérieur</td><td>`{ price_for_two: { $gt: 60 } }`</td></tr>
+          <tr><td>`$gte`</td><td>Supérieur ou égal</td><td>`{ "ratings.overall": { $gte: 23 } }`</td></tr>
+          <tr><td>`$lt`</td><td>Strictement inférieur</td><td>`{ price_for_two: { $lt: 40 } }`</td></tr>
+          <tr><td>`$lte`</td><td>Inférieur ou égal</td><td>`{ price_for_two: { $lte: 45 } }`</td></tr>
+          <tr><td>`$ne`</td><td>Différent</td><td>`{ price_tier: { $ne: "$$$$" } }`</td></tr>
+        </table>
+        <pre><code>db.restaurants.find({
+  price_for_two: { $lte: 45 },
+  "ratings.service": { $gte: 22 }
+})</code></pre>
+      </section>
+
+      <section id="s7" class="slide">
+        <h2 class="slide-title">Appartenance et logique</h2>
+        <div class="two-col">
+          <div>
+            <h3>`$in` et `$nin`</h3>
+            <pre><code>db.restaurants.find({
   price_tier: { $in: ["$", "$$"] }
 })
 
 db.restaurants.find({
-  $or: [{ tags: "top_food" }, { tags: "great_service" }]
-})</code></pre></section>
-      <section id="s3" class="slide"><h2 class="slide-title">Champs imbriqués et tableaux</h2><div class="two-col"><div><h3>Objet imbriqué</h3><pre><code>db.restaurants.find({
+  cuisine: { $nin: ["Steakhouse", "Seafood"] }
+})</code></pre>
+            <p>SQL comparable : `WHERE price_tier IN (...)`.</p>
+          </div>
+          <div>
+            <h3>`$or` et AND implicite</h3>
+            <pre><code>db.restaurants.find({
+  price_tier: { $ne: "$$$$" },
+  $or: [
+    { "ratings.food": { $gte: 24 } },
+    { "ratings.service": { $gte: 24 } }
+  ]
+})</code></pre>
+            <p>Plusieurs champs au même niveau signifient `AND`.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="s8" class="slide">
+        <h2 class="slide-title">Documents imbriqués</h2>
+        <p>MongoDB interroge un champ imbriqué avec la notation pointée. Les guillemets sont nécessaires autour du chemin.</p>
+        <pre><code>db.restaurants.find({
   "ratings.food": { $gte: 24 },
   "ratings.decor": { $gte: 20 }
-})</code></pre></div><div><h3>Tableau</h3><pre><code>db.restaurants.find({ tags: "top_food" })
+})</code></pre>
+        <pre><code>db.reviews.find({
+  "scores.overall": { $gte: 23 },
+  sentiment: "positive"
+})</code></pre>
+        <p>En SQL, ces informations seraient souvent réparties en colonnes ou dans une table reliée. Ici, elles vivent dans le document.</p>
+      </section>
 
+      <section id="s9" class="slide">
+        <h2 class="slide-title">Tableaux : tags et opérateurs utiles</h2>
+        <pre><code>// Le tableau contient au moins cette valeur
+db.restaurants.find({ tags: "top_food" })
+
+// Le tableau contient toutes ces valeurs
 db.restaurants.find({
   tags: { $all: ["top_food", "great_service"] }
-})</code></pre></div></div></section>
-      <section id="s4" class="slide"><h2 class="slide-title">Trier, limiter, compter</h2><pre><code>db.restaurants.find(
+})
+
+// Le tableau contient au moins une des valeurs
+db.restaurants.find({
+  tags: { $in: ["fine_dining", "good_value"] }
+})</code></pre>
+        <p>Un index sur un tableau devient un index multikey. Il est utile, mais il faut éviter de multiplier les index multikey sans besoin clair.</p>
+      </section>
+
+      <section id="s10" class="slide">
+        <h2 class="slide-title">Tri, limite, pagination, comptage</h2>
+        <pre><code>db.restaurants.find(
   {},
   { _id: 0, name: 1, cuisine: 1, "ratings.overall": 1 }
-).sort({ "ratings.overall": -1 }).limit(10)
+).sort({ "ratings.overall": -1 }).limit(10)</code></pre>
+        <pre><code>db.restaurants.find(
+  {},
+  { _id: 0, name: 1, cuisine: 1 }
+).sort({ name: 1 }).skip(20).limit(10)</code></pre>
+        <pre><code>db.restaurants.countDocuments({ price_tier: "$$" })
+db.restaurants.distinct("cuisine")</code></pre>
+        <p>`skip` est simple pour apprendre, mais peut devenir coûteux sur de gros volumes. En production, on privilégie souvent une pagination par curseur.</p>
+      </section>
 
-db.restaurants.countDocuments({ price_tier: "$$" })
-db.restaurants.distinct("cuisine")</code></pre></section>
-      <section id="s5" class="slide"><h2 class="slide-title">Quand penser index ?</h2><p>Une requête fréquente mérite probablement un index si elle filtre ou trie sur des champs stables.</p><pre><code>db.restaurants.createIndex({ "ratings.overall": -1 })
+      <section id="s11" class="slide">
+        <h2 class="slide-title">Quand penser index ?</h2>
+        <p>Une requête fréquente mérite probablement un index si elle filtre ou trie sur des champs stables.</p>
+        <pre><code>db.restaurants.createIndex({ "ratings.overall": -1 })
 db.restaurants.createIndex({ cuisine: 1, price_tier: 1 })
 db.restaurants.createIndex({ tags: 1 })
-db.review_details.createIndex({ restaurant_id: 1, reviewed_at: -1 })</code></pre></section>
+db.review_details.createIndex({ restaurant_id: 1, reviewed_at: -1 })</code></pre>
+        <pre><code>db.restaurants.find({
+  cuisine: "French",
+  price_tier: "$$"
+}).explain("executionStats")</code></pre>
+        <p>À observer : `totalDocsExamined`, `totalKeysExamined`, `executionTimeMillis`, et la présence d'un `COLLSCAN` ou d'un `IXSCAN`.</p>
+      </section>
+
+      <section id="s12" class="slide">
+        <h2 class="slide-title">Limites de `find`</h2>
+        <p>`find` est excellent pour lire des documents correspondant à des critères. Il devient moins adapté dès que la question demande de transformer les données.</p>
+        <table>
+          <tr><th>Besoin</th><th>`find` suffit ?</th><th>Outil recommandé</th></tr>
+          <tr><td>Afficher les restaurants italiens</td><td>Oui</td><td>`find`</td></tr>
+          <tr><td>Trier les meilleurs restaurants</td><td>Oui</td><td>`find().sort()`</td></tr>
+          <tr><td>Calculer une moyenne par cuisine</td><td>Non</td><td>`aggregate` + `$group`</td></tr>
+          <tr><td>Joindre commandes et restaurants</td><td>Non</td><td>`aggregate` + `$lookup`</td></tr>
+          <tr><td>Créer une collection de KPI</td><td>Non</td><td>`aggregate` + `$merge`</td></tr>
+        </table>
+        <p>Message clé : `find` répond à “quels documents ?”. `aggregate` répond à “quels indicateurs ou transformations ?”.</p>
+      </section>
     </article>
   </main>
   <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>
