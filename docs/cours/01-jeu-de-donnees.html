@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">Source</a><a href="#s3">Schéma global</a><a href="#s4">Raw</a><a href="#s5">Restaurants</a><a href="#s6">Schéma</a><a href="#s7">Reviews</a><a href="#s8">Quartiers</a><a href="#s9">Volume</a><a href="#s10">Orders</a><a href="#s11">Review details</a><a href="#s12">Events</a><a href="#s13">Relations</a><a href="#s14">Usages</a><a href="#s15">Questions</a></div>
+    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">Source</a><a href="#s3">Schéma global</a><a href="#s4">Raw</a><a href="#s5">Restaurants</a><a href="#s6">Schéma</a><a href="#s7">Reviews</a><a href="#s8">Quartiers</a><a href="#s9">Import secours</a><a href="#s10">Volume</a><a href="#s11">Orders</a><a href="#s12">Review details</a><a href="#s13">Events</a><a href="#s14">Relations</a><a href="#s15">Usages</a><a href="#s16">Questions</a></div>
     <article class="deck">
       <section id="s1" class="slide">
         <h1>Jeu de données et structure des collections</h1>
@@ -143,6 +143,16 @@
         <p>Un index `2dsphere` est créé sur `center`. Cette collection peut servir à discuter des données géographiques, même si le fil rouge principal reste centré sur les restaurants et avis.</p>
       </section>
       <section id="s9" class="slide">
+        <h2 class="slide-title">Import de secours sans réseau</h2>
+        <p>Si le téléchargement du CSV ne fonctionne pas, le dépôt contient un snapshot JSON dans `data/nyc-food-seed.json`. Il permet de charger les collections de base en une commande `mongosh`, sans appel externe.</p>
+        <pre><code>cd sandbox-mongodb
+docker compose up -d mongodb
+docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
+  /scripts/import-seed-json.js</code></pre>
+        <p>Cette commande remplit `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`, puis recrée les index utiles. Pour les collections volumineuses, lancer ensuite `generate-volume.js`.</p>
+      </section>
+      <section id="s10" class="slide">
         <h2 class="slide-title">Données générées : pourquoi ?</h2>
         <p>Le dataset réel est volontairement petit : 168 restaurants. Pour travailler les performances, les index et les agrégations, le sandbox génère des volumes plus importants.</p>
         <table>
@@ -155,7 +165,7 @@
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
   /scripts/generate-volume.js</code></pre>
       </section>
-      <section id="s10" class="slide">
+      <section id="s11" class="slide">
         <h2 class="slide-title">Collection `orders`</h2>
         <p>Chaque document représente une commande simulée, rattachée à un restaurant par `restaurant_id`.</p>
         <pre><code>{
@@ -173,7 +183,7 @@
 }</code></pre>
         <p>Champs importants : `restaurant_id`, `created_at`, `status`, `channel`, `amount`, `customer.loyalty_tier`.</p>
       </section>
-      <section id="s11" class="slide">
+      <section id="s12" class="slide">
         <h2 class="slide-title">Collection `review_details`</h2>
         <p>Chaque document simule un avis client détaillé. Cette collection complète `reviews`, qui reste une notation agrégée issue du dataset réel.</p>
         <pre><code>{
@@ -190,7 +200,7 @@
 }</code></pre>
         <p>Elle sert à filtrer sur `verified_visit`, `rating`, `sentiment`, puis à agréger par restaurant ou raison de visite.</p>
       </section>
-      <section id="s12" class="slide">
+      <section id="s13" class="slide">
         <h2 class="slide-title">Collection `events`</h2>
         <p>Chaque document représente une action applicative simulée. C'est la collection la plus volumineuse du sandbox.</p>
         <pre><code>{
@@ -204,7 +214,7 @@
 }</code></pre>
         <p>Elle sert à discuter des événements, des séries temporelles simples, des tris par date et des index sur `event_type` ou `restaurant_id`.</p>
       </section>
-      <section id="s13" class="slide">
+      <section id="s14" class="slide">
         <h2 class="slide-title">Relations entre collections</h2>
         <p>MongoDB ne force pas les clés étrangères comme une base relationnelle, mais le modèle applicatif utilise des identifiants communs.</p>
         <pre><code>restaurants.restaurant_id
@@ -220,7 +230,7 @@
         </table>
         <p>Dans MongoDB, ces relations sont exploitées avec `$lookup` dans les pipelines d'agrégation.</p>
       </section>
-      <section id="s14" class="slide">
+      <section id="s15" class="slide">
         <h2 class="slide-title">Pourquoi ce schéma est utile pour le cours</h2>
         <table>
           <tr><th>Concept MongoDB</th><th>Collection utilisée</th><th>Exemple</th></tr>
@@ -232,7 +242,7 @@
           <tr><td>Agrégation métier</td><td>`orders`, `review_details`</td><td>Revenus, panier moyen, notes par raison de visite.</td></tr>
         </table>
       </section>
-      <section id="s15" class="slide">
+      <section id="s16" class="slide">
         <h2 class="slide-title">Questions métier possibles</h2>
         <ul>
           <li>Quels restaurants ont la meilleure note globale ?</li>

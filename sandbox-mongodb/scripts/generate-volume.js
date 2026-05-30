@@ -5,13 +5,20 @@ const targetEvents = Number(env.NYC_GENERATE_EVENTS || 300000);
 const targetReviewDetails = Number(env.NYC_GENERATE_REVIEW_DETAILS || 50000);
 const batchSize = 5000;
 
+// Dans mongosh, `db` représente la base courante au moment où le script démarre.
+// `getSiblingDB("nyc_food")` sélectionne explicitement la base de travail, même
+// si l'utilisateur est connecté à `admin`, `test` ou une autre base.
 const workDb = db.getSiblingDB(dbName);
 const restaurantIds = workDb.restaurants.distinct("restaurant_id");
 
+// Les volumes générés s'appuient sur les restaurants importés. On force donc
+// l'ordre pédagogique : import-restaurant-reviews.js doit être lancé avant ce script.
 if (restaurantIds.length === 0) {
   throw new Error("No restaurants found. Start the sandbox first.");
 }
 
+// Insère les documents par lots pour éviter de construire un énorme tableau en mémoire.
+// buildDoc reçoit l'index courant et produit un document déterministe.
 function insertBatches(collectionName, total, buildDoc) {
   let batch = [];
   for (let i = 0; i < total; i++) {
@@ -27,6 +34,8 @@ function insertBatches(collectionName, total, buildDoc) {
   }
 }
 
+// Valeurs cycliques utilisées pour générer des données répétables. Le but est
+// de créer du volume exploitable en cours, pas de simuler un hasard parfait.
 const channels = ["web", "mobile", "delivery_partner", "walk_in"];
 const statuses = ["paid", "paid", "paid", "cancelled", "refunded"];
 const eventTypes = ["restaurant_view", "search", "order_started", "order_paid", "review_opened", "favorite_added"];
@@ -40,6 +49,8 @@ const reviewTexts = [
   "Too expensive for the overall experience."
 ];
 
+// Commandes simulées : collection principale pour les exercices de volume,
+// de tri par date, de filtre par statut et d'agrégation de chiffre d'affaires.
 insertBatches("orders", targetOrders, (i) => {
   const restaurant_id = restaurantIds[i % restaurantIds.length];
   return {
@@ -57,6 +68,8 @@ insertBatches("orders", targetOrders, (i) => {
   };
 });
 
+// Avis détaillés simulés : complète la collection reviews, qui reste agrégée.
+// Cette collection sert aux exercices sur sentiments, notes et visites vérifiées.
 insertBatches("review_details", targetReviewDetails, (i) => {
   const restaurant_id = restaurantIds[i % restaurantIds.length];
   const rating = 2 + (i % 4) + ((i % 10) / 10);
@@ -74,6 +87,8 @@ insertBatches("review_details", targetReviewDetails, (i) => {
   };
 });
 
+// Événements applicatifs simulés : utiles pour discuter d'activité produit,
+// de séries temporelles simples et d'index sur type d'événement/date.
 insertBatches("events", targetEvents, (i) => {
   const restaurant_id = restaurantIds[i % restaurantIds.length];
   return {
@@ -87,6 +102,8 @@ insertBatches("events", targetEvents, (i) => {
   };
 });
 
+// Index créés après insertion pour accélérer les requêtes prévues dans les exercices.
+// Ils couvrent surtout les filtres par restaurant, date, statut et sentiment.
 workDb.orders.createIndex({ restaurant_id: 1, created_at: -1 });
 workDb.orders.createIndex({ created_at: -1, status: 1 });
 workDb.review_details.createIndex({ restaurant_id: 1, reviewed_at: -1 });

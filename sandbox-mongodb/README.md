@@ -58,6 +58,15 @@ Le script importe les lignes du CSV source, puis crée un modèle documentaire e
 docker compose exec -e NYC_IMPORT_MAX_ROWS=100 mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-restaurant-reviews.js
 ```
 
+Import de secours sans réseau, depuis le snapshot JSON versionné dans `../data` :
+
+```bash
+docker compose up -d mongodb
+docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-seed-json.js
+```
+
+Cette commande charge `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`, puis recrée les index. Elle ne génère pas `orders`, `review_details` ni `events` ; lancer `scripts/generate-volume.js` ensuite si besoin.
+
 Collections après import :
 
 - `nyc_restaurant_reviews_raw` : lignes brutes du dataset OpenIntro/Zagat.

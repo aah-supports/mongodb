@@ -3,8 +3,13 @@ const endpoint = "https://raw.githubusercontent.com/OpenIntroStat/openintro/main
 const env = typeof process !== "undefined" && process.env ? process.env : {};
 const maxRows = Number(env.NYC_IMPORT_MAX_ROWS || 1000);
 
+// Dans mongosh, `db` représente la base courante au moment où le script démarre.
+// `getSiblingDB("nyc_food")` sélectionne explicitement la base de travail, même
+// si l'utilisateur est connecté à `admin`, `test` ou une autre base.
 const workDb = db.getSiblingDB(dbName);
 
+// Télécharge le CSV source depuis OpenIntro. Le script tourne dans mongosh, où
+// fetch est disponible sur les versions récentes utilisées par l'image MongoDB.
 async function fetchText(url) {
   const response = await fetch(url);
   if (!response.ok) {
@@ -13,6 +18,8 @@ async function fetchText(url) {
   return response.text();
 }
 
+// Parse une ligne CSV en gérant les guillemets et les virgules dans les champs.
+// Le dataset est petit, donc un parseur local suffit pour garder le script autonome.
 function parseCsvLine(line) {
   const cells = [];
   let current = "";
@@ -39,6 +46,8 @@ function parseCsvLine(line) {
   return cells;
 }
 
+// Transforme le CSV complet en objets JavaScript simples avec les en-têtes
+// comme clés. maxRows permet de réduire le volume pour une démo rapide.
 function parseCsv(csvText) {
   const lines = csvText.trim().split(/\r?\n/);
   const headers = parseCsvLine(lines[0]).map((header) => header.toLowerCase());
@@ -52,6 +61,8 @@ function parseCsv(csvText) {
   });
 }
 
+// Les données CSV arrivent sous forme de chaînes. On convertit explicitement
+// les champs numériques pour que les filtres MongoDB ($gte, $lte, $avg) soient fiables.
 function numberOrNull(value) {
   if (value === null || value === undefined || value === "") {
     return null;
@@ -67,6 +78,8 @@ function slugify(value) {
     .replace(/^-|-$/g, "");
 }
 
+// Première normalisation : on garde une collection brute proche du CSV, mais
+// avec des noms de champs cohérents et les types numériques convertis.
 function cleanRow(row) {
   return {
     source_case: numberOrNull(row.case),
@@ -80,6 +93,7 @@ function cleanRow(row) {
   };
 }
 
+// Classe les notes Zagat sur l'échelle pédagogique utilisée dans le cours.
 function ratingBand(score) {
   if (score === null) return null;
   if (score <= 9) return "poor_to_fair";
@@ -89,6 +103,7 @@ function ratingBand(score) {
   return "extraordinary_to_perfection";
 }
 
+// Convertit le prix brut en tranche lisible pour les exercices de recherche.
 function priceTier(price) {
   if (price === null) return null;
   if (price < 35) return "$";
@@ -97,11 +112,15 @@ function priceTier(price) {
   return "$$$$";
 }
 
+// Le dataset réel ne contient pas de cuisine. On l'infère de manière déterministe
+// pour enrichir les exercices find/aggregate sans masquer l'origine des données.
 function inferredCuisine(index) {
   const cuisines = ["Italian", "French", "American", "Japanese", "Mediterranean", "Steakhouse", "Seafood", "Bistro"];
   return cuisines[index % cuisines.length];
 }
 
+// Les tags sont aussi inférés à partir des notes et du prix. Ils servent à
+// illustrer les tableaux, les requêtes multikey et les index sur tableaux.
 function inferredTags(row, index) {
   const tags = [];
   if (row.food >= 24) tags.push("top_food");
@@ -113,6 +132,8 @@ function inferredTags(row, index) {
   return tags;
 }
 
+// Étape 1 : importer la donnée source dans une collection brute.
+// Cette collection permet de comparer le CSV d'origine au modèle documentaire.
 async function importRawRows() {
   workDb.nyc_restaurant_reviews_raw.drop();
 
@@ -123,6 +144,7 @@ async function importRawRows() {
     workDb.nyc_restaurant_reviews_raw.insertMany(rows, { ordered: false });
   }
 
+  // Index simples utiles pour explorer la collection brute dans les premiers TP.
   workDb.nyc_restaurant_reviews_raw.createIndex({ restaurant: 1 });
   workDb.nyc_restaurant_reviews_raw.createIndex({ food: -1, service: -1 });
   workDb.nyc_restaurant_reviews_raw.createIndex({ price: 1 });
@@ -130,9 +152,15 @@ async function importRawRows() {
   return rows.length;
 }
 
+// Étape 2 : transformer les lignes brutes en deux collections applicatives :
+// - restaurants : document principal orienté établissement ;
+// - reviews : notation agrégée orientée avis, reliée par restaurant_id.
 function transformCollections() {
   workDb.restaurants.drop();
   workDb.reviews.drop();
+
+  // On supprime aussi les collections générées, car elles dépendent des restaurants.
+  // Après un nouvel import, il faut relancer generate-volume.js.
   workDb.orders.drop();
   workDb.review_details.drop();
   workDb.events.drop();
@@ -143,6 +171,7 @@ function transformCollections() {
   const reviews = [];
 
   rawRows.forEach((row, index) => {
+    // Identifiant stable partagé par restaurants, reviews et les futures données générées.
     const restaurantId = `NYC-ZAGAT-${String(row.source_case || index + 1).padStart(4, "0")}`;
     const overall = Number(((row.food + row.decor + row.service) / 3).toFixed(1));
     const locationSide = row.east === 1 ? "East of 5th Avenue" : "West of 5th Avenue";
@@ -196,6 +225,8 @@ function transformCollections() {
     workDb.reviews.insertMany(reviews, { ordered: false });
   }
 
+  // Index alignés sur les requêtes du cours : filtre par cuisine/prix,
+  // tri par note, recherche par tags et jointures sur restaurant_id.
   workDb.restaurants.createIndex({ restaurant_id: 1 }, { unique: true });
   workDb.restaurants.createIndex({ cuisine: 1, price_tier: 1 });
   workDb.restaurants.createIndex({ "ratings.overall": -1 });
@@ -206,6 +237,7 @@ function transformCollections() {
   workDb.reviews.createIndex({ highlights: 1 });
 }
 
+// Point d'entrée : import brut, transformation documentaire, puis résumé lisible.
 (async () => {
   const imported = await importRawRows();
   transformCollections();
