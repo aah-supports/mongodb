@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>TP 04 - Index</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Liste 04 - Index</title><link rel="stylesheet" href="../assets/styles.css" /></head>
 <body>
-  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Sandbox</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <section class="slide compact"><div class="header-bar">TP 04</div><h1>Index et performance</h1><p class="subtitle">Mesurer avec `explain()`, repérer un `COLLSCAN` et créer des index adaptés.</p></section>
+    <section class="slide compact"><div class="header-bar">Liste 04</div><h1>Index et performance</h1><p class="subtitle">Mesurer avec `explain()`, repérer un `COLLSCAN` et créer des index adaptés.</p></section>
     <section class="panel"><h2>Mesurer une requête</h2><pre><code>const restaurantId = db.restaurants.findOne({}, { restaurant_id: 1 }).restaurant_id
 
 db.orders.find({
