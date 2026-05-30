@@ -58,12 +58,11 @@ Le script importe les lignes du CSV source, puis crée un modèle documentaire e
 docker compose exec -e NYC_IMPORT_MAX_ROWS=100 mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-restaurant-reviews.js
 ```
 
-Import de secours sans réseau, depuis le snapshot JSON versionné dans `../data` :
+Import de secours sans réseau, depuis le snapshot JSON versionné dans `data/`.
+Depuis la racine du dépôt, si `mongosh` est installé localement :
 
 ```bash
-docker compose up -d mongodb
-docker compose cp ../data/nyc-food-seed.json mongodb:/tmp/nyc-food-seed.json && \
-docker compose exec -T mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" --quiet --eval 'const seed = EJSON.parse(require("fs").readFileSync("/tmp/nyc-food-seed.json", "utf8")); for (const [name, docs] of Object.entries(seed.collections)) { db.getCollection(name).deleteMany({}); if (docs.length) db.getCollection(name).insertMany(docs); print(`${name}: ${docs.length}`); }'
+mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" --quiet --eval 'const seed = EJSON.parse(require("fs").readFileSync("data/nyc-food-seed.json", "utf8")); for (const [name, docs] of Object.entries(seed.collections)) { db.getCollection(name).deleteMany({}); if (docs.length) db.getCollection(name).insertMany(docs); print(`${name}: ${docs.length}`); }'
 ```
 
 Cette commande charge `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Elle ne génère pas `orders`, `review_details` ni `events` ; lancer `scripts/generate-volume.js` ensuite si besoin.

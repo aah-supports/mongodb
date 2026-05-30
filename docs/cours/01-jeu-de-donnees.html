@@ -144,13 +144,9 @@
       </section>
       <section id="s9" class="slide">
         <h2 class="slide-title">Import de secours sans réseau</h2>
-        <p>Si le téléchargement du CSV ne fonctionne pas, le dépôt contient un snapshot JSON dans `data/nyc-food-seed.json`. Il permet de charger les collections de base en une commande `mongosh`, sans appel externe.</p>
-<pre><code>cd sandbox-mongodb
-docker compose up -d mongodb
-docker compose cp ../data/nyc-food-seed.json mongodb:/tmp/nyc-food-seed.json &amp;&amp; \
-docker compose exec -T mongodb mongosh \
-  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
-  --quiet --eval 'const seed = EJSON.parse(require("fs").readFileSync("/tmp/nyc-food-seed.json", "utf8")); for (const [name, docs] of Object.entries(seed.collections)) { db.getCollection(name).deleteMany({}); if (docs.length) db.getCollection(name).insertMany(docs); print(`${name}: ${docs.length}`); }'</code></pre>
+        <p>Si le téléchargement du CSV ne fonctionne pas, le dépôt contient un snapshot JSON dans `data/nyc-food-seed.json`. Si `mongosh` est installé sur la machine, on peut charger les collections de base directement depuis la racine du dépôt.</p>
+<pre><code>mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
+  --quiet --eval 'const seed = EJSON.parse(require("fs").readFileSync("data/nyc-food-seed.json", "utf8")); for (const [name, docs] of Object.entries(seed.collections)) { db.getCollection(name).deleteMany({}); if (docs.length) db.getCollection(name).insertMany(docs); print(`${name}: ${docs.length}`); }'</code></pre>
         <p>Cette commande remplit `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Pour les collections volumineuses, lancer ensuite `generate-volume.js`.</p>
       </section>
       <section id="s10" class="slide">
