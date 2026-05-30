@@ -62,10 +62,11 @@ Import de secours sans réseau, depuis le snapshot JSON versionné dans `../data
 
 ```bash
 docker compose up -d mongodb
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-seed-json.js
+docker compose cp ../data/nyc-food-seed.json mongodb:/tmp/nyc-food-seed.json && \
+docker compose exec -T mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" --quiet --eval 'const seed = EJSON.parse(require("fs").readFileSync("/tmp/nyc-food-seed.json", "utf8")); for (const [name, docs] of Object.entries(seed.collections)) { db.getCollection(name).deleteMany({}); if (docs.length) db.getCollection(name).insertMany(docs); print(`${name}: ${docs.length}`); }'
 ```
 
-Cette commande charge `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`, puis recrée les index. Elle ne génère pas `orders`, `review_details` ni `events` ; lancer `scripts/generate-volume.js` ensuite si besoin.
+Cette commande charge `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Elle ne génère pas `orders`, `review_details` ni `events` ; lancer `scripts/generate-volume.js` ensuite si besoin.
 
 Collections après import :
 
