@@ -242,6 +242,7 @@ h3 { font-size: 1.2rem; }
 .deck {
   display: grid;
   gap: 0;
+  min-width: 0;
 }
 
 .slide {
@@ -250,6 +251,7 @@ h3 { font-size: 1.2rem; }
   margin-bottom: 30px;
   border-bottom: 1px solid var(--border);
   display: block;
+  min-width: 0;
 }
 
 .slide.compact {
@@ -265,6 +267,12 @@ h3 { font-size: 1.2rem; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 18px;
+}
+
+.two-col > *,
+.grid > *,
+.panel {
+  min-width: 0;
 }
 
 ul,
@@ -283,9 +291,13 @@ pre {
 
 code {
   color: #a7f3d0;
+  overflow-wrap: anywhere;
 }
 
 pre {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   background: var(--code);
   border: 1px solid rgba(63, 63, 70, 0.8);
@@ -293,6 +305,12 @@ pre {
   padding: 14px;
   color: #d4d4d8;
   white-space: pre;
+}
+
+pre code {
+  display: block;
+  min-width: max-content;
+  overflow-wrap: normal;
 }
 
 table {
@@ -308,6 +326,7 @@ td {
   padding: 10px;
   text-align: left;
   vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
 th {
