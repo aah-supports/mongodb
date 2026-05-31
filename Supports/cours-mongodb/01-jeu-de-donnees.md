@@ -98,6 +98,18 @@ Un document représente un restaurant avec ses informations principales :
 }
 ```
 
+Lecture des champs de prix et de notation :
+
+| Champ | Lecture métier |
+|---|---|
+| `price_for_two` | Prix estimé pour deux personnes, en dollars. Ici, `43` signifie environ 43 dollars pour deux. |
+| `price_tier` | Catégorie dérivée du prix : `$`, `$$`, `$$$` ou `$$$$`. Elle permet de filtrer rapidement par niveau de prix. |
+| `ratings.food` | Note de la nourriture sur 30, issue du système Zagat. |
+| `ratings.decor` | Note du décor sur 30. |
+| `ratings.service` | Note du service sur 30. |
+| `ratings.overall` | Note globale calculée à partir des notes `food`, `decor` et `service`. |
+| `rating_band` | Libellé dérivé de la note globale. Par exemple, `20` correspond à `very_good_to_excellent`. |
+
 Usage :
 
 - faire des requêtes `find` ;

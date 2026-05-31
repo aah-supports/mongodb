@@ -84,6 +84,16 @@
     case: 1
   }
 }</code></pre>
+        <table>
+          <tr><th>Champ</th><th>Lecture métier</th></tr>
+          <tr><td>`price_for_two`</td><td>Prix estimé pour deux personnes, en dollars. Ici, `43` signifie environ 43 dollars pour deux.</td></tr>
+          <tr><td>`price_tier`</td><td>Catégorie dérivée du prix : `$`, `$$`, `$$$` ou `$$$$`. Elle permet de filtrer rapidement par niveau de prix.</td></tr>
+          <tr><td>`ratings.food`</td><td>Note de la nourriture sur 30, issue du système Zagat.</td></tr>
+          <tr><td>`ratings.decor`</td><td>Note du décor sur 30.</td></tr>
+          <tr><td>`ratings.service`</td><td>Note du service sur 30.</td></tr>
+          <tr><td>`ratings.overall`</td><td>Note globale calculée à partir des notes `food`, `decor` et `service`.</td></tr>
+          <tr><td>`rating_band`</td><td>Libellé dérivé de la note globale. Par exemple, `20` correspond à `very_good_to_excellent`.</td></tr>
+        </table>
       </section>
       <section id="s6" class="slide">
         <h2 class="slide-title">Schéma applicatif de `restaurants`</h2>
@@ -96,6 +106,7 @@
           <tr><td>`price_for_two`</td><td>number</td><td>Comparaisons numériques.</td></tr>
           <tr><td>`price_tier`</td><td>string</td><td>Filtres `$`, `$$`, `$$$`, `$$$$`.</td></tr>
           <tr><td>`ratings`</td><td>object</td><td>Exemple central de document imbriqué.</td></tr>
+          <tr><td>`rating_band`</td><td>string</td><td>Catégorie lisible dérivée de la note globale.</td></tr>
           <tr><td>`tags`</td><td>array</td><td>Exemple central de tableau et d'index multikey.</td></tr>
         </table>
         <pre><code>db.restaurants.find({
