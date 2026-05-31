@@ -2,14 +2,14 @@
 
 ## Objectifs
 
-À la fin de cette partie, l'apprenant doit savoir :
+À la fin de cette partie, vous serez capable de :
 
 - écrire une requête `find` ;
 - utiliser une projection ;
 - filtrer avec les opérateurs principaux ;
 - interroger des champs imbriqués et des tableaux ;
 - trier, limiter et compter ;
-- reconnaître les requêtes candidates à un index.
+- repérer les requêtes fréquentes ou coûteuses qui filtrent, trient ou paginent sur des champs précis, puis utiliser `explain()` pour vérifier si MongoDB parcourt toute la collection ou utilise un index adapté.
 
 ## Forme générale
 
@@ -148,6 +148,45 @@ db.reviews.find({
 })
 ```
 
+## Expressions avec `$expr`
+
+Dans une requête `find`, `$expr` permet d'utiliser une expression de calcul ou de comparaison entre champs du même document.
+
+Exemple : chercher les restaurants dont la note `food` dépasse la note `decor` d'au moins 4 points.
+
+```javascript
+db.restaurants.find({
+  $expr: {
+    $gte: [
+      { $subtract: ["$ratings.food", "$ratings.decor"] },
+      4
+    ]
+  }
+})
+```
+
+Question rapide : comment chercher les restaurants où l'écart entre `food` et `decor` est d'au moins 4 points, peu importe le sens de l'écart ?
+
+Indice : on peut combiner `$subtract` avec `$abs` pour travailler en valeur absolue.
+
+<details>
+<summary>Voir une solution possible</summary>
+
+```javascript
+db.restaurants.find({
+  $expr: {
+    $gte: [
+      { $abs: { $subtract: ["$ratings.food", "$ratings.decor"] } },
+      4
+    ]
+  }
+})
+```
+
+</details>
+
+À retenir : `$expr` sert quand une condition ne compare pas seulement un champ à une valeur fixe, mais dépend d'un calcul ou d'une comparaison entre champs.
+
 ## Tableaux
 
 Le champ `tags` est un tableau.
@@ -164,7 +203,38 @@ db.restaurants.find({
 })
 ```
 
+À retenir : `$all` est un `AND` appliqué aux éléments d'un même tableau. Ici, `tags` doit contenir `top_food` ET `great_service`. Ce n'est pas un `$and` général : `$and` combine des conditions de requête, éventuellement sur plusieurs champs, alors que `$all` exprime précisément "toutes ces valeurs dans ce tableau".
+
+On peut réécrire l'idée avec `$and` sur le même champ :
+
+```javascript
+db.restaurants.find({
+  $and: [
+    { tags: "top_food" },
+    { tags: "great_service" }
+  ]
+})
+```
+
+Mais `$all` est plus clair ici, car il exprime directement l'intention : vérifier que le tableau `tags` contient toutes les valeurs demandées.
+
+Autre exemple avec `$and` : les conditions portent ici sur des champs différents.
+
+```javascript
+db.restaurants.find({
+  $and: [
+    { cuisine: "French" },
+    { price_tier: "$$" },
+    { "ratings.overall": { $gte: 22 } }
+  ]
+})
+```
+
 ## Existence et type
+
+`$exists` vérifie qu'un champ est présent. `$type` vérifie son type BSON. C'est utile sur une base documentaire, car tous les documents n'ont pas forcément exactement la même structure.
+
+Exemple : repérer les restaurants pour lesquels `price_for_two` existe bien et peut être utilisé comme nombre.
 
 ```javascript
 db.restaurants.find({
@@ -172,9 +242,13 @@ db.restaurants.find({
 })
 ```
 
+On peut ensuite filtrer ou trier ce champ sans mélanger des documents où le prix serait absent ou stocké dans un mauvais type.
+
 ## Expressions régulières
 
-Recherche insensible à la casse :
+Une expression régulière permet de rechercher un motif dans une chaîne de caractères. Dans nos exercices, on l'utilise surtout pour chercher un mot dans le nom d'un restaurant ou dans le texte d'un avis.
+
+`$regex` contient le motif recherché. `$options: "i"` rend la recherche insensible à la casse : `Bistro`, `bistro` et `BISTRO` peuvent alors correspondre.
 
 ```javascript
 db.restaurants.find({
@@ -182,13 +256,25 @@ db.restaurants.find({
 })
 ```
 
-Recherche sur plusieurs mots possibles :
+Le symbole `|` signifie "ou" dans le motif. L'exemple suivant cherche un nom contenant `cafe`, `bistro` ou `ristorante`.
 
 ```javascript
 db.restaurants.find({
   name: { $regex: "cafe|bistro|ristorante", $options: "i" }
 })
 ```
+
+Exemple un peu plus technique : `^` signifie "début du texte". Cette requête cherche les restaurants dont le nom commence par `cafe`, sans tenir compte de la casse.
+
+```javascript
+db.restaurants.find({
+  name: { $regex: "^cafe", $options: "i" }
+})
+```
+
+Pour aller plus loin : documentation officielle MongoDB sur [`$regex`](https://www.mongodb.com/docs/manual/reference/operator/query/regex/).
+
+À ce niveau, l'objectif n'est pas d'apprendre toute la syntaxe des expressions régulières, mais de savoir reconnaître et écrire une recherche textuelle simple.
 
 ## Trier, limiter, paginer
 
@@ -226,7 +312,15 @@ db.restaurants.distinct("price_tier")
 db.reviews.distinct("sentiment")
 ```
 
-## Requêtes métier
+## Construire une requête métier
+
+Jusqu'ici, les exemples isolent un opérateur ou une technique. Dans une vraie demande métier, on combine généralement :
+
+1. un filtre principal ;
+2. une projection pour ne retourner que les champs utiles ;
+3. un tri ou une limite pour rendre le résultat exploitable.
+
+L'objectif des exemples suivants est de traduire une question formulée en français en requête `find`.
 
 Restaurants très bien notés mais abordables :
 
@@ -258,12 +352,37 @@ db.review_details.find({
 })
 ```
 
+Ces requêtes préparent aussi la réflexion sur les index : les champs utilisés souvent dans les filtres ou les tris sont les premiers candidats à observer avec `explain()`.
+
 ## Quand penser index ?
 
-Un index est une structure de données maintenue par MongoDB pour retrouver plus vite les documents.
+Quand une collection contient peu de documents, MongoDB peut parcourir toute la collection sans que cela se voie vraiment. Mais plus le volume augmente, plus certaines requêtes deviennent coûteuses : filtre par cuisine, tri par note, historique de commandes, recherche par tag, etc.
+
+Un index sert à éviter de relire tous les documents quand MongoDB peut s'appuyer sur un champ déjà organisé pour la recherche.
+
+On peut le comparer à l'index d'un livre : pour trouver un sujet, on ne relit pas toutes les pages, on consulte une structure qui pointe vers les pages utiles.
+
+En MongoDB, un index est une structure de données maintenue par la base sur un ou plusieurs champs.
+
+Important : un index ne réordonne pas physiquement les documents dans la collection. Il crée une structure séparée, triée par champ indexé, qui pointe vers les documents.
+
+Exemple mental :
+
+```text
+Collection restaurants :
+[doc A] [doc B] [doc C]
+
+Index sur ratings.overall :
+18.5 -> doc C
+20.7 -> doc A
+24.0 -> doc B
+```
 
 Sans index, MongoDB peut devoir parcourir toute la collection : c'est un `COLLSCAN`.
 Avec un index adapté, MongoDB parcourt une structure triée avant de lire les documents utiles : c'est un `IXSCAN`.
+
+- `COLLSCAN` signifie collection scan : MongoDB lit les documents de la collection un par un.
+- `IXSCAN` signifie index scan : MongoDB parcourt un index pour trouver plus vite les documents utiles.
 
 Une requête fréquente mérite probablement un index si elle filtre ou trie sur :
 
@@ -292,7 +411,9 @@ Un index accélère certaines lectures, mais il a un coût :
 
 ## Vérifier un index avec `explain()`
 
-On ne valide pas un index seulement parce qu'il existe. On vérifie le plan d'exécution.
+On ne valide pas un index seulement parce qu'il existe. On vérifie le plan d'exécution avec `explain("executionStats")`.
+
+Exemple : on veut savoir comment MongoDB exécute une recherche sur la cuisine et le niveau de prix.
 
 ```javascript
 db.restaurants.find({
@@ -301,17 +422,36 @@ db.restaurants.find({
 }).explain("executionStats")
 ```
 
-Points à observer :
+Si le résultat contient `COLLSCAN`, MongoDB parcourt la collection. On peut alors tester un index adapté aux champs filtrés :
+
+```javascript
+db.restaurants.createIndex({ cuisine: 1, price_tier: 1 })
+
+db.restaurants.find({
+  cuisine: "French",
+  price_tier: "$$"
+}).explain("executionStats")
+```
+
+Après création de l'index, on cherche plutôt `IXSCAN` dans le plan. `explain()` retourne beaucoup d'informations : dans ce cours, on se concentre seulement sur quelques indicateurs pratiques.
+
+Questions à se poser :
+
+1. Est-ce que MongoDB lit la collection (`COLLSCAN`) ou un index (`IXSCAN`) ?
+2. Combien de documents sont examinés avec `totalDocsExamined` ?
+3. Combien de documents sont réellement retournés avec `nReturned` ?
+4. Est-ce que `executionTimeMillis` baisse après la création d'un index pertinent ?
 
 | Champ | Sens |
 |---|---|
 | `COLLSCAN` | MongoDB parcourt la collection. À surveiller sur gros volume. |
 | `IXSCAN` | MongoDB utilise un index. |
 | `totalDocsExamined` | Nombre de documents lus. |
+| `nReturned` | Nombre de documents retournés par la requête. |
 | `totalKeysExamined` | Nombre d'entrées d'index parcourues. |
 | `executionTimeMillis` | Temps mesuré pour la requête. |
 
-Objectif pratique : pour une requête sélective, on veut souvent examiner beaucoup moins de documents que la taille totale de la collection.
+Objectif pratique : pour une requête sélective, on veut souvent que `totalDocsExamined` soit proche de `nReturned`, ou au moins très inférieur à la taille totale de la collection.
 
 ## Index composés
 

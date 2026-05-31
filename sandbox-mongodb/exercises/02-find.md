@@ -108,6 +108,8 @@ db.restaurants.find({
 
 ### Expression régulière
 
+Une expression régulière sert ici à chercher un motif dans du texte. `$options: "i"` rend la recherche insensible à la casse.
+
 ```javascript
 db.restaurants.find({
   name: { $regex: "ristorante", $options: "i" }

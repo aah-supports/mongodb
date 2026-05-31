@@ -244,6 +244,22 @@ db.validated_restaurants.insertOne({
 
 La deuxième insertion échoue parce que le champ `ratings` est obligatoire.
 
+## Validation MongoDB : est-ce comme SQL ?
+
+La validation MongoDB permet bien d'imposer une structure et des types. On peut exiger qu'un champ soit présent, qu'il soit une chaîne, un nombre, un objet, un tableau, etc.
+
+Donc oui : plus la validation est stricte, plus on se rapproche d'un contrat de données comparable à SQL.
+
+Mais MongoDB ne devient pas une base relationnelle pour autant :
+
+- la validation est optionnelle et configurable collection par collection ;
+- elle peut être partielle : on valide certains champs sans figer tout le document ;
+- les documents peuvent contenir naturellement des objets imbriqués et des tableaux ;
+- les relations ne sont pas modélisées par défaut avec des clés étrangères comme en SQL ;
+- le modèle est souvent pensé à partir des requêtes de l'application, pas seulement à partir d'une normalisation en tables.
+
+À retenir : MongoDB n'est pas "sans schéma". Il permet de choisir le niveau de contrainte : très flexible au début, plus strict quand le modèle devient stable.
+
 ## Documents imbriqués
 
 MongoDB permet de stocker des objets dans un document.
@@ -288,6 +304,21 @@ Requête sur un tableau :
 ```javascript
 db.restaurants.find({ tags: "top_food" })
 ```
+
+## Cas d'usage d'une base documentaire
+
+Une base NoSQL orientée document est pertinente quand les données sont naturellement proches d'un document JSON : objets imbriqués, tableaux, informations consultées ensemble.
+
+Cas d'usage typiques :
+
+- catalogue produit avec caractéristiques variables selon les catégories ;
+- profils utilisateurs avec préférences, adresses, paramètres et historique léger ;
+- contenus éditoriaux ou CMS avec blocs, métadonnées et versions ;
+- logs, événements ou données applicatives semi-structurées ;
+- API JSON où le format stocké ressemble au format renvoyé au frontend ;
+- données métier qui évoluent rapidement pendant la phase de conception.
+
+MongoDB est moins adapté si le besoin principal repose sur de nombreuses jointures fortes, des contraintes relationnelles strictes entre tables, ou un modèle très stable et très normalisé. Dans ces cas, une base SQL peut être plus simple et plus robuste.
 
 ## Quand imbriquer et quand référencer ?
 

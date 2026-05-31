@@ -48,10 +48,13 @@ db.restaurants.find(
 ## 6. Restaurants dont le nom contient `cafe`, `bistro` ou `ristorante`
 
 ```javascript
-db.restaurants.find(
-  { name: { $regex: "cafe|bistro|ristorante", $options: "i" } },
-  { _id: 0, name: 1, cuisine: 1, price_tier: 1 }
-)
+// Recherche les restaurants dont le nom contient "cafe", "bistro" ou "ristorante",
+// sans tenir compte des majuscules/minuscules grâce à l'option "i".
+// La projection n'affiche que le nom, la cuisine et la catégorie de prix.
+  db.restaurants.find(
+    { name: { $regex: "cafe|bistro|ristorante", $options: "i" } },
+    { _id: 0, name: 1, cuisine: 1, price_tier: 1 }
+  )
 ```
 
 ## 7. Avis agrégés `reviews` avec sentiment `excellent`
@@ -69,6 +72,8 @@ Les collections de volume sont créées automatiquement au premier lancement d'u
 Dans `mongosh` :
 
 ```javascript
+// un document restaurant de la collection
+// si on veut le premier  db.restaurants.findOne({}, { sort: { restaurant_id: 1 } })
 const restaurantId = db.restaurants.findOne({}, { restaurant_id: 1 }).restaurant_id
 
 db.orders.find(
@@ -90,17 +95,32 @@ db.review_details.find(
 
 Index pertinents :
 
+Attention : on ne crée pas tous ces index automatiquement en production. Chaque index occupe de l'espace disque et ralentit un peu les écritures, car MongoDB doit le maintenir à chaque insertion, modification ou suppression. Ici, la liste sert à identifier les index candidats à tester avec `explain()` selon les requêtes réellement fréquentes. Le cours détaille ensuite comment lire `explain()` pour vérifier si MongoDB parcourt toute la collection (`COLLSCAN`) ou utilise un index (`IXSCAN`).
+
 ```javascript
+// Accélère les filtres et tris sur la note globale, par exemple les meilleurs restaurants.
 db.restaurants.createIndex({ "ratings.overall": -1 })
+
+// Accélère les recherches fréquentes par type de cuisine puis niveau de prix.
 db.restaurants.createIndex({ cuisine: 1, price_tier: 1 })
+
+// Index multikey : utile pour chercher les restaurants qui possèdent un ou plusieurs tags.
 db.restaurants.createIndex({ tags: 1 })
+
+// Accélère les avis filtrés par sentiment, puis triés ou filtrés par score global.
 db.reviews.createIndex({ sentiment: 1, "scores.overall": -1 })
+
+// Accélère l'historique des commandes d'un restaurant, souvent trié par date récente.
 db.orders.createIndex({ restaurant_id: 1, created_at: -1 })
+
+// Accélère les recherches de commandes par statut, puis les classements ou filtres par montant.
 db.orders.createIndex({ status: 1, amount: -1 })
+
+// Accélère les avis détaillés vérifiés, souvent filtrés ou triés par note.
 db.review_details.createIndex({ verified_visit: 1, rating: -1 })
 ```
 
-Justification :
+Même logique résumée :
 
 - `ratings.overall` accélère les seuils et classements par note ;
 - `cuisine + price_tier` accélère les filtres métier fréquents ;
@@ -110,7 +130,7 @@ Justification :
 - `status + amount` accélère les commandes payées au-dessus d'un seuil ;
 - `verified_visit + rating` accélère les avis détaillés exploitables.
 
-## Exercices avancés
+## Exercices supplémentaires
 
 ### 1. Restaurants `Italian` ou `French`, prix entre 35 et 70, bonne note globale
 

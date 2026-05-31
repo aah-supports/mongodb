@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Niveaux</a><a href="#s2">Créer</a><a href="#s3">Modèle</a><a href="#s4">Schémas</a><a href="#s5">Imbriquer</a></div>
+    <div class="slide-nav"><a href="#s1">Niveaux</a><a href="#s2">Créer</a><a href="#s3">Modèle</a><a href="#s4">Schémas</a><a href="#s4b">Validation</a><a href="#s4c">Cas d'usage</a><a href="#s5">Imbriquer</a></div>
     <article class="deck">
       <section id="s1" class="slide"><h1>Créer une base et comprendre le schéma</h1><table><tr><th>Niveau</th><th>Exemple</th></tr><tr><td>Base</td><td>`nyc_food`</td></tr><tr><td>Collection</td><td>`restaurants`</td></tr><tr><td>Document</td><td>Un restaurant en BSON/JSON.</td></tr></table></section>
       <section id="s2" class="slide"><h2 class="slide-title">Création implicite</h2><pre><code>use demo_schema
@@ -16,6 +16,19 @@ db.restaurants.insertOne({
 })</code></pre><p>Une base et une collection existent physiquement après la première écriture.</p></section>
       <section id="s3" class="slide"><h2 class="slide-title">Modèle du fil rouge</h2><table><tr><th>Collection</th><th>Rôle</th></tr><tr><td>`nyc_restaurant_reviews_raw`</td><td>Données brutes OpenIntro/Zagat.</td></tr><tr><td>`restaurants`</td><td>Vue orientée restaurant.</td></tr><tr><td>`reviews`</td><td>Avis et notes agrégées.</td></tr><tr><td>`neighborhoods`</td><td>Collection annexe.</td></tr><tr><td>`orders`</td><td>Commandes générées.</td></tr><tr><td>`review_details`</td><td>Avis détaillés générés.</td></tr><tr><td>`events`</td><td>Événements générés.</td></tr></table></section>
       <section id="s4" class="slide"><h2 class="slide-title">Trois niveaux de schéma</h2><div class="grid"><div class="card"><h3>Schéma implicite</h3><p class="meta">Structure réellement présente dans les documents.</p></div><div class="card"><h3>Schéma applicatif</h3><p class="meta">Modèle attendu par l'application, la documentation et les requêtes.</p></div><div class="card"><h3>Validation MongoDB</h3><p class="meta">Règles JSON Schema appliquées par la base.</p></div></div></section>
+      <section id="s4b" class="slide"><h2 class="slide-title">Validation MongoDB et SQL</h2><p>La validation MongoDB peut imposer des champs obligatoires, des types et une structure. Plus elle est stricte, plus on se rapproche d'un contrat de données comparable à SQL.</p><pre><code>db.createCollection("validated_restaurants", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["name", "cuisine"],
+      properties: {
+        name: { bsonType: "string" },
+        price_for_two: { bsonType: "number" }
+      }
+    }
+  }
+})</code></pre><p>Mais MongoDB reste documentaire : validation optionnelle, schéma partiel possible, objets imbriqués, tableaux, et pas de clés étrangères relationnelles par défaut.</p></section>
+      <section id="s4c" class="slide"><h2 class="slide-title">Quand choisir une base documentaire ?</h2><p>Une base orientée document est pertinente quand les données ressemblent naturellement à du JSON et sont souvent lues ensemble.</p><ul><li>Catalogue produit avec caractéristiques variables.</li><li>Profils utilisateurs avec préférences et paramètres.</li><li>CMS, contenus éditoriaux, blocs et métadonnées.</li><li>Logs, événements ou données semi-structurées.</li><li>API JSON où le stockage ressemble au format renvoyé.</li></ul><p>Une base SQL reste souvent préférable pour un modèle très stable, très normalisé, avec beaucoup de jointures et de contraintes relationnelles fortes.</p></section>
       <section id="s5" class="slide"><h2 class="slide-title">Imbriquer ou référencer ?</h2><div class="two-col"><div><h3>Imbriquer</h3><p>Quand les données sont consultées ensemble et ne grossissent pas sans limite.</p><pre><code>ratings: {
   food: 22,
   service: 20

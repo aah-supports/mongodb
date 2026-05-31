@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">SQL</a><a href="#s3">Forme</a><a href="#s4">Pas à pas</a><a href="#s5">Projection</a><a href="#s6">Opérateurs</a><a href="#s7">Logique</a><a href="#s8">Documents</a><a href="#s9">Tableaux</a><a href="#s10">Tri</a><a href="#s11">Index</a><a href="#s12">Explain</a><a href="#s13">Index composés</a><a href="#s14">Géospatial</a><a href="#s15">Limites</a></div>
+    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">SQL</a><a href="#s3">Forme</a><a href="#s4">Pas à pas</a><a href="#s5">Projection</a><a href="#s6">Opérateurs</a><a href="#s7">Logique</a><a href="#s8">Documents</a><a href="#s8-expr">Expr</a><a href="#s9">Tableaux</a><a href="#s9-exists">Existence</a><a href="#s10-regex">Regex</a><a href="#s10">Tri</a><a href="#s10b">Métier</a><a href="#s11">Index</a><a href="#s12">Explain</a><a href="#s13">Index composés</a><a href="#s14">Géospatial</a><a href="#s15">Limites</a></div>
     <article class="deck">
       <section id="s1" class="slide">
         <h1>Rechercher avec `find`</h1>
@@ -140,6 +140,33 @@ db.restaurants.find({
 })</code></pre>
         <p>En SQL, ces informations seraient souvent réparties en colonnes ou dans une table reliée. Ici, elles vivent dans le document.</p>
       </section>
+      <section id="s8-expr" class="slide">
+        <h2 class="slide-title">Expressions avec `$expr`</h2>
+        <p>Dans une requête `find`, `$expr` permet d'utiliser une expression de calcul ou de comparaison entre champs du même document.</p>
+        <pre><code>// food dépasse decor d'au moins 4 points
+db.restaurants.find({
+  $expr: {
+    $gte: [
+      { $subtract: ["$ratings.food", "$ratings.decor"] },
+      4
+    ]
+  }
+})</code></pre>
+        <p>Question rapide : comment chercher les restaurants où l'écart entre `food` et `decor` est d'au moins 4 points, peu importe le sens de l'écart ?</p>
+        <p>Indice : on peut combiner `$subtract` avec `$abs` pour travailler en valeur absolue.</p>
+        <details>
+          <summary>Voir une solution possible</summary>
+          <pre><code>db.restaurants.find({
+  $expr: {
+    $gte: [
+      { $abs: { $subtract: ["$ratings.food", "$ratings.decor"] } },
+      4
+    ]
+  }
+})</code></pre>
+        </details>
+        <p>À retenir : `$expr` sert quand une condition ne compare pas seulement un champ à une valeur fixe, mais dépend d'un calcul ou d'une comparaison entre champs.</p>
+      </section>
       <section id="s9" class="slide">
         <h2 class="slide-title">Tableaux : tags et opérateurs utiles</h2>
         <pre><code>// Le tableau contient au moins cette valeur
@@ -152,7 +179,53 @@ db.restaurants.find({
 db.restaurants.find({
   tags: { $in: ["fine_dining", "good_value"] }
 })</code></pre>
+        <p>À retenir : `$all` est un `AND` appliqué aux éléments d'un même tableau. Ici, `tags` doit contenir `top_food` ET `great_service`. Ce n'est pas un `$and` général : `$and` combine des conditions de requête, éventuellement sur plusieurs champs, alors que `$all` exprime précisément "toutes ces valeurs dans ce tableau".</p>
+        <p>On peut réécrire l'idée avec `$and` sur le même champ.</p>
+        <pre><code>db.restaurants.find({
+  $and: [
+    { tags: "top_food" },
+    { tags: "great_service" }
+  ]
+})</code></pre>
+        <p>Mais `$all` est plus clair ici, car il exprime directement l'intention : vérifier que le tableau `tags` contient toutes les valeurs demandées.</p>
+        <p>Autre exemple avec `$and` : les conditions portent ici sur des champs différents.</p>
+        <pre><code>db.restaurants.find({
+  $and: [
+    { cuisine: "French" },
+    { price_tier: "$$" },
+    { "ratings.overall": { $gte: 22 } }
+  ]
+})</code></pre>
         <p>Un index sur un tableau devient un index multikey. Il est utile, mais il faut éviter de multiplier les index multikey sans besoin clair.</p>
+      </section>
+      <section id="s9-exists" class="slide">
+        <h2 class="slide-title">Existence et type</h2>
+        <p>`$exists` vérifie qu'un champ est présent. `$type` vérifie son type BSON. C'est utile sur une base documentaire, car tous les documents n'ont pas forcément exactement la même structure.</p>
+        <p>Exemple : repérer les restaurants pour lesquels `price_for_two` existe bien et peut être utilisé comme nombre.</p>
+        <pre><code>db.restaurants.find({
+  price_for_two: { $exists: true, $type: "number" }
+})</code></pre>
+        <p>On peut ensuite filtrer ou trier ce champ sans mélanger des documents où le prix serait absent ou stocké dans un mauvais type.</p>
+      </section>
+      <section id="s10-regex" class="slide">
+        <h2 class="slide-title">Expressions régulières : chercher dans du texte</h2>
+        <p>Une expression régulière permet de rechercher un motif dans une chaîne de caractères. Dans nos exercices, on l'utilise surtout pour chercher un mot dans le nom d'un restaurant ou dans le texte d'un avis.</p>
+        <pre><code>// Recherche insensible à la casse
+db.restaurants.find({
+  name: { $regex: "bistro", $options: "i" }
+})
+
+// Plusieurs mots possibles : cafe OU bistro OU ristorante
+db.restaurants.find({
+  name: { $regex: "cafe|bistro|ristorante", $options: "i" }
+})
+
+// Nom qui commence par cafe
+db.restaurants.find({
+  name: { $regex: "^cafe", $options: "i" }
+})</code></pre>
+        <p>`$regex` contient le motif recherché. `$options: "i"` ignore la casse. Le symbole `|` signifie "ou" dans le motif, et `^` signifie "début du texte". À ce niveau, l'objectif est seulement de savoir écrire une recherche textuelle simple.</p>
+        <p>Pour aller plus loin : <a href="https://www.mongodb.com/docs/manual/reference/operator/query/regex/" target="_blank" rel="noopener">documentation officielle MongoDB sur `$regex`</a>.</p>
       </section>
       <section id="s10" class="slide">
         <h2 class="slide-title">Tri, limite, pagination, comptage</h2>
@@ -168,9 +241,43 @@ db.restaurants.find({
 db.restaurants.distinct("cuisine")</code></pre>
         <p>`skip` est simple pour apprendre, mais peut devenir coûteux sur de gros volumes. En production, on privilégie souvent une pagination par curseur.</p>
       </section>
+      <section id="s10b" class="slide">
+        <h2 class="slide-title">Construire une requête métier</h2>
+        <p>Les opérateurs isolés deviennent utiles quand on les combine pour répondre à une question formulée en français.</p>
+        <p>Une requête métier combine souvent un filtre principal, une projection, puis un tri ou une limite.</p>
+        <pre><code>// Restaurants très bien notés mais abordables
+db.restaurants.find(
+  {
+    "ratings.overall": { $gte: 22 },
+    price_for_two: { $lte: 50 }
+  },
+  { _id: 0, name: 1, cuisine: 1, price_for_two: 1, "ratings.overall": 1 }
+).sort({ "ratings.overall": -1, price_for_two: 1 })
+
+// Avis détaillés négatifs et vérifiés
+db.review_details.find({
+  verified_visit: true,
+  sentiment: "negative"
+})</code></pre>
+        <p>Ces exemples préparent la réflexion sur les index : les champs souvent utilisés dans les filtres ou les tris sont les premiers candidats à observer avec `explain()`.</p>
+      </section>
       <section id="s11" class="slide">
         <h2 class="slide-title">À quoi sert un index ?</h2>
+        <p>Quand une collection contient peu de documents, MongoDB peut parcourir toute la collection sans que cela se voie vraiment. Plus le volume augmente, plus certains filtres, tris ou historiques deviennent coûteux.</p>
+        <p>Un index sert à éviter de relire tous les documents quand MongoDB peut s'appuyer sur un champ déjà organisé pour la recherche. C'est proche de l'index d'un livre : on consulte une structure qui pointe vers les entrées utiles.</p>
+        <p>Important : un index ne réordonne pas physiquement les documents dans la collection. Il crée une structure séparée, triée par champ indexé, qui pointe vers les documents.</p>
+        <pre><code>Collection restaurants :
+[doc A] [doc B] [doc C]
+
+Index sur ratings.overall :
+18.5 -> doc C
+20.7 -> doc A
+24.0 -> doc B</code></pre>
         <p>Sans index, MongoDB peut devoir parcourir toute la collection : c'est un `COLLSCAN`. Avec un index adapté, MongoDB parcourt une structure triée avant d'aller lire les documents utiles : c'est un `IXSCAN`.</p>
+        <ul>
+          <li>`COLLSCAN` = collection scan : MongoDB lit les documents un par un.</li>
+          <li>`IXSCAN` = index scan : MongoDB parcourt un index pour trouver plus vite les documents utiles.</li>
+        </ul>
         <table>
           <tr><th>Situation</th><th>Sans index</th><th>Avec index</th></tr>
           <tr><td>Filtrer par `cuisine`</td><td>Lecture de nombreux documents.</td><td>Accès direct aux valeurs indexées.</td></tr>
@@ -185,18 +292,35 @@ db.orders.createIndex({ restaurant_id: 1, created_at: -1 })</code></pre>
       <section id="s12" class="slide">
         <h2 class="slide-title">Vérifier avec `explain()`</h2>
         <p>On ne devine pas la performance : on observe le plan d'exécution. `explain("executionStats")` indique combien de documents et de clés d'index ont été examinés.</p>
+        <p>Exemple : on veut savoir comment MongoDB exécute une recherche sur la cuisine et le niveau de prix.</p>
         <pre><code>db.restaurants.find({
   cuisine: "French",
   price_tier: "$$"
 }).explain("executionStats")</code></pre>
+        <p>Si le résultat contient `COLLSCAN`, MongoDB parcourt la collection. On peut alors tester un index adapté aux champs filtrés.</p>
+        <pre><code>db.restaurants.createIndex({ cuisine: 1, price_tier: 1 })
+
+db.restaurants.find({
+  cuisine: "French",
+  price_tier: "$$"
+}).explain("executionStats")</code></pre>
+        <p>Après création de l'index, on cherche plutôt `IXSCAN` dans le plan. `explain()` retourne beaucoup d'informations : dans ce cours, on se concentre seulement sur quelques indicateurs pratiques.</p>
+        <ol>
+          <li>MongoDB lit-il la collection (`COLLSCAN`) ou un index (`IXSCAN`) ?</li>
+          <li>Combien de documents sont examinés avec `totalDocsExamined` ?</li>
+          <li>Combien de documents sont retournés avec `nReturned` ?</li>
+          <li>Est-ce que `executionTimeMillis` baisse après un index pertinent ?</li>
+        </ol>
         <table>
           <tr><th>Indicateur</th><th>Interprétation</th></tr>
           <tr><td>`COLLSCAN`</td><td>MongoDB parcourt la collection. À surveiller sur gros volume.</td></tr>
           <tr><td>`IXSCAN`</td><td>MongoDB utilise un index.</td></tr>
           <tr><td>`totalDocsExamined`</td><td>Nombre de documents lus.</td></tr>
+          <tr><td>`nReturned`</td><td>Nombre de documents retournés par la requête.</td></tr>
           <tr><td>`totalKeysExamined`</td><td>Nombre d'entrées d'index parcourues.</td></tr>
           <tr><td>`executionTimeMillis`</td><td>Temps mesuré pour la requête.</td></tr>
         </table>
+        <p>Objectif pratique : pour une requête sélective, `totalDocsExamined` doit rester proche de `nReturned`, ou au moins très inférieur à la taille totale de la collection.</p>
       </section>
       <section id="s13" class="slide">
         <h2 class="slide-title">Index simples, composés et multikey</h2>
