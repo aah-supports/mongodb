@@ -4,14 +4,12 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <section class="slide compact"><div class="header-bar">Liste 01</div><h1>Installation et exploration</h1><p class="subtitle">Démarrer le sandbox, importer le dataset et observer les premières collections.</p></section>
-    <section class="panel"><h2>Objectifs</h2><ul><li>Démarrer MongoDB avec Docker Compose.</li><li>Importer un vrai dataset de notations clients.</li><li>Se connecter avec Mongo Express et `mongosh`.</li><li>Identifier les collections et la structure des documents.</li></ul></section>
+    <section class="slide compact"><div class="header-bar">Liste 01</div><h1>Installation et exploration</h1><p class="subtitle">Démarrer le sandbox et observer les collections initialisées automatiquement.</p></section>
+    <section class="panel"><h2>Objectifs</h2><ul><li>Démarrer MongoDB avec Docker Compose.</li><li>Vérifier la création automatique des collections.</li><li>Se connecter avec Mongo Express et `mongosh`.</li><li>Identifier les collections et la structure des documents.</li></ul></section>
     <section class="panel"><h2>Démarrage</h2><pre><code>docker compose up -d
 docker compose ps</code></pre><p>Mongo Express : `http://localhost:8083`</p><pre><code>docker compose exec mongodb mongosh \
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre></section>
-    <section class="panel"><h2>Import du dataset</h2><pre><code>docker compose exec mongodb mongosh \
-  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
-  /scripts/import-restaurant-reviews.js</code></pre><ul><li>`nyc_restaurant_reviews_raw` : données brutes du CSV.</li><li>`restaurants` : vue documentaire orientée restaurant.</li><li>`reviews` : vue orientée avis/notation.</li><li>`neighborhoods` : collection pédagogique annexe.</li></ul></section>
+    <section class="panel"><h2>Collections créées au démarrage</h2><p>Au premier lancement avec un volume vide, le conteneur MongoDB charge les collections de base et génère les collections de volume.</p><ul><li>`nyc_restaurant_reviews_raw` : données brutes du CSV.</li><li>`restaurants` : vue documentaire orientée restaurant.</li><li>`reviews` : vue orientée avis/notation.</li><li>`neighborhoods` : collection pédagogique annexe.</li><li>`orders`, `review_details`, `events` : collections générées pour les exercices de volume.</li></ul></section>
     <section class="panel"><h2>Exploration</h2><pre><code>show dbs
 db
 show collections

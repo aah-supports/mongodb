@@ -65,12 +65,7 @@ db.reviews.find(
 
 ## 8. Les 10 commandes les plus récentes d'un restaurant existant
 
-Générer les collections de volume si nécessaire :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/generate-volume.js
-```
-
+Les collections de volume sont créées automatiquement au premier lancement d'un volume MongoDB vide.
 Dans `mongosh` :
 
 ```javascript

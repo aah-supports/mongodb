@@ -6,16 +6,36 @@ db.createUser({
   roles: [{ role: "readWrite", db: "nyc_food" }]
 });
 
-db.neighborhoods.drop();
+function loadJsonArrayCollection(collectionName) {
+  const path = `/seed/nyc-food/${collectionName}.json`;
+  const documents = EJSON.parse(require("fs").readFileSync(path, "utf8"));
 
-db.neighborhoods.insertMany([
-  { name: "Midtown", borough: "Manhattan", center: { type: "Point", coordinates: [-73.9855, 40.7580] } },
-  { name: "Flushing", borough: "Queens", center: { type: "Point", coordinates: [-73.8370, 40.7675] } },
-  { name: "Brooklyn Heights", borough: "Brooklyn", center: { type: "Point", coordinates: [-73.9958, 40.6960] } },
-  { name: "Belmont", borough: "Bronx", center: { type: "Point", coordinates: [-73.8860, 40.8540] } },
-  { name: "St. George", borough: "Staten Island", center: { type: "Point", coordinates: [-74.0735, 40.6435] } }
-]);
+  db.getCollection(collectionName).drop();
+  if (documents.length > 0) {
+    db.getCollection(collectionName).insertMany(documents);
+  }
 
+  print(`${collectionName}: ${documents.length} documents loaded`);
+}
+
+loadJsonArrayCollection("nyc_restaurant_reviews_raw");
+loadJsonArrayCollection("restaurants");
+loadJsonArrayCollection("reviews");
+loadJsonArrayCollection("neighborhoods");
+
+db.nyc_restaurant_reviews_raw.createIndex({ restaurant: 1 });
+db.nyc_restaurant_reviews_raw.createIndex({ food: -1, service: -1 });
+db.nyc_restaurant_reviews_raw.createIndex({ price: 1 });
+db.restaurants.createIndex({ restaurant_id: 1 }, { unique: true });
+db.restaurants.createIndex({ cuisine: 1, price_tier: 1 });
+db.restaurants.createIndex({ "ratings.overall": -1 });
+db.restaurants.createIndex({ location_area: 1, "ratings.food": -1 });
+db.restaurants.createIndex({ tags: 1 });
+db.reviews.createIndex({ restaurant_id: 1, reviewed_at: -1 });
+db.reviews.createIndex({ sentiment: 1, "scores.overall": -1 });
+db.reviews.createIndex({ highlights: 1 });
 db.neighborhoods.createIndex({ center: "2dsphere" });
 
-print("nyc_food sandbox initialized. Run /scripts/import-restaurant-reviews.js to load the restaurant reviews dataset.");
+load("/scripts/generate-volume.js");
+
+print("nyc_food sandbox initialized with base and generated collections.");

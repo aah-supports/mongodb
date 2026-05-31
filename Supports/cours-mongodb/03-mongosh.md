@@ -20,7 +20,7 @@ Dans ce cours, `mongosh` est l'outil principal pour :
 - pratiquer `aggregate` ;
 - créer des index ;
 - gérer les utilisateurs ;
-- lancer des scripts d'import ;
+- comprendre le chemin d'initialisation et l'import de secours ;
 - comprendre précisément ce que fait MongoDB.
 
 ## Connexion au sandbox
@@ -151,19 +151,23 @@ db.restaurants.aggregate([
 ])
 ```
 
-## Exécuter un script
+## Création des collections
 
-Importer le dataset de notations :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-restaurant-reviews.js
-```
-
-Générer les données massives :
+Dans le parcours normal, les collections sont créées au premier lancement des conteneurs avec un volume MongoDB vide.
 
 ```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/generate-volume.js
+docker compose up -d
 ```
+
+Si un poste a déjà un ancien volume, repartir de zéro :
+
+```bash
+docker compose down -v
+docker compose up -d
+```
+
+Si les collections de base doivent être recréées manuellement, utiliser les commandes `mongoimport --drop` du cours jeu de données.
+Les apprenants n'ont pas à lancer de script d'import ou de génération dans le parcours standard.
 
 ## Message clé
 

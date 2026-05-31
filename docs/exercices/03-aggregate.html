@@ -5,9 +5,7 @@
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a href="../cours.html">Cours</a><a class="active" href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
     <section class="slide compact"><div class="header-bar">Liste 03</div><h1>Maîtriser `aggregate`</h1><p class="subtitle">Construire des pipelines, répondre à des questions métier et relier les collections.</p></section>
-    <section class="panel"><h2>Préparation</h2><p>Les collections `restaurants` et `reviews` viennent du dataset réel. `orders`, `review_details` et `events` sont générées.</p><pre><code>docker compose exec mongodb mongosh \
-  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
-  /scripts/generate-volume.js</code></pre></section>
+    <section class="panel"><h2>Préparation</h2><p>Les collections `restaurants` et `reviews` viennent du dataset réel. `orders`, `review_details` et `events` sont générées automatiquement au premier lancement d'un volume MongoDB vide.</p></section>
     <section class="panel"><h2>Pipeline minimal</h2><pre><code>db.restaurants.aggregate([
   { $group: { _id: "$cuisine", restaurants: { $sum: 1 } } },
   { $sort: { restaurants: -1 } }

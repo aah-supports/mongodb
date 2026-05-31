@@ -45,11 +45,7 @@ db.restaurants.aggregate([
 
 ## 4. Chiffre d'affaires par canal de vente
 
-Générer les commandes si nécessaire :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/generate-volume.js
-```
+Les collections `orders`, `review_details` et `events` sont créées automatiquement au premier lancement d'un volume MongoDB vide.
 
 Pipeline :
 
@@ -188,4 +184,3 @@ Vérifier :
 ```javascript
 db.restaurant_kpis.find().sort({ revenue: -1 }).limit(10)
 ```
-

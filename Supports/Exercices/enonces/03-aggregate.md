@@ -7,13 +7,7 @@
 - Relier restaurants, avis clients, commandes et événements.
 - Utiliser les opérateurs d'agrégation les plus fréquents.
 
-Les collections `restaurants` et `reviews` viennent du dataset réel OpenIntro/Zagat. Les collections `orders`, `review_details` et `events` sont générées pour travailler les volumes et les performances.
-
-Si les collections générées n'existent pas encore :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/generate-volume.js
-```
+Les collections `restaurants` et `reviews` viennent du dataset réel OpenIntro/Zagat. Les collections `orders`, `review_details` et `events` sont générées automatiquement au premier lancement d'un volume MongoDB vide pour travailler les volumes et les performances.
 
 ## Pipeline minimal
 

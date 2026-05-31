@@ -2,11 +2,7 @@
 
 ## Préparation
 
-Générer les commandes si nécessaire :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/generate-volume.js
-```
+Les collections de volume sont créées automatiquement au premier lancement d'un volume MongoDB vide.
 
 Choisir un restaurant existant :
 

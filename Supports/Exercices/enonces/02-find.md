@@ -128,11 +128,8 @@ db.restaurants.find({
 
 Les commandes, avis détaillés et événements ne viennent pas du dataset réel. Ils sont générés pour simuler un usage applicatif massif.
 
-Avant les exercices sur `orders` et `review_details`, lancer :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/generate-volume.js
-```
+Dans le parcours normal, les collections `orders`, `review_details` et `events` sont créées automatiquement au premier lancement d'un volume MongoDB vide.
+Vérifier leur présence avec `show collections` et `countDocuments()`.
 
 ## Exercices
 

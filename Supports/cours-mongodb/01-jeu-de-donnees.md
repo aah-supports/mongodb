@@ -149,6 +149,51 @@ Usage pédagogique :
 - comparer une collection annexe avec les collections métier principales ;
 - discuter séparation des responsabilités entre collections.
 
+## Création des collections
+
+Le cours garde volontairement deux chemins seulement.
+
+### Chemin normal : démarrage des conteneurs
+
+Au premier démarrage avec un volume MongoDB vide, Docker initialise automatiquement :
+
+- la base `nyc_food` ;
+- l'utilisateur `student` ;
+- les collections de base `nyc_restaurant_reviews_raw`, `restaurants`, `reviews`, `neighborhoods` ;
+- les collections générées `orders`, `review_details`, `events`.
+
+Commande :
+
+```bash
+cd sandbox-mongodb
+docker compose up -d
+```
+
+Si un poste contient déjà un ancien volume, repartir de zéro :
+
+```bash
+docker compose down -v
+docker compose up -d
+```
+
+### Chemin de secours : import JSON manuel
+
+Le dépôt contient un fichier JSON par collection de base dans `data/nyc-food/`.
+`mongoimport --drop` supprime la collection existante puis la recrée depuis le fichier JSON.
+
+```bash
+cd sandbox-mongodb
+docker compose up -d mongodb
+docker compose cp ../data/nyc-food/. mongodb:/tmp/nyc-food/
+
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection nyc_restaurant_reviews_raw --file /tmp/nyc-food/nyc_restaurant_reviews_raw.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection restaurants --file /tmp/nyc-food/restaurants.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection reviews --file /tmp/nyc-food/reviews.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection neighborhoods --file /tmp/nyc-food/neighborhoods.json --jsonArray --drop
+```
+
+Ces commandes ne concernent que les collections de base. Les collections de volume sont créées par l'initialisation automatique d'un volume vide.
+
 ## Données générées
 
 Les collections suivantes ne viennent pas du dataset réel :
@@ -157,7 +202,7 @@ Les collections suivantes ne viennent pas du dataset réel :
 - `review_details` ;
 - `events`.
 
-Elles sont générées par `scripts/generate-volume.js` pour simuler un contexte applicatif massif.
+Elles sont générées automatiquement au premier lancement d'un volume vide pour simuler un contexte applicatif massif.
 
 Elles servent à travailler :
 

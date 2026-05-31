@@ -1,6 +1,6 @@
 # Sandbox MongoDB - NYC Restaurant Reviews 360
 
-Sandbox local pour le cours MongoDB / NoSQL. Il contient MongoDB, Mongo Express, un import d'un vrai dataset de notations clients de restaurants new-yorkais, des scripts de génération de volume et des exercices centrés sur `find`, `aggregate`, les index et l'administration.
+Sandbox local pour le cours MongoDB / NoSQL. Il contient MongoDB, Mongo Express, un dataset de notations clients de restaurants new-yorkais, des données générées pour le volume et des exercices centrés sur `find`, `aggregate`, les index et l'administration.
 
 ## Démarrage
 
@@ -44,22 +44,23 @@ Source réelle :
 - URL source : `https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv`
 - Champs : restaurant, prix pour deux, notes food/decor/service, position est/ouest de 5th Avenue
 
-Au démarrage, Docker initialise seulement la base, l'utilisateur `student` et la collection `neighborhoods`.
+Au premier démarrage avec un volume MongoDB vide, Docker initialise la base `nyc_food`, l'utilisateur `student`, les quatre collections de base et les trois collections générées.
 
-Importer les données :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-restaurant-reviews.js
-```
-
-Le script importe les lignes du CSV source, puis crée un modèle documentaire exploitable. Pour limiter le nombre de lignes :
+Le chemin normal est donc simplement :
 
 ```bash
-docker compose exec -e NYC_IMPORT_MAX_ROWS=100 mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-restaurant-reviews.js
+docker compose up -d
 ```
 
-Import de secours sans réseau, depuis les fichiers JSON versionnés dans `../data/nyc-food`.
-`mongoimport --drop` supprime la collection existante puis la recrée depuis le fichier JSON :
+Si un poste a déjà un ancien volume ou si l'on veut repartir de zéro :
+
+```bash
+docker compose down -v
+docker compose up -d
+```
+
+Import de secours, depuis les fichiers JSON versionnés dans `../data/nyc-food`.
+`mongoimport --drop` supprime la collection existante puis la recrée depuis le fichier JSON. C'est le seul chemin manuel prévu pour recréer les collections de base :
 
 ```bash
 docker compose up -d mongodb
@@ -71,7 +72,7 @@ docker compose exec -T mongodb mongoimport --username root --password rootpass -
 docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection neighborhoods --file /tmp/nyc-food/neighborhoods.json --jsonArray --drop
 ```
 
-Ces commandes chargent `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Elles ne génèrent pas `orders`, `review_details` ni `events` ; lancer `scripts/generate-volume.js` ensuite si besoin.
+Ces commandes recréent `nyc_restaurant_reviews_raw`, `restaurants`, `reviews` et `neighborhoods`. Les collections `orders`, `review_details` et `events` sont générées automatiquement au premier démarrage d'un volume vide.
 
 Collections après import :
 
@@ -80,27 +81,13 @@ Collections après import :
 - `reviews` : avis agrégés par restaurant avec scores, sentiment et contexte de notation.
 - `neighborhoods` : points pédagogiques conservés pour montrer une collection annexe.
 
-Collections générées pour les TP, non officielles :
+Collections générées automatiquement pour les TP :
 
 - `orders` : commandes simulées pour travailler le volume et les performances.
 - `review_details` : avis clients détaillés simulés à partir des restaurants réels.
 - `events` : événements applicatifs simulés.
 
 La frontière pédagogique est volontairement explicite : `nyc_restaurant_reviews_raw`, `restaurants` et `reviews` portent la donnée réelle ; `orders`, `review_details` et `events` servent à enrichir le cas pratique avec des volumes plus importants.
-
-## Générer plus de volume
-
-Le script `scripts/generate-volume.js` ajoute des commandes, avis détaillés et événements applicatifs. Par défaut, il crée 100 000 commandes, 50 000 avis détaillés et 300 000 événements. Il doit être lancé après l'import, car il s'appuie sur les restaurants importés.
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/generate-volume.js
-```
-
-Pour un volume plus léger :
-
-```bash
-docker compose exec -e NYC_GENERATE_ORDERS=10000 -e NYC_GENERATE_REVIEW_DETAILS=5000 -e NYC_GENERATE_EVENTS=20000 mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/generate-volume.js
-```
 
 ## Supports de cours
 

@@ -9,6 +9,36 @@
 - se connecter à MongoDB avec `mongosh` ;
 - comprendre la différence entre un MongoDB local et un cluster Atlas.
 
+## Starter : commandes utiles
+
+Depuis la racine du dépôt :
+
+```bash
+cd sandbox-mongodb
+docker compose up -d
+docker compose ps
+```
+
+- `docker compose up -d` lance MongoDB et Mongo Express en arrière-plan.
+- Au premier lancement avec un volume MongoDB vide, les collections du cours sont créées automatiquement.
+- `docker compose ps` vérifie que les conteneurs sont actifs.
+
+Connexion à `mongosh` :
+
+```bash
+docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"
+```
+
+Cette commande ouvre le shell directement sur la base `nyc_food`.
+
+Connexion à Mongo Express :
+
+```text
+http://localhost:8083
+```
+
+Mongo Express sert à vérifier rapidement les collections et quelques documents depuis le navigateur.
+
 ## Les outils du cours
 
 | Outil | Rôle |
@@ -135,4 +165,3 @@ mongodb+srv://<user>:<password>@<cluster-url>/nyc_food
 ## Message clé
 
 Le cours utilise principalement Docker et `mongosh` pour pratiquer. Atlas sert à comprendre comment MongoDB est utilisé dans un environnement cloud managé.
-

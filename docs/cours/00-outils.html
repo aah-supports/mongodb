@@ -9,12 +9,14 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Objectifs</a><a href="#s2">Outils</a><a href="#s3">Docker</a><a href="#s4">Connexion</a><a href="#s5">Atlas</a></div>
+    <div class="slide-nav"><a href="#s1">Objectifs</a><a href="#s2">Starter</a><a href="#s3">Outils</a><a href="#s4">Connexion</a><a href="#s5">Atlas</a></div>
     <article class="deck">
       <section id="s1" class="slide"><h1>Outils : Docker, Atlas et mongosh</h1><p class="subtitle">Un environnement reproductible pour pratiquer MongoDB sans dépendre de l'installation locale de chaque machine.</p></section>
-      <section id="s2" class="slide"><h2 class="slide-title">Les outils du cours</h2><table><tr><th>Outil</th><th>Rôle</th></tr><tr><td>Docker Compose</td><td>Lance MongoDB et Mongo Express.</td></tr><tr><td>MongoDB</td><td>Base NoSQL orientée documents.</td></tr><tr><td>mongosh</td><td>Shell officiel pour écrire les commandes.</td></tr><tr><td>Mongo Express</td><td>Interface web légère de vérification.</td></tr><tr><td>Atlas</td><td>Version cloud managée de MongoDB.</td></tr></table></section>
-      <section id="s3" class="slide"><h2 class="slide-title">Démarrer l'environnement</h2><pre><code>docker compose up -d
-docker compose ps</code></pre><p>MongoDB écoute sur `localhost:27017`. Mongo Express est disponible sur `http://localhost:8083`.</p></section>
+      <section id="s2" class="slide"><h2 class="slide-title">Starter : commandes utiles</h2><pre><code>cd sandbox-mongodb
+docker compose up -d
+docker compose ps</code></pre><p>`up -d` lance MongoDB et Mongo Express en arrière-plan. Au premier lancement avec un volume vide, MongoDB initialise automatiquement les collections du cours.</p><pre><code>docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre><p>Cette commande ouvre `mongosh` directement sur la base `nyc_food`.</p><pre><code>http://localhost:8083</code></pre><p>Cette URL ouvre Mongo Express, l'interface web de vérification.</p></section>
+      <section id="s3" class="slide"><h2 class="slide-title">Les outils du cours</h2><table><tr><th>Outil</th><th>Rôle</th></tr><tr><td>Docker Compose</td><td>Lance MongoDB et Mongo Express.</td></tr><tr><td>MongoDB</td><td>Base NoSQL orientée documents.</td></tr><tr><td>mongosh</td><td>Shell officiel pour écrire les commandes.</td></tr><tr><td>Mongo Express</td><td>Interface web légère de vérification.</td></tr><tr><td>Atlas</td><td>Version cloud managée de MongoDB.</td></tr></table></section>
       <section id="s4" class="slide"><h2 class="slide-title">Se connecter avec mongosh</h2><pre><code>docker compose exec mongodb mongosh \
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre><pre><code>db
 show dbs

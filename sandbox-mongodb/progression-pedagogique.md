@@ -19,7 +19,7 @@ Progression :
 1. Installation et rôle des outils : Docker Compose, Atlas, `mongosh`.
 2. Démarrage du sandbox local avec Docker Compose.
 3. Connexion avec `mongosh`.
-4. Import du dataset OpenIntro/Zagat.
+4. Vérification des collections créées automatiquement au démarrage.
 5. Présentation du jeu de données : source, champs, limites, notes agrégées.
 6. Création d'une base, d'une collection et d'un premier document.
 7. Notion de schéma : flexible, implicite, applicatif, validation.
@@ -34,7 +34,7 @@ TP principaux :
 
 - Démarrer le sandbox.
 - Se connecter avec `mongosh`.
-- Importer les données de notation.
+- Vérifier les données de notation initialisées dans le sandbox.
 - Créer une base et une collection de démonstration.
 - Comprendre la notion de schéma flexible.
 - Décrire le jeu de données et ses collections.
@@ -106,3 +106,4 @@ Livrable du mini-projet :
 - 3 index avec preuve `explain()`.
 - Une sauvegarde/restauration.
 - Une gestion minimale des droits.
+

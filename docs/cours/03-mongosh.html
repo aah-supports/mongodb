@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Rôle</a><a href="#s2">Connexion</a><a href="#s3">Navigation</a><a href="#s4">Lire</a><a href="#s5">Scripts</a></div>
+    <div class="slide-nav"><a href="#s1">Rôle</a><a href="#s2">Connexion</a><a href="#s3">Navigation</a><a href="#s4">Lire</a><a href="#s5">Secours</a></div>
     <article class="deck">
       <section id="s1" class="slide"><h1>Travailler avec mongosh</h1><p class="subtitle">Le shell officiel permet d'écrire, reproduire et comprendre précisément les commandes MongoDB.</p></section>
       <section id="s2" class="slide"><h2 class="slide-title">Connexion au sandbox</h2><pre><code>docker compose exec mongodb mongosh \
@@ -20,12 +20,7 @@ db.restaurants.find(
   { "ratings.overall": { $gte: 22 } },
   { _id: 0, name: 1, cuisine: 1, "ratings.overall": 1 }
 ).sort({ "ratings.overall": -1 }).limit(10)</code></pre></section>
-      <section id="s5" class="slide"><h2 class="slide-title">Exécuter les scripts</h2><pre><code>docker compose exec mongodb mongosh \
-  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
-  /scripts/import-restaurant-reviews.js
-docker compose exec mongodb mongosh \
-  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" \
-  /scripts/generate-volume.js</code></pre></section>
+      <section id="s5" class="slide"><h2 class="slide-title">Création et import de secours</h2><p>Dans le parcours normal, les collections sont créées au premier lancement des conteneurs avec un volume vide.</p><pre><code>docker compose up -d</code></pre><p>Si les collections de base doivent être recréées manuellement, on utilise les commandes `mongoimport --drop` du cours jeu de données. Les apprenants n'ont pas à lancer de script d'import ou de génération dans le parcours standard.</p></section>
     </article>
   </main>
   <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>

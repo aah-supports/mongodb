@@ -13,6 +13,7 @@ services:
       - mongodb_data:/data/db
       - ./mongo-init:/docker-entrypoint-initdb.d:ro
       - ./scripts:/scripts:ro
+      - ../data/nyc-food:/seed/nyc-food:ro
 
   mongo-express:
     image: mongo-express:1.0.2

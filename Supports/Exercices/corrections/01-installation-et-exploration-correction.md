@@ -22,20 +22,17 @@ Connexion `mongosh` :
 docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"
 ```
 
-## Import du dataset de notations
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-restaurant-reviews.js
-```
+## Collections créées au démarrage
 
 Résultat attendu :
 
 - `nyc_restaurant_reviews_raw` contient les lignes brutes du CSV OpenIntro/Zagat ;
 - `restaurants` contient les restaurants transformés ;
 - `reviews` contient les notations agrégées transformées ;
-- `neighborhoods` est créée au démarrage comme collection pédagogique annexe.
+- `neighborhoods` est une collection pédagogique annexe ;
+- `orders`, `review_details` et `events` existent pour les exercices de volume.
 
-Avec l'import complet, on attend 168 documents dans les trois collections liées au dataset réel.
+Avec l'initialisation automatique, on attend 168 documents dans les trois collections liées au dataset réel, 5 quartiers, puis les volumes générés par défaut.
 
 ## Exploration
 
@@ -52,6 +49,9 @@ db.nyc_restaurant_reviews_raw.countDocuments()
 db.restaurants.countDocuments()
 db.reviews.countDocuments()
 db.neighborhoods.countDocuments()
+db.orders.countDocuments()
+db.review_details.countDocuments()
+db.events.countDocuments()
 ```
 
 Observer les documents :

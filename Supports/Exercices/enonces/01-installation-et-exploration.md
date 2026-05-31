@@ -3,7 +3,7 @@
 ## Objectifs
 
 - Démarrer un environnement MongoDB local avec Docker Compose.
-- Importer un vrai dataset de notations clients de restaurants new-yorkais.
+- Vérifier la création automatique des collections du sandbox.
 - Se connecter avec Mongo Express et `mongosh`.
 - Identifier les collections et la structure des documents.
 
@@ -51,7 +51,7 @@ Atlas sera utilisé comme référence cloud MongoDB :
 
 Pour ce TP, le sandbox Docker reste l'environnement principal afin que tout le monde ait les mêmes données localement.
 
-## Import du dataset de notations
+## Collections créées au démarrage
 
 Le dataset utilisé pour le cours est réel :
 
@@ -60,19 +60,20 @@ Le dataset utilisé pour le cours est réel :
 - Endpoint CSV : `https://raw.githubusercontent.com/OpenIntroStat/openintro/main/data-raw/nyc/nyc.csv`
 - Notes : `food`, `decor`, `service`, sur une échelle de 0 à 30
 
-Importer les données :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin" /scripts/import-restaurant-reviews.js
-```
-
-Le script crée :
+Au premier lancement avec un volume MongoDB vide, `docker compose up -d` crée automatiquement :
 
 - `nyc_restaurant_reviews_raw` : données brutes du CSV.
 - `restaurants` : vue documentaire orientée restaurant.
 - `reviews` : vue orientée avis/notation.
+- `neighborhoods` : collection pédagogique annexe.
+- `orders`, `review_details`, `events` : collections générées pour les exercices de volume.
 
-La collection `neighborhoods` est déjà créée au démarrage du conteneur. Elle reste une collection pédagogique annexe pour montrer qu'une base peut contenir plusieurs familles de documents.
+Si un poste contient déjà un ancien volume, repartir de zéro :
+
+```bash
+docker compose down -v
+docker compose up -d
+```
 
 ## Pourquoi ces collections ?
 
