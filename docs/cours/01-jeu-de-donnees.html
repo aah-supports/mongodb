@@ -87,13 +87,14 @@
         <table>
           <tr><th>Champ</th><th>Lecture métier</th></tr>
           <tr><td>`price_for_two`</td><td>Prix estimé pour deux personnes, en dollars. Ici, `43` signifie environ 43 dollars pour deux.</td></tr>
-          <tr><td>`price_tier`</td><td>Catégorie dérivée du prix : `$`, `$$`, `$$$` ou `$$$$`. Elle permet de filtrer rapidement par niveau de prix.</td></tr>
+          <tr><td>`price_tier`</td><td>Catégorie dérivée du prix avec des seuils fixes : `$`, `$$`, `$$$` ou `$$$$`. Ce n'est pas un classement relatif aux autres restaurants du dataset.</td></tr>
           <tr><td>`ratings.food`</td><td>Note de la nourriture sur 30, issue du système Zagat.</td></tr>
           <tr><td>`ratings.decor`</td><td>Note du décor sur 30.</td></tr>
           <tr><td>`ratings.service`</td><td>Note du service sur 30.</td></tr>
           <tr><td>`ratings.overall`</td><td>Note globale calculée à partir des notes `food`, `decor` et `service`.</td></tr>
           <tr><td>`rating_band`</td><td>Libellé dérivé de la note globale. Par exemple, `20` correspond à `very_good_to_excellent`.</td></tr>
         </table>
+        <p>`price_tier` sert à segmenter l'offre par gamme de prix avec une règle stable côté application. On peut filtrer par tranche lisible (`$$`) sans réécrire à chaque fois une condition numérique sur `price_for_two`. Le champ reste une approximation métier, pas une mesure statistique calculée sur la distribution des prix.</p>
       </section>
       <section id="s6" class="slide">
         <h2 class="slide-title">Schéma applicatif de `restaurants`</h2>

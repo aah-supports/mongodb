@@ -167,3 +167,14 @@ db.orders.find(
 6. **Difficile.** Trouver les restaurants qui sont dans le top prix (`price_tier` égal à `$$$` ou `$$$$`) mais dont au moins une des notes `food`, `decor` ou `service` est inférieure à 20. La projection doit permettre de comprendre immédiatement quelle note pose problème.
 7. **Difficile.** Sur `orders`, récupérer une page stable de 20 commandes payées après une date donnée, triées par `created_at` décroissant puis `order_id` croissant. Expliquer quels champs devraient apparaître dans un index composé pour cette requête.
 8. **Programmatique.** Écrire un petit bloc JavaScript dans `mongosh` qui récupère 5 restaurants bien notés, puis pour chacun affiche son nom, son `restaurant_id` et les 3 commandes les plus récentes associées.
+
+## Exercices supplémentaires
+
+1. Afficher les restaurants `Japanese` dont la note `service` est supérieure ou égale à 23, en ne retournant que `name`, `cuisine`, `ratings.service` et `price_tier`.
+2. Trouver les restaurants dont le prix pour deux est strictement supérieur à 80 dollars et dont le tag `fine_dining` est présent.
+3. Afficher les restaurants qui ne possèdent pas le tag `top_food`, triés par `ratings.overall` décroissant.
+4. Trouver les restaurants dont le nom commence par `The`, sans tenir compte de la casse.
+5. Afficher les avis `reviews` dont le sentiment est `mixed` ou `poor`, en limitant le résultat aux champs utiles pour identifier le restaurant et le score.
+6. Sur `orders`, afficher les commandes `cancelled` ou `refunded` dont le montant est supérieur ou égal à 75 dollars.
+7. Afficher les restaurants dont `ratings.food`, `ratings.decor` et `ratings.service` sont tous supérieurs ou égaux à 21.
+8. **Difficile.** Trouver les restaurants dont la note globale est élevée (`ratings.overall` supérieure ou égale à 23) mais dont le prix pour deux reste inférieur ou égal à 50 dollars.

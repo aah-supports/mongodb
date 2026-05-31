@@ -585,19 +585,6 @@ Point important : en GeoJSON, les coordonnées sont dans l'ordre longitude puis 
 
 Dans ce sandbox, l'index géospatial concerne `neighborhoods.center`. Les restaurants du dataset OpenIntro/Zagat n'ont pas de coordonnées précises, donc les exercices principaux restent centrés sur les index classiques : champs simples, champs imbriqués, tableaux et index composés.
 
-## Exercices
-
-1. Afficher les restaurants dont la note globale est supérieure ou égale à 23.
-2. Afficher les restaurants dont le prix pour deux est inférieur ou égal à 40 dollars.
-3. Afficher les restaurants `$$` ou `$$$`, triés par note de service décroissante.
-4. Afficher uniquement `name`, `cuisine`, `price_tier` et `ratings`.
-5. Trouver les restaurants qui ont le tag `top_food`.
-6. Trouver les restaurants qui ont à la fois `top_food` et `great_service`.
-7. Trouver les restaurants dont le nom contient `cafe`, `bistro` ou `ristorante`.
-8. Trouver les avis agrégés avec sentiment `excellent`.
-9. Trouver les avis détaillés vérifiés avec une note supérieure ou égale à 4.5.
-10. Proposer trois index adaptés aux requêtes précédentes.
-
 ## Message clé
 
 `find` permet de poser des questions précises à une collection. La difficulté n'est pas seulement syntaxique : il faut savoir où se trouvent les champs, quels opérateurs utiliser et quels filtres justifient un index.

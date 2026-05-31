@@ -103,12 +103,15 @@ Lecture des champs de prix et de notation :
 | Champ | Lecture métier |
 |---|---|
 | `price_for_two` | Prix estimé pour deux personnes, en dollars. Ici, `43` signifie environ 43 dollars pour deux. |
-| `price_tier` | Catégorie dérivée du prix : `$`, `$$`, `$$$` ou `$$$$`. Elle permet de filtrer rapidement par niveau de prix. |
+| `price_tier` | Catégorie dérivée du prix avec des seuils fixes : `$`, `$$`, `$$$` ou `$$$$`. Ce n'est pas un classement relatif aux autres restaurants du dataset. |
 | `ratings.food` | Note de la nourriture sur 30, issue du système Zagat. |
 | `ratings.decor` | Note du décor sur 30. |
 | `ratings.service` | Note du service sur 30. |
 | `ratings.overall` | Note globale calculée à partir des notes `food`, `decor` et `service`. |
 | `rating_band` | Libellé dérivé de la note globale. Par exemple, `20` correspond à `very_good_to_excellent`. |
+
+`price_tier` sert à segmenter l'offre par gamme de prix avec une règle stable côté application. On peut filtrer par tranche lisible (`$$`) sans réécrire à chaque fois une condition numérique sur `price_for_two`.
+Le champ reste une approximation métier, pas une mesure statistique calculée sur la distribution des prix.
 
 Usage :
 
