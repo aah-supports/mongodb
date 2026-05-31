@@ -87,6 +87,23 @@ db.review_details.aggregate([
 ]).explain("executionStats")
 ```
 
+## Index géospatial
+
+La collection `neighborhoods` contient un champ GeoJSON `center`. L'index adapté est un index `2dsphere`.
+
+```javascript
+db.neighborhoods.createIndex({ center: "2dsphere" })
+
+db.neighborhoods.find({
+  center: {
+    $near: {
+      $geometry: { type: "Point", coordinates: [-73.9855, 40.7580] },
+      $maxDistance: 5000
+    }
+  }
+}).explain("executionStats")
+```
+
 ## Exercices
 
 1. Relever les performances d'une requête sans index pertinent.
@@ -97,3 +114,4 @@ db.review_details.aggregate([
 6. Créer un index multikey sur `tags`.
 7. Optimiser une agrégation sur `review_details` qui commence par `$match`.
 8. Identifier un index inutile ou redondant avec `db.collection.getIndexes()`.
+9. Vérifier l'index géospatial `2dsphere` sur `neighborhoods.center` avec une requête `$near`.

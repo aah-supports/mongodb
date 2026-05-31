@@ -14,8 +14,17 @@ db.orders.find({
     <section class="panel"><h2>Créer des index</h2><pre><code>db.orders.createIndex({ restaurant_id: 1, status: 1, created_at: -1 })
 db.restaurants.createIndex({ "ratings.overall": -1, price_for_two: 1 })
 db.restaurants.createIndex({ tags: 1, "ratings.food": -1 })
-db.review_details.createIndex({ sentiment: 1, rating: -1 })</code></pre></section>
-    <section class="panel"><h2>Exercices</h2><ol><li>Relever les performances d'une requête sans index pertinent.</li><li>Proposer un index composé pour une recherche par `restaurant_id`, `status` et date.</li><li>Justifier l'ordre des champs dans l'index.</li><li>Comparer avant/après avec `explain("executionStats")`.</li><li>Créer un index sur `ratings.overall` et `price_for_two`.</li><li>Créer un index multikey sur `tags`.</li><li>Optimiser une agrégation sur `review_details` qui commence par `$match`.</li><li>Identifier un index inutile ou redondant avec `db.collection.getIndexes()`.</li></ol></section>
+db.review_details.createIndex({ sentiment: 1, rating: -1 })
+db.neighborhoods.createIndex({ center: "2dsphere" })</code></pre></section>
+    <section class="panel"><h2>Index géospatial</h2><p>`neighborhoods.center` contient un point GeoJSON. L'index `2dsphere` permet des requêtes de proximité avec `$near`.</p><pre><code>db.neighborhoods.find({
+  center: {
+    $near: {
+      $geometry: { type: "Point", coordinates: [-73.9855, 40.7580] },
+      $maxDistance: 5000
+    }
+  }
+}).explain("executionStats")</code></pre></section>
+    <section class="panel"><h2>Exercices</h2><ol><li>Relever les performances d'une requête sans index pertinent.</li><li>Proposer un index composé pour une recherche par `restaurant_id`, `status` et date.</li><li>Justifier l'ordre des champs dans l'index.</li><li>Comparer avant/après avec `explain("executionStats")`.</li><li>Créer un index sur `ratings.overall` et `price_for_two`.</li><li>Créer un index multikey sur `tags`.</li><li>Optimiser une agrégation sur `review_details` qui commence par `$match`.</li><li>Identifier un index inutile ou redondant avec `db.collection.getIndexes()`.</li><li>Vérifier l'index géospatial `2dsphere` sur `neighborhoods.center` avec une requête `$near`.</li></ol></section>
   </main>
   <footer class="footer"><a href="../exercices.html">Retour aux exercices</a></footer>
 </body>

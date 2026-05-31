@@ -260,6 +260,11 @@ db.review_details.find({
 
 ## Quand penser index ?
 
+Un index est une structure de données maintenue par MongoDB pour retrouver plus vite les documents.
+
+Sans index, MongoDB peut devoir parcourir toute la collection : c'est un `COLLSCAN`.
+Avec un index adapté, MongoDB parcourt une structure triée avant de lire les documents utiles : c'est un `IXSCAN`.
+
 Une requête fréquente mérite probablement un index si elle filtre ou trie sur :
 
 - `restaurant_id` ;
@@ -270,7 +275,7 @@ Une requête fréquente mérite probablement un index si elle filtre ou trie sur
 - `sentiment` ;
 - `reviewed_at`.
 
-Exemples :
+Exemples d'index simples :
 
 ```javascript
 db.restaurants.createIndex({ "ratings.overall": -1 })
@@ -278,6 +283,133 @@ db.restaurants.createIndex({ cuisine: 1, price_tier: 1 })
 db.restaurants.createIndex({ tags: 1 })
 db.review_details.createIndex({ restaurant_id: 1, reviewed_at: -1 })
 ```
+
+Un index accélère certaines lectures, mais il a un coût :
+
+- il occupe de l'espace disque ;
+- il doit être mis à jour à chaque insertion, modification ou suppression ;
+- il ne sert que si sa structure correspond aux filtres et tris utilisés.
+
+## Vérifier un index avec `explain()`
+
+On ne valide pas un index seulement parce qu'il existe. On vérifie le plan d'exécution.
+
+```javascript
+db.restaurants.find({
+  cuisine: "French",
+  price_tier: "$$"
+}).explain("executionStats")
+```
+
+Points à observer :
+
+| Champ | Sens |
+|---|---|
+| `COLLSCAN` | MongoDB parcourt la collection. À surveiller sur gros volume. |
+| `IXSCAN` | MongoDB utilise un index. |
+| `totalDocsExamined` | Nombre de documents lus. |
+| `totalKeysExamined` | Nombre d'entrées d'index parcourues. |
+| `executionTimeMillis` | Temps mesuré pour la requête. |
+
+Objectif pratique : pour une requête sélective, on veut souvent examiner beaucoup moins de documents que la taille totale de la collection.
+
+## Index composés
+
+Un index composé contient plusieurs champs. L'ordre des champs est important.
+
+```javascript
+db.restaurants.createIndex({
+  cuisine: 1,
+  price_tier: 1,
+  "ratings.overall": -1
+})
+```
+
+Cet index est adapté à une requête qui filtre par `cuisine`, filtre par `price_tier`, puis trie ou compare la note globale.
+
+Règle pratique :
+
+1. Placer d'abord les champs d'égalité fréquents.
+2. Ajouter ensuite les champs de plage ou de tri.
+3. Éviter de créer des index composés pour des requêtes rares.
+
+Exemple sur les commandes :
+
+```javascript
+db.orders.createIndex({
+  restaurant_id: 1,
+  status: 1,
+  created_at: -1
+})
+```
+
+Cet index aide une requête du type :
+
+```javascript
+db.orders.find({
+  restaurant_id: "NYC-ZAGAT-0001",
+  status: "paid"
+}).sort({ created_at: -1 })
+```
+
+## Index multikey sur les tableaux
+
+Quand un index porte sur un champ tableau, MongoDB crée automatiquement un index multikey.
+
+Dans le dataset, `restaurants.tags` est un tableau :
+
+```javascript
+db.restaurants.createIndex({ tags: 1 })
+```
+
+Il peut accélérer :
+
+```javascript
+db.restaurants.find({ tags: "top_food" })
+db.restaurants.find({ tags: { $all: ["top_food", "great_service"] } })
+```
+
+Un index multikey est utile, mais il faut éviter d'en créer beaucoup sans besoin clair, surtout sur de gros tableaux.
+
+## Index géospatial `2dsphere`
+
+Le sandbox contient une collection `neighborhoods` avec un champ GeoJSON `center`.
+
+Exemple de document :
+
+```javascript
+{
+  name: "Midtown",
+  borough: "Manhattan",
+  center: {
+    type: "Point",
+    coordinates: [-73.9855, 40.7580]
+  }
+}
+```
+
+Un index géospatial est créé sur ce champ :
+
+```javascript
+db.neighborhoods.createIndex({ center: "2dsphere" })
+```
+
+Il permet des requêtes spatiales, par exemple chercher les quartiers proches d'un point :
+
+```javascript
+db.neighborhoods.find({
+  center: {
+    $near: {
+      $geometry: { type: "Point", coordinates: [-73.9855, 40.7580] },
+      $maxDistance: 5000
+    }
+  }
+})
+```
+
+Point important : en GeoJSON, les coordonnées sont dans l'ordre longitude puis latitude.
+
+Dans ce sandbox, l'index géospatial concerne `neighborhoods.center`. Les restaurants du dataset OpenIntro/Zagat n'ont pas de coordonnées précises, donc les exercices principaux restent centrés sur les index classiques : champs simples, champs imbriqués, tableaux et index composés.
 
 ## Exercices
 

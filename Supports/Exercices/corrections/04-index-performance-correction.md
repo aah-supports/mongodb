@@ -124,14 +124,14 @@ Mais il faut vérifier les requêtes réelles avant de supprimer un index.
 Créer l'index :
 
 ```javascript
-db.restaurants.createIndex({ location: "2dsphere" })
+db.neighborhoods.createIndex({ center: "2dsphere" })
 ```
 
 Tester :
 
 ```javascript
-db.restaurants.find({
-  location: {
+db.neighborhoods.find({
+  center: {
     $near: {
       $geometry: { type: "Point", coordinates: [-73.9855, 40.7580] },
       $maxDistance: 5000
@@ -140,3 +140,4 @@ db.restaurants.find({
 }).explain("executionStats")
 ```
 
+Le champ `center` contient un point GeoJSON. Les coordonnées sont dans l'ordre longitude puis latitude. Les restaurants du dataset n'ont pas de champ géographique précis, donc l'exemple géospatial se fait sur `neighborhoods`.

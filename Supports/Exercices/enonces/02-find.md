@@ -157,3 +157,14 @@ db.orders.find(
   { _id: 0, order_id: 1, restaurant_id: 1, created_at: 1, amount: 1, status: 1 }
 ).sort({ created_at: -1 }).limit(10)
 ```
+
+## Exercices avancés
+
+1. Afficher les restaurants `Italian` ou `French` dont le prix pour deux est compris entre 35 et 70 dollars, avec une note globale supérieure ou égale à 21, triés par `ratings.overall` décroissant puis par prix croissant.
+2. Trouver les restaurants qui ont le tag `top_food`, mais pas le tag `great_service`, et ne retourner que `name`, `cuisine`, `tags`, `ratings.food` et `ratings.service`.
+3. Afficher les restaurants dont la note `food` est au moins supérieure de 4 points à la note `decor`. Utiliser une requête `find` avec une expression adaptée.
+4. Afficher les commandes `paid` ou `refunded` d'un restaurant existant, créées sur une période de 30 jours, en ne retournant que `order_id`, `created_at`, `status`, `amount` et `customer.loyalty_tier`.
+5. Trouver les avis détaillés vérifiés dont le texte contient `service` ou `food`, avec une note supérieure ou égale à 4, triés par `helpful_votes` décroissant.
+6. **Difficile.** Trouver les restaurants qui sont dans le top prix (`price_tier` égal à `$$$` ou `$$$$`) mais dont au moins une des notes `food`, `decor` ou `service` est inférieure à 20. La projection doit permettre de comprendre immédiatement quelle note pose problème.
+7. **Difficile.** Sur `orders`, récupérer une page stable de 20 commandes payées après une date donnée, triées par `created_at` décroissant puis `order_id` croissant. Expliquer quels champs devraient apparaître dans un index composé pour cette requête.
+8. **Programmatique.** Écrire un petit bloc JavaScript dans `mongosh` qui récupère 5 restaurants bien notés, puis pour chacun affiche son nom, son `restaurant_id` et les 3 commandes les plus récentes associées.

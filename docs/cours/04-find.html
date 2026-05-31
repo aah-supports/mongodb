@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">SQL</a><a href="#s3">Forme</a><a href="#s4">Pas à pas</a><a href="#s5">Projection</a><a href="#s6">Opérateurs</a><a href="#s7">Logique</a><a href="#s8">Documents</a><a href="#s9">Tableaux</a><a href="#s10">Tri</a><a href="#s11">Index</a><a href="#s12">Limites</a></div>
+    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">SQL</a><a href="#s3">Forme</a><a href="#s4">Pas à pas</a><a href="#s5">Projection</a><a href="#s6">Opérateurs</a><a href="#s7">Logique</a><a href="#s8">Documents</a><a href="#s9">Tableaux</a><a href="#s10">Tri</a><a href="#s11">Index</a><a href="#s12">Explain</a><a href="#s13">Index composés</a><a href="#s14">Géospatial</a><a href="#s15">Limites</a></div>
     <article class="deck">
       <section id="s1" class="slide">
         <h1>Rechercher avec `find`</h1>
@@ -169,19 +169,75 @@ db.restaurants.distinct("cuisine")</code></pre>
         <p>`skip` est simple pour apprendre, mais peut devenir coûteux sur de gros volumes. En production, on privilégie souvent une pagination par curseur.</p>
       </section>
       <section id="s11" class="slide">
-        <h2 class="slide-title">Quand penser index ?</h2>
-        <p>Une requête fréquente mérite probablement un index si elle filtre ou trie sur des champs stables.</p>
+        <h2 class="slide-title">À quoi sert un index ?</h2>
+        <p>Sans index, MongoDB peut devoir parcourir toute la collection : c'est un `COLLSCAN`. Avec un index adapté, MongoDB parcourt une structure triée avant d'aller lire les documents utiles : c'est un `IXSCAN`.</p>
+        <table>
+          <tr><th>Situation</th><th>Sans index</th><th>Avec index</th></tr>
+          <tr><td>Filtrer par `cuisine`</td><td>Lecture de nombreux documents.</td><td>Accès direct aux valeurs indexées.</td></tr>
+          <tr><td>Trier par `ratings.overall`</td><td>Tri en mémoire après lecture.</td><td>Lecture déjà ordonnée si l'index correspond.</td></tr>
+          <tr><td>Paginer des commandes récentes</td><td>Coûteux sur gros volume.</td><td>Parcours efficace par `restaurant_id` et date.</td></tr>
+        </table>
         <pre><code>db.restaurants.createIndex({ "ratings.overall": -1 })
 db.restaurants.createIndex({ cuisine: 1, price_tier: 1 })
-db.restaurants.createIndex({ tags: 1 })
-db.review_details.createIndex({ restaurant_id: 1, reviewed_at: -1 })</code></pre>
+db.orders.createIndex({ restaurant_id: 1, created_at: -1 })</code></pre>
+        <p>Un index accélère certaines lectures, mais il coûte de l'espace disque et ralentit un peu les écritures, car MongoDB doit maintenir l'index à chaque insertion, modification ou suppression.</p>
+      </section>
+      <section id="s12" class="slide">
+        <h2 class="slide-title">Vérifier avec `explain()`</h2>
+        <p>On ne devine pas la performance : on observe le plan d'exécution. `explain("executionStats")` indique combien de documents et de clés d'index ont été examinés.</p>
         <pre><code>db.restaurants.find({
   cuisine: "French",
   price_tier: "$$"
 }).explain("executionStats")</code></pre>
-        <p>À observer : `totalDocsExamined`, `totalKeysExamined`, `executionTimeMillis`, et la présence d'un `COLLSCAN` ou d'un `IXSCAN`.</p>
+        <table>
+          <tr><th>Indicateur</th><th>Interprétation</th></tr>
+          <tr><td>`COLLSCAN`</td><td>MongoDB parcourt la collection. À surveiller sur gros volume.</td></tr>
+          <tr><td>`IXSCAN`</td><td>MongoDB utilise un index.</td></tr>
+          <tr><td>`totalDocsExamined`</td><td>Nombre de documents lus.</td></tr>
+          <tr><td>`totalKeysExamined`</td><td>Nombre d'entrées d'index parcourues.</td></tr>
+          <tr><td>`executionTimeMillis`</td><td>Temps mesuré pour la requête.</td></tr>
+        </table>
       </section>
-      <section id="s12" class="slide">
+      <section id="s13" class="slide">
+        <h2 class="slide-title">Index simples, composés et multikey</h2>
+        <p>Un index simple porte sur un champ. Un index composé porte sur plusieurs champs dans un ordre précis. Un index sur un tableau devient automatiquement multikey.</p>
+        <pre><code>// Champ imbriqué
+db.restaurants.createIndex({ "ratings.overall": -1 })
+
+// Index composé : filtre cuisine + prix, puis tri possible par note
+db.restaurants.createIndex({ cuisine: 1, price_tier: 1, "ratings.overall": -1 })
+
+// Tableau tags : index multikey
+db.restaurants.createIndex({ tags: 1 })
+
+// Historique de commandes d'un restaurant
+db.orders.createIndex({ restaurant_id: 1, status: 1, created_at: -1 })</code></pre>
+        <p>Règle pratique : commencer l'index composé par les champs d'égalité fréquents, puis les champs de plage ou de tri. Exemple : `restaurant_id`, puis `status`, puis `created_at`.</p>
+      </section>
+      <section id="s14" class="slide">
+        <h2 class="slide-title">Index géospatial : `2dsphere`</h2>
+        <p>Le sandbox contient une petite collection `neighborhoods`. Chaque quartier possède un champ GeoJSON `center` avec un point `[longitude, latitude]`. Un index `2dsphere` est créé sur ce champ.</p>
+        <pre><code>{
+  name: "Midtown",
+  borough: "Manhattan",
+  center: {
+    type: "Point",
+    coordinates: [-73.9855, 40.7580]
+  }
+}</code></pre>
+        <pre><code>db.neighborhoods.createIndex({ center: "2dsphere" })</code></pre>
+        <p>Cet index permet des requêtes géographiques, par exemple chercher les quartiers proches d'un point.</p>
+        <pre><code>db.neighborhoods.find({
+  center: {
+    $near: {
+      $geometry: { type: "Point", coordinates: [-73.9855, 40.7580] },
+      $maxDistance: 5000
+    }
+  }
+})</code></pre>
+        <p>Attention : les coordonnées GeoJSON sont toujours dans l'ordre longitude puis latitude. Ici l'index géospatial sert surtout d'introduction, car les restaurants du dataset n'ont pas de coordonnées précises.</p>
+      </section>
+      <section id="s15" class="slide">
         <h2 class="slide-title">Limites de `find`</h2>
         <p>`find` est excellent pour lire des documents correspondant à des critères. Il devient moins adapté dès que la question demande de transformer les données.</p>
         <table>
