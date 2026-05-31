@@ -160,6 +160,24 @@ Avant d'écrire un `$lookup`, il faut identifier :
 | Champ étranger | Quel champ correspondant existe dans la collection cible ? | `restaurant_id` |
 | Nom du résultat | Dans quel champ stocker les documents trouvés ? | `restaurant` |
 
+Le paramètre `as` mérite une attention particulière : il ne désigne pas une collection existante. Il choisit le nom du nouveau champ ajouté dans chaque document produit par le pipeline.
+
+Avec :
+
+```javascript
+as: "restaurant"
+```
+
+chaque document en sortie reçoit un champ `restaurant`.
+
+On pourrait techniquement écrire :
+
+```javascript
+as: "restaurant_info"
+```
+
+Dans ce cas, le champ ajouté s'appellerait `restaurant_info`, et il faudrait ensuite lire les données avec `"$restaurant_info.name"` au lieu de `"$restaurant.name"`.
+
 On peut vérifier les deux côtés séparément :
 
 ```javascript
@@ -195,6 +213,8 @@ db.review_details.aggregate([
 Résultat important : `$lookup` ajoute un champ `restaurant`, et ce champ est un tableau.
 
 Même si on attend un seul restaurant, MongoDB retourne un tableau parce qu'une jointure peut techniquement trouver zéro, un ou plusieurs documents.
+
+Le nom `restaurant` vient donc directement de `as: "restaurant"`.
 
 ### Étape 2 : filtrer avant la jointure
 

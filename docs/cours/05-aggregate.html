@@ -152,6 +152,14 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
           <tr><td>Champ cible</td><td>Quel champ correspond dans la cible ?</td><td>`restaurant_id`</td></tr>
           <tr><td>Résultat</td><td>Quel champ ajouter ?</td><td>`restaurant`</td></tr>
         </table>
+        <p>`as` ne désigne pas une collection existante. Il choisit le nom du nouveau champ ajouté dans chaque document produit par le pipeline.</p>
+        <pre><code>as: "restaurant"</code></pre>
+        <p>Avec ce nom, les données jointes seront accessibles ensuite avec des chemins comme `"$restaurant.name"` ou `"$restaurant.cuisine"`.</p>
+        <pre><code>// Si on écrivait plutôt :
+as: "restaurant_info"
+
+// Il faudrait lire ensuite :
+"$restaurant_info.name"</code></pre>
         <pre><code>db.review_details.findOne(
   {},
   { _id: 0, restaurant_id: 1, rating: 1, sentiment: 1 }
@@ -176,7 +184,7 @@ db.restaurants.findOne(
     }
   }
 ])</code></pre>
-        <p>`$lookup` ajoute un champ `restaurant`. Ce champ est toujours un tableau, même quand une seule correspondance est attendue.</p>
+        <p>`$lookup` ajoute un champ `restaurant` parce que le pipeline contient `as: "restaurant"`. Ce champ est toujours un tableau, même quand une seule correspondance est attendue.</p>
       </section>
       <section id="s11" class="slide">
         <h2 class="slide-title">Filtrer puis utiliser `$unwind`</h2>
