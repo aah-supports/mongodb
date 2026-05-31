@@ -22,6 +22,7 @@ docker compose ps
 - `docker compose up -d` lance MongoDB et Mongo Express en arrière-plan.
 - Au premier lancement avec un volume MongoDB vide, les collections du cours sont créées automatiquement.
 - `docker compose ps` vérifie que les conteneurs sont actifs.
+- Le sandbox utilise MongoDB 8, la version stable longue durée retenue pour le cours.
 
 Connexion à `mongosh` :
 
@@ -38,16 +39,38 @@ http://localhost:8083
 ```
 
 Mongo Express sert à vérifier rapidement les collections et quelques documents depuis le navigateur.
+Pour les imports du cours, on utilise `mongoimport` en ligne de commande : c'est plus fiable, répétable et documentable qu'une action faite dans une interface web.
 
 ## Les outils du cours
 
 | Outil | Rôle |
 |---|---|
 | Docker Compose | Lance un environnement MongoDB local identique pour tous les apprenants. |
-| MongoDB | Serveur de base de données NoSQL orienté documents. |
+| MongoDB 8 | Serveur de base de données NoSQL orienté documents, version stable longue durée utilisée dans le sandbox. |
 | mongosh | Shell officiel MongoDB utilisé pour écrire les commandes du cours. |
 | MongoDB Atlas | Service cloud officiel MongoDB, utilisé pour présenter les usages managés. |
 | Mongo Express | Interface web légère fournie dans le sandbox pour vérifier rapidement les données. |
+| `mongoimport` | Outil reproductible pour importer des fichiers JSON, CSV ou TSV. |
+
+## Mongo Express et imports
+
+Mongo Express est utile pour :
+
+- vérifier que les collections existent ;
+- lire quelques documents ;
+- contrôler rapidement des compteurs ;
+- faire de petites manipulations ponctuelles.
+
+Pour charger ou recréer des collections dans le cours, on privilégie `mongoimport`.
+
+```bash
+docker compose exec -T mongodb mongoimport \
+  --username root --password rootpass --authenticationDatabase admin \
+  --db nyc_food --collection restaurants \
+  --file /tmp/nyc-food/restaurants.json --jsonArray --drop
+```
+
+`mongoimport` est l'outil général à retenir pour importer des données structurées dans MongoDB. Il sait charger du JSON, du CSV et du TSV.
 
 ## Pourquoi utiliser Docker Compose ?
 

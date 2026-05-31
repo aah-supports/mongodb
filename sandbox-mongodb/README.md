@@ -1,6 +1,6 @@
 # Sandbox MongoDB - NYC Restaurant Reviews 360
 
-Sandbox local pour le cours MongoDB / NoSQL. Il contient MongoDB, Mongo Express, un dataset de notations clients de restaurants new-yorkais, des données générées pour le volume et des exercices centrés sur `find`, `aggregate`, les index et l'administration.
+Sandbox local pour le cours MongoDB / NoSQL. Il contient MongoDB 8, Mongo Express, un dataset de notations clients de restaurants new-yorkais, des données générées pour le volume et des exercices centrés sur `find`, `aggregate`, les index et l'administration.
 
 ## Démarrage
 
@@ -21,6 +21,8 @@ Accès :
 - MongoDB : `mongodb://root:rootpass@localhost:27017`
 - Mongo Express : http://localhost:8083
 - Base de travail : `nyc_food`
+
+Mongo Express sert à vérifier les collections depuis le navigateur. Pour importer ou recréer des collections, utiliser les commandes `mongoimport` documentées plus bas.
 
 Connexion avec `mongosh` :
 
