@@ -1,15 +1,16 @@
-# Cours - Outils : Docker, Atlas et mongosh
+# Cours - Outils : Docker, Mongo Express et mongosh
 
 ## Objectifs
 
 À la fin de cette partie, l'apprenant doit savoir :
 
-- identifier le rôle de Docker Compose, MongoDB Atlas et `mongosh` ;
-- démarrer un environnement MongoDB local ;
-- se connecter à MongoDB avec `mongosh` ;
-- comprendre la différence entre un MongoDB local et un cluster Atlas.
+- démarrer le sandbox MongoDB ;
+- se connecter avec `mongosh` ;
+- ouvrir Mongo Express ;
+- comprendre le rôle des images, conteneurs et volumes ;
+- savoir quoi faire si les collections ne sont pas initialisées.
 
-## Starter : commandes utiles
+## Starter : lancer le sandbox
 
 Depuis la racine du dépôt :
 
@@ -22,7 +23,9 @@ docker compose ps
 - `docker compose up -d` lance MongoDB et Mongo Express en arrière-plan.
 - Au premier lancement avec un volume MongoDB vide, les collections du cours sont créées automatiquement.
 - `docker compose ps` vérifie que les conteneurs sont actifs.
-- Le sandbox utilise MongoDB 8, la version stable longue durée retenue pour le cours.
+- Le sandbox utilise MongoDB 8, via l'image `mongo:8.0`.
+
+## Accéder aux outils
 
 Connexion à `mongosh` :
 
@@ -39,18 +42,60 @@ http://localhost:8083
 ```
 
 Mongo Express sert à vérifier rapidement les collections et quelques documents depuis le navigateur.
-Pour les imports du cours, on utilise `mongoimport` en ligne de commande : c'est plus fiable, répétable et documentable qu'une action faite dans une interface web.
 
-## Les outils du cours
+## Images, volumes et build
 
-| Outil | Rôle |
-|---|---|
-| Docker Compose | Lance un environnement MongoDB local identique pour tous les apprenants. |
-| MongoDB 8 | Serveur de base de données NoSQL orienté documents, version stable longue durée utilisée dans le sandbox. |
-| mongosh | Shell officiel MongoDB utilisé pour écrire les commandes du cours. |
-| MongoDB Atlas | Service cloud officiel MongoDB, utilisé pour présenter les usages managés. |
-| Mongo Express | Interface web légère fournie dans le sandbox pour vérifier rapidement les données. |
-| `mongoimport` | Outil reproductible pour importer des fichiers JSON, CSV ou TSV. |
+Le projet utilise directement des images Docker prêtes à l'emploi :
+
+- `mongo:8.0` ;
+- `mongo-express:1.0.2`.
+
+Il n'y a pas de `Dockerfile` ni de section `build:` dans `docker-compose.yml`.
+
+Ces commandes ne sont donc pas utiles dans ce projet :
+
+```bash
+docker compose build
+docker compose up -d --build
+```
+
+Docker Desktop conserve quand même les images téléchargées. C'est normal : elles seront réutilisées au prochain démarrage.
+
+Le volume MongoDB contient les données :
+
+```bash
+docker compose down -v
+docker compose up -d
+```
+
+`down -v` supprime les conteneurs et le volume. Au redémarrage, MongoDB recrée une base propre et recharge les collections.
+
+## Diagnostic : vérifier les données
+
+Dans `mongosh` :
+
+```javascript
+show collections
+db.nyc_restaurant_reviews_raw.countDocuments()
+db.restaurants.countDocuments()
+db.reviews.countDocuments()
+db.neighborhoods.countDocuments()
+db.orders.countDocuments()
+db.review_details.countDocuments()
+db.events.countDocuments()
+```
+
+Volumes attendus :
+
+| Collection | Volume |
+|---|---:|
+| `nyc_restaurant_reviews_raw` | 168 |
+| `restaurants` | 168 |
+| `reviews` | 168 |
+| `neighborhoods` | 5 |
+| `orders` | 100 000 |
+| `review_details` | 50 000 |
+| `events` | 300 000 |
 
 ## Mongo Express et imports
 
@@ -63,115 +108,33 @@ Mongo Express est utile pour :
 
 Pour charger ou recréer des collections dans le cours, on privilégie `mongoimport`.
 
-```bash
-docker compose exec -T mongodb mongoimport \
-  --username root --password rootpass --authenticationDatabase admin \
-  --db nyc_food --collection restaurants \
-  --file /tmp/nyc-food/restaurants.json --jsonArray --drop
-```
-
 `mongoimport` est l'outil général à retenir pour importer des données structurées dans MongoDB. Il sait charger du JSON, du CSV et du TSV.
 
-## Pourquoi utiliser Docker Compose ?
+## Secours : recréer les collections de base
 
-Docker Compose permet de fournir le même environnement à tous :
-
-- même version de MongoDB ;
-- mêmes ports ;
-- mêmes identifiants ;
-- mêmes scripts d'initialisation ;
-- même dataset.
-
-Dans ce cours, Docker Compose est utilisé pour éviter les écarts d'installation entre les machines.
-
-## Démarrer MongoDB
-
-Depuis le dossier `sandbox-mongodb` :
+À utiliser seulement si l'initialisation automatique n'a pas créé les collections attendues ou si l'on veut restaurer les collections de base depuis les JSON versionnés.
 
 ```bash
+docker compose cp ../data/nyc-food/. mongodb:/tmp/nyc-food/
+
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection nyc_restaurant_reviews_raw --file /tmp/nyc-food/nyc_restaurant_reviews_raw.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection restaurants --file /tmp/nyc-food/restaurants.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection reviews --file /tmp/nyc-food/reviews.json --jsonArray --drop
+docker compose exec -T mongodb mongoimport --username root --password rootpass --authenticationDatabase admin --db nyc_food --collection neighborhoods --file /tmp/nyc-food/neighborhoods.json --jsonArray --drop
+```
+
+Ces commandes recréent uniquement :
+
+- `nyc_restaurant_reviews_raw` ;
+- `restaurants` ;
+- `reviews` ;
+- `neighborhoods`.
+
+Pour tout réinitialiser, préférer :
+
+```bash
+docker compose down -v
 docker compose up -d
-```
-
-Vérifier que les conteneurs sont lancés :
-
-```bash
-docker compose ps
-```
-
-MongoDB est disponible sur :
-
-```text
-mongodb://root:rootpass@localhost:27017
-```
-
-La base de travail s'appelle :
-
-```text
-nyc_food
-```
-
-## Se connecter avec mongosh
-
-Connexion à la base de cours :
-
-```bash
-docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"
-```
-
-Une fois connecté, vérifier la base courante :
-
-```javascript
-db
-```
-
-Lister les bases :
-
-```javascript
-show dbs
-```
-
-Lister les collections :
-
-```javascript
-show collections
-```
-
-Quitter `mongosh` :
-
-```javascript
-exit
-```
-
-## MongoDB Atlas
-
-Atlas est la version cloud managée de MongoDB. Il permet de créer un cluster MongoDB sans installer de serveur local.
-
-Dans un contexte professionnel, Atlas apporte notamment :
-
-- création de clusters ;
-- gestion des utilisateurs ;
-- autorisation réseau par adresse IP ;
-- chaînes de connexion `mongodb+srv` ;
-- sauvegardes selon le type de cluster ;
-- monitoring ;
-- réplication et haute disponibilité selon l'offre choisie.
-
-## Créer un compte Atlas
-
-Étapes générales :
-
-1. Aller sur `https://www.mongodb.com/atlas`.
-2. Créer un compte.
-3. Créer un projet.
-4. Créer un cluster gratuit ou Flex selon les options disponibles.
-5. Créer un utilisateur de base de données.
-6. Autoriser son adresse IP dans `Network Access`.
-7. Récupérer la chaîne de connexion depuis `Connect`.
-
-Exemple de chaîne de connexion Atlas :
-
-```text
-mongodb+srv://<user>:<password>@<cluster-url>/nyc_food
 ```
 
 ## Local ou Atlas ?
@@ -187,4 +150,4 @@ mongodb+srv://<user>:<password>@<cluster-url>/nyc_food
 
 ## Message clé
 
-Le cours utilise principalement Docker et `mongosh` pour pratiquer. Atlas sert à comprendre comment MongoDB est utilisé dans un environnement cloud managé.
+Le cours utilise principalement Docker et `mongosh` pour pratiquer. Mongo Express sert à vérifier visuellement. Les imports reproductibles passent par `mongoimport`, pas par l'interface web.
