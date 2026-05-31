@@ -68,6 +68,7 @@
       <section id="s5" class="slide">
         <h2 class="slide-title">Cas d'usage : catalogue produit</h2>
         <p>Un catalogue produit contient souvent des articles avec des caractéristiques différentes. Un ordinateur, un livre et une paire de chaussures n'ont pas les mêmes attributs.</p>
+        <p>Dans une même collection `products`, on peut donc stocker deux documents structurellement différents :</p>
         <pre><code>{
   "name": "Laptop Pro 14",
   "category": "computer",
@@ -78,6 +79,16 @@
     "screen": "14 inches"
   }
 }</code></pre>
+        <pre><code>{
+  "name": "MongoDB Basics",
+  "category": "book",
+  "price": 32,
+  "author": "N. Martin",
+  "isbn": "978-2-0000-0000-1",
+  "formats": ["paperback", "ebook"],
+  "pages": 240
+}</code></pre>
+        <p>Le premier document contient un objet `specs` propre aux ordinateurs. Le second contient des champs liés à un livre : `author`, `isbn`, `formats` et `pages`. Les deux documents restent dans la même collection, car ils appartiennent au même domaine fonctionnel : le catalogue produit.</p>
         <p>Cas typiques : e-commerce, marketplace, références techniques, catalogue avec filtres dynamiques.</p>
       </section>
       <section id="s6" class="slide">

@@ -71,6 +71,8 @@ Un catalogue produit contient souvent des articles avec des caractéristiques di
 
 Dans une base relationnelle, ce type de modèle peut conduire à beaucoup de colonnes vides ou à de nombreuses tables spécialisées. Avec MongoDB, chaque document peut conserver uniquement les champs pertinents.
 
+Dans une même collection `products`, on peut donc stocker deux documents structurellement différents :
+
 ```json
 {
   "name": "Laptop Pro 14",
@@ -83,6 +85,20 @@ Dans une base relationnelle, ce type de modèle peut conduire à beaucoup de col
   }
 }
 ```
+
+```json
+{
+  "name": "MongoDB Basics",
+  "category": "book",
+  "price": 32,
+  "author": "N. Martin",
+  "isbn": "978-2-0000-0000-1",
+  "formats": ["paperback", "ebook"],
+  "pages": 240
+}
+```
+
+Le premier document contient un objet `specs` propre aux ordinateurs. Le second contient des champs liés à un livre : `author`, `isbn`, `formats` et `pages`. Les deux documents restent dans la même collection, car ils appartiennent au même domaine fonctionnel : le catalogue produit.
 
 Cas typiques :
 
