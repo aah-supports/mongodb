@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cours 00 - Introduction à MongoDB</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <div class="slide-nav"><a href="#s1">Objectifs</a><a href="#s2">Définition</a><a href="#s3">Vocabulaire</a><a href="#s4">Pourquoi</a><a href="#s5">Catalogue</a><a href="#s6">Application</a><a href="#s7">Contenus</a><a href="#s8">Géospatial</a><a href="#s9">Logs</a><a href="#s10">Choisir</a><a href="#s11">Prudence</a><a href="#s12">Cours</a></div>
+    <article class="deck">
+      <section id="s1" class="slide">
+        <h1>Introduction à MongoDB</h1>
+        <p class="subtitle">Comprendre le modèle document, les cas d'usage fréquents et les situations où MongoDB est un choix pertinent.</p>
+        <ul>
+          <li>Expliquer ce qu'est MongoDB.</li>
+          <li>Différencier relationnel et document.</li>
+          <li>Identifier les concepts : base, collection, document, champ et `_id`.</li>
+          <li>Reconnaître les cas d'usage adaptés.</li>
+        </ul>
+      </section>
+      <section id="s2" class="slide">
+        <h2 class="slide-title">MongoDB en une phrase</h2>
+        <p>MongoDB est une base de données NoSQL orientée documents.</p>
+        <p>Au lieu de stocker les données dans des tables composées de lignes et de colonnes, MongoDB stocke des documents au format BSON, très proche du JSON manipulé dans les applications web et les APIs.</p>
+        <pre><code>{
+  "_id": "resto_001",
+  "name": "Central Pizza",
+  "borough": "Manhattan",
+  "cuisine": "Italian",
+  "address": {
+    "street": "5th Avenue",
+    "zipcode": "10001"
+  },
+  "grades": [
+    { "date": "2024-01-12", "score": 8, "grade": "A" },
+    { "date": "2024-05-20", "score": 12, "grade": "B" }
+  ]
+}</code></pre>
+      </section>
+      <section id="s3" class="slide">
+        <h2 class="slide-title">Vocabulaire essentiel</h2>
+        <table>
+          <tr><th>Relationnel</th><th>MongoDB</th><th>Rôle</th></tr>
+          <tr><td>Base de données</td><td>Base de données</td><td>Conteneur logique des données</td></tr>
+          <tr><td>Table</td><td>Collection</td><td>Ensemble de documents</td></tr>
+          <tr><td>Ligne</td><td>Document</td><td>Objet stocké en BSON</td></tr>
+          <tr><td>Colonne</td><td>Champ</td><td>Propriété d'un document</td></tr>
+          <tr><td>Clé primaire</td><td>`_id`</td><td>Identifiant unique du document</td></tr>
+          <tr><td>Jointure</td><td>Document imbriqué ou `$lookup`</td><td>Association entre données</td></tr>
+        </table>
+        <p>Une collection MongoDB n'impose pas automatiquement que tous les documents aient exactement les mêmes champs. Cette flexibilité est utile, mais elle ne dispense pas de modéliser correctement les données.</p>
+      </section>
+      <section id="s4" class="slide">
+        <h2 class="slide-title">Pourquoi utiliser MongoDB ?</h2>
+        <p>MongoDB devient intéressant lorsque les données sont naturellement représentables sous forme de documents.</p>
+        <ul>
+          <li>Schéma flexible, adapté aux données qui évoluent.</li>
+          <li>Représentation lisible, proche des objets JSON.</li>
+          <li>Objets imbriqués et tableaux dans un même document.</li>
+          <li>Moins de jointures pour les lectures orientées application.</li>
+          <li>Bonne intégration avec les stacks web, mobiles et API.</li>
+          <li>Mécanismes de scalabilité horizontale.</li>
+        </ul>
+      </section>
+      <section id="s5" class="slide">
+        <h2 class="slide-title">Cas d'usage : catalogue produit</h2>
+        <p>Un catalogue produit contient souvent des articles avec des caractéristiques différentes. Un ordinateur, un livre et une paire de chaussures n'ont pas les mêmes attributs.</p>
+        <pre><code>{
+  "name": "Laptop Pro 14",
+  "category": "computer",
+  "price": 1299,
+  "specs": {
+    "ram": "16 GB",
+    "storage": "512 GB SSD",
+    "screen": "14 inches"
+  }
+}</code></pre>
+        <p>Cas typiques : e-commerce, marketplace, références techniques, catalogue avec filtres dynamiques.</p>
+      </section>
+      <section id="s6" class="slide">
+        <h2 class="slide-title">Cas d'usage : application web ou mobile</h2>
+        <p>Les applications modernes manipulent souvent des données JSON : profils utilisateurs, préférences, historiques, notifications ou contenus personnalisés.</p>
+        <pre><code>{
+  "username": "alice",
+  "email": "alice@example.com",
+  "preferences": {
+    "language": "fr",
+    "theme": "dark",
+    "notifications": true
+  },
+  "recentSearches": ["pizza", "sushi", "brunch"]
+}</code></pre>
+        <p>MongoDB est adapté lorsque l'application lit et écrit fréquemment des objets complets plutôt que des lignes dispersées dans de nombreuses tables.</p>
+      </section>
+      <section id="s7" class="slide">
+        <h2 class="slide-title">Cas d'usage : gestion de contenus</h2>
+        <p>Pour un blog, un CMS ou une plateforme éditoriale, les contenus peuvent avoir des structures variables : articles, commentaires, tags, blocs, auteurs, métadonnées.</p>
+        <pre><code>{
+  "title": "Découvrir MongoDB",
+  "author": "A. Martin",
+  "tags": ["database", "nosql", "mongodb"],
+  "comments": [
+    {
+      "user": "user1",
+      "message": "Très clair",
+      "date": "2024-03-10"
+    }
+  ]
+}</code></pre>
+        <p>Le modèle document permet de regrouper les informations consultées ensemble, par exemple un article et ses métadonnées.</p>
+      </section>
+      <section id="s8" class="slide">
+        <h2 class="slide-title">Cas d'usage : données géographiques</h2>
+        <p>MongoDB propose des index géospatiaux. Ils permettent de rechercher des documents proches d'un point donné.</p>
+        <pre><code>{
+  "name": "Central Pizza",
+  "location": {
+    "type": "Point",
+    "coordinates": [-73.9857, 40.7484]
+  }
+}</code></pre>
+        <p>Exemples : restaurants proches d'un utilisateur, points de livraison, magasins autour d'une adresse, suivi de véhicules ou d'interventions.</p>
+      </section>
+      <section id="s9" class="slide">
+        <h2 class="slide-title">Cas d'usage : logs et événements</h2>
+        <p>Les logs applicatifs et les événements utilisateurs sont souvent volumineux, semi-structurés et ajoutés en continu.</p>
+        <pre><code>{
+  "event": "login",
+  "userId": "u123",
+  "timestamp": "2024-06-01T10:15:00Z",
+  "metadata": {
+    "ip": "192.168.1.10",
+    "device": "mobile"
+  }
+}</code></pre>
+        <p>MongoDB permet de stocker ces événements avec des métadonnées variables, puis de les analyser avec des requêtes et des pipelines d'agrégation.</p>
+      </section>
+      <section id="s10" class="slide">
+        <h2 class="slide-title">Quand MongoDB est un bon choix ?</h2>
+        <ul>
+          <li>Les données ressemblent naturellement à des documents JSON.</li>
+          <li>Le schéma évolue régulièrement.</li>
+          <li>Les lectures récupèrent souvent un objet complet.</li>
+          <li>Les données contiennent des objets imbriqués ou des tableaux.</li>
+          <li>Le volume peut devenir important.</li>
+          <li>L'application doit absorber beaucoup d'écritures.</li>
+        </ul>
+      </section>
+      <section id="s11" class="slide">
+        <h2 class="slide-title">Quand faut-il être prudent ?</h2>
+        <p>Une base relationnelle peut être préférable lorsque :</p>
+        <ul>
+          <li>les données sont très normalisées ;</li>
+          <li>les relations entre entités sont nombreuses et complexes ;</li>
+          <li>les transactions multi-tables sont centrales ;</li>
+          <li>le schéma est stable et fortement contraint ;</li>
+          <li>les jointures complexes sont fréquentes ;</li>
+          <li>les contraintes d'intégrité relationnelle sont le coeur du besoin.</li>
+        </ul>
+      </section>
+      <section id="s12" class="slide">
+        <h2 class="slide-title">Objectif du cours</h2>
+        <p>Dans ce cours, nous utilisons MongoDB avec une base `nyc_food` autour de restaurants new-yorkais.</p>
+        <p>Ce fil rouge permet d'aborder progressivement la structure des documents, `mongosh`, les requêtes avec `find`, les agrégations avec `aggregate`, les index, la performance et les notions d'administration.</p>
+        <p>Message clé : le bon réflexe n'est pas de copier un schéma relationnel dans MongoDB, mais de se demander quelles données sont lues ensemble, écrites ensemble et consultées le plus souvent.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>
+</body>
+</html>
