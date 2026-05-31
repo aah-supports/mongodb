@@ -336,6 +336,34 @@ db.restaurants.createIndex({ tags: 1 })
 
 // Historique de commandes d'un restaurant
 db.orders.createIndex({ restaurant_id: 1, status: 1, created_at: -1 })</code></pre>
+        <p>Un index composé est trié dans l'ordre des champs déclarés.</p>
+        <table>
+          <tr><th>Restaurant</th><th>`cuisine`</th><th>`price_tier`</th></tr>
+          <tr><td>A</td><td>French</td><td>`$$$`</td></tr>
+          <tr><td>B</td><td>Italian</td><td>`$$`</td></tr>
+          <tr><td>C</td><td>French</td><td>`$`</td></tr>
+          <tr><td>D</td><td>Japanese</td><td>`$$`</td></tr>
+          <tr><td>E</td><td>French</td><td>`$$`</td></tr>
+        </table>
+        <p>Index `{ cuisine: 1, price_tier: 1 }` :</p>
+        <table>
+          <tr><th>Ordre</th><th>`cuisine`</th><th>`price_tier`</th><th>Restaurant</th></tr>
+          <tr><td>1</td><td>French</td><td>`$`</td><td>C</td></tr>
+          <tr><td>2</td><td>French</td><td>`$$`</td><td>E</td></tr>
+          <tr><td>3</td><td>French</td><td>`$$$`</td><td>A</td></tr>
+          <tr><td>4</td><td>Italian</td><td>`$$`</td><td>B</td></tr>
+          <tr><td>5</td><td>Japanese</td><td>`$$`</td><td>D</td></tr>
+        </table>
+        <p>Index `{ price_tier: 1, cuisine: 1 }` :</p>
+        <table>
+          <tr><th>Ordre</th><th>`price_tier`</th><th>`cuisine`</th><th>Restaurant</th></tr>
+          <tr><td>1</td><td>`$`</td><td>French</td><td>C</td></tr>
+          <tr><td>2</td><td>`$$`</td><td>French</td><td>E</td></tr>
+          <tr><td>3</td><td>`$$`</td><td>Italian</td><td>B</td></tr>
+          <tr><td>4</td><td>`$$`</td><td>Japanese</td><td>D</td></tr>
+          <tr><td>5</td><td>`$$$`</td><td>French</td><td>A</td></tr>
+        </table>
+        <p>À retenir : les deux index utilisent les mêmes champs, mais ils ne rangent pas les entrées de la même manière. MongoDB peut donc les exploiter différemment selon les filtres et les tris.</p>
         <p>Règle pratique : commencer l'index composé par les champs d'égalité fréquents, puis les champs de plage ou de tri. Exemple : `restaurant_id`, puis `status`, puis `created_at`.</p>
       </section>
       <section id="s14" class="slide">

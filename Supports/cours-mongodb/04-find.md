@@ -467,6 +467,40 @@ db.restaurants.createIndex({
 
 Cet index est adapté à une requête qui filtre par `cuisine`, filtre par `price_tier`, puis trie ou compare la note globale.
 
+Un index composé est trié dans l'ordre des champs déclarés.
+
+Exemple avec quelques documents :
+
+| Restaurant | `cuisine` | `price_tier` |
+|---|---|---|
+| A | French | `$$$` |
+| B | Italian | `$$` |
+| C | French | `$` |
+| D | Japanese | `$$` |
+| E | French | `$$` |
+
+Index `{ cuisine: 1, price_tier: 1 }` :
+
+| Ordre dans l'index | `cuisine` | `price_tier` | Restaurant |
+|---|---|---|---|
+| 1 | French | `$` | C |
+| 2 | French | `$$` | E |
+| 3 | French | `$$$` | A |
+| 4 | Italian | `$$` | B |
+| 5 | Japanese | `$$` | D |
+
+Index `{ price_tier: 1, cuisine: 1 }` :
+
+| Ordre dans l'index | `price_tier` | `cuisine` | Restaurant |
+|---|---|---|---|
+| 1 | `$` | French | C |
+| 2 | `$$` | French | E |
+| 3 | `$$` | Italian | B |
+| 4 | `$$` | Japanese | D |
+| 5 | `$$$` | French | A |
+
+À retenir : les deux index utilisent les mêmes champs, mais ils ne rangent pas les entrées de la même manière. MongoDB peut donc les exploiter différemment selon les filtres et les tris.
+
 Règle pratique :
 
 1. Placer d'abord les champs d'égalité fréquents.
