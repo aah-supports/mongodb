@@ -66,7 +66,7 @@ docker compose up -d --build
 
 Docker Desktop conserve quand même les images téléchargées. C'est normal : elles sont réutilisées au prochain démarrage.
 
-Nettoyer les images est optionnel et généralement inutile pour le cours. Cela force Docker à retélécharger les images ensuite.
+Nettoyer les images est optionnel et généralement inutile dans notre cas spécifique. Cela force Docker à retélécharger les images ensuite.
 
 ## Import de secours
 
