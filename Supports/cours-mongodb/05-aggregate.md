@@ -136,9 +136,138 @@ db.restaurants.aggregate([
 
 ## `$lookup`
 
-`$lookup` permet de relier deux collections.
+`$lookup` permet de relier deux collections dans un pipeline `aggregate`.
 
-Ajouter les restaurants aux avis détaillés :
+Il sert à répondre à une question du type :
+
+> J'ai des documents dans une collection, et je veux récupérer des informations liées dans une autre collection.
+
+Dans le sandbox, plusieurs collections partagent le champ `restaurant_id` :
+
+```text
+review_details.restaurant_id  ->  restaurants.restaurant_id
+orders.restaurant_id          ->  restaurants.restaurant_id
+reviews.restaurant_id         ->  restaurants.restaurant_id
+```
+
+Avant d'écrire un `$lookup`, il faut identifier :
+
+| Élément | Question | Exemple |
+|---|---|---|
+| Collection de départ | D'où part le pipeline ? | `review_details` |
+| Collection cible | Où chercher l'information liée ? | `restaurants` |
+| Champ local | Quel champ existe dans la collection de départ ? | `restaurant_id` |
+| Champ étranger | Quel champ correspondant existe dans la collection cible ? | `restaurant_id` |
+| Nom du résultat | Dans quel champ stocker les documents trouvés ? | `restaurant` |
+
+On peut vérifier les deux côtés séparément :
+
+```javascript
+db.review_details.findOne(
+  {},
+  { _id: 0, restaurant_id: 1, rating: 1, sentiment: 1 }
+)
+
+db.restaurants.findOne(
+  {},
+  { _id: 0, restaurant_id: 1, name: 1, cuisine: 1 }
+)
+```
+
+### Étape 1 : faire un `$lookup` minimal
+
+On commence sans `$unwind`, sans `$project` complexe et sans tri. L'objectif est seulement de voir la forme produite par `$lookup`.
+
+```javascript
+db.review_details.aggregate([
+  { $limit: 3 },
+  {
+    $lookup: {
+      from: "restaurants",
+      localField: "restaurant_id",
+      foreignField: "restaurant_id",
+      as: "restaurant"
+    }
+  }
+])
+```
+
+Résultat important : `$lookup` ajoute un champ `restaurant`, et ce champ est un tableau.
+
+Même si on attend un seul restaurant, MongoDB retourne un tableau parce qu'une jointure peut techniquement trouver zéro, un ou plusieurs documents.
+
+### Étape 2 : filtrer avant la jointure
+
+On ajoute ensuite un `$match` avant `$lookup`.
+
+```javascript
+db.review_details.aggregate([
+  { $match: { verified_visit: true, rating: { $gte: 4.5 } } },
+  { $limit: 3 },
+  {
+    $lookup: {
+      from: "restaurants",
+      localField: "restaurant_id",
+      foreignField: "restaurant_id",
+      as: "restaurant"
+    }
+  }
+])
+```
+
+Filtrer avant `$lookup` évite de joindre toute la collection si on n'a besoin que d'une partie des documents.
+
+### Étape 3 : transformer le tableau avec `$unwind`
+
+Comme `restaurant` est un tableau, on utilise souvent `$unwind` juste après le `$lookup` quand on attend un seul document relié.
+
+Avant `$unwind` :
+
+```javascript
+{
+  restaurant_id: "NYC-ZAGAT-0001",
+  rating: 4.8,
+  restaurant: [
+    { restaurant_id: "NYC-ZAGAT-0001", name: "Daniella Ristorante", cuisine: "Italian" }
+  ]
+}
+```
+
+Après `$unwind: "$restaurant"` :
+
+```javascript
+{
+  restaurant_id: "NYC-ZAGAT-0001",
+  rating: 4.8,
+  restaurant: {
+    restaurant_id: "NYC-ZAGAT-0001",
+    name: "Daniella Ristorante",
+    cuisine: "Italian"
+  }
+}
+```
+
+Pipeline :
+
+```javascript
+db.review_details.aggregate([
+  { $match: { verified_visit: true, rating: { $gte: 4.5 } } },
+  {
+    $lookup: {
+      from: "restaurants",
+      localField: "restaurant_id",
+      foreignField: "restaurant_id",
+      as: "restaurant"
+    }
+  },
+  { $unwind: "$restaurant" },
+  { $limit: 3 }
+])
+```
+
+### Étape 4 : projeter le résultat utile
+
+Une fois la relation comprise, on garde seulement les champs utiles.
 
 ```javascript
 db.review_details.aggregate([
@@ -167,6 +296,16 @@ db.review_details.aggregate([
   { $limit: 20 }
 ])
 ```
+
+À retenir :
+
+- `$lookup` s'utilise dans `aggregate`, pas dans `find` ;
+- `from` indique la collection cible ;
+- `localField` est le champ de la collection de départ ;
+- `foreignField` est le champ correspondant dans la collection cible ;
+- `as` est le nom du champ ajouté ;
+- le résultat de `$lookup` est un tableau ;
+- `$unwind` transforme ce tableau en objet quand on attend une seule correspondance.
 
 ## Agréger les commandes
 
