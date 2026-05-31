@@ -403,6 +403,34 @@ db.restaurants.createIndex({ tags: 1 })
 db.review_details.createIndex({ restaurant_id: 1, reviewed_at: -1 })
 ```
 
+Par défaut, un index n'impose pas l'unicité. Il sert seulement à accélérer certaines recherches ou certains tris.
+
+Exemple :
+
+```javascript
+db.restaurants.createIndex({ cuisine: 1 })
+```
+
+Cet index aide les requêtes sur `cuisine`, mais plusieurs restaurants peuvent évidemment avoir `cuisine: "Italian"`.
+
+Pour interdire les doublons sur un champ, il faut créer un index unique :
+
+```javascript
+db.restaurants.createIndex(
+  { restaurant_id: 1 },
+  { unique: true }
+)
+```
+
+Avec cet index, MongoDB refuse deux documents qui auraient le même `restaurant_id`. Si une insertion crée un doublon, MongoDB renvoie une erreur de type `E11000 duplicate key error`.
+
+À retenir :
+
+- `_id` est unique automatiquement ;
+- un index sans `{ unique: true }` accélère les requêtes, mais autorise les doublons ;
+- un index avec `{ unique: true }` accélère les requêtes et impose l'unicité ;
+- `getIndexes()` permet de voir les index existants et de repérer ceux qui sont uniques.
+
 Un index accélère certaines lectures, mais il a un coût :
 
 - il occupe de l'espace disque ;
