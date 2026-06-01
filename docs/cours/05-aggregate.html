@@ -193,6 +193,8 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
       </section>
       <section id="s8" class="slide">
         <h2 class="slide-title">Éclater un tableau avec `$unwind`</h2>
+        <p>On utilise `$unwind` quand on veut analyser les éléments d'un tableau individuellement.</p>
+        <p>Exemple : un restaurant peut avoir plusieurs tags. Si l'on veut compter les tags les plus fréquents, il faut d'abord transformer chaque tag en ligne séparée dans le pipeline.</p>
         <p>`$unwind` transforme un document contenant un tableau en plusieurs documents, un par élément du tableau.</p>
         <pre><code>{
   name: "Demo Review Tags",

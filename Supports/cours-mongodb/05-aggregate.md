@@ -205,6 +205,10 @@ Ici, MongoDB construit un tableau de cuisines uniques pour chaque niveau de prix
 
 ## `$unwind`
 
+On utilise `$unwind` quand on veut analyser les éléments d'un tableau individuellement.
+
+Exemple : un restaurant peut avoir plusieurs tags. Si l'on veut compter les tags les plus fréquents, il faut d'abord transformer chaque tag en ligne séparée dans le pipeline.
+
 `$unwind` transforme chaque élément d'un tableau en document séparé.
 
 Exemple de document :
