@@ -101,6 +101,12 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
           { $avg: ["$ratings.food", "$ratings.decor", "$ratings.service"] },
           1
         ]
+      },
+      value_score: {
+        $round: [
+          { $divide: ["$ratings.overall", "$price_for_two"] },
+          3
+        ]
       }
     }
   }
@@ -108,13 +114,15 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
         <ul>
           <li>`overall_rating` renomme le champ imbriqué `ratings.overall`.</li>
           <li>`average_detail_rating` calcule une moyenne à partir de `food`, `decor` et `service`.</li>
+          <li>`value_score` calcule un score qualité/prix en divisant la note globale par le prix pour deux.</li>
           <li>`_id: 0` retire l'identifiant MongoDB de la sortie.</li>
         </ul>
-        <p>SQL comparable : `SELECT name, cuisine, price_for_two, ratings_overall AS overall_rating, ROUND((food + decor + service) / 3, 1) AS average_detail_rating`.</p>
+        <p>`$project` est utile quand on veut produire une sortie propre : quelques champs conservés, certains champs renommés, et des indicateurs calculés.</p>
+        <p>SQL comparable : `SELECT name, cuisine, price_for_two, ratings_overall AS overall_rating, ROUND((food + decor + service) / 3, 1) AS average_detail_rating, ROUND(ratings_overall / price_for_two, 3) AS value_score`.</p>
       </section>
       <section id="s6" class="slide">
         <h2 class="slide-title">Ajouter un champ avec `$set`</h2>
-        <p>`$set` ajoute ou modifie un champ en conservant les autres. C'est utile pour créer un indicateur intermédiaire.</p>
+        <p>`$set` ajoute ou modifie un champ en conservant les autres. La différence avec `$project` est importante : `$project` redessine la sortie, alors que `$set` garde tout le document et ajoute seulement le champ calculé.</p>
         <pre><code>db.restaurants.aggregate([
   {
     $set: {

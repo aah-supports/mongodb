@@ -81,6 +81,12 @@ db.restaurants.aggregate([
           { $avg: ["$ratings.food", "$ratings.decor", "$ratings.service"] },
           1
         ]
+      },
+      value_score: {
+        $round: [
+          { $divide: ["$ratings.overall", "$price_for_two"] },
+          3
+        ]
       }
     }
   }
@@ -91,11 +97,14 @@ Ici :
 
 - `overall_rating` renomme le champ imbriqué `ratings.overall` ;
 - `average_detail_rating` calcule une moyenne à partir de trois champs ;
+- `value_score` calcule un score qualité/prix en divisant la note globale par le prix pour deux ;
 - `_id: 0` retire l'identifiant MongoDB de la sortie.
+
+`$project` est donc utile quand on veut produire une sortie propre : quelques champs conservés, certains champs renommés, et des indicateurs calculés.
 
 ## `$set`
 
-`$set` ajoute ou modifie un champ en conservant les autres.
+`$set` ajoute ou modifie un champ en conservant les autres. La différence avec `$project` est importante : `$project` redessine la sortie, alors que `$set` garde tout le document et ajoute seulement le champ calculé.
 
 ```javascript
 db.restaurants.aggregate([
