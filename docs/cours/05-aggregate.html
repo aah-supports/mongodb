@@ -95,11 +95,22 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
       name: 1,
       cuisine: 1,
       price_for_two: 1,
-      overall_rating: "$ratings.overall"
+      overall_rating: "$ratings.overall",
+      average_detail_rating: {
+        $round: [
+          { $avg: ["$ratings.food", "$ratings.decor", "$ratings.service"] },
+          1
+        ]
+      }
     }
   }
 ])</code></pre>
-        <p>SQL comparable : `SELECT name, cuisine, price_for_two, ratings_overall AS overall_rating`.</p>
+        <ul>
+          <li>`overall_rating` renomme le champ imbriqué `ratings.overall`.</li>
+          <li>`average_detail_rating` calcule une moyenne à partir de `food`, `decor` et `service`.</li>
+          <li>`_id: 0` retire l'identifiant MongoDB de la sortie.</li>
+        </ul>
+        <p>SQL comparable : `SELECT name, cuisine, price_for_two, ratings_overall AS overall_rating, ROUND((food + decor + service) / 3, 1) AS average_detail_rating`.</p>
       </section>
       <section id="s6" class="slide">
         <h2 class="slide-title">Ajouter un champ avec `$set`</h2>

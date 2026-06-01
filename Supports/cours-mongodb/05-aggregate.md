@@ -75,11 +75,23 @@ db.restaurants.aggregate([
       name: 1,
       cuisine: 1,
       price_for_two: 1,
-      overall_rating: "$ratings.overall"
+      overall_rating: "$ratings.overall",
+      average_detail_rating: {
+        $round: [
+          { $avg: ["$ratings.food", "$ratings.decor", "$ratings.service"] },
+          1
+        ]
+      }
     }
   }
 ])
 ```
+
+Ici :
+
+- `overall_rating` renomme le champ imbriqué `ratings.overall` ;
+- `average_detail_rating` calcule une moyenne à partir de trois champs ;
+- `_id: 0` retire l'identifiant MongoDB de la sortie.
 
 ## `$set`
 
