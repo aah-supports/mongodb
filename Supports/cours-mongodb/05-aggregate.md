@@ -106,6 +106,10 @@ Ici :
 
 `$set` ajoute ou modifie un champ en conservant les autres. La différence avec `$project` est importante : `$project` redessine la sortie, alors que `$set` garde tout le document et ajoute seulement le champ calculé.
 
+Dans un pipeline `aggregate`, ce champ est temporaire : il existe dans les documents produits par le pipeline, mais il n'est pas écrit dans la collection d'origine.
+
+Pour modifier réellement les documents stockés, il faut utiliser une opération d'écriture comme `updateMany`, ou terminer le pipeline par une étape d'écriture comme `$merge` ou `$out`.
+
 ```javascript
 db.restaurants.aggregate([
   {

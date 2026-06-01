@@ -123,6 +123,8 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
       <section id="s6" class="slide">
         <h2 class="slide-title">Ajouter un champ avec `$set`</h2>
         <p>`$set` ajoute ou modifie un champ en conservant les autres. La différence avec `$project` est importante : `$project` redessine la sortie, alors que `$set` garde tout le document et ajoute seulement le champ calculé.</p>
+        <p>Dans un pipeline `aggregate`, ce champ est temporaire : il existe dans les documents produits par le pipeline, mais il n'est pas écrit dans la collection d'origine.</p>
+        <p>Pour modifier réellement les documents stockés, il faut utiliser une opération d'écriture comme `updateMany`, ou terminer le pipeline par une étape d'écriture comme `$merge` ou `$out`.</p>
         <pre><code>db.restaurants.aggregate([
   {
     $set: {
