@@ -165,10 +165,44 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
           <tr><td>`$push`</td><td>Construire un tableau.</td></tr>
           <tr><td>`$addToSet`</td><td>Construire un tableau sans doublons.</td></tr>
         </table>
+        <h3>`$push` ou `$addToSet` ?</h3>
+        <div class="two-col">
+          <div>
+            <p>`$push` garde toutes les valeurs, y compris les doublons.</p>
+            <pre><code>db.restaurants.aggregate([
+  {
+    $group: {
+      _id: "$price_tier",
+      cuisines: { $push: "$cuisine" }
+    }
+  }
+])</code></pre>
+          </div>
+          <div>
+            <p>`$addToSet` garde chaque valeur une seule fois.</p>
+            <pre><code>db.restaurants.aggregate([
+  {
+    $group: {
+      _id: "$price_tier",
+      cuisines: { $addToSet: "$cuisine" }
+    }
+  }
+])</code></pre>
+          </div>
+        </div>
       </section>
       <section id="s8" class="slide">
         <h2 class="slide-title">Éclater un tableau avec `$unwind`</h2>
         <p>`$unwind` transforme un document contenant un tableau en plusieurs documents, un par élément du tableau.</p>
+        <pre><code>{
+  name: "Demo Review Tags",
+  tags: ["top_food", "great_service", "dinner"]
+}</code></pre>
+        <p>Après `{ $unwind: "$tags" }`, MongoDB produit temporairement trois documents dans le pipeline :</p>
+        <pre><code>{ name: "Demo Review Tags", tags: "top_food" }
+{ name: "Demo Review Tags", tags: "great_service" }
+{ name: "Demo Review Tags", tags: "dinner" }</code></pre>
+        <p>Le document d'origine n'est pas modifié. C'est seulement la forme des données qui circulent dans le pipeline qui change.</p>
         <pre><code>db.restaurants.aggregate([
   { $unwind: "$tags" },
   {
@@ -179,7 +213,13 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
   },
   { $sort: { restaurants: -1 } }
 ])</code></pre>
-        <p>Sans `$unwind`, on ne peut pas facilement compter chaque tag séparément. C'est une différence importante avec un modèle relationnel normalisé.</p>
+        <ol>
+          <li>`$unwind` crée une ligne temporaire par tag.</li>
+          <li>`$group` regroupe ces lignes par valeur de tag.</li>
+          <li>`$sum: 1` compte combien de fois chaque tag apparaît.</li>
+          <li>`$sort` classe les tags les plus fréquents en premier.</li>
+        </ol>
+        <p>Sans `$unwind`, on compterait des tableaux entiers, pas les valeurs individuelles contenues dans ces tableaux.</p>
       </section>
       <section id="s9" class="slide">
         <h2 class="slide-title">Préparer un `$lookup`</h2>

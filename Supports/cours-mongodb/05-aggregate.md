@@ -168,9 +168,69 @@ db.restaurants.aggregate([
 | `$push` | construire un tableau |
 | `$addToSet` | construire un tableau sans doublons |
 
+Exemple avec `$push` :
+
+```javascript
+db.restaurants.aggregate([
+  {
+    $group: {
+      _id: "$price_tier",
+      cuisines: { $push: "$cuisine" }
+    }
+  }
+])
+```
+
+Ici, MongoDB construit un tableau avec toutes les cuisines trouvées pour chaque niveau de prix. Si une cuisine apparaît plusieurs fois, elle est présente plusieurs fois dans le tableau.
+
+Exemple avec `$addToSet` :
+
+```javascript
+db.restaurants.aggregate([
+  {
+    $group: {
+      _id: "$price_tier",
+      cuisines: { $addToSet: "$cuisine" }
+    }
+  }
+])
+```
+
+Ici, MongoDB construit un tableau de cuisines uniques pour chaque niveau de prix.
+
+À retenir :
+
+- `$push` conserve toutes les valeurs, y compris les doublons ;
+- `$addToSet` conserve chaque valeur une seule fois.
+
 ## `$unwind`
 
 `$unwind` transforme chaque élément d'un tableau en document séparé.
+
+Exemple de document :
+
+```javascript
+{
+  name: "Demo Review Tags",
+  tags: ["top_food", "great_service", "dinner"]
+}
+```
+
+Après :
+
+```javascript
+{ $unwind: "$tags" }
+```
+
+MongoDB produit temporairement trois documents dans le pipeline :
+
+```javascript
+{ name: "Demo Review Tags", tags: "top_food" }
+{ name: "Demo Review Tags", tags: "great_service" }
+{ name: "Demo Review Tags", tags: "dinner" }
+```
+
+Le document d'origine n'est pas modifié. C'est seulement la forme des données qui circulent dans le pipeline qui change.
 
 Compter les tags :
 
@@ -186,6 +246,15 @@ db.restaurants.aggregate([
   { $sort: { restaurants: -1 } }
 ])
 ```
+
+Lecture du pipeline :
+
+1. `$unwind` crée une ligne temporaire par tag ;
+2. `$group` regroupe ensuite ces lignes par valeur de tag ;
+3. `$sum: 1` compte combien de fois chaque tag apparaît ;
+4. `$sort` classe les tags les plus fréquents en premier.
+
+Sans `$unwind`, on compterait des tableaux entiers, pas les valeurs individuelles contenues dans ces tableaux.
 
 ## `$lookup`
 
