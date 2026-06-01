@@ -237,3 +237,4 @@ db.orders.aggregate([
 10. Calculer, pour chaque raison de visite (`visit_reason`), la note moyenne `rating` et le nombre d'avis détaillés.
 11. Comparer les avis vérifiés et non vérifiés (`verified_visit`) en calculant, pour chaque groupe, le nombre d'avis, la note moyenne `rating` et la moyenne des votes utiles `helpful_votes`.
 12. Créer une collection matérialisée `restaurant_kpis` avec `$merge`.
+13. Construire un pipeline avec deux `$group` : compter d'abord les restaurants par couple `price_tier` + `cuisine`, puis produire, pour chaque `price_tier`, le nombre de cuisines représentées et le nombre total de restaurants.
