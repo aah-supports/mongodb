@@ -327,6 +327,38 @@ db.restaurants.find({
 })
 ```
 
+On peut aussi construire des alternatives plus riches, puis appliquer des contraintes communes à toutes les branches.
+
+Exemple : restaurants italiens ou français avec `top_food`, ou restaurants japonais ou méditerranéens avec `great_service`, mais dans tous les cas bien notés et à prix raisonnable.
+
+```javascript
+db.restaurants.find({
+  $or: [
+    {
+      cuisine: { $in: ["Italian", "French"] },
+      tags: "top_food"
+    },
+    {
+      cuisine: { $in: ["Japanese", "Mediterranean"] },
+      tags: "great_service"
+    }
+  ],
+  "ratings.overall": { $gte: 21 },
+  price_for_two: { $lte: 60 }
+})
+```
+
+Ici, les deux blocs dans `$or` expriment les alternatives. Les champs `"ratings.overall"` et `price_for_two` sont au même niveau que `$or`, donc ils s'appliquent dans tous les cas.
+
+Remarque logique : une condition du type `(A ∧ B) ∨ (C ∧ D)` peut aussi s'écrire avec la loi de De Morgan :
+
+```text
+(A ∧ B) ∨ (C ∧ D)
+= ¬((¬A ∨ ¬B) ∧ (¬C ∨ ¬D))
+```
+
+Cette équivalence est utile pour raisonner sur des filtres complexes, mais elle n'est pas forcément la forme la plus lisible en MongoDB. Dans une requête `find`, on privilégie généralement la forme directe avec `$or` et des blocs de conditions positives.
+
 ## Champs imbriqués
 
 Les notes sont stockées dans l'objet `ratings`.

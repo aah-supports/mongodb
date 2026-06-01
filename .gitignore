@@ -1,3 +1,5 @@
 info.md
 .DS_Store
-Corrections/
+Corrections/*
+!Corrections/
+!Corrections/02-find-correction.md
