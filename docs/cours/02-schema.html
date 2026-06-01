@@ -1,41 +1,225 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Cours 02 - Schéma</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cours 02 - Base et schéma</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Niveaux</a><a href="#s2">Créer</a><a href="#s3">Modèle</a><a href="#s4">Schémas</a><a href="#s4b">Validation</a><a href="#s4c">Cas d'usage</a><a href="#s5">Imbriquer</a></div>
+    <div class="slide-nav"><a href="#s1">Objectifs</a><a href="#s2">Niveaux</a><a href="#s3">Base</a><a href="#s4">Collection</a><a href="#s5">Schéma</a><a href="#s6">Modèle</a><a href="#s7">Niveaux</a><a href="#s8">Validation</a><a href="#s9">SQL</a><a href="#s10">Imbriqués</a><a href="#s11">Tableaux</a><a href="#s12">Choisir</a><a href="#s13">Exercices</a></div>
     <article class="deck">
-      <section id="s1" class="slide"><h1>Créer une base et comprendre le schéma</h1><table><tr><th>Niveau</th><th>Exemple</th></tr><tr><td>Base</td><td>`nyc_food`</td></tr><tr><td>Collection</td><td>`restaurants`</td></tr><tr><td>Document</td><td>Un restaurant en BSON/JSON.</td></tr></table></section>
-      <section id="s2" class="slide"><h2 class="slide-title">Création implicite</h2><pre><code>use demo_schema
-db.restaurants.insertOne({
+      <section id="s1" class="slide">
+        <h1>Créer une base de données et comprendre le schéma</h1>
+        <p class="subtitle">MongoDB crée les bases et collections au moment de la première écriture. Le schéma est flexible, mais le modèle de données reste une décision de conception.</p>
+        <ul>
+          <li>Créer une base MongoDB.</li>
+          <li>Créer une collection.</li>
+          <li>Insérer un premier document.</li>
+          <li>Distinguer schéma implicite, schéma applicatif et validation MongoDB.</li>
+        </ul>
+      </section>
+      <section id="s2" class="slide">
+        <h2 class="slide-title">Base, collection, document</h2>
+        <p>MongoDB organise les données en trois niveaux principaux.</p>
+        <table>
+          <tr><th>Niveau</th><th>Équivalent approximatif SQL</th><th>Exemple</th></tr>
+          <tr><td>Base de données</td><td>Base de données</td><td>`nyc_food`</td></tr>
+          <tr><td>Collection</td><td>Table</td><td>`restaurants`</td></tr>
+          <tr><td>Document</td><td>Ligne enrichie</td><td>Un restaurant au format JSON/BSON</td></tr>
+        </table>
+        <p>Une base contient des collections. Une collection contient des documents. Un document contient des champs simples, imbriqués ou sous forme de tableaux.</p>
+      </section>
+      <section id="s3" class="slide">
+        <h2 class="slide-title">Créer une base</h2>
+        <p>Dans MongoDB, une base est créée au moment où une première donnée y est écrite.</p>
+        <pre><code>docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/admin"</code></pre>
+        <pre><code>use demo_schema
+show dbs</code></pre>
+        <p>Après `use demo_schema`, la base est sélectionnée, mais elle n'apparaît pas encore dans `show dbs` si elle est vide.</p>
+      </section>
+      <section id="s4" class="slide">
+        <h2 class="slide-title">Créer une collection</h2>
+        <p>La collection peut être créée implicitement par une insertion.</p>
+        <pre><code>db.restaurants.insertOne({
   name: "Demo Bistro",
   cuisine: "French",
   price_for_two: 48,
-  ratings: { overall: 20.7 }
-})</code></pre><p>Une base et une collection existent physiquement après la première écriture.</p></section>
-      <section id="s3" class="slide"><h2 class="slide-title">Modèle du fil rouge</h2><table><tr><th>Collection</th><th>Rôle</th></tr><tr><td>`nyc_restaurant_reviews_raw`</td><td>Données brutes OpenIntro/Zagat.</td></tr><tr><td>`restaurants`</td><td>Vue orientée restaurant.</td></tr><tr><td>`reviews`</td><td>Avis et notes agrégées.</td></tr><tr><td>`neighborhoods`</td><td>Collection annexe.</td></tr><tr><td>`orders`</td><td>Commandes générées.</td></tr><tr><td>`review_details`</td><td>Avis détaillés générés.</td></tr><tr><td>`events`</td><td>Événements générés.</td></tr></table></section>
-      <section id="s4" class="slide"><h2 class="slide-title">Trois niveaux de schéma</h2><div class="grid"><div class="card"><h3>Schéma implicite</h3><p class="meta">Structure réellement présente dans les documents.</p></div><div class="card"><h3>Schéma applicatif</h3><p class="meta">Modèle attendu par l'application, la documentation et les requêtes.</p></div><div class="card"><h3>Validation MongoDB</h3><p class="meta">Règles JSON Schema appliquées par la base.</p></div></div></section>
-      <section id="s4b" class="slide"><h2 class="slide-title">Validation MongoDB et SQL</h2><p>La validation MongoDB peut imposer des champs obligatoires, des types et une structure. Plus elle est stricte, plus on se rapproche d'un contrat de données comparable à SQL.</p><pre><code>db.createCollection("validated_restaurants", {
+  ratings: {
+    food: 22,
+    decor: 19,
+    service: 21,
+    overall: 20.7
+  }
+})
+
+show collections
+db.restaurants.findOne()</code></pre>
+        <p>Il est aussi possible de créer une collection explicitement avant d'insérer des documents.</p>
+        <pre><code>db.createCollection("reviews")
+show collections</code></pre>
+      </section>
+      <section id="s5" class="slide">
+        <h2 class="slide-title">Schéma flexible</h2>
+        <p>Dans MongoDB, deux documents d'une même collection peuvent avoir des champs différents.</p>
+        <pre><code>db.restaurants.insertMany([
+  {
+    name: "Demo Bagel",
+    cuisine: "Bagels",
+    price_tier: "$"
+  },
+  {
+    name: "Demo Sushi",
+    cuisine: "Japanese",
+    ratings: {
+      food: 24,
+      decor: 21,
+      service: 23,
+      overall: 22.7
+    },
+    tags: ["top_food", "great_service"]
+  }
+])</code></pre>
+        <p>Le schéma flexible permet l'évolution, mais il ne remplace pas une réflexion de modélisation.</p>
+      </section>
+      <section id="s6" class="slide">
+        <h2 class="slide-title">Schéma flexible, modèle réel</h2>
+        <p>Une application sérieuse définit tout de même ses collections principales, champs attendus, types, champs obligatoires, index, relations, objets imbriqués et tableaux utiles.</p>
+        <table>
+          <tr><th>Collection</th><th>Rôle</th></tr>
+          <tr><td>`nyc_restaurant_reviews_raw`</td><td>Données brutes OpenIntro/Zagat.</td></tr>
+          <tr><td>`restaurants`</td><td>Vue documentaire orientée restaurant.</td></tr>
+          <tr><td>`reviews`</td><td>Avis et notes agrégées.</td></tr>
+          <tr><td>`neighborhoods`</td><td>Collection pédagogique annexe.</td></tr>
+          <tr><td>`orders`</td><td>Commandes générées pour simuler le volume.</td></tr>
+          <tr><td>`review_details`</td><td>Avis détaillés générés.</td></tr>
+          <tr><td>`events`</td><td>Événements applicatifs générés.</td></tr>
+        </table>
+      </section>
+      <section id="s7" class="slide">
+        <h2 class="slide-title">Trois niveaux de schéma</h2>
+        <div class="grid">
+          <div class="card"><h3>Schéma implicite</h3><p class="meta">Structure réellement présente dans les documents. On l'observe avec `findOne()`.</p></div>
+          <div class="card"><h3>Schéma applicatif</h3><p class="meta">Modèle attendu par l'application, le code, les supports ou un diagramme.</p></div>
+          <div class="card"><h3>Validation MongoDB</h3><p class="meta">Règles JSON Schema appliquées par la base à l'écriture.</p></div>
+        </div>
+        <pre><code>db.restaurants.findOne()</code></pre>
+      </section>
+      <section id="s8" class="slide">
+        <h2 class="slide-title">Validation MongoDB</h2>
+        <p>MongoDB peut appliquer une validation avec JSON Schema.</p>
+        <pre><code>db.createCollection("validated_restaurants", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["name", "cuisine"],
+      required: ["name", "cuisine", "ratings"],
       properties: {
         name: { bsonType: "string" },
-        price_for_two: { bsonType: "number" }
+        cuisine: { bsonType: "string" },
+        price_for_two: { bsonType: ["int", "long", "double", "null"] },
+        ratings: {
+          bsonType: "object",
+          required: ["overall"],
+          properties: {
+            overall: { bsonType: ["int", "long", "double"] }
+          }
+        }
       }
     }
   }
-})</code></pre><p>Mais MongoDB reste documentaire : validation optionnelle, schéma partiel possible, objets imbriqués, tableaux, et pas de clés étrangères relationnelles par défaut.</p></section>
-      <section id="s4c" class="slide"><h2 class="slide-title">Quand choisir une base documentaire ?</h2><p>Une base orientée document est pertinente quand les données ressemblent naturellement à du JSON et sont souvent lues ensemble.</p><ul><li>Catalogue produit avec caractéristiques variables.</li><li>Profils utilisateurs avec préférences et paramètres.</li><li>CMS, contenus éditoriaux, blocs et métadonnées.</li><li>Logs, événements ou données semi-structurées.</li><li>API JSON où le stockage ressemble au format renvoyé.</li></ul><p>Une base SQL reste souvent préférable pour un modèle très stable, très normalisé, avec beaucoup de jointures et de contraintes relationnelles fortes.</p></section>
-      <section id="s5" class="slide"><h2 class="slide-title">Imbriquer ou référencer ?</h2><div class="two-col"><div><h3>Imbriquer</h3><p>Quand les données sont consultées ensemble et ne grossissent pas sans limite.</p><pre><code>ratings: {
-  food: 22,
-  service: 20
-}</code></pre></div><div><h3>Référencer</h3><p>Quand les données sont nombreuses, évolutives ou consultées séparément.</p><pre><code>{
+})</code></pre>
+        <p>Insertion valide :</p>
+        <pre><code>db.validated_restaurants.insertOne({
+  name: "Demo Vegan",
+  cuisine: "Vegetarian",
+  price_for_two: 38,
+  ratings: { overall: 21.5 }
+})</code></pre>
+        <p>Insertion invalide :</p>
+        <pre><code>db.validated_restaurants.insertOne({
+  name: "Missing Rating",
+  cuisine: "Vegetarian"
+})</code></pre>
+        <p>La deuxième insertion échoue parce que le champ <code>ratings</code> est obligatoire.</p>
+      </section>
+      <section id="s9" class="slide">
+        <h2 class="slide-title">Validation : comme SQL ?</h2>
+        <p>La validation MongoDB permet d'imposer des champs obligatoires, des types et une structure. Plus elle est stricte, plus on se rapproche d'un contrat de données comparable à SQL.</p>
+        <ul>
+          <li>La validation est optionnelle et configurable collection par collection.</li>
+          <li>Elle peut être partielle : certains champs sont validés sans figer tout le document.</li>
+          <li>Les documents peuvent contenir naturellement des objets imbriqués et des tableaux.</li>
+          <li>Les relations ne sont pas modélisées par défaut avec des clés étrangères comme en SQL.</li>
+          <li>Le modèle est souvent pensé à partir des requêtes de l'application, pas seulement à partir d'une normalisation en tables.</li>
+        </ul>
+        <p>À retenir : MongoDB n'est pas "sans schéma". Il permet de choisir le niveau de contrainte.</p>
+      </section>
+      <section id="s10" class="slide">
+        <h2 class="slide-title">Documents imbriqués</h2>
+        <p>MongoDB permet de stocker des objets dans un document.</p>
+        <pre><code>db.restaurants.insertOne({
+  name: "Demo Tacos",
+  cuisine: "Mexican",
+  ratings: {
+    food: 20,
+    decor: 16,
+    service: 18,
+    overall: 18
+  }
+})
+
+db.restaurants.find({ "ratings.food": { $gte: 20 } })</code></pre>
+      </section>
+      <section id="s11" class="slide">
+        <h2 class="slide-title">Tableaux</h2>
+        <p>Un document peut contenir un tableau de valeurs ou d'objets.</p>
+        <pre><code>db.restaurants.insertOne({
+  name: "Demo Review Tags",
+  cuisine: "Italian",
+  tags: ["top_food", "great_service", "dinner"]
+})
+
+db.restaurants.find({ tags: "top_food" })</code></pre>
+      </section>
+      <section id="s12" class="slide">
+        <h2 class="slide-title">Imbriquer ou référencer ?</h2>
+        <div class="two-col">
+          <div>
+            <h3>Imbriquer</h3>
+            <p>Quand les données sont consultées ensemble et ne grossissent pas sans limite.</p>
+            <pre><code>address: {
+  street: "Main Street",
+  zipcode: "10001"
+}</code></pre>
+          </div>
+          <div>
+            <h3>Référencer</h3>
+            <p>Quand les données sont nombreuses, évolutives ou consultées séparément.</p>
+            <pre><code>{
   restaurant_id: "NYC-ZAGAT-0001",
-  rating: 4.7
-}</code></pre></div></div></section>
+  reviewed_at: ISODate("2025-05-01"),
+  rating: 4.7,
+  sentiment: "positive"
+}</code></pre>
+          </div>
+        </div>
+      </section>
+      <section id="s13" class="slide">
+        <h2 class="slide-title">Exercices rapides</h2>
+        <ol>
+          <li>Créer une base `demo_schema`.</li>
+          <li>Créer une collection `restaurants`.</li>
+          <li>Insérer deux restaurants avec des structures différentes.</li>
+          <li>Ajouter un document avec un objet `ratings`.</li>
+          <li>Ajouter un document avec un tableau `tags`.</li>
+          <li>Écrire une requête sur `ratings.food`.</li>
+          <li>Créer une collection avec validation JSON Schema.</li>
+          <li>Tester une insertion valide et une insertion invalide.</li>
+        </ol>
+      </section>
     </article>
   </main>
   <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>

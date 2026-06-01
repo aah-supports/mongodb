@@ -54,6 +54,26 @@ ORDER BY average_rating DESC;</code></pre>
           <tr><td>Ordonner</td><td>Quel classement afficher ?</td><td>`$sort`, `$limit`</td></tr>
           <tr><td>Relier</td><td>Quelle collection joindre ?</td><td>`$lookup`</td></tr>
         </table>
+        <p>L'ordre des étapes est important : MongoDB exécute le pipeline de haut en bas. Il n'existe pas un ordre universel obligatoire, mais l'ordre choisi peut changer le résultat.</p>
+        <div class="two-col">
+          <div>
+            <h3>`$limit` puis `$sort`</h3>
+            <pre><code>db.restaurants.aggregate([
+  { $limit: 10 },
+  { $sort: { "ratings.overall": -1 } }
+])</code></pre>
+            <p>MongoDB prend 10 documents, puis trie seulement ces 10 documents.</p>
+          </div>
+          <div>
+            <h3>`$sort` puis `$limit`</h3>
+            <pre><code>db.restaurants.aggregate([
+  { $sort: { "ratings.overall": -1 } },
+  { $limit: 10 }
+])</code></pre>
+            <p>MongoDB trie tous les restaurants, puis garde les 10 mieux notés.</p>
+          </div>
+        </div>
+        <p>En pratique, on place souvent `$match` tôt pour réduire le volume à traiter, puis on ajoute `$project`, `$set`, `$group`, `$sort`, `$limit` ou `$lookup` selon le résultat attendu.</p>
       </section>
       <section id="s4" class="slide">
         <h2 class="slide-title">Commencer par `$match`</h2>

@@ -25,6 +25,34 @@ db.collection.aggregate([
 
 Chaque étape reçoit des documents, les transforme, puis transmet le résultat à l'étape suivante.
 
+L'ordre des étapes est donc important : MongoDB exécute le pipeline de haut en bas.
+
+Il n'existe pas un ordre universel obligatoire, mais l'ordre choisi peut changer le résultat.
+
+Exemple :
+
+```javascript
+db.restaurants.aggregate([
+  { $limit: 10 },
+  { $sort: { "ratings.overall": -1 } }
+])
+```
+
+Ce pipeline prend 10 documents, puis trie seulement ces 10 documents.
+
+Alors que :
+
+```javascript
+db.restaurants.aggregate([
+  { $sort: { "ratings.overall": -1 } },
+  { $limit: 10 }
+])
+```
+
+Ce pipeline trie tous les restaurants, puis garde les 10 mieux notés.
+
+En pratique, on place souvent `$match` tôt dans le pipeline pour réduire le volume de documents à traiter. On ajoute ensuite les étapes selon le besoin : `$project`, `$set`, `$group`, `$sort`, `$limit`, `$lookup`, etc.
+
 ## `$match`
 
 `$match` filtre les documents. Il est souvent placé au début pour réduire le volume traité.

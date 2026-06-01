@@ -305,20 +305,6 @@ Requête sur un tableau :
 db.restaurants.find({ tags: "top_food" })
 ```
 
-## Cas d'usage d'une base documentaire
-
-Une base NoSQL orientée document est pertinente quand les données sont naturellement proches d'un document JSON : objets imbriqués, tableaux, informations consultées ensemble.
-
-Cas d'usage typiques :
-
-- catalogue produit avec caractéristiques variables selon les catégories ;
-- profils utilisateurs avec préférences, adresses, paramètres et historique léger ;
-- contenus éditoriaux ou CMS avec blocs, métadonnées et versions ;
-- logs, événements ou données applicatives semi-structurées ;
-- API JSON où le format stocké ressemble au format renvoyé au frontend ;
-- données métier qui évoluent rapidement pendant la phase de conception.
-
-MongoDB est moins adapté si le besoin principal repose sur de nombreuses jointures fortes, des contraintes relationnelles strictes entre tables, ou un modèle très stable et très normalisé. Dans ces cas, une base SQL peut être plus simple et plus robuste.
 
 ## Quand imbriquer et quand référencer ?
 
@@ -364,7 +350,3 @@ Les avis détaillés sont séparés des restaurants parce qu'un restaurant peut 
 6. Écrire une requête sur `ratings.food`.
 7. Créer une collection avec validation JSON Schema.
 8. Tester une insertion valide et une insertion invalide.
-
-## Message clé
-
-MongoDB est flexible, mais le modèle reste essentiel. Le bon schéma est celui qui sert les requêtes attendues, limite la duplication dangereuse et reste compréhensible pour l'équipe.
