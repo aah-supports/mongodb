@@ -114,7 +114,7 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
         <ul>
           <li>`overall_rating` renomme le champ imbriqué `ratings.overall`.</li>
           <li>`average_detail_rating` calcule une moyenne à partir de `food`, `decor` et `service`.</li>
-          <li>`value_score` calcule un score qualité/prix en divisant la note globale par le prix pour deux.</li>
+          <li>`value_score` calcule un score note/prix en divisant la note globale moyenne par le prix estimé pour deux personnes.</li>
           <li>`_id: 0` retire l'identifiant MongoDB de la sortie.</li>
         </ul>
         <p>`$project` est utile quand on veut produire une sortie propre : quelques champs conservés, certains champs renommés, et des indicateurs calculés.</p>
@@ -139,7 +139,7 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
   { $sort: { value_score: -1 } },
   { $limit: 10 }
 ])</code></pre>
-        <p>Ici, on calcule un score qualité/prix avant de trier les restaurants.</p>
+        <p>Ici, on calcule un score note/prix avant de trier les restaurants.</p>
       </section>
       <section id="s7" class="slide">
         <h2 class="slide-title">Regrouper avec `$group`</h2>

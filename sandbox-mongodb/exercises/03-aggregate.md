@@ -48,7 +48,7 @@ db.restaurants.aggregate([
 
 ## Pipeline avec transformation
 
-Créer un indicateur qualité-prix :
+Créer un score note/prix :
 
 ```javascript
 db.restaurants.aggregate([
@@ -228,12 +228,12 @@ db.orders.aggregate([
 1. Calculer le nombre de restaurants par cuisine.
 2. Calculer la note moyenne `food`, `decor`, `service` et `overall` par cuisine.
 3. Trouver les cuisines dont la note globale moyenne est supérieure à 22.
-4. Classer les restaurants par meilleur rapport note/prix.
+4. Classer les restaurants par score note/prix, calculé avec `ratings.overall / price_for_two`.
 5. Compter les restaurants par `price_tier`.
 6. Identifier les tags les plus fréquents avec `$unwind`.
 7. Calculer le chiffre d'affaires par canal de vente.
 8. Calculer le panier moyen par cuisine avec `$lookup`.
 9. Trouver les restaurants qui cumulent excellente note globale et revenus importants.
-10. Calculer la note moyenne des avis détaillés par raison de visite.
-11. Comparer les avis vérifiés et non vérifiés.
+10. Calculer, pour chaque raison de visite (`visit_reason`), la note moyenne `rating` et le nombre d'avis détaillés.
+11. Comparer les avis vérifiés et non vérifiés (`verified_visit`) en calculant, pour chaque groupe, le nombre d'avis, la note moyenne `rating` et la moyenne des votes utiles `helpful_votes`.
 12. Créer une collection matérialisée `restaurant_kpis` avec `$merge`.

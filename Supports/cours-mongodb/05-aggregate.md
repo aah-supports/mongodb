@@ -97,7 +97,7 @@ Ici :
 
 - `overall_rating` renomme le champ imbriqué `ratings.overall` ;
 - `average_detail_rating` calcule une moyenne à partir de trois champs ;
-- `value_score` calcule un score qualité/prix en divisant la note globale par le prix pour deux ;
+- `value_score` calcule un score note/prix en divisant la note globale moyenne par le prix estimé pour deux personnes ;
 - `_id: 0` retire l'identifiant MongoDB de la sortie.
 
 `$project` est donc utile quand on veut produire une sortie propre : quelques champs conservés, certains champs renommés, et des indicateurs calculés.
