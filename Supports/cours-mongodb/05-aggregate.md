@@ -415,7 +415,7 @@ db.review_details.aggregate([
 
 ### Étape 4 : projeter le résultat utile
 
-Une fois la relation comprise, on garde seulement les champs utiles.
+On affiche la date de l'avis, sa note, son sentiment, puis le nom, la cuisine et le niveau de prix du restaurant lié.
 
 ```javascript
 db.review_details.aggregate([

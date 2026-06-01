@@ -300,7 +300,7 @@ restaurant: {
       </section>
       <section id="s12" class="slide">
         <h2 class="slide-title">Projeter le résultat lié</h2>
-        <p>Une fois la relation comprise, on garde les champs utiles de l'avis et du restaurant.</p>
+        <p>On affiche la date de l'avis, sa note, son sentiment, puis le nom, la cuisine et le niveau de prix du restaurant lié.</p>
         <pre><code>db.review_details.aggregate([
   { $match: { verified_visit: true, rating: { $gte: 4.5 } } },
   {
