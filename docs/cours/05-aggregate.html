@@ -55,6 +55,7 @@ ORDER BY average_rating DESC;</code></pre>
           <tr><td>Relier</td><td>Quelle collection joindre ?</td><td>`$lookup`</td></tr>
         </table>
         <p>L'ordre des étapes est important : MongoDB exécute le pipeline de haut en bas. Il n'existe pas un ordre universel obligatoire, mais l'ordre choisi peut changer le résultat.</p>
+        <p>Ce qui rend `aggregate` puissant, c'est le chaînage des étapes : on peut filtrer, transformer, regrouper, trier et même écrire le résultat final dans une collection, le tout dans une seule requête.</p>
         <div class="two-col">
           <div>
             <h3>`$limit` puis `$sort`</h3>
@@ -190,6 +191,21 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
 ])</code></pre>
           </div>
         </div>
+        <p>Regrouper sur deux champs :</p>
+        <pre><code>db.restaurants.aggregate([
+  {
+    $group: {
+      _id: {
+        cuisine: "$cuisine",
+        price_tier: "$price_tier"
+      },
+      restaurants: { $sum: 1 }
+    }
+  },
+  { $sort: { restaurants: -1 } }
+])</code></pre>
+        <p>Ici, MongoDB crée un groupe pour chaque combinaison `cuisine` + `price_tier`. Un groupe comme `{ cuisine: "Italian", price_tier: "$$" }` est distinct de `{ cuisine: "Italian", price_tier: "$$$" }`.</p>
+        <p>Le résultat montre donc, par exemple, combien de restaurants italiens existent dans chaque gamme de prix.</p>
       </section>
       <section id="s8" class="slide">
         <h2 class="slide-title">Éclater un tableau avec `$unwind`</h2>

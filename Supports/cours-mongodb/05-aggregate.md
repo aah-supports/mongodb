@@ -29,6 +29,8 @@ L'ordre des étapes est donc important : MongoDB exécute le pipeline de haut en
 
 Il n'existe pas un ordre universel obligatoire, mais l'ordre choisi peut changer le résultat.
 
+Ce qui rend `aggregate` puissant, c'est le chaînage des étapes : on peut filtrer, transformer, regrouper, trier et même écrire le résultat final dans une collection, le tout dans une seule requête.
+
 Exemple :
 
 ```javascript
@@ -155,6 +157,27 @@ db.restaurants.aggregate([
   { $sort: { average_overall: -1 } }
 ])
 ```
+
+Regrouper sur deux champs :
+
+```javascript
+db.restaurants.aggregate([
+  {
+    $group: {
+      _id: {
+        cuisine: "$cuisine",
+        price_tier: "$price_tier"
+      },
+      restaurants: { $sum: 1 }
+    }
+  },
+  { $sort: { restaurants: -1 } }
+])
+```
+
+Ici, MongoDB crée un groupe pour chaque combinaison `cuisine` + `price_tier`. Un groupe comme `{ cuisine: "Italian", price_tier: "$$" }` est distinct de `{ cuisine: "Italian", price_tier: "$$$" }`.
+
+Le résultat montre donc, par exemple, combien de restaurants italiens existent dans chaque gamme de prix.
 
 ## Accumulateurs fréquents
 
