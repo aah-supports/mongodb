@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">SQL</a><a href="#s3">Forme</a><a href="#s4">Pas à pas</a><a href="#s5">Projection</a><a href="#s6">Opérateurs</a><a href="#s7">Logique</a><a href="#s8">Documents</a><a href="#s8-expr">Expr</a><a href="#s9">Tableaux</a><a href="#s9-exists">Existence</a><a href="#s10-regex">Regex</a><a href="#s10">Tri</a><a href="#s10b">Métier</a><a href="#s11">Index</a><a href="#s12">Explain</a><a href="#s13">Index composés</a><a href="#s14">Géospatial</a><a href="#s15">Limites</a></div>
+    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">SQL</a><a href="#s3">Forme</a><a href="#s3-cursor">Curseur</a><a href="#s3-yield">Yield</a><a href="#s3-consommer">Consommer</a><a href="#s4">Pas à pas</a><a href="#s5">Projection</a><a href="#s6">Opérateurs</a><a href="#s7">Logique</a><a href="#s8">Documents</a><a href="#s8-expr">Expr</a><a href="#s9">Tableaux</a><a href="#s9-exists">Existence</a><a href="#s10-regex">Regex</a><a href="#s10">Tri</a><a href="#s10b">Métier</a><a href="#s11">Index</a><a href="#s12">Explain</a><a href="#s13">Index composés</a><a href="#s14">Géospatial</a><a href="#s15">Limites</a></div>
     <article class="deck">
       <section id="s1" class="slide">
         <h1>Rechercher avec `find`</h1>
@@ -12,6 +12,7 @@
         <ul>
           <li>On choisit une collection.</li>
           <li>On écrit un filtre.</li>
+          <li>On comprend que `find()` retourne un curseur.</li>
           <li>On limite les champs retournés avec une projection.</li>
           <li>On trie, limite ou compte selon le besoin.</li>
         </ul>
@@ -50,6 +51,72 @@ LIMIT 10;</code></pre>
   { cuisine: "Italian" },
   { _id: 0, name: 1, price_tier: 1, ratings: 1 }
 )</code></pre>
+      </section>
+      <section id="s3-cursor" class="slide">
+        <h2 class="slide-title">`find()` retourne un curseur</h2>
+        <p>Une particularité importante de MongoDB : `find()` ne retourne pas directement un tableau de documents. Il retourne un curseur.</p>
+        <pre><code>const cursor = db.restaurants.find(
+  { cuisine: "Italian" },
+  { _id: 0, name: 1, cuisine: 1 }
+)</code></pre>
+        <p>Un curseur est un objet qui permet de parcourir progressivement les résultats d'une requête. Dans `mongosh`, quand on tape directement `find()`, le shell affiche une première partie des résultats pour faciliter la lecture.</p>
+        <table>
+          <tr><th>Commande</th><th>Résultat conceptuel</th></tr>
+          <tr><td>`find()`</td><td>Un curseur sur plusieurs documents.</td></tr>
+          <tr><td>`findOne()`</td><td>Un document ou `null`.</td></tr>
+          <tr><td>`sort()`, `limit()`, `skip()`</td><td>Des opérations appliquées au curseur avant consommation.</td></tr>
+        </table>
+      </section>
+      <section id="s3-yield" class="slide">
+        <h2 class="slide-title">Analogie avec `yield`</h2>
+        <p>L'intérêt de `yield` apparaît quand produire une valeur coûte du temps ou de la mémoire. Au lieu de tout calculer et stocker, on produit une valeur à la demande.</p>
+        <div class="two-col">
+          <div>
+            <h3>Sans générateur</h3>
+            <pre><code>function carres(max) {
+  const resultats = [];
+  for (let i = 1; i <= max; i++) {
+    resultats.push(i * i);
+  }
+  return resultats;
+}
+
+const valeurs = carres(1_000_000);</code></pre>
+          </div>
+          <div>
+            <h3>Avec générateur</h3>
+            <pre><code>function* carres(max) {
+  for (let i = 1; i <= max; i++) {
+    yield i * i;
+  }
+}
+
+const valeurs = carres(1_000_000);
+valeurs.next().value; // 1
+valeurs.next().value; // 4</code></pre>
+          </div>
+        </div>
+        <p>Un curseur MongoDB suit la même idée générale : on avance dans les résultats au lieu de raisonner comme si tout était déjà un tableau chargé en mémoire.</p>
+      </section>
+      <section id="s3-consommer" class="slide">
+        <h2 class="slide-title">Consommer un curseur</h2>
+        <p>`toArray()` force la consommation complète du curseur et place tous les documents dans un tableau JavaScript. C'est pratique pour un petit résultat, mais coûteux si la requête retourne beaucoup de documents.</p>
+        <pre><code>const restaurants = db.restaurants
+  .find(
+    { cuisine: "Italian" },
+    { _id: 0, name: 1, cuisine: 1, price_tier: 1 }
+  )
+  .limit(10)
+  .toArray()</code></pre>
+        <p>`forEach()` parcourt le curseur document par document.</p>
+        <pre><code>db.restaurants
+  .find({}, { _id: 0, name: 1, "ratings.overall": 1 })
+  .sort({ "ratings.overall": -1 })
+  .limit(5)
+  .forEach((restaurant) => {
+    printjson(restaurant)
+  })</code></pre>
+        <p>Bonne pratique : filtrer, projeter, trier et limiter avant d'utiliser `toArray()` ou `forEach()`.</p>
       </section>
       <section id="s4" class="slide">
         <h2 class="slide-title">Construire une requête pas à pas</h2>

@@ -5,6 +5,7 @@
 À la fin de cette partie, vous serez capable de :
 
 - écrire une requête `find` ;
+- comprendre que `find()` retourne un curseur ;
 - utiliser une projection ;
 - filtrer avec les opérateurs principaux ;
 - interroger des champs imbriqués et des tableaux ;
@@ -37,6 +38,204 @@ db.restaurants.find()
 db.restaurants.find().limit(5)
 db.restaurants.findOne()
 ```
+
+## Comprendre le curseur MongoDB
+
+Une particularité importante de MongoDB : `find()` ne retourne pas directement un tableau de documents. Il retourne un **curseur**.
+
+Un curseur est un objet qui permet de parcourir progressivement les résultats d'une requête.
+
+```javascript
+const cursor = db.restaurants.find({ cuisine: "Italian" })
+```
+
+À ce moment-là, il faut retenir l'idée suivante : MongoDB prépare une requête, mais les résultats sont consommés progressivement.
+
+Cette logique ressemble à l'idée de `yield` en JavaScript.
+
+## Rappel : produire des valeurs avec `yield`
+
+L'intérêt de `yield` apparaît quand produire une valeur coûte du temps ou de la mémoire.
+
+Sans générateur, on calcule tout immédiatement :
+
+```javascript
+function carres(max) {
+  const resultats = [];
+
+  for (let i = 1; i <= max; i++) {
+    resultats.push(i * i);
+  }
+
+  return resultats;
+}
+
+const valeurs = carres(1_000_000);
+
+console.log(valeurs[0]);
+```
+
+Problème :
+
+- les 1 000 000 valeurs sont calculées immédiatement ;
+- elles sont toutes stockées en mémoire ;
+- si on utilise seulement les 10 premières, le reste a été calculé pour rien.
+
+Avec un générateur :
+
+```javascript
+function* carres(max) {
+  for (let i = 1; i <= max; i++) {
+    yield i * i;
+  }
+}
+
+const valeurs = carres(1_000_000);
+
+console.log(valeurs.next().value); // 1
+console.log(valeurs.next().value); // 4
+console.log(valeurs.next().value); // 9
+```
+
+Ici :
+
+1. aucun tableau complet n'est créé ;
+2. seul le carré demandé est calculé ;
+3. la fonction est mise en pause après chaque `yield`.
+
+On peut imaginer que le moteur exécute :
+
+```text
+yield 1;
+<PAUSE>
+
+yield 4;
+<PAUSE>
+
+yield 9;
+<PAUSE>
+```
+
+La fonction reprend exactement là où elle s'était arrêtée.
+
+## Lien avec un curseur MongoDB
+
+Un curseur MongoDB suit la même idée générale : les résultats sont parcourus à la demande.
+
+```javascript
+const cursor = db.restaurants.find(
+  { cuisine: "Italian" },
+  { _id: 0, name: 1, cuisine: 1 }
+)
+```
+
+Le curseur ne doit pas être compris comme "un gros tableau déjà prêt", mais comme un pointeur permettant d'avancer dans les résultats.
+
+Dans `mongosh`, quand on tape directement :
+
+```javascript
+db.restaurants.find({ cuisine: "Italian" })
+```
+
+le shell affiche automatiquement une première partie des résultats pour faciliter la lecture. Mais conceptuellement, `find()` produit bien un curseur.
+
+## Consommer un curseur avec `toArray()`
+
+`toArray()` force la consommation complète du curseur et place tous les documents dans un tableau JavaScript.
+
+```javascript
+const restaurants = db.restaurants
+  .find(
+    { cuisine: "Italian" },
+    { _id: 0, name: 1, cuisine: 1, price_tier: 1 }
+  )
+  .toArray()
+
+console.log(restaurants.length)
+console.log(restaurants[0])
+```
+
+C'est pratique pour manipuler un petit résultat dans un script.
+
+Mais sur une grosse collection, il faut être prudent :
+
+- tous les documents retournés sont chargés en mémoire côté client ;
+- si la requête retourne beaucoup de résultats, `toArray()` peut devenir coûteux ;
+- on perd l'intérêt du parcours progressif.
+
+Pour limiter le risque :
+
+```javascript
+const topRestaurants = db.restaurants
+  .find({}, { _id: 0, name: 1, "ratings.overall": 1 })
+  .sort({ "ratings.overall": -1 })
+  .limit(10)
+  .toArray()
+```
+
+Ici, `limit(10)` réduit volontairement le nombre de documents placés dans le tableau.
+
+## Consommer un curseur avec `forEach()`
+
+`forEach()` parcourt le curseur document par document.
+
+```javascript
+db.restaurants
+  .find(
+    { cuisine: "Italian" },
+    { _id: 0, name: 1, cuisine: 1, price_tier: 1 }
+  )
+  .forEach((restaurant) => {
+    print(`${restaurant.name} - ${restaurant.price_tier}`)
+  })
+```
+
+Cette approche est utile quand on veut traiter chaque document sans construire soi-même un tableau complet.
+
+Exemple avec un arrêt logique dans le traitement :
+
+```javascript
+db.restaurants
+  .find({}, { _id: 0, name: 1, "ratings.overall": 1 })
+  .sort({ "ratings.overall": -1 })
+  .limit(5)
+  .forEach((restaurant) => {
+    printjson(restaurant)
+  })
+```
+
+## Particularités importantes de `find`
+
+À retenir :
+
+- `find()` retourne un curseur ;
+- `findOne()` retourne directement un document ou `null` ;
+- `sort()`, `limit()` et `skip()` modifient le curseur avant sa consommation ;
+- `toArray()` transforme tous les résultats restants du curseur en tableau ;
+- `forEach()` parcourt les résultats un par un ;
+- un curseur consommé ne se réutilise pas comme un tableau normal ;
+- pour les gros volumes, il vaut mieux filtrer, projeter, trier et limiter avant de consommer le curseur.
+
+Exemple de requête bien cadrée :
+
+```javascript
+db.restaurants
+  .find(
+    { "ratings.overall": { $gte: 22 } },
+    { _id: 0, name: 1, cuisine: 1, "ratings.overall": 1 }
+  )
+  .sort({ "ratings.overall": -1 })
+  .limit(20)
+```
+
+La requête :
+
+1. filtre les documents ;
+2. réduit les champs retournés ;
+3. trie les résultats ;
+4. limite le nombre de documents à parcourir.
+
+C'est la bonne logique à adopter avant d'utiliser `toArray()` ou `forEach()`.
 
 ## Projection
 
