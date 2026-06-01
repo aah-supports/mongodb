@@ -237,11 +237,3 @@ db.orders.aggregate([
 10. Calculer la note moyenne des avis détaillés par raison de visite.
 11. Comparer les avis vérifiés et non vérifiés.
 12. Créer une collection matérialisée `restaurant_kpis` avec `$merge`.
-13. Calculer le chiffre d'affaires total, le nombre de commandes et le panier moyen par statut de commande.
-14. Identifier les 10 restaurants qui ont le plus grand nombre de commandes payées.
-15. Calculer, par cuisine, la part de restaurants dont `ratings.overall` est supérieure ou égale à 22.
-16. Produire un classement des tags avec, pour chaque tag, le nombre de restaurants et la note globale moyenne.
-17. Comparer le panier moyen des commandes selon le niveau de fidélité client (`customer.loyalty_tier`).
-18. Trouver les restaurants dont les revenus sont élevés mais dont la note de service est inférieure à 20.
-19. Construire un pipeline qui regroupe les avis détaillés par mois et par sentiment.
-20. **Difficile.** Créer une collection matérialisée `cuisine_kpis` contenant, par cuisine, le nombre de restaurants, la note moyenne, le revenu total et le panier moyen.

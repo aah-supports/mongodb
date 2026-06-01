@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Pourquoi</a><a href="#s2">SQL</a><a href="#s3">Pipeline</a><a href="#s4">Match</a><a href="#s5">Project</a><a href="#s6">Set</a><a href="#s7">Group</a><a href="#s8">Unwind</a><a href="#s9">Lookup</a><a href="#s10">Tableau</a><a href="#s11">Unwind</a><a href="#s12">Project</a><a href="#s13">Indicateur</a><a href="#s14">Merge</a><a href="#s15">Performance</a><a href="#s16">Choisir</a><a href="#s17">Exercices</a></div>
+    <div class="slide-nav"><a href="#s1">Pourquoi</a><a href="#s2">SQL</a><a href="#s3">Pipeline</a><a href="#s4">Match</a><a href="#s5">Project</a><a href="#s6">Set</a><a href="#s7">Group</a><a href="#s8">Unwind</a><a href="#s9">Lookup</a><a href="#s10">Tableau</a><a href="#s11">Unwind</a><a href="#s12">Project</a><a href="#s13">Indicateur</a><a href="#s14">Merge</a><a href="#s15">Performance</a><a href="#s16">Choisir</a></div>
     <article class="deck">
       <section id="s1" class="slide">
         <h1>Analyser avec `aggregate`</h1>
@@ -369,6 +369,7 @@ restaurant: {
       <section id="s14" class="slide">
         <h2 class="slide-title">Matérialiser avec `$merge`</h2>
         <p>`$merge` écrit le résultat d'un pipeline dans une collection. C'est utile pour produire des KPI réutilisables.</p>
+        <p>KPI signifie <em>Key Performance Indicator</em>, en français indicateur clé de performance : chiffre d'affaires, nombre de commandes, panier moyen, note moyenne, etc.</p>
         <pre><code>db.orders.aggregate([
   { $match: { status: "paid" } },
   {
@@ -387,6 +388,13 @@ restaurant: {
     }
   }
 ])</code></pre>
+        <table>
+          <tr><th>Paramètre</th><th>Rôle</th></tr>
+          <tr><td>`into: "restaurant_kpis"`</td><td>Écrit le résultat dans la collection `restaurant_kpis`.</td></tr>
+          <tr><td>`whenMatched: "replace"`</td><td>Remplace le document existant si un document avec le même `_id` existe déjà.</td></tr>
+          <tr><td>`whenNotMatched: "insert"`</td><td>Insère un nouveau document si aucun document correspondant n'existe.</td></tr>
+        </table>
+        <p>Ici, le `_id` du résultat est le `restaurant_id` : relancer le pipeline met à jour les KPI existants et ajoute ceux des nouveaux restaurants.</p>
         <p>Attention : `$merge` écrit réellement en base. On l'utilise quand le résultat doit être conservé.</p>
       </section>
       <section id="s15" class="slide">
@@ -417,31 +425,6 @@ db.review_details.aggregate([
           <tr><td>Créer une table de KPI</td><td>`aggregate`</td><td>`$merge`.</td></tr>
         </table>
         <p>Message clé : `aggregate` est le langage de transformation et d'analyse de MongoDB.</p>
-      </section>
-      <section id="s17" class="slide">
-        <h2 class="slide-title">Exercices</h2>
-        <ol>
-          <li>Calculer le nombre de restaurants par cuisine.</li>
-          <li>Calculer la note moyenne `food`, `decor`, `service` et `overall` par cuisine.</li>
-          <li>Trouver les cuisines dont la note globale moyenne est supérieure à 22.</li>
-          <li>Classer les restaurants par meilleur rapport note/prix.</li>
-          <li>Compter les restaurants par `price_tier`.</li>
-          <li>Identifier les tags les plus fréquents avec `$unwind`.</li>
-          <li>Calculer le chiffre d'affaires par canal de vente.</li>
-          <li>Calculer le panier moyen par cuisine avec `$lookup`.</li>
-          <li>Trouver les restaurants qui cumulent excellente note globale et revenus importants.</li>
-          <li>Calculer la note moyenne des avis détaillés par raison de visite.</li>
-          <li>Comparer les avis vérifiés et non vérifiés.</li>
-          <li>Créer une collection matérialisée `restaurant_kpis` avec `$merge`.</li>
-          <li>Calculer le chiffre d'affaires total, le nombre de commandes et le panier moyen par statut de commande.</li>
-          <li>Identifier les 10 restaurants qui ont le plus grand nombre de commandes payées.</li>
-          <li>Calculer, par cuisine, la part de restaurants dont `ratings.overall` est supérieure ou égale à 22.</li>
-          <li>Produire un classement des tags avec, pour chaque tag, le nombre de restaurants et la note globale moyenne.</li>
-          <li>Comparer le panier moyen des commandes selon le niveau de fidélité client (`customer.loyalty_tier`).</li>
-          <li>Trouver les restaurants dont les revenus sont élevés mais dont la note de service est inférieure à 20.</li>
-          <li>Construire un pipeline qui regroupe les avis détaillés par mois et par sentiment.</li>
-          <li><strong>Difficile.</strong> Créer une collection matérialisée `cuisine_kpis` contenant, par cuisine, le nombre de restaurants, la note moyenne, le revenu total et le panier moyen.</li>
-        </ol>
       </section>
     </article>
   </main>

@@ -555,7 +555,9 @@ db.orders.aggregate([
 
 `$merge` permet d'écrire le résultat d'une agrégation dans une collection.
 
-Créer une collection `restaurant_kpis` :
+Un KPI signifie *Key Performance Indicator*, en français **indicateur clé de performance**. Dans ce cours, un KPI est une valeur calculée qui permet de suivre un résultat métier : chiffre d'affaires, nombre de commandes, panier moyen, note moyenne, etc.
+
+Créer une collection `restaurant_kpis` revient donc à préparer une collection d'indicateurs réutilisables par restaurant.
 
 ```javascript
 db.orders.aggregate([
@@ -599,6 +601,24 @@ db.orders.aggregate([
 ])
 ```
 
+Lecture de `$merge` :
+
+```javascript
+$merge: {
+  into: "restaurant_kpis",
+  whenMatched: "replace",
+  whenNotMatched: "insert"
+}
+```
+
+- `into: "restaurant_kpis"` indique la collection dans laquelle écrire le résultat du pipeline ;
+- `whenMatched: "replace"` signifie que si un document avec le même `_id` existe déjà dans `restaurant_kpis`, il est remplacé par le nouveau résultat ;
+- `whenNotMatched: "insert"` signifie que si aucun document correspondant n'existe encore, MongoDB insère un nouveau document.
+
+Dans cet exemple, le `_id` du résultat est le `restaurant_id`. Relancer le pipeline met donc à jour les KPI existants des restaurants déjà présents, et ajoute les KPI des nouveaux restaurants.
+
+Attention : contrairement à `$project`, `$set`, `$group` ou `$lookup`, `$merge` écrit réellement en base. On l'utilise seulement quand le résultat doit être conservé.
+
 ## Performance
 
 Un pipeline peut utiliser un index si les premières étapes le permettent, surtout `$match` et parfois `$sort`.
@@ -614,29 +634,6 @@ db.review_details.aggregate([
   { $sort: { reviews: -1 } }
 ]).explain("executionStats")
 ```
-
-## Exercices
-
-1. Calculer le nombre de restaurants par cuisine.
-2. Calculer la note moyenne `food`, `decor`, `service` et `overall` par cuisine.
-3. Trouver les cuisines dont la note globale moyenne est supérieure à 22.
-4. Classer les restaurants par meilleur rapport note/prix.
-5. Compter les restaurants par `price_tier`.
-6. Identifier les tags les plus fréquents avec `$unwind`.
-7. Calculer le chiffre d'affaires par canal de vente.
-8. Calculer le panier moyen par cuisine avec `$lookup`.
-9. Trouver les restaurants qui cumulent excellente note globale et revenus importants.
-10. Calculer la note moyenne des avis détaillés par raison de visite.
-11. Comparer les avis vérifiés et non vérifiés.
-12. Créer une collection matérialisée `restaurant_kpis` avec `$merge`.
-13. Calculer le chiffre d'affaires total, le nombre de commandes et le panier moyen par statut de commande.
-14. Identifier les 10 restaurants qui ont le plus grand nombre de commandes payées.
-15. Calculer, par cuisine, la part de restaurants dont `ratings.overall` est supérieure ou égale à 22.
-16. Produire un classement des tags avec, pour chaque tag, le nombre de restaurants et la note globale moyenne.
-17. Comparer le panier moyen des commandes selon le niveau de fidélité client (`customer.loyalty_tier`).
-18. Trouver les restaurants dont les revenus sont élevés mais dont la note de service est inférieure à 20.
-19. Construire un pipeline qui regroupe les avis détaillés par mois et par sentiment.
-20. **Difficile.** Créer une collection matérialisée `cuisine_kpis` contenant, par cuisine, le nombre de restaurants, la note moyenne, le revenu total et le panier moyen.
 
 ## Message clé
 
