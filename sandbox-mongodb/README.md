@@ -116,4 +116,4 @@ La sandbox conserve aussi une copie locale dans `exercises` :
 
 ## Corrigés
 
-Les corrigés des TP sont rangés séparément dans `../Supports/Exercices/corrections`.
+Les corrigés des TP sont rangés séparément dans `../Corrections`.
