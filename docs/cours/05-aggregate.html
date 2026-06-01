@@ -210,17 +210,18 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
   {
     $group: {
       _id: "$tags",
-      restaurants: { $sum: 1 }
+      occurrences: { $sum: 1 }
     }
   },
-  { $sort: { restaurants: -1 } }
+  { $sort: { occurrences: -1 } }
 ])</code></pre>
         <ol>
           <li>`$unwind` crée une ligne temporaire par tag.</li>
           <li>`$group` regroupe ces lignes par valeur de tag.</li>
-          <li>`$sum: 1` compte combien de fois chaque tag apparaît.</li>
+          <li>`$sum: 1` compte combien de fois chaque tag apparaît dans ces lignes temporaires.</li>
           <li>`$sort` classe les tags les plus fréquents en premier.</li>
         </ol>
+        <p>Le champ `occurrences` ne veut pas dire "nombre total de restaurants". Il signifie : nombre de documents produits par `$unwind` pour ce tag. Si un restaurant possède trois tags, il contribue à trois lignes temporaires, une par tag.</p>
         <p>Sans `$unwind`, on compterait des tableaux entiers, pas les valeurs individuelles contenues dans ces tableaux.</p>
       </section>
       <section id="s9" class="slide">

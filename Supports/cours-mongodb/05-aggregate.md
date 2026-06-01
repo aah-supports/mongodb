@@ -244,10 +244,10 @@ db.restaurants.aggregate([
   {
     $group: {
       _id: "$tags",
-      restaurants: { $sum: 1 }
+      occurrences: { $sum: 1 }
     }
   },
-  { $sort: { restaurants: -1 } }
+  { $sort: { occurrences: -1 } }
 ])
 ```
 
@@ -255,8 +255,10 @@ Lecture du pipeline :
 
 1. `$unwind` crée une ligne temporaire par tag ;
 2. `$group` regroupe ensuite ces lignes par valeur de tag ;
-3. `$sum: 1` compte combien de fois chaque tag apparaît ;
+3. `$sum: 1` compte combien de fois chaque tag apparaît dans ces lignes temporaires ;
 4. `$sort` classe les tags les plus fréquents en premier.
+
+Le champ `occurrences` ne veut pas dire "nombre total de restaurants". Il signifie : nombre de documents produits par `$unwind` pour ce tag. Si un restaurant possède trois tags, il contribue à trois lignes temporaires, une par tag.
 
 Sans `$unwind`, on compterait des tableaux entiers, pas les valeurs individuelles contenues dans ces tableaux.
 
