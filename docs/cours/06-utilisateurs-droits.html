@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Cours 06 - Utilisateurs et droits</title><link rel="stylesheet" href="../assets/styles.css" /></head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
+  <main class="container">
+    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">Comptes</a><a href="#s3">Auth</a><a href="#s4">Rôles</a><a href="#s5">Créer</a><a href="#s6">Tester</a><a href="#s7">API</a></div>
+    <article class="deck">
+      <section id="s1" class="slide"><h1>Utilisateurs, rôles et droits</h1><p class="subtitle">Comprendre pourquoi une application ne doit pas utiliser un compte administrateur et comment limiter les privilèges MongoDB.</p></section>
+      <section id="s2" class="slide">
+        <h2 class="slide-title">Les comptes du sandbox</h2>
+        <p>Le sandbox contient un compte administrateur et un compte applicatif.</p>
+        <pre><code>root / rootpass        # administrateur MongoDB
+student / studentpass # compte applicatif nyc_food</code></pre>
+        <p>`root` sert à administrer. `student` sert à travailler dans la base `nyc_food` avec le rôle `readWrite`.</p>
+      </section>
+      <section id="s3" class="slide">
+        <h2 class="slide-title">Authentification et autorisation</h2>
+        <p>L'authentification répond à la question : qui es-tu ?</p>
+        <p>L'autorisation répond à la question : as-tu le droit d'exécuter cette action ?</p>
+        <pre><code>mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin</code></pre>
+        <ul>
+          <li>`nyc_food` est la base cible.</li>
+          <li>`authSource=admin` est la base où l'utilisateur `root` est défini.</li>
+          <li>Un utilisateur authentifié peut quand même manquer de droits.</li>
+        </ul>
+      </section>
+      <section id="s4" class="slide">
+        <h2 class="slide-title">Rôles intégrés utiles</h2>
+        <ul>
+          <li>`read` : lire les données d'une base.</li>
+          <li>`readWrite` : lire et écrire les données d'une base.</li>
+          <li>`dbAdmin` : administrer une base, index et statistiques.</li>
+          <li>`userAdmin` : gérer les utilisateurs d'une base.</li>
+          <li>`root` : tous les droits sur l'instance.</li>
+        </ul>
+        <p>Une application doit recevoir le plus petit niveau de droit suffisant.</p>
+      </section>
+      <section id="s5" class="slide">
+        <h2 class="slide-title">Créer un utilisateur lecture seule</h2>
+        <pre><code>docker compose exec mongodb mongosh \
+  "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre>
+        <pre><code>db.createUser({
+  user: "readonly",
+  pwd: "readonlypass",
+  roles: [{ role: "read", db: "nyc_food" }]
+})</code></pre>
+        <pre><code>docker compose exec mongodb mongosh \
+  "mongodb://readonly:readonlypass@localhost:27017/nyc_food"</code></pre>
+      </section>
+      <section id="s6" class="slide">
+        <h2 class="slide-title">Tester les droits</h2>
+        <p>Le test le plus clair consiste à exécuter une action autorisée, puis une action interdite.</p>
+        <pre><code>db.restaurants.findOne()</code></pre>
+        <pre><code>db.restaurants.insertOne({
+  restaurant_id: "TEST-READONLY",
+  name: "Read Only Test"
+})</code></pre>
+        <p>Avec `readonly`, la lecture doit réussir et l'écriture doit échouer.</p>
+      </section>
+      <section id="s7" class="slide">
+        <h2 class="slide-title">Lien avec l'API Express</h2>
+        <p>L'API du sandbox utilise le compte `student`, pas le compte `root`.</p>
+        <pre><code>MONGODB_URI: mongodb://student:studentpass@mongodb:27017/nyc_food</code></pre>
+        <ul>
+          <li>L'application n'a pas les droits administrateur.</li>
+          <li>Les droits sont limités à `nyc_food`.</li>
+          <li>Le compte correspond au besoin applicatif.</li>
+        </ul>
+      </section>
+      <section class="slide">
+        <h2 class="slide-title">À retenir</h2>
+        <ul>
+          <li>Ne pas utiliser `root` dans une application.</li>
+          <li>Créer un utilisateur dédié à chaque application.</li>
+          <li>Donner uniquement les droits nécessaires.</li>
+          <li>Tester une action autorisée et une action interdite.</li>
+          <li>Stocker les URI de connexion dans des variables d'environnement.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+  <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>
+</body>
+</html>

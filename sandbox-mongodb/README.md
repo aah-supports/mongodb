@@ -113,6 +113,7 @@ Les contenus de cours Markdown sont rangés dans `../Supports/cours-mongodb` :
 3. `../Supports/cours-mongodb/03-mongosh.md`
 4. `../Supports/cours-mongodb/04-find.md`
 5. `../Supports/cours-mongodb/05-aggregate.md`
+6. `../Supports/cours-mongodb/06-utilisateurs-droits.md`
 
 ## Parcours d’exercices pratiques
 
