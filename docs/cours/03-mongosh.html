@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Rôle</a><a href="#s2">Connexion</a><a href="#s3">Navigation</a><a href="#s4">Lire</a><a href="#s5">Secours</a></div>
+    <div class="slide-nav"><a href="#s1">Rôle</a><a href="#s2">Connexion</a><a href="#s3">Navigation</a><a href="#s4">Fonctions</a><a href="#s5">Lire</a><a href="#s6">Secours</a></div>
     <article class="deck">
       <section id="s1" class="slide"><h1>Travailler avec mongosh</h1><p class="subtitle">Le shell officiel permet d'écrire, reproduire et comprendre précisément les commandes MongoDB.</p></section>
       <section id="s2" class="slide"><h2 class="slide-title">Connexion au sandbox</h2><pre><code>docker compose exec mongodb mongosh \
@@ -13,14 +13,43 @@
 db
 use nyc_food
 show collections</code></pre></section>
-      <section id="s4" class="slide"><h2 class="slide-title">Lire et filtrer</h2><pre><code>db.restaurants.countDocuments()
+      <section id="s4" class="slide">
+        <h2 class="slide-title">Fonctions et types utiles</h2>
+        <h3>`ISODate()`</h3>
+        <p>`ISODate()` sert à créer une vraie date MongoDB. Ici, on cherche les commandes créées à partir du 1er juin 2026.</p>
+        <pre><code>db.orders.find({
+  created_at: {
+    $gte: ISODate("2026-06-01T00:00:00Z")
+  }
+})</code></pre>
+        <h3>`ObjectId()`</h3>
+        <p>`ObjectId()` sert à retrouver un document par son identifiant MongoDB. Ici, on cible un document précis avec son `_id`.</p>
+        <pre><code>db.orders.findOne({
+  _id: ObjectId("665f1c2a9b8f3a0012ab34cd")
+})</code></pre>
+        <h3>`db.getSiblingDB()`</h3>
+        <p>`db.getSiblingDB()` permet de changer de base sans changer de connexion. Ici, on travaille dans la base `event_booking`.</p>
+        <pre><code>const eventDb = db.getSiblingDB("event_booking")
+eventDb.users.findOne()</code></pre>
+        <h3>`toArray()` et `forEach()`</h3>
+        <p>On transforme le curseur en tableau avec `toArray()`, puis on parcourt les résultats avec `forEach()`. Ici, on affiche trois commandes payées.</p>
+        <pre><code>const paidOrders = db.orders.find({ status: "paid" }).limit(3).toArray()
+
+paidOrders.forEach(order => {
+  print(order.order_id)
+})</code></pre>
+        <h3>`distinct()`</h3>
+        <p>`distinct()` sert à lister les valeurs différentes d'un champ. Ici, on récupère les cuisines présentes dans la collection.</p>
+        <pre><code>db.restaurants.distinct("cuisine")</code></pre>
+      </section>
+      <section id="s5" class="slide"><h2 class="slide-title">Lire et filtrer</h2><pre><code>db.restaurants.countDocuments()
 db.restaurants.findOne()
 db.restaurants.find().limit(5)
 db.restaurants.find(
   { "ratings.overall": { $gte: 22 } },
   { _id: 0, name: 1, cuisine: 1, "ratings.overall": 1 }
 ).sort({ "ratings.overall": -1 }).limit(10)</code></pre></section>
-      <section id="s5" class="slide"><h2 class="slide-title">Création et import de secours</h2><p>Dans le parcours normal, les collections sont créées au premier lancement des conteneurs avec un volume vide.</p><pre><code>docker compose up -d</code></pre><p>Si les collections de base doivent être recréées manuellement, on utilise les commandes `mongoimport --drop` du cours jeu de données. Les apprenants n'ont pas à lancer de script d'import ou de génération dans le parcours standard.</p></section>
+      <section id="s6" class="slide"><h2 class="slide-title">Création et import de secours</h2><p>Dans le parcours normal, les collections sont créées au premier lancement des conteneurs avec un volume vide.</p><pre><code>docker compose up -d</code></pre><p>Si les collections de base doivent être recréées manuellement, on utilise les commandes `mongoimport --drop` du cours jeu de données. Les apprenants n'ont pas à lancer de script d'import ou de génération dans le parcours standard.</p></section>
     </article>
   </main>
   <footer class="footer"><a href="../cours.html">Retour aux cours</a></footer>

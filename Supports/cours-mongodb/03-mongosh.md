@@ -65,6 +65,81 @@ Afficher les collections :
 show collections
 ```
 
+## Fonctions et types utiles
+
+MongoDB fournit quelques fonctions et types très pratiques directement dans `mongosh`.
+
+### `ISODate()`
+
+`ISODate()` sert à créer une vraie date MongoDB.
+
+Exemple :
+
+```javascript
+db.orders.find({
+  created_at: {
+    $gte: ISODate("2026-06-01T00:00:00Z")
+  }
+})
+```
+
+Ici, on cherche les commandes créées à partir du 1er juin 2026.
+
+### `ObjectId()`
+
+`ObjectId()` sert à retrouver un document par son identifiant MongoDB.
+
+Exemple :
+
+```javascript
+db.orders.findOne({
+  _id: ObjectId("665f1c2a9b8f3a0012ab34cd")
+})
+```
+
+Ici, on cible un document précis avec son `_id`.
+
+### `db.getSiblingDB()`
+
+`db.getSiblingDB()` permet de changer de base sans changer de connexion.
+
+Exemple :
+
+```javascript
+const eventDb = db.getSiblingDB("event_booking")
+eventDb.users.findOne()
+```
+
+Ici, on travaille dans la base `event_booking` tout en restant connecté au même serveur.
+
+### `toArray()` et `forEach()`
+
+Un curseur MongoDB peut être transformé en tableau avec `toArray()`, puis parcouru avec `forEach()`.
+
+Exemple :
+
+```javascript
+const paidOrders = db.orders.find({ status: "paid" }).limit(3).toArray()
+
+paidOrders.forEach(order => {
+  print(order.order_id)
+})
+```
+
+Ici, on récupère trois commandes payées, puis on affiche leur `order_id`.
+
+### `distinct()`
+
+`distinct()` sert à lister les valeurs différentes d'un champ.
+
+Exemple :
+
+```javascript
+db.restaurants.distinct("cuisine")
+```
+
+Ici, on obtient toutes les cuisines présentes dans la collection.
+
 ## Lire des documents
 
 Compter les restaurants :
