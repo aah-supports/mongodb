@@ -126,16 +126,24 @@ Créer un utilisateur en lecture seule sur `nyc_food` :
 
 ```javascript
 db.createUser({
-  user: "readonly",
-  pwd: "readonlypass",
+  user: "alan",
+  pwd: "pass",
   roles: [{ role: "read", db: "nyc_food" }]
 });
 ```
 
-Se reconnecter avec ce compte :
+Se reconnecter avec ce compte depuis le poste hôte :
 
 ```bash
-docker compose exec mongodb mongosh "mongodb://readonly:readonlypass@localhost:27017/nyc_food"
+docker compose exec mongodb mongosh "mongodb://alan:pass@localhost:27017/nyc_food"
+```
+
+Ou, si l'on est déjà dans le prompt du conteneur MongoDB :
+
+```bash
+mongosh -u alan -p pass \
+  --authenticationDatabase nyc_food \
+  nyc_food
 ```
 
 Lire fonctionne :
@@ -250,7 +258,7 @@ Ce compte peut lire `restaurants`, lire et modifier `reviews`, mais il n'a pas l
 On peut aussi modifier un utilisateur existant :
 
 ```javascript
-db.grantRolesToUser("readonly", [
+db.grantRolesToUser("alan", [
   { role: "readWrite", db: "nyc_food" }
 ])
 ```
@@ -258,7 +266,7 @@ db.grantRolesToUser("readonly", [
 Ou retirer un rôle :
 
 ```javascript
-db.revokeRolesFromUser("readonly", [
+db.revokeRolesFromUser("alan", [
   { role: "readWrite", db: "nyc_food" }
 ])
 ```
@@ -304,7 +312,7 @@ db.runCommand({ connectionStatus: 1 })
 
 Vérifier les droits d'un utilisateur ne se fait pas seulement en lisant sa fiche. Le plus parlant est de tester une action autorisée, puis une action interdite.
 
-Exemple avec `readonly` :
+Exemple avec `alan` :
 
 ```javascript
 db.restaurants.findOne()
@@ -335,7 +343,7 @@ Dans le sandbox :
 
 - `root` administre MongoDB ;
 - `student` est le compte applicatif de démonstration ;
-- un utilisateur `readonly` permet de tester concrètement la différence entre lire et écrire ;
+- l'utilisateur `alan` permet de tester concrètement la différence entre lire et écrire ;
 - un utilisateur `api_writer` illustre le rôle `readWrite` ;
 - un rôle personnalisé permet de limiter les droits à certaines collections et actions.
 

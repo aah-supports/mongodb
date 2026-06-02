@@ -41,12 +41,15 @@ student / studentpass # compte applicatif nyc_food</code></pre>
         <pre><code>docker compose exec mongodb mongosh \
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre>
         <pre><code>db.createUser({
-  user: "readonly",
-  pwd: "readonlypass",
+  user: "alan",
+  pwd: "pass",
   roles: [{ role: "read", db: "nyc_food" }]
 })</code></pre>
         <pre><code>docker compose exec mongodb mongosh \
-  "mongodb://readonly:readonlypass@localhost:27017/nyc_food"</code></pre>
+  "mongodb://alan:pass@localhost:27017/nyc_food"</code></pre>
+        <pre><code>mongosh -u alan -p pass \
+  --authenticationDatabase nyc_food \
+  nyc_food</code></pre>
       </section>
       <section id="s6" class="slide">
         <h2 class="slide-title">Utilisateur `readWrite`</h2>
@@ -88,11 +91,11 @@ db.reviews.insertOne({
   pwd: "apireviewspass",
   roles: [{ role: "reviews_writer", db: "nyc_food" }]
 })</code></pre>
-        <pre><code>db.grantRolesToUser("readonly", [
+        <pre><code>db.grantRolesToUser("alan", [
   { role: "readWrite", db: "nyc_food" }
 ])
 
-db.revokeRolesFromUser("readonly", [
+db.revokeRolesFromUser("alan", [
   { role: "readWrite", db: "nyc_food" }
 ])</code></pre>
       </section>
@@ -104,7 +107,7 @@ db.revokeRolesFromUser("readonly", [
   restaurant_id: "TEST-READONLY",
   name: "Read Only Test"
 })</code></pre>
-        <p>Avec `readonly`, la lecture doit réussir et l'écriture doit échouer.</p>
+        <p>Avec `alan`, la lecture doit réussir et l'écriture doit échouer.</p>
       </section>
       <section id="s9" class="slide">
         <h2 class="slide-title">Lien avec l'API Express</h2>
