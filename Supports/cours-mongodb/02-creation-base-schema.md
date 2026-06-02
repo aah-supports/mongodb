@@ -350,3 +350,26 @@ Les avis détaillés sont séparés des restaurants parce qu'un restaurant peut 
 6. Écrire une requête sur `ratings.food`.
 7. Créer une collection avec validation JSON Schema.
 8. Tester une insertion valide et une insertion invalide.
+
+## Exercice guidé : modéliser une petite application
+
+Une application gère des utilisateurs, des événements et des réservations.
+
+Créer la base et les collections de départ :
+
+```javascript
+use event_booking
+
+db.createCollection("users")
+db.createCollection("events")
+db.createCollection("reservations")
+```
+
+Travail attendu :
+
+- décider quels champs sont communs à tous les documents ;
+- décider quoi imbriquer dans `reservations` ;
+- décider quoi référencer avec `user_id` et `event_id` ;
+- justifier le choix en quelques phrases.
+
+Pour la suite, reprendre les exercices du chapitre `aggregate` ou de la liste d'exercices du cours.

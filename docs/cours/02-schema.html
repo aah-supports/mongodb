@@ -219,6 +219,20 @@ db.restaurants.find({ tags: "top_food" })</code></pre>
           <li>Créer une collection avec validation JSON Schema.</li>
           <li>Tester une insertion valide et une insertion invalide.</li>
         </ol>
+        <h2 class="slide-title">Exercice guidé : modéliser une petite application</h2>
+        <p>Une application gère des utilisateurs, des événements et des réservations.</p>
+        <pre><code>use event_booking
+
+db.createCollection("users")
+db.createCollection("events")
+db.createCollection("reservations")</code></pre>
+        <ul>
+          <li>Décider quels champs sont communs à tous les documents.</li>
+          <li>Décider quoi imbriquer dans `reservations`.</li>
+          <li>Décider quoi référencer avec `user_id` et `event_id`.</li>
+          <li>Justifier le choix en quelques phrases.</li>
+        </ul>
+        <p><a href="../exercices.html">Reprendre la liste d'exercices du cours</a></p>
       </section>
     </article>
   </main>
