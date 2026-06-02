@@ -2,7 +2,7 @@
 
 Support de cours et sandbox Docker pour pratiquer MongoDB avec une base `nyc_food`.
 
-## Démarrer le sandbox
+## Démarrer le sandbox MongoDB
 
 Depuis la racine du dépôt :
 
@@ -13,6 +13,25 @@ docker compose ps
 ```
 
 Au premier lancement avec un volume MongoDB vide, les collections du cours sont créées automatiquement.
+
+## Démarrer la sandbox API
+
+Une sandbox séparée permet de travailler Express Node avec MongoDB 8.
+
+Depuis la racine du dépôt :
+
+```bash
+cd sandbox-api
+docker compose build api
+docker compose up -d
+docker compose ps
+```
+
+Endpoint disponible :
+
+```text
+http://localhost:3001/api/restaurants
+```
 
 ## Accès
 
@@ -50,18 +69,25 @@ docker compose ps
 
 ## Images, build et nettoyage Docker
 
-Ce projet ne construit pas d'image Docker locale.
+La sandbox MongoDB principale ne construit pas d'image Docker locale.
 
-Le fichier `docker-compose.yml` utilise directement des images prêtes à l'emploi :
+Le fichier `sandbox-mongodb/docker-compose.yml` utilise directement des images prêtes à l'emploi :
 
 - `mongo:8.0`
 - `mongo-express:1.0.2`
 
-Il n'y a pas de `Dockerfile` ni de section `build:`. Donc les commandes suivantes ne sont pas nécessaires :
+Il n'y a pas de `Dockerfile` ni de section `build:` dans `sandbox-mongodb`. Donc les commandes suivantes ne sont pas nécessaires pour cette sandbox :
 
 ```bash
 docker compose build
 docker compose up -d --build
+```
+
+La sandbox `sandbox-api`, elle, construit une petite image Node pour l'API Express. Il est donc normal d'utiliser :
+
+```bash
+cd sandbox-api
+docker compose build api
 ```
 
 Docker Desktop conserve quand même les images téléchargées. C'est normal : elles sont réutilisées au prochain démarrage.

@@ -1,0 +1,36 @@
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: sandbox-api-mongodb
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpass
+      MONGO_INITDB_DATABASE: nyc_food
+    volumes:
+      - mongodb_api_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d:ro
+      - ../data/nyc-food:/seed/nyc-food:ro
+
+  api:
+    build:
+      context: ./api
+    container_name: sandbox-api-express
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    ports:
+      - "3001:3000"
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://api_user:api_pass@mongodb:27017/nyc_food
+      MONGODB_DB: nyc_food
+    volumes:
+      - ./api:/app
+      - api_node_modules:/app/node_modules
+
+volumes:
+  mongodb_api_data:
+  api_node_modules:

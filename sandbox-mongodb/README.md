@@ -20,7 +20,6 @@ Accès :
 
 - MongoDB : `mongodb://root:rootpass@localhost:27017`
 - Mongo Express : http://localhost:8083
-- API REST : http://localhost:3000
 - Base de travail : `nyc_food`
 
 Mongo Express sert à vérifier les collections depuis le navigateur. Pour importer ou recréer des collections, utiliser les commandes `mongoimport` documentées plus bas.
@@ -30,17 +29,6 @@ Connexion avec `mongosh` :
 ```bash
 docker compose exec mongodb mongosh "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"
 ```
-
-Tester l'API REST :
-
-```bash
-curl "http://localhost:3000/restaurants?limit=5"
-```
-
-Le dossier `api` illustre la notion de frontiere :
-
-- `src/schemas.ts` definit le contrat Zod recu depuis HTTP.
-- `src/server.ts` valide `req.query` a la frontiere, puis interroge MongoDB avec une valeur typee.
 
 Remettre le sandbox à zéro :
 

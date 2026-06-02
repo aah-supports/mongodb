@@ -29,23 +29,5 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://root:rootpass@mongodb:27017/
       ME_CONFIG_BASICAUTH: "false"
 
-  api:
-    build:
-      context: ./api
-    container_name: sandbox-nyc-food-api
-    restart: unless-stopped
-    depends_on:
-      - mongodb
-    ports:
-      - "3000:3000"
-    environment:
-      PORT: 3000
-      MONGODB_URI: mongodb://student:studentpass@mongodb:27017/nyc_food
-      MONGODB_DB: nyc_food
-    volumes:
-      - ./api:/app
-      - api_node_modules:/app/node_modules
-
 volumes:
   mongodb_data:
-  api_node_modules:
