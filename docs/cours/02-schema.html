@@ -221,6 +221,7 @@ db.restaurants.find({ tags: "top_food" })</code></pre>
         </ol>
         <h2 class="slide-title">Exercice guidé : modéliser une petite application</h2>
         <p>Une application gère des utilisateurs, des événements et des réservations.</p>
+        <p>Utiliser `_id` en `ObjectId` pour `users` et `events`, puis référencer ces documents dans `reservations` avec `user_id` et `event_id`.</p>
         <pre><code>use event_booking
 
 db.createCollection("users")

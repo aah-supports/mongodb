@@ -355,6 +355,8 @@ Les avis détaillés sont séparés des restaurants parce qu'un restaurant peut 
 
 Une application gère des utilisateurs, des événements et des réservations.
 
+Utiliser `_id` en `ObjectId` pour `users` et `events`, puis référencer ces documents dans `reservations` avec `user_id` et `event_id`.
+
 Créer la base et les collections de départ :
 
 ```javascript
