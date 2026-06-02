@@ -23,14 +23,23 @@ show collections</code></pre></section>
   }
 })</code></pre>
         <h3>`ObjectId()`</h3>
-        <p>`ObjectId()` sert à retrouver un document par son identifiant MongoDB. Ici, on cible un document précis avec son `_id`.</p>
+        <p>`ObjectId()` sert à retrouver un document par son identifiant MongoDB. Cet identifiant contient notamment un timestamp interne, puis un compteur et une partie unique générée par MongoDB. Ici, on cible un document précis avec son `_id`.</p>
         <pre><code>db.orders.findOne({
   _id: ObjectId("665f1c2a9b8f3a0012ab34cd")
 })</code></pre>
+        <p>On peut aussi lire la date intégrée dans l'`ObjectId` :</p>
+        <pre><code>ObjectId("665f1c2a9b8f3a0012ab34cd").getTimestamp()</code></pre>
+        <p>MongoDB ne stocke pas une date lisible dans le texte de l'identifiant, mais l'`ObjectId` contient bien une partie temporelle exploitable avec `getTimestamp()`, ainsi qu'un compteur interne qui aide à garantir l'unicité.</p>
         <h3>`db.getSiblingDB()`</h3>
-        <p>`db.getSiblingDB()` permet de changer de base sans changer de connexion. Ici, on travaille dans la base `event_booking`.</p>
+        <p>`db.getSiblingDB()` permet de viser une autre base dans la même connexion `mongosh`. Ici, on reste connecté au même serveur MongoDB, mais on lit la base `event_booking` depuis la base courante.</p>
         <pre><code>const eventDb = db.getSiblingDB("event_booking")
 eventDb.users.findOne()</code></pre>
+        <p>Attention : `db.getSiblingDB()` ne donne pas les droits. MongoDB vérifie ensuite les privilèges de l'utilisateur connecté. Si l'utilisateur n'a pas le droit de lire ou d'écrire dans cette base, la commande échoue.</p>
+        <ul>
+          <li>`use event_booking` change la base courante dans le shell.</li>
+          <li>`db.getSiblingDB("event_booking")` vise une autre base depuis la connexion courante.</li>
+          <li>Dans les deux cas, l'accès dépend des droits MongoDB de l'utilisateur.</li>
+        </ul>
         <h3>`toArray()` et `forEach()`</h3>
         <p>On transforme le curseur en tableau avec `toArray()`, puis on parcourt les résultats avec `forEach()`. Ici, on affiche trois commandes payées.</p>
         <pre><code>const paidOrders = db.orders.find({ status: "paid" }).limit(3).toArray()

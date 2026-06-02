@@ -87,7 +87,7 @@ Ici, on cherche les commandes créées à partir du 1er juin 2026.
 
 ### `ObjectId()`
 
-`ObjectId()` sert à retrouver un document par son identifiant MongoDB.
+`ObjectId()` sert à retrouver un document par son identifiant MongoDB. Cet identifiant contient notamment un timestamp interne, puis un compteur et une partie unique générée par MongoDB.
 
 Exemple :
 
@@ -99,9 +99,17 @@ db.orders.findOne({
 
 Ici, on cible un document précis avec son `_id`.
 
+On peut aussi lire la date intégrée dans l'`ObjectId` :
+
+```javascript
+ObjectId("665f1c2a9b8f3a0012ab34cd").getTimestamp()
+```
+
+MongoDB ne stocke pas une date lisible dans le texte de l'identifiant, mais l'`ObjectId` contient bien une partie temporelle exploitable avec `getTimestamp()`, ainsi qu'un compteur interne qui aide à garantir l'unicité.
+
 ### `db.getSiblingDB()`
 
-`db.getSiblingDB()` permet de changer de base sans changer de connexion.
+`db.getSiblingDB()` permet de viser une autre base dans la même connexion `mongosh`.
 
 Exemple :
 
@@ -110,7 +118,15 @@ const eventDb = db.getSiblingDB("event_booking")
 eventDb.users.findOne()
 ```
 
-Ici, on travaille dans la base `event_booking` tout en restant connecté au même serveur.
+Ici, on reste connecté au même serveur MongoDB, mais on lit la base `event_booking` depuis la base courante.
+
+Attention : `db.getSiblingDB()` ne donne pas les droits. MongoDB vérifie ensuite les privilèges de l'utilisateur connecté. Si l'utilisateur n'a pas le droit de lire ou d'écrire dans cette base, la commande échoue.
+
+À retenir :
+
+- `use event_booking` change la base courante dans le shell ;
+- `db.getSiblingDB("event_booking")` vise une autre base depuis la connexion courante ;
+- dans les deux cas, l'accès dépend des droits MongoDB de l'utilisateur.
 
 ### `toArray()` et `forEach()`
 
