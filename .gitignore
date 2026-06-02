@@ -2,4 +2,6 @@ info.md
 .DS_Store
 Corrections/*
 !Corrections/
+!Corrections/01-installation-et-exploration-correction.md
 !Corrections/02-find-correction.md
+!Corrections/03-aggregate-correction.md
