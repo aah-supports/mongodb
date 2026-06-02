@@ -4,7 +4,7 @@
 <body>
   <header class="site-header"><nav class="nav"><a class="brand" href="../index.html">MongoDB Introduction</a><div class="nav-links"><a href="../index.html">Accueil</a><a class="active" href="../cours.html">Cours</a><a href="../exercices.html">Exercices</a></div></nav></header>
   <main class="container">
-    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">Comptes</a><a href="#s3">Auth</a><a href="#s4">Rôles</a><a href="#s5">Créer</a><a href="#s6">Tester</a><a href="#s7">API</a></div>
+    <div class="slide-nav"><a href="#s1">Objectif</a><a href="#s2">Comptes</a><a href="#s3">Auth</a><a href="#s4">Rôles</a><a href="#s5">read</a><a href="#s6">readWrite</a><a href="#s7">Fin</a><a href="#s8">Tester</a><a href="#s9">API</a></div>
     <article class="deck">
       <section id="s1" class="slide"><h1>Utilisateurs, rôles et droits</h1><p class="subtitle">Comprendre pourquoi une application ne doit pas utiliser un compte administrateur et comment limiter les privilèges MongoDB.</p></section>
       <section id="s2" class="slide">
@@ -37,7 +37,7 @@ student / studentpass # compte applicatif nyc_food</code></pre>
         <p>Une application doit recevoir le plus petit niveau de droit suffisant.</p>
       </section>
       <section id="s5" class="slide">
-        <h2 class="slide-title">Créer un utilisateur lecture seule</h2>
+        <h2 class="slide-title">Utilisateur `read`</h2>
         <pre><code>docker compose exec mongodb mongosh \
   "mongodb://root:rootpass@localhost:27017/nyc_food?authSource=admin"</code></pre>
         <pre><code>db.createUser({
@@ -49,6 +49,54 @@ student / studentpass # compte applicatif nyc_food</code></pre>
   "mongodb://readonly:readonlypass@localhost:27017/nyc_food"</code></pre>
       </section>
       <section id="s6" class="slide">
+        <h2 class="slide-title">Utilisateur `readWrite`</h2>
+        <p>`readWrite` permet de lire et modifier les données d'une base, sans devenir administrateur.</p>
+        <pre><code>db.createUser({
+  user: "api_writer",
+  pwd: "apiwriterpass",
+  roles: [{ role: "readWrite", db: "nyc_food" }]
+})</code></pre>
+        <pre><code>db.restaurants.findOne()
+db.reviews.insertOne({
+  restaurant_id: "NYC-ZAGAT-0001",
+  source: "manual-test"
+})</code></pre>
+        <p>Ce compte peut écrire des documents, mais il ne devrait pas pouvoir créer d'autres utilisateurs.</p>
+      </section>
+      <section id="s7" class="slide">
+        <h2 class="slide-title">Droits plus fins</h2>
+        <p>Les rôles intégrés sont pratiques mais parfois trop larges. Un rôle personnalisé peut limiter les actions par collection.</p>
+        <pre><code>db.createRole({
+  role: "reviews_writer",
+  privileges: [
+    {
+      resource: { db: "nyc_food", collection: "restaurants" },
+      actions: ["find"]
+    },
+    {
+      resource: { db: "nyc_food", collection: "reviews" },
+      actions: ["find", "insert", "update"]
+    }
+  ],
+  roles: []
+})</code></pre>
+      </section>
+      <section class="slide">
+        <h2 class="slide-title">Assigner ou retirer un rôle</h2>
+        <pre><code>db.createUser({
+  user: "api_reviews",
+  pwd: "apireviewspass",
+  roles: [{ role: "reviews_writer", db: "nyc_food" }]
+})</code></pre>
+        <pre><code>db.grantRolesToUser("readonly", [
+  { role: "readWrite", db: "nyc_food" }
+])
+
+db.revokeRolesFromUser("readonly", [
+  { role: "readWrite", db: "nyc_food" }
+])</code></pre>
+      </section>
+      <section id="s8" class="slide">
         <h2 class="slide-title">Tester les droits</h2>
         <p>Le test le plus clair consiste à exécuter une action autorisée, puis une action interdite.</p>
         <pre><code>db.restaurants.findOne()</code></pre>
@@ -58,7 +106,7 @@ student / studentpass # compte applicatif nyc_food</code></pre>
 })</code></pre>
         <p>Avec `readonly`, la lecture doit réussir et l'écriture doit échouer.</p>
       </section>
-      <section id="s7" class="slide">
+      <section id="s9" class="slide">
         <h2 class="slide-title">Lien avec l'API Express</h2>
         <p>L'API du sandbox utilise le compte `student`, pas le compte `root`.</p>
         <pre><code>MONGODB_URI: mongodb://student:studentpass@mongodb:27017/nyc_food</code></pre>
@@ -74,6 +122,7 @@ student / studentpass # compte applicatif nyc_food</code></pre>
           <li>Ne pas utiliser `root` dans une application.</li>
           <li>Créer un utilisateur dédié à chaque application.</li>
           <li>Donner uniquement les droits nécessaires.</li>
+          <li>Utiliser un rôle personnalisé si `readWrite` est trop large.</li>
           <li>Tester une action autorisée et une action interdite.</li>
           <li>Stocker les URI de connexion dans des variables d'environnement.</li>
         </ul>

@@ -155,6 +155,116 @@ db.restaurants.insertOne({
 
 L'erreur attendue indique que l'utilisateur n'a pas le privilège nécessaire pour insérer.
 
+## Créer un utilisateur lecture-écriture
+
+Un rôle `readWrite` permet de lire et modifier les données d'une base.
+
+Exemple : créer un utilisateur applicatif capable de lire les restaurants et d'écrire dans les collections de la base `nyc_food`.
+
+```javascript
+db.createUser({
+  user: "api_writer",
+  pwd: "apiwriterpass",
+  roles: [{ role: "readWrite", db: "nyc_food" }]
+});
+```
+
+Connexion avec ce compte :
+
+```bash
+docker compose exec mongodb mongosh "mongodb://api_writer:apiwriterpass@localhost:27017/nyc_food"
+```
+
+Lire fonctionne :
+
+```javascript
+db.restaurants.findOne()
+```
+
+Écrire fonctionne aussi :
+
+```javascript
+db.reviews.insertOne({
+  restaurant_id: "NYC-ZAGAT-0001",
+  source: "manual-test",
+  comment: "Test avec un utilisateur readWrite"
+})
+```
+
+En revanche, ce compte ne devient pas administrateur. Il ne devrait pas pouvoir créer d'autres utilisateurs :
+
+```javascript
+db.createUser({
+  user: "should_fail",
+  pwd: "test",
+  roles: [{ role: "read", db: "nyc_food" }]
+})
+```
+
+Ici, l'échec est normal : écrire des documents et administrer les utilisateurs sont deux responsabilités différentes.
+
+## Administrer les droits plus finement
+
+Les rôles intégrés (`read`, `readWrite`, `dbAdmin`, etc.) sont pratiques, mais parfois trop larges.
+
+Par exemple, `readWrite` donne le droit d'écrire dans toutes les collections de la base. Si une API doit seulement :
+
+- lire `restaurants` ;
+- lire `reviews` ;
+- écrire uniquement dans `reviews` ;
+- ne jamais écrire dans `restaurants` ;
+
+alors un rôle personnalisé est plus précis.
+
+Exemple de rôle personnalisé :
+
+```javascript
+db.createRole({
+  role: "reviews_writer",
+  privileges: [
+    {
+      resource: { db: "nyc_food", collection: "restaurants" },
+      actions: ["find"]
+    },
+    {
+      resource: { db: "nyc_food", collection: "reviews" },
+      actions: ["find", "insert", "update"]
+    }
+  ],
+  roles: []
+});
+```
+
+Puis on assigne ce rôle à un utilisateur :
+
+```javascript
+db.createUser({
+  user: "api_reviews",
+  pwd: "apireviewspass",
+  roles: [{ role: "reviews_writer", db: "nyc_food" }]
+});
+```
+
+Ce compte peut lire `restaurants`, lire et modifier `reviews`, mais il n'a pas le droit d'écrire dans `restaurants`.
+
+On peut aussi modifier un utilisateur existant :
+
+```javascript
+db.grantRolesToUser("readonly", [
+  { role: "readWrite", db: "nyc_food" }
+])
+```
+
+Ou retirer un rôle :
+
+```javascript
+db.revokeRolesFromUser("readonly", [
+  { role: "readWrite", db: "nyc_food" }
+])
+```
+
+Ce niveau de finesse est utile quand plusieurs applications partagent la même base mais n'ont pas les mêmes responsabilités.
+
 ## Lien avec l'application Express
 
 L'API Express du sandbox se connecte avec l'utilisateur `student` :
@@ -175,6 +285,7 @@ Exemples :
 
 - `api_readonly` avec `read` si l'API ne lit que les données ;
 - `api_orders` avec `readWrite` sur la base métier ;
+- `api_reviews` avec un rôle personnalisé qui écrit seulement dans `reviews` ;
 - `admin_backup` avec des droits spécifiques pour les sauvegardes.
 
 ## Tester les droits
@@ -224,6 +335,8 @@ Dans le sandbox :
 
 - `root` administre MongoDB ;
 - `student` est le compte applicatif de démonstration ;
-- un utilisateur `readonly` permet de tester concrètement la différence entre lire et écrire.
+- un utilisateur `readonly` permet de tester concrètement la différence entre lire et écrire ;
+- un utilisateur `api_writer` illustre le rôle `readWrite` ;
+- un rôle personnalisé permet de limiter les droits à certaines collections et actions.
 
 La règle pratique est simple : une application ne doit pas se connecter avec un compte plus puissant que nécessaire.
