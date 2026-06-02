@@ -168,10 +168,10 @@ db.restaurants.aggregate([
         cuisine: "$cuisine",
         price_tier: "$price_tier"
       },
-      restaurants: { $sum: 1 }
+      restaurant_nb: { $sum: 1 }
     }
   },
-  { $sort: { restaurants: -1 } }
+  { $sort: { restaurant_nb: -1 } }
 ])
 ```
 

@@ -199,10 +199,10 @@ db.restaurants.find({ "ratings.overall": { $gte: 22 } })</code></pre>
         cuisine: "$cuisine",
         price_tier: "$price_tier"
       },
-      restaurants: { $sum: 1 }
+      restaurant_nb: { $sum: 1 }
     }
   },
-  { $sort: { restaurants: -1 } }
+  { $sort: { restaurant_nb: -1 } }
 ])</code></pre>
         <p>Ici, MongoDB crée un groupe pour chaque combinaison `cuisine` + `price_tier`. Un groupe comme `{ cuisine: "Italian", price_tier: "$$" }` est distinct de `{ cuisine: "Italian", price_tier: "$$$" }`.</p>
         <p>Le résultat montre donc, par exemple, combien de restaurants italiens existent dans chaque gamme de prix.</p>
